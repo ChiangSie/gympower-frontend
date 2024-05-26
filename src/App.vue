@@ -1,24 +1,39 @@
-<script setup>
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-</script>
+</script> -->
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="靠邀!" />
+      <HelloWorld msg="M3" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">首頁</RouterLink>
+        <RouterLink to="/about">關於我們</RouterLink>
+        <RouterLink to="/product">精選商品</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
 </template>
+
+<script>
+import { defineComponent } from 'vue'
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+
+export default defineComponent({
+  components: {
+    RouterLink,
+    RouterView,
+    HelloWorld
+  }
+})
+</script>
 
 <style scoped>
 header {

@@ -1,24 +1,33 @@
 <template>
   <div class="about">
     <h1>{{ message }}</h1>
-
     <ul>
       <li v-for="num in itemIndex" :key="num">{{ num }}</li>
       <li v-for="item in list" :key="item">{{ item }}</li>
       <li v-for="(item, id) in list2" :key="id">{{ item.title }}</li>
       <button @click="add">加入</button>
       <li v-for="item in list2" :key="item.id">
-        <p :style="{ color: item.color }">
+        <a
+          :href="item.link"
+          :style="{
+            color: item.color
+          }"
+        >
           {{ item.title }}
-        </p>
+        </a>
       </li>
-      <li>list有{{ list.length }}</li>
-      <li>list有{{ count }}</li>
-      <li v-for="item in list" :key="item.id">
-        <template>
-          <a v-if="item.show" :href="item.link" :style="{ color: 'item.color' }">{{
-            item.title
-          }}</a>
+      <li>list有{{ list2.length }}個</li>
+      <li>list有{{ count }}個</li>
+      <li v-for="item in list2" :key="item.id">
+        <template v-if="item.show">
+          <a
+            :href="item.link"
+            :style="{
+              color: item.color
+            }"
+          >
+            {{ item.title }}
+          </a>
         </template>
       </li>
     </ul>
@@ -29,26 +38,30 @@
 export default {
   data() {
     return {
-      message: '我是嘎啦嘎拉',
+      message: '我是大帥哥',
       itemIndex: 2,
       list: ['Sakura', 'is', 'fearnot'],
       list2: [
         {
           id: 1,
           title: 'Kazuha',
-          color: '#ddd'
+          color: '#ddd',
+          show: false,
+          link: 'https://google.com'
         },
         {
           id: 2,
           title: 'Le seerafim',
-          color: '#eee'
+          color: '#eee',
+          show: true,
+          link: 'https://google.com'
         }
       ]
     }
   },
   computed: {
     count() {
-      return this.list.length
+      return this.list2.length
     }
   },
   methods: {
