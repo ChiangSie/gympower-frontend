@@ -1,0 +1,20 @@
+@use 'sass:math';
+
+@mixin col($value) {
+    @for $i from 1 through $value {
+        .col-#{$value}-#{$i} {
+            width: math.div($i , $value) * 100%;
+        }
+    }
+}
+
+// @include col(12);
+// @include col(11);
+// @include col(10);
+// @include col(9);
+// @include col(8);
+// @include col(6);
+// @include col(5);
+// @include col(4);
+// @include col(3);
+// @include col(2);
