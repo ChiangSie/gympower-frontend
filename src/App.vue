@@ -13,7 +13,8 @@ import HelloWorld from './components/HelloWorld.vue'
       <nav>
 
         <RouterLink to="/Aboutus">關於我們</RouterLink>
-        <RouterLink to="/News">j最新活動</RouterLink>
+        <RouterLink to="/News">最新活動</RouterLink>
+        <RouterLink to="/Diary">健身日記</RouterLink>
       </nav>
     </div>
   </header>
@@ -26,11 +27,13 @@ import { defineComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import Aboutus from '@/views/Aboutus.vue'
 import News from '@/views/News.vue'
+import Diary from '@/views/Diary.vue'
 
 export default defineComponent({
   components: {
     Aboutus,
-    News
+    News,
+    Diary
   }
 })
 </script>
