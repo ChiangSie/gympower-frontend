@@ -11,15 +11,11 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="M3" />
 
       <nav>
-        <RouterLink to="/">首頁</RouterLink>
-        <RouterLink to="/about">關於我們</RouterLink>
-        <RouterLink to="/product">精選商品</RouterLink>
+
+        <RouterLink to="/Aboutus">關於我們</RouterLink>
       </nav>
     </div>
   </header>
-  <section>a</section>
-  <section>b</section>
-  <section>c</section>
 
   <RouterView />
 </template>
@@ -27,13 +23,11 @@ import HelloWorld from './components/HelloWorld.vue'
 <script>
 import { defineComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Aboutus from '@/views/Aboutus.vue'
 
 export default defineComponent({
   components: {
-    RouterLink,
-    RouterView,
-    HelloWorld
+    Aboutus
   }
 })
 </script>
