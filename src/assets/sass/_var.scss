@@ -1,112 +1,84 @@
 //顏色
-$color-major     : #000000;
-$color-secondary : #000000;
-$color-highlight : #000000;
-$color-bg        : #838383;
-$color-vers      : #ffffff;
-
-
+$color-major: #000000;
+$color-secondary: #000000;
+$color-highlight: #000000;
+$color-bg: #838383;
+$color-vers: #ffffff;
 
 //圓角
-$border-radius : 10px;
-
-
+$border-radius: 10px;
 
 //gap
-$gap : 15px;
-
-
+$gap: 15px;
 
 //字形
-$font-family : garamond;
-
-
+$font-family: garamond;
 
 //font-weight
-$font-weight : 400;
-
-
+$font-weight: 400;
 
 //字體大小
-$font-size-h1    : 40px;
-$font-size-h2    : 24px;
-$font-size-h3    : 20px;
-$font-size-h4    : 18px;
-$font-size-p     : 16px;
-$font-size-a     : 16px;
-$font-size-sapn  : 16px;
-
-
+$font-size-h1: 40px;
+$font-size-h2: 24px;
+$font-size-h3: 20px;
+$font-size-h4: 18px;
+$font-size-p: 16px;
+$font-size-a: 16px;
+$font-size-span: 16px;
 
 //字高比例
-$line-height-ratio : 1.5 ; 
-
-
+$line-height-ratio: 1.5;
 
 //字高
-$line-height-h1    : $font-size-h1    *  $line-height-ratio ;
-$line-height-h2    : $font-size-h2    *  $line-height-ratio ;
-$line-height-h3    : $font-size-h3    *  $line-height-ratio ;
-$line-height-h4    : $font-size-h4    *  $line-height-ratio ;
-$line-height-p     : $font-size-p     *  $line-height-ratio ;
-$line-height-a     : $font-size-a     *  $line-height-ratio ;
-$line-height-span  : $font-size-span  *  $line-height-ratio ;
-
-
+$line-height-h1: $font-size-h1 * $line-height-ratio;
+$line-height-h2: $font-size-h2 * $line-height-ratio;
+$line-height-h3: $font-size-h3 * $line-height-ratio;
+$line-height-h4: $font-size-h4 * $line-height-ratio;
+$line-height-p: $font-size-p * $line-height-ratio;
+$line-height-a: $font-size-a * $line-height-ratio;
+$line-height-span: $font-size-span * $line-height-ratio;
 
 //字距比例
-$letter-spacing-ratio : 0.01 ;
-
-
+$letter-spacing-ratio: 0.01;
 
 //字距
-$letter-spacing-h1    : $font-size-h1    *  $letter-spacing-ratio ;
-$letter-spacing-h2    : $font-size-h2    *  $letter-spacing-ratio ;
-$letter-spacing-h3    : $font-size-h3    *  $letter-spacing-ratio ;
-$letter-spacing-h4    : $font-size-h4    *  $letter-spacing-ratio ;
-$letter-spacing-p     : $font-size-p     *  $letter-spacing-ratio ;
-$letter-spacing-a     : $font-size-a     *  $letter-spacing-ratio ;
-$letter-spacing-span  : $font-size-span  *  $letter-spacing-ratio ;
-
-
+$letter-spacing-h1: $font-size-h1 * $letter-spacing-ratio;
+$letter-spacing-h2: $font-size-h2 * $letter-spacing-ratio;
+$letter-spacing-h3: $font-size-h3 * $letter-spacing-ratio;
+$letter-spacing-h4: $font-size-h4 * $letter-spacing-ratio;
+$letter-spacing-p: $font-size-p * $letter-spacing-ratio;
+$letter-spacing-a: $font-size-a * $letter-spacing-ratio;
+$letter-spacing-span: $font-size-span * $letter-spacing-ratio;
 
 //nav
-$nav-width           : 100%;
-$nav-height          : 80px;
-$nav-margin          : 0;
-$nav-padding-top     : 10px ;
-$nav-padding-right   : 0% ;
-$nav-padding-bottom  : 10px ;
-$nav-padding-left    : 0% ;
-
-
-
-
+$nav-width: 100%;
+$nav-height: 80px;
+$nav-margin: 0;
+$nav-padding-top: 10px;
+$nav-padding-right: 0%;
+$nav-padding-bottom: 10px;
+$nav-padding-left: 0%;
 
 //container
-$container-width          : 100% ;
-$container-margin-top     : 0 ;
-$container-margin-right   : 0 ;
-$container-margin-bottom  : 0 ;
-$container-margin-left    : 0 ;
-$container-padding-top    : 5% ;
-$container-padding-right  : 10% ;
-$container-padding-bottom : 5% ;
-$container-padding-left   : 10% ;
-
-
+$container-width: 100%;
+$container-margin-top: 0;
+$container-margin-right: 0;
+$container-margin-bottom: 0;
+$container-margin-left: 0;
+$container-padding-top: 5%;
+$container-padding-right: 10%;
+$container-padding-bottom: 5%;
+$container-padding-left: 10%;
 
 //content
-$content-width            : 100% ;
-$content-margin-top       : 0 ;
-$content-margin-right     : 0 ;
-$content-margin-bottom    : 0 ;
-$content-margin-left      : 0 ;
-$content-padding-top      : 5% ;
-$content-padding-right    : 10% ;
-$content-padding-bottom   : 5% ;
-$content-padding-left     : 10% ;
-
-
+$content-width: 100%;
+$content-margin-top: 0;
+$content-margin-right: 0;
+$content-margin-bottom: 0;
+$content-margin-left: 0;
+$content-padding-top: 5%;
+$content-padding-right: 10%;
+$content-padding-bottom: 5%;
+$content-padding-left: 10%;
 
 //
