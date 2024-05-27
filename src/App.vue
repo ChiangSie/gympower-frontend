@@ -8,7 +8,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="M3" />   <!--註解 -->
+      <HelloWorld msg="M3" />
 
       <nav>
         <RouterLink to="/">首頁</RouterLink>
@@ -24,14 +24,12 @@ import HelloWorld from './components/HelloWorld.vue'
 import { defineComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import Aboutus from '@/views/Aboutus.vue'
 
 export default defineComponent({
   components: {
     RouterLink,
     RouterView,
     HelloWorld,
-    Aboutus
   }
 })
 </script>
