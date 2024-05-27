@@ -16,6 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/News">最新活動</RouterLink>
         <RouterLink to="/Diary">健身日記</RouterLink>
         <RouterLink to="/Course">課程資訊</RouterLink>
+        <RouterLink to="/Bento">美味食堂</RouterLink>
       </nav>
     </div>
   </header>
@@ -30,13 +31,15 @@ import Aboutus from '@/views/Aboutus.vue'
 import News from '@/views/News.vue'
 import Diary from '@/views/Diary.vue'
 import Course from '@/views/Course.vue'
+import Bento from '@/views/Bento.vue'
 
 export default defineComponent({
   components: {
     Aboutus,
     News,
     Diary,
-    Course
+    Course,
+    Bento
   }
 })
 </script>
