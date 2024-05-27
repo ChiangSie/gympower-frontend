@@ -19,7 +19,7 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
   <section>a</section>
   <section>b</section>
-  <section>c</section>
+  <section><p>c</p></section>
 
   <RouterView />
 </template>
