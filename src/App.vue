@@ -8,7 +8,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="M3" />
+      <HelloWorld msg="M3" />   <!--註解 -->
 
       <nav>
         <RouterLink to="/">首頁</RouterLink>
