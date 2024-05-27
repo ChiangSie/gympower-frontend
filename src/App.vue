@@ -12,7 +12,8 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/">首頁</RouterLink>
-        <RouterLink to="/aboutus">關於我們</RouterLink>
+        <RouterLink to="/about">關於我們</RouterLink>
+        <RouterLink to="/product">精選商品</RouterLink>
       </nav>
     </div>
   </header>
@@ -24,14 +25,12 @@ import HelloWorld from './components/HelloWorld.vue'
 import { defineComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import Aboutus from '@/views/Aboutus.vue'
 
 export default defineComponent({
   components: {
     RouterLink,
     RouterView,
-    HelloWorld,
-    Aboutus
+    HelloWorld
   }
 })
 </script>
