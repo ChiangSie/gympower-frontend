@@ -17,6 +17,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/Diary">健身日記</RouterLink>
         <RouterLink to="/Course">課程資訊</RouterLink>
         <RouterLink to="/Bento">美味食堂</RouterLink>
+        <RouterLink to="/Coach">教練介紹</RouterLink>
       </nav>
     </div>
   </header>
@@ -32,6 +33,7 @@ import News from '@/views/News.vue'
 import Diary from '@/views/Diary.vue'
 import Course from '@/views/Course.vue'
 import Bento from '@/views/Bento.vue'
+import Coach from '@/views/Coach.vue'
 
 export default defineComponent({
   components: {
@@ -39,7 +41,8 @@ export default defineComponent({
     News,
     Diary,
     Course,
-    Bento
+    Bento,
+    Coach
   }
 })
 </script>
