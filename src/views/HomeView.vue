@@ -194,6 +194,6 @@
 
 section {
   padding: 30px 0;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 </style>
