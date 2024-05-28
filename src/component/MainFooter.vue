@@ -2,7 +2,7 @@
   <footer>
     <div class="main">
       <div class="social">
-        <RouterLink to="/HomeView">
+        <RouterLink to="/">
           <picture>
             <img src="https://picsum.photos/300/200/?random=10" />
           </picture>
