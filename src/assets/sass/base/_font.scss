@@ -1,0 +1,31 @@
+@mixin font($font_size) {
+  font-size: $font_size;
+  letter-spacing: $letter_spacing;
+  line-height: $line_height;
+}
+
+body {
+  font-family: $font_family;
+}
+
+h1 {
+  @include font(map-get($font_size, h1));
+}
+h2 {
+  @include font(map-get($font_size, h2));
+}
+h3 {
+  @include font(map-get($font_size, h3));
+}
+h4 {
+  @include font(map-get($font_size, h4));
+}
+p {
+  @include font(map-get($font_size, p));
+}
+li {
+  @include font(map-get($font_size, li));
+}
+a {
+  @include font(map-get($font_size, li));
+}

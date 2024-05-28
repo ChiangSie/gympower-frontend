@@ -1,0 +1,34 @@
+// 斷點
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+//col欄數
+// $size:12;
+
+//字體
+$font_family:"Noto Sans TC", sans-serif;
+
+//字體大小
+$font_size: (
+    h1: 40px,
+    h2: 35px,
+    h3: 28px,
+    h4: 24px,
+    p: 16px,
+    li: 16px,
+    a: 16px
+);
+
+// 字距
+$letter_spacing: 0.1em;
+
+// line height
+$line_height: 1.5;
+
+// 圓角
+$brr : 10px;
+
+// viewpoint
+$vp: 1200px;
