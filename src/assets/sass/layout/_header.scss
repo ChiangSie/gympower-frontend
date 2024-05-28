@@ -1,28 +1,25 @@
 nav {
-    padding: 1% 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #999;
-}
-
-nav a picture {
+  padding: 1% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #999;
+  a > picture {
     display: block;
     width: 100px;
-}
-
-nav a picture img {
-    width: 100%;
-    vertical-align: middle;
-    border-radius: 10px;
+    img {
+      width: 100%;
+      vertical-align: middle;
+      border-radius: 10px;
+    }
+  }
 }
 
 .header-link {
-    display: flex;
-    gap: 15px;
-}
-
-.header-link a {
+  display: flex;
+  gap: 15px;
+  a {
     color: aliceblue;
     text-decoration: none;
+  }
 }

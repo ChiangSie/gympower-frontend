@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12 col-md-12 col-lg-12 col-xl-12">
           <picture>
-            <img src="https://picsum.photos/300/200/?random=10">
+            <img src="https://picsum.photos/300/200/?random=10" />
           </picture>
         </div>
       </div>
@@ -13,86 +13,112 @@
   <section>
     <div class="container">
       <div class="row">
+        <!-- 用 v-for 改寫 -->
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10"></div>
+            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
               <h3>title</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis voluptatibus a!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
+                voluptatibus a!
+              </p>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 </template>
 
+<script></script>
 
-<style scoped>
+<!-- lang="sass" -->
+<style>
 img {
   width: 100%;
   vertical-align: top;

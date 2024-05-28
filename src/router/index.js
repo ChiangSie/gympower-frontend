@@ -5,12 +5,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/HomeView',
+      path: '/',
       name: 'home',
       component: HomeView
     },
     {
-      path: '/AboutusView',
+      path: '/about',
       name: 'AboutusView',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -18,37 +18,37 @@ const router = createRouter({
       component: () => import('../views/AboutusView.vue')
     },
     {
-      path: '/BentoView',
+      path: '/bento',
       name: 'BentoView',
       component: () => import('../views/BentoView.vue')
     },
     {
-      path: '/CoachView',
+      path: '/coach',
       name: 'CoachView',
       component: () => import('../views/CoachView.vue')
     },
     {
-      path: '/CourseView',
+      path: '/course',
       name: 'CourseView',
       component: () => import('../views/CourseView.vue')
     },
     {
-      path: '/DiaryView',
+      path: '/diary',
       name: 'DiaryView',
       component: () => import('../views/DiaryView.vue')
     },
     {
-      path: '/LoginView',
+      path: '/login',
       name: 'LoginView',
       component: () => import('../views/LoginView.vue')
     },
     {
-      path: '/NewsView',
+      path: '/news',
       name: 'NewsView',
       component: () => import('../views/NewsView.vue')
     },
     {
-      path: '/CartView',
+      path: '/cart',
       name: 'CartView',
       component: () => import('../views/CartView.vue')
     }
