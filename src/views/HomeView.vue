@@ -3,16 +3,14 @@
     <div class="container container-banner">
       <div class="row">
         <div class="banner col-12 col-md-12 col-lg-12 col-xl-12">
-          <picture>
-            <img src="https://picsum.photos/300/200/?random=10" />
-            <div class="banner-txt">
-              <h2>CHALLENGE<br>YOUR<br>LIMITS<br><span>挑戰極限<br>
-                  加入我們，開啟您的專業健身之旅</span></h2>
-              <button class="join">
-                加入GYM力
-              </button>
-            </div>
-          </picture>
+
+          <div class="banner-txt">
+            <h2>CHALLENGE<br>YOUR<br>LIMITS<br><span>挑戰極限<br>
+                加入我們，開啟您的專業健身之旅</span></h2>
+            <button class="join">
+              <p>加入GYM力</p>
+            </button>
+          </div>
 
           <div class="slide-button">
             <button></button>
@@ -24,7 +22,7 @@
       </div>
     </div>
   </section>
-  <section>
+  <section class="newClass">
     <div class="container">
       <div class="row">
         <!-- 用 v-for 改寫 -->
@@ -136,6 +134,7 @@
 .section-banner {
   .container-banner {
     .banner {
+
       picture {
         display: inline-flex;
         width: 100%;
@@ -151,26 +150,32 @@
       }
 
       .banner-txt {
-        position: absolute;
-        top: 50%;
-        left: 10%;
-        transform: translateY(-50%);
+        // width: 100%;
+        padding: 5%;
+        background-image: url("https://picsum.photos/300/200/?random=10");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        justify-content: center;
+
+        h2 {
+          font-size: clamp(20px, 4vw, 40px);
+        }
       }
 
 
 
       .join {
-        width: 150px;
+        width: clamp(150px, 30%, 250px);
         height: 30px;
         border-radius: 10px;
         border: none;
       }
 
       h2>span {
-        font-size: 24px;
+        font-size: clamp(16px, 4vw, 35px);
         color: aliceblue;
       }
     }
@@ -195,5 +200,9 @@
 section {
   padding: 30px 0;
   margin-bottom: 30px;
+}
+
+.newClass .card {
+  text-align: center;
 }
 </style>
