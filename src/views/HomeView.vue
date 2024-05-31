@@ -3,10 +3,13 @@
     <div class="container container-banner">
       <div class="row">
         <div class="banner col-12 col-md-12 col-lg-12 col-xl-12">
-
           <div class="banner-txt">
-            <h2>CHALLENGE<br>YOUR<br>LIMITS<br><span>挑戰極限<br>
-                加入我們，開啟您的專業健身之旅</span></h2>
+            <h2>
+              CHALLENGE<br />YOUR<br />LIMITS<br /><span
+                >挑戰極限<br />
+                加入我們，開啟您的專業健身之旅</span
+              >
+            </h2>
             <button class="join">
               <p>加入GYM力</p>
             </button>
@@ -17,7 +20,6 @@
             <button></button>
             <button></button>
           </div>
-
         </div>
       </div>
     </div>
@@ -49,73 +51,63 @@ export default {
       cardlist: [
         {
           id: 1,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: 'title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 2,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "2title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '2title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 3,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "3title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '3title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 4,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "4title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '4title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 5,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "5title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '5title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 6,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "6title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '6title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 7,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "7title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '7title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         },
         {
           id: 8,
-          imgSrc: "https://picsum.photos/300/200/?random=10",
-          title: "8title",
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
-
+          imgSrc: 'https://picsum.photos/300/200/?random=10',
+          title: '8title',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         }
-
       ]
     }
   }
 }
-
 </script>
 
 <!-- lang="sass" -->
-<style lang="scss">
+<style lang="scss" scoped>
 .section-banner {
   .container-banner {
     .banner {
-
       picture {
         display: inline-flex;
         width: 100%;
@@ -133,7 +125,7 @@ export default {
       .banner-txt {
         // width: 100%;
         padding: 5%;
-        background-image: url("https://picsum.photos/300/200/?random=10");
+        background-image: url('https://picsum.photos/300/200/?random=10');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         display: flex;
@@ -146,8 +138,6 @@ export default {
         }
       }
 
-
-
       .join {
         width: clamp(150px, 30%, 250px);
         height: 30px;
@@ -155,7 +145,7 @@ export default {
         border: none;
       }
 
-      h2>span {
+      h2 > span {
         font-size: clamp(16px, 4vw, 35px);
         color: aliceblue;
       }
@@ -174,7 +164,6 @@ export default {
         border: none;
       }
     }
-
   }
 }
 
