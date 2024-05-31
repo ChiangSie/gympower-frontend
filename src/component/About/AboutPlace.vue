@@ -1,12 +1,12 @@
 <template>
-  <section class="place" v-for="card in list" :key="card.id">
-    <div class="card">
+  <section class="place">
+    <div class="place_card" v-for="card in list" :key="card.id">
       <div class="card_left">
         <h3>{{ card.title }}</h3>
         <p>{{ card.text }}</p>
       </div>
       <div class="card_right">
-        <img src="card['imgSrc']" alt="" />
+        <!-- <img src="card['imgSrc']" alt="" /> -->
       </div>
     </div>
   </section>
@@ -41,4 +41,17 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.place_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5% 0;
+  .card_left {
+    width: 40%;
+  }
+  .card_right {
+    width: 40%;
+  }
+}
+</style>
