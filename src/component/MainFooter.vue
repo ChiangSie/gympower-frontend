@@ -1,28 +1,57 @@
+<script>
+export default {
+  data() {
+    return {
+      links: [
+        {
+          id: 1,
+          link: "/diary",
+          title: "常見問題"
+        },
+        {
+          id: 2,
+          link: "/course",
+          title: "聯絡我們"
+        },
+        {
+          id: 3,
+          link: "/bento",
+          title: "服務條款"
+        },
+        {
+          id: 4,
+          link: "/coach",
+          title: "隱私權政策"
+        },
+      ]
+    }
+  },
+}
+</script>
 <template>
   <footer>
     <div class="main">
-      <div class="social">
-        <RouterLink to="/">
-          <picture>
-            <img src="https://picsum.photos/300/200/?random=10" />
-          </picture>
-        </RouterLink>
-        <div class="socialmedia">
-          <span><i class="fa-brands fa-twitter"></i></span>
-          <span><i class="fa-brands fa-instagram"></i></span>
-          <span><i class="fa-brands fa-facebook"></i></span>
+      <div class="m-footer">
+        <div class="social">
+          <RouterLink to="/">
+            <picture>
+              <img src="https://picsum.photos/300/200/?random=10" />
+            </picture>
+          </RouterLink>
+          <div class="socialmedia">
+            <span><i class="fa-brands fa-twitter"></i></span>
+            <span><i class="fa-brands fa-instagram"></i></span>
+            <span><i class="fa-brands fa-facebook"></i></span>
+          </div>
         </div>
+        <ul>
+          <li>服務電話 | 03- 21651118</li>
+          <li>營業時間 | 9:00 - 21:00</li>
+          <li>總部地址 | 320 桃園市中壢區復興路46號9樓</li>
+        </ul>
       </div>
-      <ul>
-        <li>服務電話 | 03- 21651118</li>
-        <li>營業時間 | 9:00 - 21:00</li>
-        <li>總部地址 | 320 桃園市中壢區復興路46號9樓</li>
-      </ul>
       <div class="link footer-link">
-        <RouterLink to="/diary">常見問題</RouterLink>
-        <RouterLink to="/course">聯絡我們</RouterLink>
-        <RouterLink to="/bento">服務條款</RouterLink>
-        <RouterLink to="/coach">隱私權政策</RouterLink>
+        <RouterLink v-for="link in links" :key="link.id" :to="link.link">{{ link.title }}</RouterLink>
       </div>
     </div>
     <div class="privacy">

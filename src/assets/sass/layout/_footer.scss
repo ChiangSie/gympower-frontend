@@ -1,6 +1,7 @@
 footer {
   background-color: #999;
   padding: 1%;
+
   .privacy {
     text-align: center;
     padding: 1%;
@@ -10,22 +11,33 @@ footer {
 .main {
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   gap: 100px;
   border-bottom: 1px solid #000;
-  padding: 1%;
+  padding: 10px 8px;
+
+  .m-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
+
   a picture {
     display: block;
     width: 150px;
   }
+
   img {
     width: 100%;
     border-radius: 10px;
   }
+
   .footer-link {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
+
     a {
       color: #000;
       text-decoration: none;
@@ -37,5 +49,24 @@ footer {
     gap: 20px;
     justify-content: center;
     // align-items: center;
+  }
+}
+
+@media screen and (max-width:850px) {
+  .main {
+    // padding: 0 2px;
+    gap: 0;
+
+    .m-footer {
+      width: 100%;
+      flex-direction: column;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .footer-link {
+      width: 30%;
+      gap: 20px;
+    }
   }
 }

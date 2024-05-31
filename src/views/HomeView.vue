@@ -26,99 +26,14 @@
     <div class="container">
       <div class="row">
         <!-- 用 v-for 改寫 -->
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
           <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
+            <div class="pic">
+              <img :src="card.imgSrc" />
             </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
             <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-          <div class="card">
-            <div class="pic"><img src="https://picsum.photos/300/200/?random=10" /></div>
-            <div class="txt">
-              <h3>title</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quis
-                voluptatibus a!
-              </p>
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.text }}</p>
             </div>
           </div>
         </div>
@@ -127,7 +42,73 @@
   </section>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      cardlist: [
+        {
+          id: 1,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        },
+        {
+          id: 2,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "2title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        },
+        {
+          id: 3,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "3title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        },
+        {
+          id: 4,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "4title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+        },
+        {
+          id: 5,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "5title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        },
+        {
+          id: 6,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "6title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        },
+        {
+          id: 7,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "7title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        },
+        {
+          id: 8,
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "8title",
+          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!"
+
+        }
+
+      ]
+    }
+  }
+}
+
+</script>
 
 <!-- lang="sass" -->
 <style lang="scss">
