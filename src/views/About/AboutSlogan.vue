@@ -22,6 +22,8 @@ export default {
 
 <style lang="scss" scoped>
 .slogan {
+  width: 100%;
+  padding: 3% 12%;
   display: flex;
   flex-direction: row;
   // justify-content: center;

@@ -36,6 +36,10 @@ export default {
 
 <style lang="scss">
 .introduce {
+  width: 100%;
+  padding: 3% 12%;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   .intro-first {
     width: 100%;

@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <MainHeader />
   <RouterView />
+  <ProductList />
   <MainFooter />
 </template>
 
