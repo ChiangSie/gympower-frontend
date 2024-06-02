@@ -8,14 +8,14 @@ $xl: 1200px;
 // $size:12;
 
 //字體
-$font_family:"Noto Sans TC", sans-serif;
+$font_family: "Noto Sans TC", sans-serif;
 
 //字體大小
 $font_size: (
-    h1: 40px,
-    h2: 35px,
-    h3: 28px,
-    h4: 24px,
+    h1: clamp(35px, 3.125vw, 40px),
+    h2: clamp(28px, 2.734vw, 35px),
+    h3: clamp(24px, 2.187vw, 28px),
+    h4: clamp(16px, 1.875vw, 24px),
     p: 16px,
     li: 16px,
     a: 16px
