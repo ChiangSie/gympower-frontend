@@ -1,6 +1,7 @@
 section {
   padding: 30px 0;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
+  background-color: #F9F8F7;
 }
 
 nav {
@@ -8,7 +9,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #999;
+  background-color: #fff;
 
   .none {
     display: flex;
@@ -33,7 +34,7 @@ nav {
   gap: 15px;
 
   a {
-    color: aliceblue;
+    color: #000;
     text-decoration: none;
   }
 }
@@ -57,7 +58,7 @@ nav {
         width: 80%;
         height: 2px;
         border-radius: 10px;
-        background-color: aliceblue;
+        background-color: #000;
       }
 
     }
