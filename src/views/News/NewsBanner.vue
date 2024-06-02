@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .news {
   width: 100%;
   padding: 3% 10%;
