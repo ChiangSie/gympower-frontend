@@ -309,7 +309,7 @@ export default {
     .more {
       width: 100px;
       height: 40px;
-      background-color: #888;
+      background-color: #71C4EF;
       border-radius: 10px;
       color: #fff;
       text-align: center;
