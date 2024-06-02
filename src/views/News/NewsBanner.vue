@@ -1,9 +1,9 @@
 <template>
-  <section class="banner">
-    <div class="banner_aboutus_img">
+  <section class="news">
+    <div class="banner_newss_img">
       <img :src="imgSrc" alt="banner" />
     </div>
-    <h1>{{ title }}</h1>
+    <h1>最新消息</h1>
   </section>
 </template>
 
@@ -11,30 +11,28 @@
 export default {
   data() {
     return {
-      imgSrc: '/src/assets/img/banner_aboutus.jpg',
-      title: '關於我們'
+      imgSrc: '/src/assets/img/banner_aboutus.jpg', //後續要更改圖片//
+      title: '最新消息'
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-.banner {
+<style lang="scss">
+.news {
   width: 100%;
-  padding: 3% 12%;
+  padding: 3% 10%;
   display: flex;
   justify-content: flex-end;
   position: relative;
-  .banner_aboutus_img {
+  .banner_news_img {
     width: 70%;
     aspect-ratio: 2.5/1;
-    border-radius: 10px;
-    overflow: hidden;
     img {
-      vertical-align: middle;
       width: 100%;
       aspect-ratio: 2.5/1;
       object-fit: cover;
+      object-position: 50% 50%;
     }
   }
   h1 {
