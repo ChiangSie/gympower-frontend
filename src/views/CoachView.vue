@@ -9,16 +9,18 @@
 
 <script></script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 section {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   padding: 3% 10%;
   position: relative;
+
   .banner_aboutus_img {
     width: 60%;
     aspect-ratio: 2.5/1;
+
     img {
       width: 100%;
       aspect-ratio: 2/1;
@@ -26,6 +28,7 @@ section {
       object-position: 50% 50%;
     }
   }
+
   h1 {
     transform: translate(0, -50%);
     position: absolute;
