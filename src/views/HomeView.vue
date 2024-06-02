@@ -6,19 +6,22 @@
         <div class="banner col-12 col-md-12 col-lg-12 col-xl-12">
           <div class="banner-txt">
             <h2>
-              CHALLENGE<br />YOUR<br />LIMITS<br /><span>挑戰極限<br />
-                加入我們，開啟您的專業健身之旅</span>
+              CHALLENGE<br />
+              <span class="en">
+                YOUR<br />
+                LIMITS
+              </span>
             </h2>
+            <span class="zh">
+              <p>挑戰極限</p>
+              <p>加入我們,開啟您的專業健身之旅</p>
+            </span>
+
             <button class="join">
               <p>加入GYM力</p>
             </button>
           </div>
 
-          <div class="slide-button">
-            <button></button>
-            <button></button>
-            <button></button>
-          </div>
         </div>
       </div>
     </div>
@@ -162,6 +165,11 @@ export default {
 .section-banner {
   .container-banner {
     .banner {
+      background-image: url('../assets/img/index-banner.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      border-radius: 10px;
+
       picture {
         display: inline-flex;
         width: 100%;
@@ -177,18 +185,29 @@ export default {
       }
 
       .banner-txt {
-        // width: 100%;
-        padding: 5%;
-        background-image: url('https://picsum.photos/300/200/?random=10');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        margin: 30px 0 30px 20px;
+        background-color: rgba($color: #fff, $alpha: .6);
+        border-radius: 10px;
+        width: fit-content;
+        padding: 5% 5% 5% 1%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
         justify-content: center;
+        gap: 20px;
+
 
         h2 {
           font-size: clamp(20px, 4vw, 40px);
+
+          .en {
+            color: #fff;
+          }
+
+
+        }
+
+        .zh {
+          color: #273B4A
         }
       }
 
@@ -197,25 +216,11 @@ export default {
         height: 30px;
         border-radius: 10px;
         border: none;
-      }
+        background-color: #002451;
 
-      h2>span {
-        font-size: clamp(16px, 4vw, 35px);
-        color: aliceblue;
-      }
-    }
-
-    .slide-button {
-      margin: 20px;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-
-      button {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        border: none;
+        p {
+          color: #fff;
+        }
       }
     }
   }
