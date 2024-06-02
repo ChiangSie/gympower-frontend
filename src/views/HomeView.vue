@@ -91,6 +91,7 @@
             </div>
           </div>
         </div>
+        <div class="more">了解更多</div>
       </div>
     </div>
   </section>
@@ -228,6 +229,8 @@ export default {
   }
 
   .row {
+
+
     .card {
       margin-bottom: 30px;
       border: 1px solid #000;
@@ -294,6 +297,18 @@ export default {
         }
 
       }
+    }
+
+    .more {
+      width: 100px;
+      height: 40px;
+      background-color: #888;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      margin-left: auto;
+      margin-right: 15px;
     }
   }
 }
