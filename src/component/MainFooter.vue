@@ -35,7 +35,7 @@ export default {
         <div class="social">
           <RouterLink to="/">
             <picture>
-              <img src="https://picsum.photos/300/200/?random=10" />
+              <img src="../assets/img/logo.svg" />
             </picture>
           </RouterLink>
           <div class="socialmedia">

@@ -238,7 +238,7 @@ export default {
 
     .card {
       margin-bottom: 30px;
-      border: 1px solid #000;
+      background-color: #fff;
       border-radius: 10px;
 
       .card-head {
@@ -258,7 +258,7 @@ export default {
         h3 {
           font-weight: bold;
           display: flex;
-          justify-content: space-around
+          justify-content: space-between;
         }
       }
 
@@ -279,7 +279,7 @@ export default {
         border-radius: 0 0 10px 10px;
         width: 100%;
         padding: 20px 20px;
-        background-color: #eee;
+        background-color: #D4EAF7;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -291,12 +291,14 @@ export default {
         }
 
         .apply {
+          color: #fff;
           width: 10%;
           font-size: clamp(16px, 2.18vw, 28px);
           padding: 10px;
           text-align: center;
           width: 25%;
-          border: 1px solid #000;
+          background-color: #71C4EF;
+          border: none;
           border-radius: 10px;
           width: fit-content;
         }
