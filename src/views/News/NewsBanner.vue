@@ -21,13 +21,15 @@ export default {
 <style lang="scss" scoped>
 .news {
   width: 100%;
-  padding: 3% 10%;
+  padding: 3% 12%;
   display: flex;
   justify-content: flex-end;
   position: relative;
   .banner_news_img {
     width: 70%;
     aspect-ratio: 2.5/1;
+    border-radius: 10px;
+    overflow: hidden;
     img {
       width: 100%;
       aspect-ratio: 2.5/1;
