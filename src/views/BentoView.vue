@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div class="banner_aboutus_img">
+  <section class="course">
+    <div class="banner_course_img">
       <img src="~@/assets/img/banner_aboutus.jpg" alt="" />
     </div>
     <h1>最新消息</h1>
@@ -10,14 +10,14 @@
 <script></script>
 
 <style lang="scss" scoped>
-section {
+.course {
   display: flex;
   justify-content: flex-end;
   width: 100%;
   padding: 3% 12%;
   position: relative;
 
-  .banner_aboutus_img {
+  .banner_course_img {
     width: 70%;
     aspect-ratio: 2.5/1;
 
