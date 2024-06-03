@@ -14,11 +14,11 @@ section {
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  padding: 3% 10%;
+  padding: 3% 12%;
   position: relative;
 
   .banner_aboutus_img {
-    width: 60%;
+    width: 70%;
     aspect-ratio: 2.5/1;
 
     img {
