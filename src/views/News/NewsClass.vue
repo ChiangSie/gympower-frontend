@@ -31,19 +31,23 @@ export default {
 .newsclass {
   width: 100%;
   padding: 3% 12%;
+
   .newsclass_info {
     width: 100%;
     margin: 3% 0%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+
     .newsclass_txt {
       width: 50%;
       padding: 3% 0%;
     }
+
     .newsclass_pic {
       width: 50%;
       aspect-ratio: 2/1;
+
       img {
         vertical-align: middle;
         width: 100%;

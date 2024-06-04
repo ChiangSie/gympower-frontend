@@ -1,13 +1,14 @@
 <template>
-  <section class="course">
-    <div class="banner_course_img">
-      <img src="~@/assets/img/banner_aboutus.jpg" alt="" />
-    </div>
-    <h1>最新消息</h1>
-  </section>
+  <BentoTitle />
+  <BentoBoxFour />
+  <BentoBoxSix />
 </template>
 
-<script></script>
+<script setup>
+import BentoTitle from './Bento/BentoTitle.vue'
+import BentoBoxFour from './Bento/BentoBoxFour.vue'
+import BentoBoxSix from './Bento/BentoBoxSix.vue'
+</script>
 
 <style lang="scss" scoped>
 .course {
