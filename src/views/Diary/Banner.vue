@@ -1,34 +1,42 @@
 <template>
-  <section>
+  <section class="banner">
     <div class="banner_aboutus_img">
-      <img src="~@/assets/img/banner_aboutus.jpg" alt="" />
+      <img :src="imgSrc" alt="banner" />
     </div>
-    <h1>最新消息</h1>
+    <h1>{{ title }}</h1>
   </section>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      imgSrc: '/src/assets/img/banner_aboutus.jpg',
+      title: '健身日記'
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
-section {
-  display: flex;
-  justify-content: flex-end;
+.banner {
   width: 100%;
   padding: 3% 12%;
+  display: flex;
+  justify-content: flex-end;
   position: relative;
-
   .banner_aboutus_img {
     width: 70%;
     aspect-ratio: 2.5/1;
-
+    border-radius: 10px;
+    overflow: hidden;
     img {
+      vertical-align: middle;
       width: 100%;
-      aspect-ratio: 2/1;
+      aspect-ratio: 2.5/1;
       object-fit: cover;
-      object-position: 50% 50%;
     }
   }
-
   h1 {
     transform: translate(0, -50%);
     position: absolute;

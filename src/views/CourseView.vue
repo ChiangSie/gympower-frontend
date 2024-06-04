@@ -14,7 +14,7 @@ section {
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  padding: 3% 10%;
+  padding: 3% 12%;
   position: relative;
 
   .banner_aboutus_img {
