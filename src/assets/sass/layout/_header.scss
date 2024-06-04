@@ -4,27 +4,35 @@ section {
   background-color: #F9F8F7;
 }
 
-nav {
-  padding: 1% 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
+header {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 
-  .none {
+  nav {
+    padding: 1% 5%;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
 
-  }
+    .none {
+      display: flex;
+      gap: 20px;
 
-  a>picture {
-    display: block;
-    width: 100px;
+    }
 
-    img {
-      width: 100%;
-      vertical-align: middle;
-      border-radius: 10px;
+    a>picture {
+      display: block;
+      width: 100px;
+
+      img {
+        width: 100%;
+        vertical-align: middle;
+        border-radius: 10px;
+      }
     }
   }
 }
@@ -34,7 +42,7 @@ nav {
   gap: 15px;
 
   a {
-    color: #000;
+    color: #002451;
     text-decoration: none;
   }
 }
