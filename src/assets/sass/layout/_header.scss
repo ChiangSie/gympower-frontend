@@ -48,27 +48,29 @@ header {
 }
 
 @media screen and (max-width:850px) {
-  nav {
-    .none {
-      display: none;
-    }
-
-    .hb {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
-
-      span {
-        width: 80%;
-        height: 2px;
-        border-radius: 10px;
-        background-color: #000;
+  header {
+    nav {
+      .none {
+        display: none;
       }
 
+      .hb {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 5px;
+
+        span {
+          width: 80%;
+          height: 2px;
+          border-radius: 10px;
+          background-color: #000;
+        }
+
+      }
     }
   }
 }
