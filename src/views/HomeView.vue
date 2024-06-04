@@ -46,10 +46,12 @@
       </div>
     </div>
   </section> -->
-
   <!-- 課程資訊 -->
   <section class="section section-classinfo">
     <div class="container container-classinfo">
+      <!-- 背景裝飾字 -->
+
+      <h2 class="decorate-txt">COURSES</h2>
       <h2 class="title">課程資訊</h2>
       <div class="row">
         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
@@ -166,23 +168,9 @@ export default {
   .container-banner {
     .banner {
       background-image: url('../assets/img/index-banner.png');
-      background-repeat: no-repeat;
       background-size: 100% 100%;
       border-radius: 10px;
 
-      picture {
-        display: inline-flex;
-        width: 100%;
-        position: relative;
-
-        img {
-          object-fit: cover;
-          width: 100%;
-          vertical-align: top;
-          aspect-ratio: 3/1;
-          border-radius: 10px;
-        }
-      }
 
       .banner-txt {
         margin: 30px 0 30px 20px;
@@ -227,6 +215,24 @@ export default {
 }
 
 .container-classinfo {
+  .decorate-txt {
+    // 背景裝飾文字
+    -webkit-text-stroke: .8px #7E7E7E;
+    color: #F9F8F7;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: clamp(60px, 6.25vw, 80px);
+    letter-spacing: 0;
+    font-weight: bold;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: bold;
+  }
+
   .title {
     text-align: center;
     margin-bottom: 60px;
