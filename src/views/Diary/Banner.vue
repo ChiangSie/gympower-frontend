@@ -1,13 +1,13 @@
 <template>
-  <section class="banner">
+  <div class="banner">
+    <h1>{{ title }}</h1>
     <div class="banner_aboutus_img">
       <img :src="imgSrc" alt="banner" />
     </div>
-    <h1>{{ title }}</h1>
-  </section>
+  </div>
 </template>
 
-<script>
+<script >
 export default {
   data() {
     return {
@@ -20,28 +20,22 @@ export default {
 
 <style lang="scss" scoped>
 .banner {
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-  padding: 3% 12%;
   display: flex;
-  justify-content: flex-end;
-  position: relative;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 5%;
   .banner_aboutus_img {
     width: 70%;
-    aspect-ratio: 2.5/1;
-    border-radius: 10px;
-    overflow: hidden;
-    img {
-      vertical-align: middle;
-      width: 100%;
-      aspect-ratio: 2.5/1;
-      object-fit: cover;
-    }
   }
   h1 {
-    transform: translate(0, -50%);
-    position: absolute;
-    top: 50%;
-    left: 20%;
+    justify-self: center;
+    align-self: center;
   }
 }
+
 </style>

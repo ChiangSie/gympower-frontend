@@ -81,7 +81,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 body{
   background-color: #F9F8F7;
 }
@@ -95,7 +95,7 @@ a{
 .container {
   width: 100%;
   max-width: 1200px;
-  padding: .3rem 0;
+  padding-bottom: 1%;
 }
 .container-search{
   display: flex;
