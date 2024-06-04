@@ -10,7 +10,7 @@
             <div class="link header-link">
                 <div class="none">
                     <RouterLink to="/about">關於我們</RouterLink>
-                    <RouterLink to="/news">最新活動</RouterLink>
+                    <RouterLink to="/news">最新消息</RouterLink>
                     <RouterLink to="/diary">健身日記</RouterLink>
                     <RouterLink to="/course">課程資訊</RouterLink>
                     <RouterLink to="/bento">美味食堂</RouterLink>
