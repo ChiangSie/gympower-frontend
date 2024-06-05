@@ -22,6 +22,8 @@
     width: 70%;
     aspect-ratio: 2.5/1;
     border-radius: 10px;
+    overflow: hidden;
+
     img {
       width: 100%;
       aspect-ratio: 2.5/1;
