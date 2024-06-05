@@ -17,4 +17,8 @@ p {
     display: flex;
     justify-content: center;
 }
+
+.bento_title {
+    padding-top: 100px;
+}
 </style>

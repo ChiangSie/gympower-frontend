@@ -2,6 +2,7 @@
   <BentoTitle />
   <BentoBoxFour />
   <BentoBoxSix />
+  <BentoSelect />
 </template>
 
 <script setup>
