@@ -13,23 +13,24 @@
     <div class="section section-diary">
       <div class="container container-diary">
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
-            <div class="card">
-              <div class="pic">
-                <img :src="card.imgSrc" />
-                <div class="box"></div>
-                <div class="title">
-                  <h3>{{ card.title }}</h3>
+          <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
+            <a href="">
+              <div class="card">
+                <div class="pic">
+                  <img :src="card.imgSrc" />
+                  <div class="box"></div>
+                  <div class="title">
+                    <h3>{{ card.title }}</h3>
+                  </div>
+                </div>
+                <div class="txt">
+                  <p>{{ card.text }}</p>
                 </div>
               </div>
-              <div class="txt">
-                <p>{{ card.text }}</p>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -82,7 +83,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-body {
+.section {
   background-color: #F9F8F7;
 }
 
@@ -106,6 +107,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 20px;
 
   .search {
     display: flex;
