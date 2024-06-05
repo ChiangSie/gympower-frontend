@@ -1,6 +1,6 @@
 <template>
   <section class="news">
-    <div class="banner_newss_img">
+    <div class="banner_news_img">
       <img :src="imgSrc" alt="banner" />
     </div>
     <h1>最新消息</h1>
