@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script >
+<script>
 export default {
   data() {
     return {
@@ -22,6 +22,7 @@ export default {
 .banner {
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 67px;
   width: 100%;
   display: flex;
   height: 200px;
@@ -37,5 +38,4 @@ export default {
     align-self: center;
   }
 }
-
 </style>

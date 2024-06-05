@@ -21,6 +21,7 @@ export default {
 <style lang="scss" scoped>
 .banner {
   width: 100%;
+  margin-top: 67px;
   padding: 3% 12%;
   display: flex;
   justify-content: flex-end;
