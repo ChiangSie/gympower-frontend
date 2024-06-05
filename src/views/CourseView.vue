@@ -1,29 +1,30 @@
 <template>
-  <section>
-    <div class="banner_aboutus_img">
+  <section class="course">
+    <div class="banner_course_img">
       <img src="~@/assets/img/banner_aboutus.jpg" alt="" />
     </div>
-    <h1>最新消息</h1>
+    <h1>課程資訊</h1>
   </section>
 </template>
 
 <script></script>
 
 <style lang="scss" scoped>
-section {
+.course {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  margin-top: 67px;
   padding: 3% 12%;
   position: relative;
 
-  .banner_aboutus_img {
+  .banner_course_img {
     width: 70%;
     aspect-ratio: 2.5/1;
-
+    border-radius: 10px;
     img {
       width: 100%;
-      aspect-ratio: 2/1;
+      aspect-ratio: 2.5/1;
       object-fit: cover;
       object-position: 50% 50%;
     }
