@@ -31,6 +31,7 @@ export default {
 .bentobox6_pic {
     width: 30%;
     aspect-ratio: 2/1;
+    margin-right: 10%;
 
     img {
         vertical-align: middle;
@@ -44,19 +45,20 @@ export default {
 .bentobox6_info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: center
 }
 
 .bentobox6_txt {
     display: flex;
     align-items: center;
+    margin-right: 10%;
 
 }
 
 .bentobox6_con {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+
 }
 
 .bentobox_button {

@@ -1,7 +1,7 @@
 section {
   padding: 30px 0;
   // margin-bottom: 30px;
-  background-color: #F9F8F7;
+  background-color: #f9f8f7;
 }
 
 header {
@@ -12,7 +12,7 @@ header {
   z-index: 2;
 
   nav {
-    padding: 1% 5%;
+    padding: 12px 45px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,10 +21,9 @@ header {
     .none {
       display: flex;
       gap: 20px;
-
     }
 
-    a>picture {
+    a > picture {
       display: block;
       width: 100px;
 
@@ -47,7 +46,7 @@ header {
   }
 }
 
-@media screen and (max-width:850px) {
+@media screen and (max-width: 850px) {
   header {
     nav {
       .none {
@@ -69,7 +68,6 @@ header {
           border-radius: 10px;
           background-color: #000;
         }
-
       }
     }
   }

@@ -1,7 +1,7 @@
 <template>
-    <p>
-        LoginView
-    </p>
+
+  <p>LoginViewssssssss</p>
+
 </template>
 
 <script></script>

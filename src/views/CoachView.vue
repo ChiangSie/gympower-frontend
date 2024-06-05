@@ -1,8 +1,11 @@
 <template>
+
   
   <CoachBanner/>
 
+
   <CoachCate/>
+
 
   <CoachCard/>
 
@@ -15,5 +18,7 @@ import CoachCate from "./Coach/CoachCate.vue"
 </script>
 
 <style lang="scss" scoped>
+
+
 
 </style>

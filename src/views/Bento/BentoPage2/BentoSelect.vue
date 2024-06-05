@@ -1,7 +1,7 @@
 <template>
     <section class="bento_title">
-        <p>STEP 1</p>
-        <h1>選擇餐盒規格</h1>
+        <p>STEP 2</p>
+        <h1>選擇餐盒內容</h1>
     </section>
 </template>
 
