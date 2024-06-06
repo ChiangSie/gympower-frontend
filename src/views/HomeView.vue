@@ -105,7 +105,7 @@
       <h2 class="decorate-txt flex-end">BENTO</h2>
       <h2 class="title">客製化專屬於你的餐盒</h2>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
           <div class="left">
             <div class="customized">
               <h3>客製餐盒</h3>
@@ -118,7 +118,7 @@
 
           </div>
         </div>
-        <div class=" col-right col-6">
+        <div class=" col-right col-12 col-md-12 col-lg-6 col-xl-6">
           <div class="right">
             <div class="choose">
               <div class="txt">
@@ -165,6 +165,27 @@
   <section class="section section-coach">
     <div class="container container-coach">
       <h2 class="decorate-txt">OUR COACH</h2>
+      <div class="row">
+        <h2>教練介紹</h2>
+        <div class=" col col-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="pic">
+            <img src="https://picsum.photos/300/200/?random=10">
+          </div>
+          <div class="txt">
+            <h3>李俊輝 </h3>
+            <p>曾在多家頂尖健身房擔任首席教練，指導過200多位客戶，幫助他們實現顯著的身體改變。</p>
+            <ul>
+              專業領域 :
+              <li>有氧運動與耐力訓練</li>
+              <li>核心訓練與穩定性提升</li>
+            </ul>
+          </div>
+
+        </div>
+
+
+
+      </div>
     </div>
   </section>
   <!-- 學員回饋 -->
@@ -431,12 +452,8 @@ export default {
       padding: 2% 1%;
       align-items: center;
       flex-wrap: nowrap;
-
       justify-content: space-between;
-
-      .col-right {
-        width: 40%;
-      }
+      gap: 40px;
 
       .left {
         .customized {
@@ -503,7 +520,6 @@ export default {
           .pic {
             flex-shrink: 0;
             width: 30%;
-            // height: 20%;
             border-radius: 50%;
             overflow: hidden;
 
@@ -518,6 +534,66 @@ export default {
       }
     }
 
+  }
+}
+
+// 客製餐點 RWD
+@media screen and (max-width:850px) {
+  .section-bento {
+    .container-bento {
+      .row {
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+    }
+  }
+}
+
+.section-coach {
+  .container-coach {
+    .row {
+      justify-content: center;
+      background: linear-gradient(62deg, #F0EEE9, #D4EAF7);
+      border-radius: 550px 550px 0 0;
+      padding: 30px 0;
+
+      h2 {
+        font-weight: bold;
+      }
+
+      .col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+
+        .pic {
+          width: 30%;
+          // height: 450px;
+          border-radius: 50%;
+          overflow: hidden;
+
+
+          img {
+            aspect-ratio: 1/1;
+            width: 100%;
+            display: block;
+          }
+        }
+
+        .txt {
+          width: 20%;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          h3 {
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
 }
 </style>
