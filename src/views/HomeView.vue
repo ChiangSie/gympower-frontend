@@ -60,7 +60,7 @@
             </div>
             <div class="card-body">
               <div class="pic">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img src="../assets/img/index/indexcourse.png">
               </div>
               <div class="txt">
                 <h3>
@@ -81,7 +81,7 @@
             </div>
             <div class="card-body">
               <div class="pic">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img src="../assets/img/index/indexcourse.png">
               </div>
               <div class="txt">
                 <h3>
@@ -128,12 +128,12 @@
                 </p>
               </div>
               <div class="pic">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img src="../assets/img/index/food1.png">
               </div>
             </div>
             <div class="choose">
               <div class="pic">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img src="../assets/img/index/food2.png">
               </div>
               <div class="txt">
                 <h4>選擇喜愛菜色</h4>
@@ -150,7 +150,7 @@
                 </p>
               </div>
               <div class="pic">
-                <img src="https://picsum.photos/300/200/?random=10">
+                <img src="../assets/img/index/food3.png">
               </div>
             </div>
 
@@ -169,7 +169,7 @@
         <h2>教練介紹</h2>
         <div class=" col col-12 col-md-12 col-lg-12 col-xl-12">
           <div class="pic">
-            <img src="https://picsum.photos/300/200/?random=10">
+            <img src="../assets/img/index/Ellipse 16.png">
           </div>
           <div class="txt">
             <h3>李俊輝 </h3>
@@ -411,7 +411,7 @@ export default {
           padding: 10px;
           text-align: center;
           width: 25%;
-          background-color: #71C4EF;
+          background-color: #002451;
           border: none;
           border-radius: 10px;
           width: fit-content;
@@ -423,7 +423,7 @@ export default {
     .more {
       width: 100px;
       height: 40px;
-      background-color: #71C4EF;
+      background-color: #002451;
       border-radius: 10px;
       color: #fff;
       text-align: center;
