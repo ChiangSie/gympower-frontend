@@ -1,9 +1,11 @@
 <template>
 
   <p>LoginViewssssssss</p>
-
+  <Signinup/>
 </template>
 
-<script></script>
+<script setup>
+import Signinup from "./Login/Signinup.vue"
+</script>
 
 <style></style>
