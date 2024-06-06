@@ -37,7 +37,7 @@ export default {
             image: '/src/assets/img/coach.png'
         },
         {
-            id: '33',
+            id: '3',
             name: '李俊英',
             expertise: '專業領域：核心訓練、有氧運動',
             rating: '4.8',
