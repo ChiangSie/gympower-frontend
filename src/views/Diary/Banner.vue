@@ -1,13 +1,17 @@
 <template>
-  <div class="banner">
-    <h1>{{ title }}</h1>
-    <div class="banner_aboutus_img">
-      <img :src="imgSrc" alt="banner" />
-    </div>
+  <div class="section section-banner">
+    <div class="container container-banner">
+        <div class="banner-title">
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="banner-img">
+            <img :src="imgSrc" alt="banner" />
+          </div>
+      </div>
   </div>
 </template>
 
-<script >
+<script>
 export default {
   data() {
     return {
@@ -19,23 +23,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+.container-banner {
   display: flex;
-  height: 200px;
-  align-items: center;
+  flex-direction: row;
+  padding-top: 80px;
   justify-content: center;
-  overflow: hidden;
-  gap: 5%;
-  .banner_aboutus_img {
-    width: 70%;
-  }
-  h1 {
-    justify-self: center;
+  .banner-title{
+    width: 30%;
+    text-align: center;
     align-self: center;
   }
+  @media screen and (max-width: 768px) {
+    .banner-title{
+      position: absolute;
+      width: 100%;
+      color: #fff;
+    }
+  }
+  .banner-img{
+    width: 70%;
+    aspect-ratio: 2.5/1;
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+      vertical-align: middle;
+      width: 100%;
+      aspect-ratio: 2.5/1;
+      object-fit: cover;
+  }
+  }
+  @media screen and (max-width: 768px) {
+    .banner-img{
+      width: 100%;
+    }
+  }
 }
-
+@media screen and (max-width: 768px) {
+  .container-banner {
+    padding-top: 70px;
+  }
+}
 </style>

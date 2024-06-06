@@ -24,6 +24,7 @@ export default {
 .bentobox4_pic {
     width: 30%;
     aspect-ratio: 2/1;
+    margin-left: 10%;
 
     img {
         vertical-align: middle;
@@ -36,12 +37,14 @@ export default {
 
 .bentobox4_info {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+
 }
 
 .bentobox4_txt {
     display: flex;
     align-items: center;
+    margin-left: 10%;
 
 }
 </style>
