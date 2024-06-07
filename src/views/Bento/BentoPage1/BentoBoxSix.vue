@@ -105,8 +105,6 @@ export default {
         margin-bottom: 40px;
     }
 
-
-    .bentobox_button {}
 }
 
 .bentobox6_txt {

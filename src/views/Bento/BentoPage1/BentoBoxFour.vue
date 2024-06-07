@@ -78,8 +78,6 @@ export default {
 
     }
 
-    .bentobox4_info {}
-
     .bentobox4_pic {
         width: 100%;
         aspect-ratio: 4 / 3.5;
