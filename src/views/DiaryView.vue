@@ -10,25 +10,25 @@
       </div>
       <div class="page"><a href="" v-for="n in 5">{{ n }}</a></div>
     </div>
-    <div class="section section-diary">
-      <div class="container container-diary">
-        <div class="row">
-          <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
-            <a href="">
-              <div class="card">
-                <div class="pic">
-                  <img :src="card.imgSrc" />
-                  <div class="box"></div>
-                  <div class="title">
-                    <h3>{{ card.title }}</h3>
-                  </div>
-                </div>
-                <div class="txt">
-                  <p>{{ card.text }}</p>
+  </div>
+  <div class="section section-diary">
+    <div class="container container-diary">
+      <div class="row">
+        <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
+          <a :href="card.link">
+            <div class="card">
+              <div class="pic">
+                <img :src="card.imgSrc" />
+                <div class="box"></div>
+                <div class="title">
+                  <h3>{{ card.title }}</h3>
                 </div>
               </div>
-            </a>
-          </div>
+              <div class="txt">
+                <p>{{ card.text }}</p>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -51,31 +51,36 @@ export default {
           id: 1,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '健康飲食健身者的營養指南',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 2,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '高效訓練打造完美體態',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 3,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '3title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 4,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '4title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 4,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '4title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          link: '@/views/Diary/Diarypage.vue'
         }
       ]
     }
@@ -132,6 +137,14 @@ a {
     }
   }
 
+  @media screen and (max-width: 768px) {
+    .search {
+      p {
+        display: none;
+      }
+    }
+  }
+
   .page {
     align-self: center;
 
@@ -142,6 +155,12 @@ a {
       color: #fff;
       border-radius: 50%;
       align-self: center;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .page {
+      padding-top: .5rem;
     }
   }
 }
