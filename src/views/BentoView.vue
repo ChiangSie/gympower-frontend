@@ -3,6 +3,7 @@
   <BentoBoxFour />
   <BentoBoxSix />
   <BentoSelect />
+  <BentoList />
 </template>
 
 <script setup>
@@ -10,6 +11,7 @@ import BentoTitle from './Bento/BentoPage1/BentoTitle.vue'
 import BentoBoxFour from './Bento/BentoPage1/BentoBoxFour.vue'
 import BentoBoxSix from './Bento/BentoPage1/BentoBoxSix.vue'
 import BentoSelect from './Bento/BentoPage2/BentoSelect.vue'
+import BentoList from './Bento/BentoPage3/BentoList.vue'
 </script>
 
 <style lang="scss" scoped>

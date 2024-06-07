@@ -9,6 +9,7 @@
 
 <style lang="scss" scoped>
 h1 {
+    width: 30%;
     display: flex;
     justify-content: center;
 }
