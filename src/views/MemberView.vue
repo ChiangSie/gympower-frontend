@@ -16,6 +16,9 @@
                 <a href="#">日記收藏</a>
             </ul>
         </aside>
+        <main>
+
+        </main>
     </section>
 </template>
 
@@ -28,10 +31,17 @@
     width: 100%;
     padding: 3% 12%;
     margin-top: 55px;
+    column-gap: 15px;
     aside {
-        width: 25%;
+        width: 20%;
+        border: 1.5px solid black;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 17px;
         .member_pic{
-            width: 60%;
+            width: 50%;
             aspect-ratio: 1/1;
             border-radius: 50%;
             img{
@@ -42,10 +52,21 @@
             }
         }
         ul{
+            margin-top: 17px;
             padding: 0;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            a{
+                text-decoration: none;
+            }
         }
+    }
+    main{
+        width: calc(80% - 15px);
+        border: 1.5px solid black;
+        border-radius: 15px;
     }
 }
 </style>

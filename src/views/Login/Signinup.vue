@@ -18,7 +18,7 @@
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                     <span>忘記密碼?</span>
-                    <RouterLink to = '/src/views/MemberView.vue'><button>登入</button></RouterLink>
+                    <RouterLink to = '/member'><button>登入</button></RouterLink>
                     <a href="#"><i class="fa-brands fa-google"></i> Google登入</a>
                 </form>
             </div>
@@ -44,6 +44,7 @@
 </template>
 
 <script >
+
 export default {
     mounted() {
         const login=document.getElementById('login');
