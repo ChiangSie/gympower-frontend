@@ -18,7 +18,7 @@
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                     <span>忘記密碼?</span>
-                    <RouterLink to = '/src/views/MemberView.vue'><button>登入</button></RouterLink>
+                    <RouterLink to='/src/views/MemberView.vue'><button>登入</button></RouterLink>
                     <a href="#"><i class="fa-brands fa-google"></i> Google登入</a>
                 </form>
             </div>
@@ -43,18 +43,18 @@
 
 </template>
 
-<script >
+<script>
 export default {
     mounted() {
-        const login=document.getElementById('login');
-        const registerBtn=document.getElementById('signup');
-        const loginBtn=document.getElementById('signin');
-        registerBtn.addEventListener('click',()=>{
+        const login = document.getElementById('login');
+        const registerBtn = document.getElementById('signup');
+        const loginBtn = document.getElementById('signin');
+        registerBtn.addEventListener('click', () => {
             login.classList.add("active");
         });
-        loginBtn.addEventListener('click',()=>{
+        loginBtn.addEventListener('click', () => {
             login.classList.remove("active");
-            });
+        });
     },
 }
 </script>
@@ -62,7 +62,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.login_page{
+.login_page {
     width: 100%;
     padding: 3% 12%;
     margin-top: 47px;
@@ -71,7 +71,7 @@ export default {
     align-items: center;
 }
 
-.login{
+.login {
     background-color: #fff;
     border-radius: 30px;
     position: relative;
@@ -82,26 +82,26 @@ export default {
     border: 3px solid black;
 }
 
-.login p{
+.login p {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 20px 0;
 }
 
-.login span{
+.login span {
     font-size: 13px;
 }
 
-.login a{
+.login a {
     color: #333;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
-.login button{
-    background-color: #512dae;
+.login button {
+    background-color: #002451;
     color: #fff;
     font-size: 12px;
     padding: 5px 20px;
@@ -114,17 +114,17 @@ export default {
     cursor: pointer;
 }
 
-.login form{
+.login form {
     background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding:0 40px;
+    padding: 0 40px;
     height: 100%;
 }
 
-.login input{
+.login input {
     background-color: #eee;
     border: none;
     margin: 8px 0;
@@ -135,52 +135,53 @@ export default {
     outline: none;
 }
 
-.form-login{
+.form-login {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in{
+.sign-in {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.login.active .sign-in{
+.login.active .sign-in {
     transform: translateX(100%);
 }
 
-.sign-up{
+.sign-up {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-.login.active .sign-up{
+.login.active .sign-up {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
 }
 
-@keyframes move
-{
-    0%,49.99%
-    {
+@keyframes move {
+
+    0%,
+    49.99% {
         opacity: 0;
         z-index: 1;
     }
-    50%,100%
-    {
+
+    50%,
+    100% {
         opacity: 1;
         z-index: 5;
     }
 }
 
-.toggle-login{
+.toggle-login {
     position: absolute;
     top: 0;
     left: 50%;
@@ -192,15 +193,15 @@ export default {
     z-index: 100;
 }
 
-.login.active .toggle-login{
+.login.active .toggle-login {
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
 }
 
-.toggle{
-    background-color: #512da8;
+.toggle {
+    background-color: #F0EEE9;
     height: 100%;
-    background: linear-gradient(to right, #5c6bc0,#512da8);
+    background: linear-gradient(to right, #EB9340, #71C4EF);
     color: #fff;
     position: relative;
     left: -100%;
@@ -210,16 +211,16 @@ export default {
     transition: all 0.6s ease-in-out;
 }
 
-.login.active .toggle{
+.login.active .toggle {
     transform: translateX(50%);
 }
 
-.login button.hidden{
+.login button.hidden {
     background-color: transparent;
     border-color: #fff;
 }
 
-.toggle-panel{
+.toggle-panel {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -234,20 +235,20 @@ export default {
     transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
+.toggle-left {
     transform: translateX(-200%);
 }
 
-.login.active .toggle-left{
-transform: translateX(0);
+.login.active .toggle-left {
+    transform: translateX(0);
 }
 
-.toggle-right{
+.toggle-right {
     right: 0;
     transform: translateX(0);
 }
 
-.login.active .toggle-right{
+.login.active .toggle-right {
     transform: translateX(200%);
-    }
+}
 </style>
