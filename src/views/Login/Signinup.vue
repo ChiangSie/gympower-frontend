@@ -6,7 +6,7 @@
                     <h2>會員註冊</h2>
                     <input type="text" placeholder="Name">
                     <input type="email" placeholder="Email">
-                    <input type="number" placeholder="Phone">
+                    <input type="text" placeholder="Phone">
                     <input type="password" placeholder="Password">
                     <button>註冊</button>
                 </form>
@@ -18,7 +18,7 @@
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                     <span>忘記密碼?</span>
-                    <button>登入</button>
+                    <RouterLink to = '/src/views/MemberView.vue'><button>登入</button></RouterLink>
                     <a href="#"><i class="fa-brands fa-google"></i> Google登入</a>
                 </form>
             </div>

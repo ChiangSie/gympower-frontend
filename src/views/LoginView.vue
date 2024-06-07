@@ -1,6 +1,5 @@
 <template>
 
-  <p>LoginViewssssssss</p>
   <Signinup/>
 </template>
 
