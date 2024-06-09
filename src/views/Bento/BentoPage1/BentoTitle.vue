@@ -1,11 +1,20 @@
 <template>
     <section class="bento_title">
-        <p>STEP 1</p>
-        <h1>選擇餐盒規格</h1>
+        <p>{{ subtitle_txt }}</p>
+        <h1>{{ title_txt }}</h1>
     </section>
 </template>
 
-<script></script>
+<script>
+export default {
+    data() {
+        return {
+            title_txt: '選擇餐盒規格',
+            subtitle_txt: 'STEP 1'
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 h1 {

@@ -54,7 +54,7 @@ export default {
     &:hover .bentobox4_txt h3 {
         transform: scale(1.1);
         color: #00377A;
-
+        cursor: pointer;
     }
 }
 

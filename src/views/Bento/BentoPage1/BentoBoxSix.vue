@@ -10,10 +10,10 @@
                 </div>
             </div>
         </div>
-        <div class="bentobox_button">
+        <button class="bentobox_button">
             <p>{{ button_txt }}</p>
             <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
-        </div>
+        </button>
     </section>
 
 </template>
@@ -75,6 +75,7 @@ export default {
     &:hover .bentobox6_txt h3 {
         transform: scale(1.1);
         color: #00377A;
+        cursor: pointer;
 
     }
 
@@ -134,6 +135,7 @@ export default {
     margin-top: 80px;
     display: flex;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 
 .custom_icon {
@@ -143,5 +145,9 @@ export default {
 
 .bentobox_button p {
     text-align: center;
+}
+
+button {
+    border: none;
 }
 </style>
