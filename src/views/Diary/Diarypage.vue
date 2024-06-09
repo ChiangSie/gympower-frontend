@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import Banner from '@/component/layout/Banner.vue';
+import Banner from '@/component/Banner.vue';
 </script>
 
 <style lang="scss" scoped>

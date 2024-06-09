@@ -15,20 +15,7 @@
     <div class="container container-diary">
       <div class="row">
         <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
-          <router-link :to="{ name: 'DiaryPage' }">
-            <div class="card">
-              <div class="pic">
-                <img :src="card.imgSrc" />
-                <div class="box"></div>
-                <div class="title">
-                  <h3>{{ card.title }}</h3>
-                </div>
-              </div>
-              <div class="txt">
-                <p>{{ card.text }}</p>
-              </div>
-            </div>
-          </router-link>
+          <DiaryCard :cardData="card" />
         </div>
       </div>
     </div>
@@ -38,13 +25,15 @@
 </template>
 
 <script setup>
-import Banner from '../component/layout/Banner.vue';
+import Banner from '../component/Banner.vue';
+import DiaryCard from '../component/DiaryCard.vue';
 </script>
 
 <script>
 export default {
   components: {
-    Banner
+    Banner,
+    DiaryCard,
   },
   data() {
     return {
@@ -115,7 +104,6 @@ a {
     display: flex;
     align-items: center;
     gap: 10px;
-
     .search-input {
       padding: 10px 10px 10px 35px;
       border: solid .1px #b4def2;
@@ -162,37 +150,5 @@ a {
   }
 }
 
-.container-diary {
-  .card {
-    .pic {
-      position: relative;
-      border-radius: 10px;
 
-      img {
-        border-radius: 10px;
-      }
-
-      .title {
-        position: absolute;
-        width: 200px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        z-index: 3;
-      }
-
-      .box {
-        position: absolute;
-        width: 100%;
-        height: 150px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fffeee9d;
-      }
-    }
-
-  }
-}
 </style>
