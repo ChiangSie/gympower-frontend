@@ -13,10 +13,19 @@
 
 <script>
 export default {
+   props: {
+    title: {
+      type: String,
+      required: true
+    },
+    imgSrc: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
-      imgSrc: '/src/assets/img/banner_aboutus.jpg',
-      title: '健身日記'
+   
     }
   }
 }

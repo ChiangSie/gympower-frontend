@@ -1,5 +1,5 @@
 <template>
-  <Banner />
+  <Banner :title="'健身日記'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
 
   <div class="section section-search">
     <div class="container container-search">
@@ -15,7 +15,7 @@
     <div class="container container-diary">
       <div class="row">
         <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
-          <a :href="card.link">
+          <router-link :to="{ name: 'DiaryPage' }">
             <div class="card">
               <div class="pic">
                 <img :src="card.imgSrc" />
@@ -28,22 +28,24 @@
                 <p>{{ card.text }}</p>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
   </div>
 
 
-
 </template>
 
 <script setup>
-import Banner from './Diary/Banner.vue';
+import Banner from '../component/layout/Banner.vue';
 </script>
 
 <script>
 export default {
+  components: {
+    Banner
+  },
   data() {
     return {
       cardlist: [
@@ -52,35 +54,30 @@ export default {
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '健康飲食健身者的營養指南',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 2,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '高效訓練打造完美體態',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 3,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '3title',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 4,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '4title',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          link: '@/views/Diary/Diarypage.vue'
         },
         {
           id: 4,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '4title',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          link: '@/views/Diary/Diarypage.vue'
         }
       ]
     }
