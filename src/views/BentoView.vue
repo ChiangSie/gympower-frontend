@@ -5,6 +5,7 @@
   <BentoSelect />
   <BentoCate />
   <BentoFood />
+  <BentoSelect2 />
   <BentoList />
   <BentoClear />
 </template>
@@ -16,6 +17,7 @@ import BentoBoxSix from './Bento/BentoPage1/BentoBoxSix.vue'
 import BentoSelect from './Bento/BentoPage2/BentoSelect.vue'
 import BentoCate from './Bento/BentoPage2/BentoCate.vue'
 import BentoFood from './Bento/BentoPage2/BentoFood.vue'
+import BentoSelect2 from './Bento/BentoPage3/BentoSelect2.vue'
 import BentoList from './Bento/BentoPage3/BentoList.vue'
 import BentoClear from './Bento/BentoPage4/BentoClear.vue'
 
