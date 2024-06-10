@@ -2,59 +2,76 @@
     <section>
         <div class="bento_list">
             <div class="bento_list_title">
-                <h3>饗食四合一</h3>
+                <h3>{{ list_title }}</h3>
             </div>
             <div class="bento_list_detail">
-                <div class="bento_list_con">
+                <div class="bento_list_con" v-for="item in bentoList" :key="item.id">
+                    <div class="bento_list_pic">
+                        <img :src="item.imgSrc" :alt="item.name">
+                    </div>
                     <!-- 餐盒內容含名稱、份量、卡路里 -->
-                    <div class="bento_list_pic">
-                        <img src="../../../assets/img/1.png" alt="">
-                    </div>
                     <div class="bento_list_text">
-                        <div class="bento_list_con_name">炸春捲</div>
-                        <div class="bento_list_con_qty">x2</div>
-                        <div class="bento_list_con_heat">190kcal</div>
-                    </div>
-                </div>
-                <div class="bento_list_con">
-                    <div class="bento_list_pic">
-                        <img src="../../../assets/img/2.png" alt="">
-                    </div>
-                    <div class="bento_list_text">
-                        <div class="bento_list_con_name">炸春捲</div>
-                        <div class="bento_list_con_qty">x2</div>
-                        <div class="bento_list_con_heat">190kcal</div>
-                    </div>
-                </div>
-                <div class="bento_list_con">
-                    <div class="bento_list_pic">
-                        <img src="../../../assets/img/3.png" alt="">
-                    </div>
-                    <div class="bento_list_text">
-                        <div class="bento_list_con_name">炸春捲</div>
-                        <div class="bento_list_con_qty">x2</div>
-                        <div class="bento_list_con_heat">190kcal</div>
-                    </div>
-                </div>
-                <div class="bento_list_con">
-                    <div class="bento_list_pic">
-                        <img src="../../../assets/img/4.png" alt="">
-                    </div>
-                    <div class="bento_list_text">
-                        <div class="bento_list_con_name">炸春捲</div>
-                        <div class="bento_list_con_qty">x2</div>
-                        <div class="bento_list_con_heat">190kcal</div>
+                        <div class="bento_list_con_name">{{ item.name }}</div>
+                        <div class="bento_list_con_qty">{{ item.qty }}</div>
+                        <div class="bento_list_con_heat">{{ item.heat }}</div>
                     </div>
                 </div>
                 <div class="bento_list_total">
-                    <p>總熱量: 484kcal</p>
+                    <p>總熱量: {{ totalHeat }}kcal</p>
                 </div>
             </div>
         </div>
     </section>
 </template>
 
-<script></script>
+
+<script>
+export default {
+    data() {
+        return {
+            list_title: '饗食四合一',
+            bentoList: [{
+                id: 1,
+                name: '炸春捲',
+                qty: 'x2',
+                heat: '190kcal',
+                imgSrc: '/src/assets/img/1.png',
+            },
+            {
+                id: 2,
+                name: '雞胸肉',
+                qty: 'x1',
+                heat: '190kcal',
+                imgSrc: '/src/assets/img/2.png',
+            },
+            {
+                id: 3,
+                name: '糙米飯',
+                qty: 'x1',
+                heat: '190kcal',
+                imgSrc: '/src/assets/img/3.png',
+            },
+            {
+                id: 4,
+                name: '糖心蛋',
+                qty: 'x1',
+                heat: '190kcal',
+                imgSrc: '/src/assets/img/4.png',
+            },
+            ]
+        }
+    },
+    computed: {
+        totalHeat() {
+            return this.bentoList.reduce((total, item) => {
+                const heat = parseInt(item.heat.replace('kcal', ''));
+                return total + heat;
+            }, 0);
+        },
+    },
+}
+</script>
+
 
 <style lang="scss" scoped>
 .bento_list {
@@ -72,18 +89,20 @@
 .bento_list_title {
     background-color: #71C4EF;
     color: #fff;
-    height: 50px;
-    width: 280px;
+    height: 6%;
+    width: 38%;
     border-radius: 50px;
     top: 0;
     display: inline-block;
     position: absolute;
     transform: translate(-50%, -50%);
+    
 }
 
 .bento_list_title h3 {
-    font-size: 24px;
-    padding-top: 7px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 2.4;
 }
 
 @media screen and (max-width: 768px) {
@@ -93,12 +112,13 @@
     }
 
     .bento_list_title {
-        width: 220px;
+        width: 40%;
     }
 
     .bento_list_title h3 {
-        font-size: 20px;
-        padding-top: 10px;
+        font-size: 1em;
+        // padding-top: 10px;
+        line-height: 1.8;
     }
 
 }
