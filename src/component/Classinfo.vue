@@ -15,8 +15,12 @@
       </div>
     </div>
     <div class="card-footer">
-      <div class="content"><p>{{ cardData.description }}</p></div>
-      <button class="apply">立即報名</button>
+      <div class="content">
+        <p>{{ cardData.description }}</p>
+      </div>
+      <router-link :to="{ name: 'Coursepage' }">
+        <button class="apply">立即報名</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -34,20 +38,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
 .card {
   margin-bottom: 30px;
   background-color: #fff;
   border-radius: 10px;
+
   .card-head {
     padding: 30px 20px 0 20px;
   }
+
   .card-body {
     padding: 0 20px;
   }
+
   h2 {
     margin-bottom: 15px;
     font-weight: bold;
   }
+
   .txt {
     h3 {
       font-weight: bold;
@@ -55,8 +68,10 @@ export default {
       justify-content: space-between;
     }
   }
+
   .pic {
     position: relative;
+
     img {
       width: 100%;
       aspect-ratio: 3 / 1;
@@ -64,6 +79,7 @@ export default {
       border-radius: 10px;
       margin-bottom: 15px;
     }
+
     p {
       position: absolute;
       right: 10px;
@@ -74,10 +90,12 @@ export default {
       color: #000000;
     }
   }
+
   h3 {
     margin-bottom: 15px;
     flex-wrap: wrap;
   }
+
   .card-footer {
     border-radius: 0 0 10px 10px;
     width: 100%;
@@ -87,13 +105,16 @@ export default {
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    .content{
+
+    .content {
       display: -webkit-box;
-      -webkit-line-clamp: 3; /* 控制顯示的行數 */
+      -webkit-line-clamp: 3;
+      /* 控制顯示的行數 */
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .apply {
       color: #fff;
       font-size: clamp(16px, 2.18vw, 28px);
