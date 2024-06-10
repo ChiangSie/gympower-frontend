@@ -22,8 +22,8 @@
 
       <div class="section section-classinfo">
         <div class="container">
-          <div class="txt" v-if="displayList.length === 0">
-            <h3>目前未開課</h3>
+          <div class="displayList" v-if="displayList.length === 0">
+            <h3 class="txt">目前未開課</h3>
           </div>
           <div v-else>
             <Classinfo v-for="course in displayList" :key="course.id" :cardData="course" />
@@ -68,27 +68,36 @@ export default {
           description: '重訓課程旨在提高肌肉力量和耐力,通過使用啞鈴、杠鈴和機器等器材進行訓練',
           sort: '重訓課程',
           type: 2
+        },
+        {
+          id: 3,
+          title: '週日重訓課程',
+          imgSrc: 'src/assets/img/index/indexcourse.png',
+          teacher: 'John老師',
+          price: 'NT.4000|八堂',
+          description: '重訓課程旨在提高肌肉力量和耐力,通過使用啞鈴、杠鈴和機器等器材進行訓練',
+          sort: '重訓課程',
+          type: 2
         }
         // 添加其他課程數據...
       ],
       displayList: [],
     }
   },
+  mounted() {
+    this.clear();
+  },
   methods: {
     clear() {
       this.displayList = this.courses
     },
     parseImg(file) {
-      //指到 src || 不能@ 要../回到上一層
       return new URL(`../assets/img/${file}`, import.meta.url).href
     },
     filter(type) {
       this.displayList = this.courses.filter(course => {
         return course.type === type;
       })
-        onMounted(() => {
-            clear()
-          })
     }
   }
 }
@@ -113,7 +122,6 @@ export default {
   .section-sort {
     width: 20%;
     position: -webkit-sticky;
-    /* 对旧版本浏览器的兼容性 */
     position: sticky;
     top: 100px;
     height: 60vh;
@@ -139,9 +147,7 @@ export default {
       button:focus,
       button:active {
         outline: none;
-        /* 移除outline */
         position: relative;
-        /* 讓:before偽元素相對於按鈕定位 */
       }
 
       button:focus::before,

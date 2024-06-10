@@ -58,9 +58,14 @@ const router = createRouter({
       component: () => import('../views/MemberView.vue')
     },
     {
-      path: '/DiaryPage',
-      name: 'DiaryPage',
+      path: '/Diarypage',
+      name: 'Diarypage',
       component: () => import('../views/Diary/Diarypage.vue')
+    },
+    {
+      path: '/Coursepage',
+      name: 'Coursepage',
+      component: () => import('../views/Course/Coursepage.vue')
     }
   ]
 })

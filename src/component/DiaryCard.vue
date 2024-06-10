@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'DiaryPage' }">
+  <router-link :to="{ name: 'Diarypage' }">
     <div class="card">
       <div class="pic">
         <img :src="cardData.imgSrc" />
