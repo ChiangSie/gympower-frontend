@@ -1,7 +1,7 @@
 <template>
     <div class="card-container">
         <div class="row">
-            <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="food in foods" :key="foods.id">
+            <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="food in foods" :key="food.id">
                 <div class="card">
                     <div class="price_tag">
                         <h4>{{ food.price }}</h4>
