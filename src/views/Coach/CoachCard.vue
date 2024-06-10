@@ -71,7 +71,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .card-container {
     display: flex;
     flex-wrap: wrap;
