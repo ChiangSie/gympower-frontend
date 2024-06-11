@@ -55,7 +55,14 @@ const router = createRouter({
     {
       path: '/member',
       name: 'MemberView',
-      component: () => import('../views/Login/MemberView.vue')
+      component: () => import('../views/Login/MemberView.vue'),
+      children: [
+        { path: '/AccountMangerView', component: () => import('../views/Login/Member/AccountMangerView.vue') },
+        { path: '/DiaryCollect', component: () => import('../views/Login/Member/DiaryCollect.vue') },
+        { path: '/DiscountView', component: () => import('../views/Login/Member/DiscountView.vue') },
+        { path: '/MemberCourse', component: () => import('../views/Login/Member/MemberCourse.vue') },
+        { path: '/OrderView', component: () => import('../views/Login/Member/OrderView.vue') },
+      ]
     },
     {
       path: '/Diarypage',

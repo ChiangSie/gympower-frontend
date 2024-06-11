@@ -1,10 +1,10 @@
 <template>
 
-  <Signinup/>
+  <SignInup/>
 </template>
 
 <script setup>
-import Signinup from "./Login/Signinup.vue"
+import SignInup from "./Login/Signinup.vue"
 </script>
 
 <style></style>

@@ -5,24 +5,33 @@
                 <img src="" alt="">
             </div>
             <ul>
-                <a href="#">帳號管理</a>
+                <router-link to="/AccountMangerView">帳號管理</router-link>
                 <hr>
-                <a href="#">專屬折扣</a>
+                <router-link to="/DiscountView">專屬折扣</router-link>
                 <hr>
-                <a href="#">會員課程</a>
+                <router-link to="/MemberCourse">會員課程</router-link>
                 <hr>
-                <a href="#">訂單查詢</a>
+                <router-link to="/OrderView">訂單查詢</router-link>
                 <hr>
-                <a href="#">日記收藏</a>
+                <router-link to="/DiaryCollect">日記收藏</router-link>
+
             </ul>
         </aside>
         <main>
-
+            <RouterView />
         </main>
     </section>
 </template>
 
 <script>
+import { defineComponent } from 'vue'
+import { RouterView } from 'vue-router'
+
+export default defineComponent({
+  components: {
+    RouterView
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -67,6 +76,7 @@
         width: calc(80% - 15px);
         border: 1.5px solid black;
         border-radius: 15px;
+        padding: 15px;
     }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
     <div>
-        sss
+        MemberCoures
     </div>
 </template>
