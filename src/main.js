@@ -9,12 +9,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-// import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
 
 library.add(faChevronRight);
 library.add(faChevronLeft);
-// library.add(faCircleXmark);
+library.add(faTimesCircle);
+
 
 const app = createApp(App);
 
