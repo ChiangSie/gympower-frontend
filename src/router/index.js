@@ -55,7 +55,7 @@ const router = createRouter({
     {
       path: '/member',
       name: 'MemberView',
-      component: () => import('../views/MemberView.vue')
+      component: () => import('../views/Login/MemberView.vue')
     },
     {
       path: '/Diarypage',
