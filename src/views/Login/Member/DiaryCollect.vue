@@ -1,5 +1,5 @@
 <template>
     <div>
-        sss
+        DiaryCollect
     </div>
 </template>
