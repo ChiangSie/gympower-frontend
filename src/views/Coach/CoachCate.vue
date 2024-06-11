@@ -39,7 +39,7 @@ export default {
     }
 };
 </script>
-<style>
+<style lang="scss">
 * {
     text-decoration: none;
 }
@@ -58,5 +58,9 @@ export default {
     background-color: #F9F8F7;
     color: #71C4EF;
     border-radius: 5%;
+    &:hover{
+        background-color: #71C4EF;
+        color: #fff;
+    }
 }
 </style>
