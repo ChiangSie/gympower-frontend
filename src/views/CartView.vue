@@ -1,11 +1,18 @@
 <template>
   <EmptyCart />
   <CheckOutCart />
+  <CartList />
+  <CartInfo />
+  <CartFinsh />
 </template>
 
 <script setup>
 import EmptyCart from './Cart/CartPage_1/EmptyCart.vue'
 import CheckOutCart from './Cart/CartPage_2/CheckOutCart.vue'
+import CartList from './Cart/CartPage_3/CartList.vue'
+import CartInfo from './Cart/CartPage_4/CartInfo.vue'
+import CartFinsh from './Cart/CartPage_5/CartFinsh.vue'
+
 </script>
 
 <style lang="scss" scoped>
