@@ -11,6 +11,7 @@
       <div class="txt">
         <p>{{ cardData.text }}</p>
       </div>
+      <div class="date">{{ cardData.date }}</div>
     </div>
   </router-link>
 </template>
@@ -66,6 +67,23 @@ a {
         background-color: #fffeee9d;
       }
     }
-
+    .txt{
+        display: -webkit-box;
+      -webkit-line-clamp: 2;
+      /* 控制顯示的行數 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      }
+@media screen and (max-width: 568px) {
+  .title{
+    width: 130px !important;
+    h3{
+        font-size: 20px;
+          white-space: wrap;
+  word-break: break-word;
+      }
+    }
+  } 
   }
 </style>

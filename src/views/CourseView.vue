@@ -27,6 +27,7 @@
           </div>
           <div v-else>
             <Classinfo v-for="course in displayList" :key="course.id" :cardData="course" />
+            <div class="page"><a href="" v-for="n in 5">{{ n }}</a></div>
           </div>
         </div>
       </div>
@@ -137,7 +138,6 @@ export default {
         border: none;
         background: none;
         padding: 10px 20px;
-        font-size: 16px;
         color: #333;
         transition: all 0.3s ease;
         white-space: nowrap;
@@ -162,9 +162,15 @@ export default {
         height: 30px;
         background-color: #333;
         /* 調整box顏色 */
-      }
+      }      
     }
   }
+  @media screen and (max-width: 768px) {
+      .btn-sort h3{
+        font-size: 16px;
+        white-space: wrap;
+      }
+    }
 
   .section-classinfo {
     width: 80%;
@@ -182,6 +188,18 @@ export default {
         border-radius: 10px;
       }
     }
+    .page {
+    text-align: center;
+    padding-bottom: 2rem;
+    a {
+      margin: 0 .3rem;
+      padding: .3rem .5rem;
+      background-color: #002451;
+      color: #fff;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+  }
   }
 }
 </style>

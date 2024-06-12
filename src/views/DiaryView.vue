@@ -43,30 +43,37 @@ export default {
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '健康飲食健身者的營養指南',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          date: '2021-01-01'
+
         },
         {
           id: 2,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '高效訓練打造完美體態',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          date: '2021-01-01'
+
         },
         {
           id: 3,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '3title',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          date: '2021-01-01'
         },
         {
           id: 4,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '4title',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          date: '2021-01-01'
         },
         {
           id: 4,
           imgSrc: 'https://picsum.photos/300/350/?random=10',
           title: '4title',
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
+          date: '2021-01-01'
         }
       ]
     }
@@ -104,6 +111,7 @@ a {
     display: flex;
     align-items: center;
     gap: 10px;
+
     .search-input {
       padding: 10px 10px 10px 35px;
       border: solid .1px #b4def2;
@@ -149,6 +157,4 @@ a {
     }
   }
 }
-
-
 </style>
