@@ -1,20 +1,29 @@
 <template>
     <div class="card">
         <div class="card_left">
-            <span>90%</span>
+            <span>{{disdata.disnum1}}%</span>
         </div>
         <div class="card_right">
-            <span>9折-折價劵 (僅可用於單品項目)</span>
-            <span>使用期限 : 2024/05/20 ~ 2024/08/31</span>
+            <span>{{disdata.disnum2}}折-折價劵 (僅可用於單品項目)</span>
+            <span>使用期限 : {{ disdata.distime1 }} - {{ disdata.distime2 }}</span>
         </div>
     </div>
 </template>
-<script></script>
+<script>
+export default{
+    props:{
+        disdata:{
+            type:Object,
+            required: true
+        }
+    }
+}
+</script>
 <style lang="scss" scoped>
 .card{
     width: 80%;
-    height: 70px;
-    margin: 10px auto;
+    padding: 25px 0;
+    margin: 20px auto;
     border: 1px solid black;
     border-radius: 15px;
     display: flex;
