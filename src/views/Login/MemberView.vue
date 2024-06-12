@@ -43,6 +43,7 @@ export default defineComponent({
     column-gap: 15px;
     aside {
         width: 20%;
+        height: 500px;
         border: 1.5px solid black;
         border-radius: 15px;
         display: flex;
@@ -76,7 +77,7 @@ export default defineComponent({
         width: calc(80% - 15px);
         border: 1.5px solid black;
         border-radius: 15px;
-        padding: 15px;
+        padding: 50px;
     }
 }
 </style>
