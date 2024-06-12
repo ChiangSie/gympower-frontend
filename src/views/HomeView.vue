@@ -1,6 +1,6 @@
 <template>
   <!-- 首頁 Banner -->
-  <section class="section section-banner">
+<section class="section section-banner">
     <div class="container container-banner">
       <div class="row">
         <div class="banner col-12 col-md-12 col-lg-12 col-xl-12">
@@ -16,16 +16,16 @@
               <p>挑戰極限</p>
               <p>加入我們,開啟您的專業健身之旅</p>
             </span>
-
             <button class="join">
               <p>加入GYM力</p>
             </button>
           </div>
-
         </div>
       </div>
     </div>
-  </section>
+  </section>  
+  
+
   <!-- 下面的 code 可以用在商品列表或是日記列表。 -->
   <!-- <section class="newClass">
 
@@ -46,6 +46,7 @@
       </div>
     </div>
   </section> -->
+
   <!-- 課程資訊 -->
   <section class="section section-classinfo">
     <div class="container container-classinfo">
@@ -157,8 +158,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </section>
   <!-- 教練 -->
@@ -256,14 +255,19 @@ export default {
           text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
         }
       ]
-    }
-  }
+  };
 }
+}
+
 </script>
+
 
 <!-- lang="sass" -->
 <style lang="scss" scoped>
 // 背景裝飾文字
+// *{
+//   font-family: Noto Sans;
+// }
 .decorate-txt {
   -webkit-text-stroke: .8px #7E7E7E;
   color: #F9F8F7;
@@ -290,8 +294,6 @@ export default {
       background-image: url('../assets/img/index-banner.png');
       background-size: 100% 100%;
       // border-radius: 10px;
-
-
       .banner-txt {
         margin: 30px 0 30px 20px;
         background-color: rgba($color: #fff, $alpha: .6);
@@ -302,30 +304,22 @@ export default {
         flex-direction: column;
         justify-content: center;
         gap: 20px;
-
-
         h2 {
           font-size: clamp(20px, 3.125vw, 40px);
-
           .en {
             color: #fff;
           }
-
-
         }
-
         .zh {
           color: #273B4A
         }
       }
-
       .join {
         width: clamp(150px, 30%, 250px);
         height: 30px;
         border-radius: 10px;
         border: none;
         background-color: #002451;
-
         p {
           color: #fff;
         }
@@ -333,7 +327,6 @@ export default {
     }
   }
 }
-
 // 課程資訊
 .container-classinfo {
 
