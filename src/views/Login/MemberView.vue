@@ -77,7 +77,7 @@ export default defineComponent({
         width: calc(80% - 15px);
         border: 1.5px solid black;
         border-radius: 15px;
-        padding: 50px;
+        padding: 30px 55px;
     }
 }
 </style>
