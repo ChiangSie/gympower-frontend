@@ -1,7 +1,7 @@
 <template>
     <div class="section section-courselist">
          <div class="container">
-        <h3>其他課程</h3>
+        <h2>其他課程</h2>
         <div class="image-carousel">
             <button class="prev-button" @click="prevImages" :disabled="isFirstGroup"><</button>
             <div class="image-container">
