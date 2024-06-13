@@ -10,7 +10,7 @@
 
 <script></script>
 
-<style>
+<style scoped>
 .content {
             padding: 40px 20px;
             text-align: center;
