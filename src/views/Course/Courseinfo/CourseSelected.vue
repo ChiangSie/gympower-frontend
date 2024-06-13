@@ -5,22 +5,30 @@
       <option v-for="location in locations" :key="location" :value="location">{{ location }}</option>
     </select>
 
-    <select v-model="selectedCourseTime" v-if="selectedLocation">
+    <select v-model="selectedCourseTime" >
       <option disabled value="">請選擇課程時間</option>
       <option v-for="courseTime in courseTimes[selectedLocation]" :key="courseTime" :value="courseTime">{{ courseTime }}</option>
     </select>
 
-    <h2>購物車</h2>
+    <div  v-if="selectedLocation && selectedCourseTime">
+    <button @click="addToCart" class="btn">加入購物車</button>
+    </div>
+    <div v-else>
+       <button class="btn">加入購物車</button>
+    </div>
+  </div>
+
+  <h2>購物車</h2>
     <ul>
       <li v-for="course in cart" :key="course">{{ course }}</li>
     </ul>
 
-    <button v-if="selectedLocation && selectedCourseTime" @click="addToCart">加入購物車</button>
-  </div>
       <div ref="alertBox" class="alert">{{ alertMessage }}</div>
 </template>
 
 <script>
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 export default {
   data() {
     return {
@@ -40,7 +48,7 @@ export default {
   methods: {
     addToCart() {
       this.cart.push(`${this.selectedLocation} - ${this.selectedCourseTime}`);
-        this.showAlert('已加入購物車');
+      this.showAlert('已加入購物車');
       },
     showAlert(message) {
       this.alertMessage = message
@@ -52,7 +60,6 @@ export default {
       }, 3000)
     }
   }
-    
 }
 </script>
 
