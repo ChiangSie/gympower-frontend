@@ -58,7 +58,7 @@ export default{
                     disnum2:9,
                     distime1:'2024/05/01',
                     distime2:'2024/05/31',
-                    used:1
+                    used:0
                 },
                 {
                     id:5,
