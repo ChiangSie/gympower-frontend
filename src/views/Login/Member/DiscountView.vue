@@ -19,8 +19,7 @@ import DiscountCard from '@/component/DiscountCard.vue'
         </div>
     </section>
 </template>
-
-<script>
+<script >
 export default{
     components:{
         DiscountCard
@@ -58,7 +57,7 @@ export default{
                     disnum2:9,
                     distime1:'2024/05/01',
                     distime2:'2024/05/31',
-                    used:0
+                    used:1
                 },
                 {
                     id:5,
@@ -83,11 +82,10 @@ export default{
             this.showlist = this.discountlist.filter(item => {
                 return item.used === used;
             })
-        },
+        }
     }
 }
 </script>
-
 <style lang="scss" scoped>
 hr{
     width: 100%;
