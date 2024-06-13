@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import SignInup from "./Login/SignInup.vue"
+import SignInup from "./Login/SignIn.vue"
 </script>
 
 <style></style>
