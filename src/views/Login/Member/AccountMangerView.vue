@@ -55,7 +55,7 @@
 <style lang="scss" scoped>
 hr{
     width: 100%;
-    border-width: 1.5px;
+    border-width: 1px;
     border-color: #000000;
 }
 section{
