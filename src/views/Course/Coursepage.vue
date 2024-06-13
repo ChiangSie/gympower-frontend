@@ -18,7 +18,7 @@ import CourseSelected from './Courseinfo/CourseSelected.vue';
 export default {
   components: {
     CourseDetail,
-        CourseList,
+    CourseList,
     CourseSelected
     },
 
