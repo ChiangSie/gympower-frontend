@@ -5,30 +5,31 @@
       <option v-for="location in locations" :key="location" :value="location">{{ location }}</option>
     </select>
 
-    <select v-model="selectedCourseTime" >
+    <select v-model="selectedCourseTime">
       <option disabled value="">請選擇課程時間</option>
-      <option v-for="courseTime in courseTimes[selectedLocation]" :key="courseTime" :value="courseTime">{{ courseTime }}</option>
+      <option v-for="courseTime in courseTimes[selectedLocation]" :key="courseTime" :value="courseTime">{{ courseTime }}
+      </option>
     </select>
 
-    <div  v-if="selectedLocation && selectedCourseTime">
-    <button @click="addToCart" class="btn">加入購物車</button>
+    <div v-if="selectedLocation && selectedCourseTime">
+      <button @click="addToCart" class="btn">加入購物車</button>
     </div>
     <div v-else>
-       <button class="btn">加入購物車</button>
+      <button @click="addtoClass" class="btn">加入購物車</button>
     </div>
   </div>
 
-  <h2>購物車</h2>
+  <div class="Cart">
+    <h2>購物車</h2>
     <ul>
       <li v-for="course in cart" :key="course">{{ course }}</li>
     </ul>
-
-      <div ref="alertBox" class="alert">{{ alertMessage }}</div>
+  </div>
+  <div ref="alertBox" class="alert">{{ alertMessage }}</div>
 </template>
 
 <script>
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -40,7 +41,7 @@ export default {
         '東門門市': ['11:00 - 13:00', '15:00 - 17:00', '20:00 - 22:00']
       },
       selectedCourseTime: '',
-        cart: [],
+      cart: [],
       alertMessage: '',
       alertTimeout: null
     }
@@ -48,37 +49,46 @@ export default {
   methods: {
     addToCart() {
       this.cart.push(`${this.selectedLocation} - ${this.selectedCourseTime}`);
-      this.showAlert('已加入購物車');
-      },
-    showAlert(message) {
-      this.alertMessage = message
-      this.$refs.alertBox.classList.add('show')
-      clearTimeout(this.alertTimeout)
-      this.alertTimeout = setTimeout(() => {
-        this.$refs.alertBox.classList.remove('show')
-        this.alertMessage = ''
-      }, 3000)
+      this.showAlertCart('已加入購物車');
+    },
+    addtoClass() {
+      this.showAlertClass('請先選擇地點和課程時間');
+    },
+    showAlertCart(message) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+      })
+    },
+    showAlertClass(message) {
+      Swal.fire({
+        title: message,
+        showClass: {
+          popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+        },
+        hideClass: {
+          popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `
+        }
+      });
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.alert {
-  position: fixed;
-  top: 75px;
-  right: 5px;
-  padding: 30px 60px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 10px;
-  opacity: 0;
-  z-index: 3;
-
-  &.show {
-    opacity: .8;
-    transition: opacity 0.3s ease-in-out;
-  }
+.Cart{
+  
 }
 
 </style>

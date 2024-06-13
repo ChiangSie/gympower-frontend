@@ -23,8 +23,7 @@
             <p>{{content}}</p>
             </div>
             <div class="course-btn">
-
-                <button class="btn btn-primary">立即報名</button>
+             <CourseSelected />
             </div>
         </div>
         </div>
@@ -34,7 +33,12 @@
 </script>
 
 <script>
+import CourseSelected from './CourseSelected.vue';
+
 export default {
+    components: {
+        CourseSelected
+    },
     data() {
         return {
             imageUrls: [

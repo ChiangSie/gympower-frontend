@@ -1,33 +1,33 @@
 <template>
-    <CourseDetail/>
+    <CourseDetail />
 
-    <CourseList/>
+    <CourseList />
 
-    <CourseSelected/>
+    <CourseRating />
 
 </template>
 
 <script setup>
 import CourseDetail from '../Course/Courseinfo/CourseDetail.vue';
 import CourseList from '../Course/Courseinfo/CourseList.vue';
-import CourseSelected from './Courseinfo/CourseSelected.vue';
+import CourseRating from './Courseinfo/CourseRating.vue';
 
 </script>
 
 <script>
 export default {
-  components: {
-    CourseDetail,
-    CourseList,
-    CourseSelected
+    components: {
+        CourseDetail,
+        CourseList,
+        CourseRating
     },
 
     data() {
-        return {}
+        return {
+
+        }
     }
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
