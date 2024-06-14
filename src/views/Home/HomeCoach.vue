@@ -8,7 +8,7 @@
       <div class="row">
         <div class=" col col-12 col-md-6 col-lg-6 col-xl-6">
           <div class="pic">
-            <img src="../assets/img/index/Ellipse 16.png">
+            <img src="../../assets/img/index/Ellipse 16.png">
           </div>
         </div>
         <div class=" col col-12 col-md-6 col-lg-6 col-xl-6">
