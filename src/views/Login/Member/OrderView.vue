@@ -2,6 +2,13 @@
     <div class="order_page">
         <h2>訂單查詢</h2>
         <hr>
+        <div class="pagination">
+            <button @click="currentPage = 1"><i class="fa-solid fa-angles-left"></i></button>
+            <button @click="prevPage"><i class="fa-solid fa-arrow-left"></i></button>
+            <button v-for="n in totalPages" @click="currentPage = n" :key="n.n">{{ n }}</button>
+            <button @click="nextPage"><i class="fa-solid fa-arrow-right"></i></button>
+            <button @click="currentPage = totalPages"><i class="fa-solid fa-angles-right"></i></button>
+        </div>
         <div class="order_search" v-for="item in paginatedOrderDataList" :key="item.id">
             <div class="order_card" >
                 <table>
@@ -31,16 +38,9 @@
                     </tr>
                 </table>
             </div>
-            <button @click="showtr($event)">查看明細</button>
+            <button @click="showtr($event)"><i class="fa-solid fa-circle-info"></i> 查看明細</button>
         </div>
-        <hr>
-        <div class="pagination">
-            <button @click="currentPage = 1"><i class="fa-solid fa-angles-left"></i></button>
-            <button @click="prevPage"><i class="fa-solid fa-arrow-left"></i></button>
-            <button v-for="n in totalPages" @click="currentPage = n">{{ n }}</button>
-            <button @click="nextPage"><i class="fa-solid fa-arrow-right"></i></button>
-            <button @click="currentPage = totalPages"><i class="fa-solid fa-angles-right"></i></button>
-        </div>
+        
     </div>
 </template>
 
@@ -290,7 +290,7 @@ export default{
 .order_page{
     width: 100%;
     .order_search{
-        margin: 30px 0;
+        margin: 20px 0;
         .order_card{
         border-radius: 15px;
         border: 1px solid black;
@@ -302,6 +302,7 @@ export default{
                 border: 1px black solid;
                 padding: 10px;
                 td{
+                    width: 25%;
                     border: 1px black solid;
                     padding: 10px;
                     }
@@ -315,16 +316,23 @@ export default{
             }
         }
         button{
-            margin: 10px;
+            width: fit-content;
+            height: 25px;
+            border: 0px;
+            background-color: transparent;
+            margin:2px;
         }
     }
     .pagination{
         display: flex;
-        justify-content: space-evenly;
-        padding: 0 5%;
+        justify-content: flex-end;
+        padding: 0 ;
         button{
             width: fit-content;
             height: 30px;
+            margin:  0 5px ;
+            border: 0px;
+            background-color: transparent;
         }
     }
 }
