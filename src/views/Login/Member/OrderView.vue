@@ -2,10 +2,10 @@
     <div class="order_page">
         <h2>訂單查詢</h2>
         <hr>
-        <div class="order_search" v-for="item in orderlist" :key="item.id">
+        <div class="order_search" v-for="item in paginatedOrderDataList" :key="item.id">
             <div class="order_card" >
                 <table>
-                    <tr>
+                    <tr class="tr_first">
                         <td>訂單編號</td>
                         <td>訂單日期</td>
                         <td>訂單總價</td>
@@ -17,13 +17,13 @@
                         <td>$ {{ item.sumprice }}</td>
                         <td>{{ item.type ?  '已取餐' : '未取餐' }}</td>
                     </tr>
-                    <tr class="listhidden">
+                    <tr class="tr_first" >
                         <td>品名</td>
                         <td>數量</td>
                         <td>價錢</td>
                         <td>優惠卷使用</td>
                     </tr>
-                    <tr v-for="sec in item.detail" :key="sec.no" class="listhidden">
+                    <tr v-for="sec in item.detail" :key="sec.no">
                         <td>{{ sec.name}}</td>
                         <td>{{ sec.amount }}</td>
                         <td>{{ sec.price }}</td>
@@ -33,18 +33,29 @@
             </div>
             <button>查看明細</button>
         </div>
+        <hr>
+        <div class="pagination">
+            <button @click="currentPage = 1">第一頁</button>
+            <button @click="prevPage"><i class="fa-solid fa-arrow-left"></i></button>
+            <button v-for="n in totalPages" @click="currentPage = n">{{ n }}</button>
+            <button @click="nextPage"><i class="fa-solid fa-arrow-right"></i></button>
+            <button @click="currentPage = totalPages">最後一頁</button>
+        </div>
     </div>
 </template>
 
 <script>
 
+
+
+
 export default{
     data(){
         return{
-            orderlist:[
+            orderDataList:[
                 {
                     id : 1,
-                    serialnumber : 1111111,
+                    serialnumber : '1111111',
                     date : '2024/05/31',
                     sumprice : 450,
                     type : 0 ,
@@ -74,7 +85,7 @@ export default{
                 },
                 {
                     id : 2,
-                    serialnumber : 22222222,
+                    serialnumber : '22222222',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,
@@ -82,7 +93,7 @@ export default{
                         {
                             no : 1,
                             name : 'aaa',
-                            amount : 2,
+                            amount : 1,
                             price : 200,
                             used : 1
                         },
@@ -98,7 +109,7 @@ export default{
                             name : 'ccc',
                             amount : 1,
                             price : 100,
-                            used : 1 
+                            used : 0
                         },
                         {
                             no : 4,
@@ -109,17 +120,164 @@ export default{
                         }
                     ]
                 },
-            ]
+                {
+                    id : 3,
+                    serialnumber : '333',
+                    date : '2024/07/31',
+                    sumprice : 600,
+                    type : 0 ,
+                    detail : [
+                        {
+                            no : 1,
+                            name : 'aaa',
+                            amount : 1,
+                            price : 200,
+                            used : 1
+                        },
+                        {
+                            no : 2,
+                            name : 'bbb',
+                            amount : 1,
+                            price : 200,
+                            used : 0
+                        },
+                        {
+                            no : 3,
+                            name : 'ccc',
+                            amount : 1,
+                            price : 100,
+                            used : 0
+                        },
+                        {
+                            no : 4,
+                            name : 'ddd',
+                            amount : 1,
+                            price : 100,
+                            used : 0
+                        }
+                    ]
+                },
+                {
+                    id : 4,
+                    serialnumber : '44444',
+                    date : '2024/07/31',
+                    sumprice : 600,
+                    type : 0 ,
+                    detail : [
+                        {
+                            no : 1,
+                            name : 'aaa',
+                            amount : 1,
+                            price : 200,
+                            used : 1
+                        },
+                        {
+                            no : 2,
+                            name : 'bbb',
+                            amount : 1,
+                            price : 200,
+                            used : 0
+                        },
+                    ]
+                },
+                {
+                    id : 5,
+                    serialnumber : '55555',
+                    date : '2024/07/31',
+                    sumprice : 600,
+                    type : 0 ,
+                    detail : [
+                        {
+                            no : 1,
+                            name : 'aaa',
+                            amount : 1,
+                            price : 200,
+                            used : 1
+                        },
+                        {
+                            no : 2,
+                            name : 'bbb',
+                            amount : 1,
+                            price : 200,
+                            used : 0
+                        },
+                    ]
+                },
+                {
+                    id : 6,
+                    serialnumber : '666666',
+                    date : '2024/07/31',
+                    sumprice : 600,
+                    type : 0 ,
+                    detail : [
+                        {
+                            no : 1,
+                            name : 'aaa',
+                            amount : 1,
+                            price : 200,
+                            used : 1
+                        },
+                        {
+                            no : 2,
+                            name : 'bbb',
+                            amount : 1,
+                            price : 200,
+                            used : 0
+                        },
+                    ]
+                },
+                {
+                    id : 7,
+                    serialnumber : '777777777777',
+                    date : '2024/07/31',
+                    sumprice : 600,
+                    type : 0 ,
+                    detail : [
+                        {
+                            no : 1,
+                            name : 'aaa',
+                            amount : 1,
+                            price : 200,
+                            used : 1
+                        },
+                        {
+                            no : 2,
+                            name : 'bbb',
+                            amount : 1,
+                            price : 200,
+                            used : 0
+                        },
+                    ]
+                },
+            ],
+            currentPage: 1,
+            pageSize: 2,
+            totalPages: 0,
         }
     },
-    // methods: {
-    //     toggleHidden() {
-    //         var hiddenTrs = document.querySelectorAll('.listhidden');
-    //         hiddenTrs.forEach(function(tr) {
-    //         tr.style.display = tr.style.display === 'none'? '' : 'none';
-    //         });
-    //     }
-    // }
+    computed: {
+        paginatedOrderDataList() {
+            const start = (this.currentPage - 1) * this.pageSize;
+            const end = start + this.pageSize;
+            console.log(`Paginated list:`, this.orderDataList.slice(start, end));
+            return this.orderDataList.slice(start, end);
+    }
+  },
+    methods: {
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+                }
+            },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                }
+            }
+    },
+    mounted() {
+        this.totalPages = Math.ceil(this.orderDataList.length / this.pageSize);
+    }
 }
 
 </script>
@@ -145,9 +303,24 @@ export default{
                     }
                 }
             }
+            .tr_first{
+                background-color: deepskyblue;
+            }
+            // .tr_second{
+            //     display: none;
+            // }
         }
         button{
             margin: 10px;
+        }
+    }
+    .pagination{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 5%;
+        button{
+            width: fit-content;
+            height: 30px;
         }
     }
 }
