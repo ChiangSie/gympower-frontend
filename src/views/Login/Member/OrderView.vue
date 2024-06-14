@@ -17,13 +17,13 @@
                         <td>$ {{ item.sumprice }}</td>
                         <td>{{ item.type ?  '已取餐' : '未取餐' }}</td>
                     </tr>
-                    <tr class="tr_first" >
+                    <tr class="tr_first tr_second" >
                         <td>品名</td>
                         <td>數量</td>
                         <td>價錢</td>
                         <td>優惠卷使用</td>
                     </tr>
-                    <tr v-for="sec in item.detail" :key="sec.no">
+                    <tr v-for="sec in item.detail" :key="sec.no" class="tr_second">
                         <td>{{ sec.name}}</td>
                         <td>{{ sec.amount }}</td>
                         <td>{{ sec.price }}</td>
@@ -31,23 +31,20 @@
                     </tr>
                 </table>
             </div>
-            <button>查看明細</button>
+            <button @click="showtr($event)">查看明細</button>
         </div>
         <hr>
         <div class="pagination">
-            <button @click="currentPage = 1">第一頁</button>
+            <button @click="currentPage = 1"><i class="fa-solid fa-angles-left"></i></button>
             <button @click="prevPage"><i class="fa-solid fa-arrow-left"></i></button>
             <button v-for="n in totalPages" @click="currentPage = n">{{ n }}</button>
             <button @click="nextPage"><i class="fa-solid fa-arrow-right"></i></button>
-            <button @click="currentPage = totalPages">最後一頁</button>
+            <button @click="currentPage = totalPages"><i class="fa-solid fa-angles-right"></i></button>
         </div>
     </div>
 </template>
 
 <script>
-
-
-
 
 export default{
     data(){
@@ -251,8 +248,8 @@ export default{
                 },
             ],
             currentPage: 1,
-            pageSize: 2,
-            totalPages: 0,
+            pageSize: 3,
+            totalPages: 0 ,
         }
     },
     computed: {
@@ -262,18 +259,25 @@ export default{
             console.log(`Paginated list:`, this.orderDataList.slice(start, end));
             return this.orderDataList.slice(start, end);
     }
-  },
+    },
     methods: {
         nextPage() {
             if (this.currentPage < this.totalPages) {
                 this.currentPage++;
                 }
-            },
+        },
         prevPage() {
             if (this.currentPage > 1) {
                 this.currentPage--;
                 }
-            }
+        },
+        showtr(event) {
+            const button = event.target;
+            const trSeconds = button.parentNode.querySelectorAll('.tr_second');
+            trSeconds.forEach(tr => {
+            tr.style.display = tr.style.display === 'none' ? 'table-row' : 'none';
+        });
+    }
     },
     mounted() {
         this.totalPages = Math.ceil(this.orderDataList.length / this.pageSize);
@@ -306,9 +310,9 @@ export default{
             .tr_first{
                 background-color: deepskyblue;
             }
-            // .tr_second{
-            //     display: none;
-            // }
+            .tr_second{
+                display: none;
+            }
         }
         button{
             margin: 10px;
