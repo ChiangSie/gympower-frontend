@@ -19,7 +19,7 @@ import DiscountCard from '@/component/DiscountCard.vue'
         </div>
     </section>
 </template>
-<script >
+<script>
 export default{
     components:{
         DiscountCard
@@ -80,7 +80,7 @@ export default{
         },
         fl(used){
             this.showlist = this.discountlist.filter(item => {
-                return item.used === used;
+                return item.used === used ;
             })
         }
     }
