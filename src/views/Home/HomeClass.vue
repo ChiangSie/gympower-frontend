@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
               <div class="pic">
-                <img src="../assets/img/index/indexcourse.png">
+                <img src="../../assets/img/index/indexcourse.png">
               </div>
               <div class="txt">
                 <h3>
@@ -34,7 +34,7 @@
             </div>
             <div class="card-body">
               <div class="pic">
-                <img src="../assets/img/index/indexcourse.png">
+                <img src="../../assets/img/index/indexcourse.png">
               </div>
               <div class="txt">
                 <h3>

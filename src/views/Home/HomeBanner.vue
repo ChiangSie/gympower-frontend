@@ -9,7 +9,7 @@
             <h2>CHALLENGE <br>
             YOUR<br> 
             LIMIT<br>
-          </h2>
+        </h2>
         </div>
     </div>
 </template>

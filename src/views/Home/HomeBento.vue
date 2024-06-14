@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-      <section class="section section-bento">
+  <section class="section section-bento">
     <div class="container container-bento">
       <h2 class="decorate-txt flex-end">BENTO</h2>
       <h2 class="title">客製化專屬於你的餐盒</h2>
@@ -13,10 +13,9 @@
               <p>會員專屬客製化餐盒，為你的健康而設計。依據你的運動目標和營養需求精心搭配， 無論是增肌、減脂，還是保持健康體型，我們的餐點都能助你達成健身目標。健康從飲食開始，讓我們陪伴你走向更強壯、更健康的未來。</p>
               <button>開始客製</button>
               <div class="pic-bento">
-                <img src="../assets/img/pic-bento.png">
+                <img src="../../assets/img/pic-bento.png">
               </div>
             </div>
-
           </div>
         </div>
         <div class=" col-right col-12 col-md-12 col-lg-6 col-xl-6">
@@ -29,11 +28,12 @@
                 </p>
               </div>
               <div class="pic">
-                <img src="../assets/img/index/food1.png">
+                <img src="../../assets/img/index/food1.png">
               </div>
             </div>
+            <div class="choose">
               <div class="pic">
-                <img src="../assets/img/index/food2.png">
+                <img src="../../assets/img/index/food2.png">
               </div>
               <div class="txt">
                 <h4>選擇喜愛菜色</h4>
@@ -50,13 +50,14 @@
                 </p>
               </div>
               <div class="pic">
-                <img src="../assets/img/index/food3.png">
+                <img src="../../assets/img/index/food3.png">
               </div>
             </div>
-
           </div>
+
         </div>
       </div>
+    </div>
   </section>
 </template>
 
@@ -117,9 +118,6 @@
               vertical-align: middle;
             }
           }
-
-
-
         }
       }
 
@@ -133,13 +131,10 @@
 
         .choose {
           display: flex;
-          align-items: center;
           gap: 5%;
-          // justify-content: space-around;
-
-          // justify-content: flex-end;
 
           .txt {
+
             h4 {
               font-weight: bold;
             }
