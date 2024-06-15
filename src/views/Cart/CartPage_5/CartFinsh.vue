@@ -139,6 +139,7 @@
                 <span class="rule_return"><a href="#">{{ rule_return }}</a></span>
             </div>
         </div>
+        <!-- 完成圖案 -->
         <div class="overlay">
             <div class="confirmation-box">
                 <div class="icon"><i class="fa-solid fa-check"></i></div>
