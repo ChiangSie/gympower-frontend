@@ -18,7 +18,7 @@
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                     <span>忘記密碼?</span>
-                    <RouterLink to='/member'><button>登入</button></RouterLink>
+                    <RouterLink to='/AccountMangerView'><button>登入</button></RouterLink>
                     <a href="#"><i class="fa-brands fa-google"></i> Google登入</a>
                 </form>
             </div>
