@@ -184,8 +184,8 @@ export default {
 </script>
 
 <!-- lang="sass" -->
-<style lang="scss" scoped>
-// 背景裝飾文字
+<style lang="scss">
+// test
 .decorate-txt {
   -webkit-text-stroke: .8px #7E7E7E;
   color: #F9F8F7;
@@ -199,8 +199,6 @@ export default {
 .flex-end {
   justify-content: flex-end;
 }
-
-// test
 
 * {
   margin: 0;
