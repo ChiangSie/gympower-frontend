@@ -2,7 +2,7 @@
   <!-- 首頁 Banner -->
 
   <!-- 首頁banner 暫時註解一下 -->
-<!-- <section class="section section-banner">
+  <!-- <section class="section section-banner">
     <div class="container container-banner">
       <div class="row">
         <div class="banner col-12 col-md-12 col-lg-12 col-xl-12">
@@ -26,7 +26,7 @@
       </div>
     </div>
   </section> -->
-  
+
   <!-- <div class="navbar">
         <div class="logo">
             <a href="#"><img src="../assets/img/small logo.png" alt=""></a>
@@ -49,29 +49,29 @@
             <div></div>
         </div>
     </div> -->
-    <!-- <header class="header">
+  <!-- <header class="header">
         <h2>CHALLENGE <br>
             YOUR<br> 
             LIMIT<br>
           </h2> -->
-<!-- <img src="../assets/img/shaking.jpg" alt=""> -->
-        <!-- <p>挑戰你的極限。</p>
+  <!-- <img src="../assets/img/shaking.jpg" alt=""> -->
+  <!-- <p>挑戰你的極限。</p>
     </header> -->
-    <!-- <section class="content">
+  <!-- <section class="content">
         <h2>一起獲得健康與美味的雙重享受!</h2>
         <p>無論你是健身新手還是經驗豐富的健身愛好者，我們的專業教練團隊將為您量身定制專屬健身計劃，幫助你達到最佳狀態，並且提供每日新鮮的健康餐盒，讓你在健身的同時享受美味、營養均衡的餐食。告別高熱量便當，每一餐都是最健康的選擇！加入課程即可抽取優惠券，享受更多驚喜折扣和福利。每次參加課程都是一次贏得優惠的機會，讓你的健身之旅充滿期待!</p>
         <a href="#" class="cta">加入GYM力</a>
     </section> -->
 
-<HomeBanner/>
+  <HomeBanner />
 
-<HomeJoin/>
+  <HomeJoin />
 
-<HomeClass/>
+  <HomeClass />
 
-<HomeBento/>
+  <HomeBento />
 
-<HomeCoach/>
+  <HomeCoach />
 
 
 
@@ -99,7 +99,7 @@ import HomeCoach from "@/views/Home/HomeCoach.vue"
 </script>
 <script>
 export default {
-  components:{
+  components: {
     HomeBanner,
     HomeJoin,
     HomeClass,
@@ -203,146 +203,146 @@ export default {
 // test
 
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            position: fixed;
-            width: 100%;
-            z-index: 2;
-            background: none;
-            transition: background-color 0.3s;
-        }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background: none;
+  transition: background-color 0.3s;
+}
 
-        .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.8);
+}
 
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
 
-        .navbar ul li {
-            margin-left: 20px;
-        }
+.navbar ul li {
+  margin-left: 20px;
+}
 
-        .navbar ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
 
-        .navbar.scrolled ul li a {
-            color: #333;
-        }
+.navbar.scrolled ul li a {
+  color: #333;
+}
 
-        .navbar .cta {
-            background-color: #002451;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-left: 10px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+.navbar .cta {
+  background-color: #002451;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-        .navbar .cta-container {
-            display: flex;
-            align-items: center;
-        }
+.navbar .cta-container {
+  display: flex;
+  align-items: center;
+}
 
-        .navbar .cta-container .cta:hover {
-            background-color: #fff;
-            color: #002451;
-            border: 3px solid #002451;
-        }
+.navbar .cta-container .cta:hover {
+  background-color: #fff;
+  color: #002451;
+  border: 3px solid #002451;
+}
 
-        .header {
-            text-align: center;
-            padding: 120px 20px 80px;
-            position: relative;
-            background: url('img/shaking.jpg') no-repeat center center;
-            background-size: cover;
-            color: #fff;
-            width: 100%;
-            height: 100vh;
-        }
+.header {
+  text-align: center;
+  padding: 120px 20px 80px;
+  position: relative;
+  background: url('img/shaking.jpg') no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  width: 100%;
+  height: 100vh;
+}
 
-        .header h2 {
-            font-size: 4em;
-            margin: 50px 0;
-        }
+.header h2 {
+  font-size: 4em;
+  margin: 50px 0;
+}
 
-        .header p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
+.header p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
 
-        
 
-        .logo img {
-            width: 110px;
-        }
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
+.logo img {
+  width: 110px;
+}
 
-        .menu-toggle div {
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-            margin: 4px 0;
-        }
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
-        @media (max-width: 768px) {
-            .navbar ul {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.9);
-                position: absolute;
-                top: 60px;
-                left: 0;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
+.menu-toggle div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
 
-            .navbar ul li {
-                margin: 10px 0;
-                text-align: center;
-            }
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-            .menu-toggle {
-                display: flex;
-                margin-left: 10px;
-            }
+  .navbar ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
 
-            .navbar .cta-container {
-                margin-left: auto;
-                margin-right: 10px;
-            }
+  .menu-toggle {
+    display: flex;
+    margin-left: 10px;
+  }
 
-            .navbar.active ul {
-                display: flex;
-            }
-        }
+  .navbar .cta-container {
+    margin-left: auto;
+    margin-right: 10px;
+  }
+
+  .navbar.active ul {
+    display: flex;
+  }
+}
 
 
 
@@ -392,6 +392,4 @@ export default {
 //       }
 //     }
 //   }
-// }
-
-</style>
+// }</style>
