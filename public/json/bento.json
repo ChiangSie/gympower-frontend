@@ -1,0 +1,110 @@
+[{
+    "id": 1,
+    "price": 20,
+    "image": "/src/assets/img/food_7.png",
+    "tag": "主食"
+
+},
+{
+    "id": 2,
+    "price": 40,
+    "image": "/src/assets/img/food_8.png",
+    "tag": "主食"
+},
+{
+    "id": 3,
+    "price": 50,
+    "image": "/src/assets/img/food_12.png",
+    "tag": "主食"
+},
+{
+    "id": 4,
+    "price": 30,
+    "image": "/src/assets/img/food_13.png",
+    "tag": "主食"
+},
+{
+    "id": 5,
+    "price": 20,
+    "image": "/src/assets/img/food_9.png",
+    "tag": "海鮮類"
+},
+{
+    "id": 6,
+    "price": 50,
+    "image": "/src/assets/img/food_6.png",
+    "tag": "海鮮類"
+},
+{
+    "id": 7,
+    "price": 40,
+    "image": "/src/assets/img/food_7.png",
+    "tag": "海鮮類"
+},
+{
+    "id": 8,
+    "price": 30,
+    "image": "/src/assets/img/food_8.png",
+    "tag": "海鮮類"
+
+},{
+    "id": 9,
+    "price": 40,
+    "image": "/src/assets/img/food_17.png",
+    "tag": "肉類"
+},{
+    "id": 10,
+    "price": 40,
+    "image": "/src/assets/img/food_6.png",
+    "tag": "蔬菜類"
+},{
+    "id": 11,
+    "price": 40,
+    "image": "/src/assets/img/food_14.png",
+    "tag": "蔬菜類"
+},{
+    "id": 12,
+    "price": 40,
+    "image": "/src/assets/img/food_15.png",
+    "tag": "蔬菜類"
+},{
+    "id": 13,
+    "price": 40,
+    "image": "/src/assets/img/food_16.png",
+    "tag": "蔬菜類"
+},{
+    "id": 14,
+    "price": 40,
+    "image": "/src/assets/img/food_11.png",
+    "tag": "蛋豆類"
+},{
+    "id": 15,
+    "price": 40,
+    "image": "/src/assets/img/food_18.png",
+    "tag": "蛋豆類"
+},{
+    "id": 16,
+    "price": 40,
+    "image": "/src/assets/img/food_2.png",
+    "tag": "蛋豆類"
+},{
+    "id": 17,
+    "price": 40,
+    "image": "/src/assets/img/food_19.png",
+    "tag": "蛋豆類"
+},{
+    "id": 18,
+    "price": 40,
+    "image": "/src/assets/img/food_1.png",
+    "tag": "肉類"
+},{
+    "id": 19,
+    "price": 40,
+    "image": "/src/assets/img/food_3.png",
+    "tag": "肉類"
+},{
+    "id": 20,
+    "price": 40,
+    "image": "/src/assets/img/food_10.png",
+    "tag": "肉類"
+}]
