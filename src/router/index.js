@@ -9,6 +9,7 @@ const router = createRouter({
       name: 'Home',
       component: HomeView,
     },
+    
     {
       path: '/about',
       name: 'AboutusView',
@@ -80,11 +81,17 @@ const router = createRouter({
       component: () => import('../views/Course/Courseinfo/CourseRating.vue')
     },
     {
+
       scrollBehavior (to, from, savedPosition) {
         // return 期望滚动到哪个的位置
         // 始终滚动到顶部
         return { top: 0 }
-      }
+      },
+        
+      path: '/aboutmap',
+      name: 'AboutMap',
+      component: () => import('../views/About/AboutMap.vue')
+
     }
   ]
 })
