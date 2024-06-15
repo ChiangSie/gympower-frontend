@@ -17,6 +17,7 @@
 <script></script>
 
 <style lang="scss" scoped>
+
 .banner_section{
     margin-top: 67px;
     width: 100%;

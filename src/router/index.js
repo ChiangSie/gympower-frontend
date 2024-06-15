@@ -6,9 +6,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView,
-      
     },
     {
       path: '/about',
@@ -80,6 +79,13 @@ const router = createRouter({
       name: 'CourseRating',
       component: () => import('../views/Course/Courseinfo/CourseRating.vue')
     },
+    {
+      scrollBehavior (to, from, savedPosition) {
+        // return 期望滚动到哪个的位置
+        // 始终滚动到顶部
+        return { top: 0 }
+      }
+    }
   ]
 })
 

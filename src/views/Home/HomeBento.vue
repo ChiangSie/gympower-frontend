@@ -11,7 +11,7 @@
             <div class="customized">
               <h3>客製餐盒</h3>
               <p>會員專屬客製化餐盒，為你的健康而設計。依據你的運動目標和營養需求精心搭配， 無論是增肌、減脂，還是保持健康體型，我們的餐點都能助你達成健身目標。健康從飲食開始，讓我們陪伴你走向更強壯、更健康的未來。</p>
-              <button>開始客製</button>
+              <button><a href="#">開始客製</a></button>
               <div class="pic-bento">
                 <img src="../../assets/img/pic-bento.png">
               </div>
@@ -64,6 +64,19 @@
 <script></script>
 
 <style lang="scss" scoped>
+*{
+  text-decoration: none;
+}
+// 背景裝飾文字
+.decorate-txt {
+  -webkit-text-stroke: .8px #7E7E7E;
+  color: #F9F8F7;
+  display: flex;
+  font-size: clamp(60px, 6.25vw, 80px);
+  letter-spacing: 0;
+  font-weight: bold;
+  justify-content: flex-start;
+}
 .section-bento {
   .container-bento {
     max-width: 1100px;
@@ -103,8 +116,13 @@
             border: none;
             background: #002451;
             border-radius: 10px;
-            color: #fff;
             font-size: clamp(16px, 1.5625vw, 20px);
+            a{
+              color: #fff;
+            }
+            &:hover a{
+              color:#aaa;
+            }
           }
 
           .pic-bento {
@@ -134,7 +152,6 @@
           gap: 5%;
 
           .txt {
-
             h4 {
               font-weight: bold;
             }
@@ -145,8 +162,6 @@
             width: 30%;
             border-radius: 50%;
             overflow: hidden;
-
-
             img {
               display: block;
               aspect-ratio: 1 / 1;
@@ -158,6 +173,9 @@
     }
 
   }
+}
+.customized_btn{
+
 }
 
 // 客製餐點 RWD

@@ -4,7 +4,7 @@
   <CoachBanner/>
 
 
-  <CoachCate/>
+  <!-- <CoachCate/> -->
 
 
   <CoachCard/>

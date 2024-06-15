@@ -1,4 +1,15 @@
+
 <template>
+    <!-- btn -->
+    <section class="category">
+        <h3>{{ title }}</h3>
+        <div class="button" v-for="btn in option" :key="btn.btn">
+            <div>
+                <a href="#" class="button-link">{{ btn.btn }} </a>
+            </div>
+        </div>
+    </section>
+<!-- card -->
     <div class="card-container">
     <div class="row">
         <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="coach in coaches" :key="coach.id">
@@ -20,55 +31,75 @@
 <script>
 export default {
     data() {
-    return {
-        coaches: [
-        {
-            id: '1',
-            name: '李俊輝',
-            expertise: '專業領域：核心訓練、有氧運動',
-            rating: '4.8',
-            image: '/src/assets/img/coach.png'
-        },
-        {
-            id: '2',
-            name: '李俊英',
-            expertise: '專業領域：核心訓練、有氧運動',
-            rating: '4.8',
-            image: '/src/assets/img/coach.png'
-        },
-        {
-            id: '3',
-            name: '李俊英',
-            expertise: '專業領域：核心訓練、有氧運動',
-            rating: '4.8',
-            image: '/src/assets/img/coach.png'
-        },
-        {
-            id: '4',
-            name: '李俊英',
-            expertise: '專業領域：核心訓練、有氧運動',
-            rating: '4.8',
-            image: '/src/assets/img/coach.png'
-        },
-        {
-            id: '5',
-            name: '李俊英',
-            expertise: '專業領域：核心訓練、有氧運動',
-            rating: '4.8',
-            image: '/src/assets/img/coach.png'
-        },
-        {
-            id: '6',
-            name: '李俊英',
-            expertise: '專業領域：核心訓練、有氧運動',
-            rating: '4.8',
-            image: '/src/assets/img/coach.png'
-        },
-
-        ]
-    };
+        return {
+            title: '專業陣容',
+            option: [
+                {
+                    btn: '有氧運動'
+                },
+                {
+                    btn: '重量訓練'
+                },
+                {
+                    btn: '核心訓練'
+                },
+                {
+                    btn: '柔韌性訓練'
+                },
+                {
+                    btn: '功能訓練'
+                },
+                {
+                    btn: '團體課程'
+                }
+            ],
+            coaches: [
+            {
+                id: '1',
+                name: '李俊輝',
+                expertise: '專業領域：核心訓練、有氧運動、重量訓練',
+                rating: '4.8',
+                image: '/src/assets/img/coach.png'
+            },
+            {
+                id: '2',
+                name: '李俊英',
+                expertise: '專業領域：有氧運動、重量訓練、功能訓練',
+                rating: '4.8',
+                image: '/src/assets/img/coach.png'
+            },
+            {
+                id: '3',
+                name: '李俊英',
+                expertise: '專業領域：核心訓練、柔韌性訓練、團體課程',
+                rating: '4.8',
+                image: '/src/assets/img/coach.png'
+            },
+            {
+                id: '4',
+                name: '李俊英',
+                expertise: '專業領域：功能訓練、有氧運動、核心訓練',
+                rating: '4.8',
+                image: '/src/assets/img/coach.png'
+            },
+            {
+                id: '5',
+                name: '李俊英',
+                expertise: '專業領域：核心訓練、有氧運動、團體課程',
+                rating: '4.8',
+                image: '/src/assets/img/coach.png'
+            },
+            {
+                id: '6',
+                name: '李俊英',
+                expertise: '專業領域：核心訓練、有氧運動、柔韌性訓練',
+                rating: '4.8',
+                image: '/src/assets/img/coach.png'
+            },
+            ]
+        };
     }
-};
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -128,4 +159,28 @@ export default {
     
 }
 
+// btn
+.category {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    margin: 0 8px 0;
+}
+
+.button-link {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid #71c4ef;
+    background-color: #f9f8f7;
+    color: #71c4ef;
+    border-radius: 5%;
+
+    &:hover {
+        background-color: #71c4ef;
+        color: #fff;
+    }
+}
 </style>

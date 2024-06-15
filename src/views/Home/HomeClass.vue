@@ -57,6 +57,16 @@
 <script></script>
 
 <style lang="scss" scoped>
+// 背景裝飾文字
+.decorate-txt {
+  -webkit-text-stroke: .8px #7E7E7E;
+  color: #F9F8F7;
+  display: flex;
+  font-size: clamp(60px, 6.25vw, 80px);
+  letter-spacing: 0;
+  font-weight: bold;
+  justify-content: flex-start;
+}
   .container-classinfo {
   
   .title {
