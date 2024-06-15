@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header :class="$route.name">
         <nav>
             <RouterLink to="/">
                 <picture>
