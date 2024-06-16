@@ -1,0 +1,12 @@
+diff a/src/views/HomeView.vue b/src/views/HomeView.vue	(rejected hunks)
+@@ -200,7 +200,9 @@
+   justify-content: flex-end;
+   margin-right: 5%;
+ }
+-
++</style>
++<style lang="scss" scoped>
++// test
+ * {
+   margin: 0;
+   padding: 0;
