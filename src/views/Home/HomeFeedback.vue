@@ -12,7 +12,7 @@
                     <div class="card">
                         <div class="coach">
                             <div class="pic">
-                                <img src="https://picsum.photos/300/200/?random=10">
+                                <img src="../../assets/img/index/coach.png">
                             </div>
                             <div class="name">
                                 <p>林佳穎</p>
@@ -38,7 +38,7 @@
                     <div class="card">
                         <div class="coach">
                             <div class="pic">
-                                <img src="https://picsum.photos/300/200/?random=10">
+                                <img src="../../assets/img/index/coach2.png">
                             </div>
                             <div class="name">
                                 <p>林佳穎</p>
