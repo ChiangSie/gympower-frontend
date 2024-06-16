@@ -73,20 +73,10 @@
 
   <HomeCoach />
 
+  <HomeFeedback />
 
+  <HomeCoupon />
 
-  <!-- 學員回饋 -->
-  <section class="section section-feedback">
-    <div class="container container-feedback">
-      <h2 class="decorate-txt flex-end">FEEDBACK</h2>
-    </div>
-  </section>
-  <!-- 扭蛋 -->
-  <section class="section section-coupon">
-    <div class="container container-coupon">
-      <h2 class="decorate-txt ">COUPON</h2>
-    </div>
-  </section>
 </template>
 
 
@@ -96,6 +86,8 @@ import HomeJoin from "@/views/Home/HomeJoin.vue"
 import HomeClass from "@/views/Home/HomeClass.vue"
 import HomeBento from "@/views/Home/HomeBento.vue"
 import HomeCoach from "@/views/Home/HomeCoach.vue"
+import HomeFeedback from "@/views/Home/HomeFeedback.vue"
+import HomeCoupon from "@/views/Home/HomeCoupon.vue"
 </script>
 <script>
 export default {
@@ -104,7 +96,9 @@ export default {
     HomeJoin,
     HomeClass,
     HomeBento,
-    HomeCoach
+    HomeCoach,
+    HomeFeedback,
+    HomeCoupon,
   },
   data() {
     return {
