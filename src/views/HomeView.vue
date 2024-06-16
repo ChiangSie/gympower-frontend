@@ -77,6 +77,8 @@
 
   <HomeCoupon />
 
+  <HomeTest />
+
 </template>
 
 
@@ -88,6 +90,7 @@ import HomeBento from "@/views/Home/HomeBento.vue"
 import HomeCoach from "@/views/Home/HomeCoach.vue"
 import HomeFeedback from "@/views/Home/HomeFeedback.vue"
 import HomeCoupon from "@/views/Home/HomeCoupon.vue"
+import HomeTest from "@/views/Home/HomeTest.vue"
 </script>
 <script>
 export default {
@@ -99,6 +102,7 @@ export default {
     HomeCoach,
     HomeFeedback,
     HomeCoupon,
+    HomeTest
   },
   data() {
     return {
