@@ -19,7 +19,7 @@
                 <RouterLink to="/login">
                     <span class="material-symbols-outlined"> person </span>
                 </RouterLink>
-                <RouterLink to="/cart">
+                <RouterLink to="/asidecart">
                     <span class="material-symbols-outlined"> shopping_cart </span>
                 </RouterLink>
                 <div class="hb" id="hb">

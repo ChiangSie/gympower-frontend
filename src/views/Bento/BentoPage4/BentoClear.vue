@@ -18,8 +18,11 @@
                     <button class="button_shopping">繼續購物</button>
                 </div>
                 <div class="bento_clear_button_1">
-                    <button class="button_cart">前往購物車</button>
-                    <button class="button_shopping">繼續購物</button>
+                    <RouterLink to='/asidecart' class="button_cart_1">
+                        <button>前往購物車</button>
+                    </RouterLink>
+                    <RouterLink to='/bento' class="button_shopping_1"><button>繼續購物</button>
+                    </RouterLink>
                 </div>
                 <div class="blurred_box"></div>
             </div>
@@ -53,6 +56,7 @@ export default {
 @media screen and (max-width: 768px) {
     .bento_list {
         width: 75%;
+        margin-top: 25%;
     }
 }
 
@@ -122,6 +126,13 @@ export default {
     top: 170px;
     left: 0px;
     width: 100%;
+
+    a.router-link-exact-active {
+        text-decoration: none;
+        border: none;
+        display: block;
+    }
+
 }
 
 .bento_clear_button .button_cart,
@@ -131,11 +142,12 @@ export default {
     cursor: pointer;
 }
 
-.bento_clear_button_1 .button_cart,
-.button_shopping {
+.bento_clear_button_1 .button_cart_1,
+.button_shopping_1 {
     width: 40%;
-    padding: 10px;
-    cursor: pointer;
+
+
+
 }
 
 .bento_clear_button .button_cart {
@@ -146,12 +158,17 @@ export default {
     border-radius: 10px;
 }
 
-.bento_clear_button_1 .button_cart {
+.bento_clear_button_1 .button_cart_1 button {
     font-size: 16px;
+    font-weight: 600;
     color: #002451;
     border: 2px solid #002451;
     background-color: transparent;
     border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+
 }
 
 .bento_clear_button .button_shopping {
@@ -162,12 +179,15 @@ export default {
     border-radius: 10px;
 }
 
-.bento_clear_button_1 .button_shopping {
+.bento_clear_button_1 .button_shopping_1 button {
     font-size: 16px;
     color: #fff;
     background-color: #002451;
     border: 2px solid #002451;
     border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
 }
 
 /* --------------------------------------------- */
