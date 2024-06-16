@@ -395,69 +395,7 @@
 
         } //左邊
         @media screen and (max-width: 1200px) {
-            .bento_list_detail{
-                width:  100%;
-                margin-right: 2%;
-
-                .bento_list_item{
-                display: flex;
-                justify-content: space-between;
-
-                .bento_list_item_con{
-                    display: flex;
-                    justify-content: flex-start;
-                    width: 41%;
-                }
-                .bento_list_item_con span{
-                    padding-right: 27%;
-                }   
-                }
-
-                .bento_list_item_clear button{
-                    width: 28%;
-                    margin: 2%;
-                }
-                .bento_list_item_option_cart{
-                    display: no;
-                    justify-content: flex-start;
-                }
-                .bento_list_item_option_pic{
-                    width: 20%;
-                    margin: 2%;
-                }
-                input[type="checkbox"].item-select {
-                margin-right: 8%;
-                margin-left: -2%;
-                }
-
-                .bento_list_item_option_center{
-                    display: flex;
-                    margin: auto 10%;
-                    width: 90%;
-                }
-                .bento_list_item_option_name{
-                    display: flex;
-                    width: 66%;
-                }
-                .bento_list_item_option_btn{
-                    padding: 6%;
-                }
-                .bento_list_item_option_qty{
-                    width: 80%;
-                }
-                .quantity-input{
-                    width: 30%;
-                    padding: 4%;
-                }
-                .bento_list_item_option_qty button{
-                    width: 20%;
-                }
-                .bento_list_item_option_price{
-                    display: flex;
-                    margin-left: 10%;
-                }
             }
-        }
 
         @media screen and (max-width: 992px) {
             .bento_list_detail{
