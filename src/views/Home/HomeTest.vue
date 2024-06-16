@@ -2,13 +2,9 @@
     <div class="container container-classinfo">
         <h2 class="title">課程資訊</h2>
         <div class="row">
-            <swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{
-                delay: 2500,
-                disableOnInteraction: false,
-            }" :pagination="{
+            <swiper :slidesPerView="1" :spaceBetween="30" :loop="true" :pagination="{
                 clickable: true,
             }" :navigation="true" :modules="modules" class="mySwiper">
-
                 <swiper-slide>
                     <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
                         <div class="card">
@@ -53,11 +49,10 @@
                         </div>
                     </div>
                 </swiper-slide>
+                <swiper-slide>
+                </swiper-slide>
+                <swiper-slide>Slide 3</swiper-slide>
 
-                <swiper-slide>Slide 2</swiper-slide><swiper-slide>Slide 3</swiper-slide>
-                <swiper-slide>Slide 4</swiper-slide><swiper-slide>Slide 5</swiper-slide>
-                <swiper-slide>Slide 6</swiper-slide><swiper-slide>Slide 7</swiper-slide>
-                <swiper-slide>Slide 8</swiper-slide><swiper-slide>Slide 9</swiper-slide>
             </swiper>
             <div class="more">了解更多</div>
         </div>
