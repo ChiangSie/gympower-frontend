@@ -188,10 +188,12 @@ export default {
   letter-spacing: 0;
   font-weight: bold;
   justify-content: flex-start;
+  margin-left: 5%;
 }
 
 .flex-end {
   justify-content: flex-end;
+  margin-right: 5%;
 }
 
 * {
