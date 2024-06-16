@@ -4,7 +4,7 @@
             <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="food in foods" :key="food.id">
                 <div class="card">
                     <div class="price_tag">
-                        <h4>{{ food.price }}</h4>
+                        <h4>${{ food.price }}</h4>
                     </div>
                     <div class="card_details">
                         <img :src="food.image" alt="食物照片" class="card-image" />
@@ -18,57 +18,16 @@
 
 <script>
 export default {
-    data() {
-        return {
-            foods: [
-                {
-                    id: '1',
-                    price: '$20',
-                    image: '/src/assets/img/food_1.png'
-                },
-                {
-                    id: '2',
-                    price: '$40',
-                    image: '/src/assets/img/food_2.png'
-                },
-                {
-                    id: '3',
-                    price: '$50',
-                    image: '/src/assets/img/food_3.png'
-                },
-                {
-                    id: '4',
-                    price: '$30',
-                    image: '/src/assets/img/food_4.png'
-                },
-                {
-                    id: '5',
-                    price: '$20',
-                    image: '/src/assets/img/food_5.png'
-                },
-                {
-                    id: '6',
-                    price: '$50',
-                    image: '/src/assets/img/food_6.png'
-                },
-                {
-                    id: '7',
-                    price: '$40',
-                    image: '/src/assets/img/food_7.png'
-                },
-                {
-                    id: '8',
-                    price: '$30',
-                    image: '/src/assets/img/food_8.png'
-                },
-
-            ]
-        };
+    props: {
+        foods: {
+            type: Array,
+            default: () => [],
+        }
     }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .card {
     position: relative;
 
@@ -96,7 +55,7 @@ export default {
     padding: 16px;
     text-align: center;
     margin: 30px 0 30px;
-    /* border: 1px solid #ccc; */
+    // border: 1px solid #ccc;
 
 }
 
@@ -141,7 +100,7 @@ export default {
 
     h4 {
         text-align: center;
-        padding-top: 15px;
+        padding-top: 18px;
     }
 }
 
@@ -166,6 +125,7 @@ export default {
 
 .details_button a {
     color: #fff;
+    text-decoration: none;
 }
 
 .details_button:hover {

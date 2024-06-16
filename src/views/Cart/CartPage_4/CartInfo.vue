@@ -265,7 +265,7 @@ export default {
 
 .step p {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: .9em;
 }
 
 .step.active .circle {

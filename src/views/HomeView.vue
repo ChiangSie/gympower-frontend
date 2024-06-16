@@ -73,20 +73,12 @@
 
   <HomeCoach />
 
+  <HomeFeedback />
 
+  <HomeCoupon />
 
-  <!-- 學員回饋 -->
-  <section class="section section-feedback">
-    <div class="container container-feedback">
-      <h2 class="decorate-txt flex-end">FEEDBACK</h2>
-    </div>
-  </section>
-  <!-- 扭蛋 -->
-  <section class="section section-coupon">
-    <div class="container container-coupon">
-      <h2 class="decorate-txt ">COUPON</h2>
-    </div>
-  </section>
+  <HomeTest />
+
 </template>
 
 
@@ -96,6 +88,9 @@ import HomeJoin from "@/views/Home/HomeJoin.vue"
 import HomeClass from "@/views/Home/HomeClass.vue"
 import HomeBento from "@/views/Home/HomeBento.vue"
 import HomeCoach from "@/views/Home/HomeCoach.vue"
+import HomeFeedback from "@/views/Home/HomeFeedback.vue"
+import HomeCoupon from "@/views/Home/HomeCoupon.vue"
+import HomeTest from "@/views/Home/HomeTest.vue"
 </script>
 <script>
 export default {
@@ -104,7 +99,10 @@ export default {
     HomeJoin,
     HomeClass,
     HomeBento,
-    HomeCoach
+    HomeCoach,
+    HomeFeedback,
+    HomeCoupon,
+    HomeTest
   },
   data() {
     return {
@@ -184,7 +182,7 @@ export default {
 </script>
 
 <!-- lang="sass" -->
-<style lang="scss">
+<style lang="scss" scoped>
 // test
 .decorate-txt {
   -webkit-text-stroke: .8px #7E7E7E;
@@ -194,10 +192,12 @@ export default {
   letter-spacing: 0;
   font-weight: bold;
   justify-content: flex-start;
+  margin-left: 5%;
 }
 
 .flex-end {
   justify-content: flex-end;
+  margin-right: 5%;
 }
 
 * {

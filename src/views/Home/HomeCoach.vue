@@ -1,10 +1,10 @@
 <script setup></script>
 
 <template>
-      <section class="section section-coach">
+  <section class="section section-coach">
+    <h2 class="decorate-txt">OUR COACH</h2>
     <div class="container container-coach">
-      <h2 class="decorate-txt">OUR COACH</h2>
-      <h2>教練介紹</h2>
+      <h2 class="title">教練介紹</h2>
       <div class="row">
         <div class=" col col-12 col-md-6 col-lg-6 col-xl-6">
           <div class="pic">
@@ -38,9 +38,10 @@
 <style lang="scss" scoped>
 .section-coach {
   .container-coach {
-    h2 {
+    .title {
       font-weight: bold;
       text-align: center;
+      margin-bottom: 60px;
     }
 
     .row {
@@ -107,8 +108,14 @@
             margin: auto;
             width: 60%;
 
+            h3,
+            ul {
+              line-height: 1.5;
+              text-align: center
+            }
+
             button {
-              align-self: flex-end;
+              margin: auto;
             }
           }
         }

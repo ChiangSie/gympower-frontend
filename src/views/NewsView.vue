@@ -5,6 +5,7 @@ import NewsDiary from './News/NewsDiary.vue'
 </script>
 
 <template>
+  
   <Banner />
   <NewsClass />
   <NewsDiary />

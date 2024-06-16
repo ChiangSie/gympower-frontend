@@ -1,9 +1,9 @@
 <script setup></script>
 <template>
-    <section class="section section-classinfo">
+  <section class="section section-classinfo">
+    <!-- 背景裝飾字 -->
+    <h2 class="decorate-txt">COURSES</h2>
     <div class="container container-classinfo">
-      <!-- 背景裝飾字 -->
-      <h2 class="decorate-txt">COURSES</h2>
       <h2 class="title">課程資訊</h2>
       <div class="row">
         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
@@ -57,8 +57,8 @@
 <script></script>
 
 <style lang="scss" scoped>
-  .container-classinfo {
-  
+.container-classinfo {
+
   .title {
     text-align: center;
     margin-bottom: 60px;

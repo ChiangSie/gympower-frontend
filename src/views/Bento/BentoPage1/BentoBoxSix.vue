@@ -11,8 +11,10 @@
             </div>
         </div>
         <button class="bentobox_button">
+
             <p>{{ button_txt }}</p>
             <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
+
         </button>
     </section>
 

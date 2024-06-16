@@ -7,4 +7,4 @@
 import SignInup from "./Login/SignIn.vue"
 </script>
 
-<style></style>
+<style scoped></style>
