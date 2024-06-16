@@ -44,8 +44,8 @@
     </div>
 </template>
 
-<script>
 
+<script>
 export default{
     data(){
         return{
@@ -283,8 +283,9 @@ export default{
         this.totalPages = Math.ceil(this.orderDataList.length / this.pageSize);
     }
 }
-
 </script>
+
+
 
 <style lang="scss" scoped>
 .order_page{

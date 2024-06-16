@@ -184,7 +184,7 @@ export default {
 </script>
 
 <!-- lang="sass" -->
-<style lang="scss">
+<style lang="scss" scoped>
 // test
 .decorate-txt {
   -webkit-text-stroke: .8px #7E7E7E;

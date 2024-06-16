@@ -51,7 +51,10 @@
         </div>
     </section>
 </template>
+
 <script></script>
+
+
 <style lang="scss" scoped>
 hr{
     width: 100%;
