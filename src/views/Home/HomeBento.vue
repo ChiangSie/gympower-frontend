@@ -2,8 +2,8 @@
 
 <template>
   <section class="section section-bento">
+    <h2 class="decorate-txt flex-end">BENTO</h2>
     <div class="container container-bento">
-      <h2 class="decorate-txt flex-end">BENTO</h2>
       <h2 class="title">客製化專屬於你的餐盒</h2>
       <div class="row">
         <div class="col-12 col-md-12 col-lg-6 col-xl-6">

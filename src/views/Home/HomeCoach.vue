@@ -2,8 +2,8 @@
 
 <template>
   <section class="section section-coach">
+    <h2 class="decorate-txt">OUR COACH</h2>
     <div class="container container-coach">
-      <h2 class="decorate-txt">OUR COACH</h2>
       <h2 class="title">教練介紹</h2>
       <div class="row">
         <div class=" col col-12 col-md-6 col-lg-6 col-xl-6">
@@ -42,7 +42,6 @@
       font-weight: bold;
       text-align: center;
       margin-bottom: 60px;
-
     }
 
     .row {

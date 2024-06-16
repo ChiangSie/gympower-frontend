@@ -4,8 +4,8 @@
 <template>
     <!-- 學員回饋 -->
     <section class="section section-feedback">
+        <h2 class="decorate-txt flex-end">FEEDBACK</h2>
         <div class="container container-feedback">
-            <h2 class="decorate-txt flex-end">FEEDBACK</h2>
             <h2 class="title">學員回饋</h2>
             <div class="row">
                 <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
@@ -69,7 +69,7 @@
 <style lang="scss" scoped>
 .section-feedback {
     .container-feedback {
-        max-width: 1000px;
+        max-width: 1100px;
 
         .title {
             font-weight: bold;
