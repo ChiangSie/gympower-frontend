@@ -1,6 +1,3 @@
-<script setup>
-import DiscountCard from '@/component/DiscountCard.vue'
-</script>
 
 <template>
     <section class="discount_page">
@@ -19,7 +16,10 @@ import DiscountCard from '@/component/DiscountCard.vue'
         </div>
     </section>
 </template>
+
+
 <script>
+import DiscountCard from '@/component/DiscountCard.vue'
 export default{
     components:{
         DiscountCard

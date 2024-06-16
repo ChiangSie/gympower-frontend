@@ -18,4 +18,4 @@ import Place from './About/AboutPlace.vue'
   <Place />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>
