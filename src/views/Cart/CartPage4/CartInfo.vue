@@ -118,17 +118,20 @@
                         <span>{{ total_name }}</span>
                         <span>${{ total_price }}</span>
                     </div>
-                    <button class="bento_list_info_btn">{{ next_page }}</button>
+                    <RouterLink to='/cart/cartpage5'>
+                        <button class="bento_list_info_btn">{{ next_page }}</button>
+                    </RouterLink>
                 </div>
 
 
             </div>
         </div>
+        <!--服務條款 、 上一步 -->
         <div class="bento_list_item_rule">
-            <div class="bento_list_item_rule_up">
+            <RouterLink to='/cart' class="bento_list_item_rule_up">
                 <i class="fa-solid fa-angle-left"></i>
                 <span>{{ Previous }}</span>
-            </div>
+            </RouterLink>
             <div class="bento_list_item_rule_agree">
                 <input type="checkbox" class="item-rule">
                 <span>{{ rule }}</span>
@@ -159,7 +162,7 @@ export default {
             order_subtotal_name: '商品小計',
             discount_name: '優惠卷',
             discount_price_value: -40, // 原始折扣值
-            total_name: '合計', 
+            total_name: '合計',
             next_page: '下一步',
             Previous: '上一步',
             rule: '我已閱讀並同意網站的',
@@ -475,19 +478,27 @@ export default {
     display: flex;
     justify-content: space-evenly;
     margin: 60px 0 30px 0;
+
 }
-.bento_list_item_rule_up{
+
+.bento_list_item_rule_up {
     width: 8%;
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #000;
+    border-bottom: 1.5px solid #002451;
+    text-decoration: none;
+    color: #002451;
+    font-weight: 600;
 }
-.bento_list_item_rule_up:hover{
+
+.bento_list_item_rule_up:hover {
     cursor: pointer;
 }
-.bento_list_item_rule_agree .rule_serve a, .rule_return a{
-    color:#000;
+
+.bento_list_item_rule_agree .rule_serve a,
+.rule_return a {
+    color: #000;
     letter-spacing: .6px;
-    
+
 }
 </style>
