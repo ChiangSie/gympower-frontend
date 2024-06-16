@@ -182,8 +182,9 @@ export default {
 </script>
 
 <!-- lang="sass" -->
-<style lang="scss" scoped>
-// test
+
+<style lang="scss">
+// 這個不用加 scoped 不然會吃不到
 .decorate-txt {
   -webkit-text-stroke: .8px #7E7E7E;
   color: #F9F8F7;
@@ -199,7 +200,9 @@ export default {
   justify-content: flex-end;
   margin-right: 5%;
 }
-
+</style>
+<style lang="scss" scoped>
+// test
 * {
   margin: 0;
   padding: 0;
