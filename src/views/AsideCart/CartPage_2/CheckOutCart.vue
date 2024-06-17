@@ -45,7 +45,9 @@
                     <p>{{ sum_title }}</p>
                     <p>{{ sum_price }}</p>
                 </div>
-                <button class="cart_btn">{{ cart_btn }}</button>
+                <RouterLink to='/cart'>
+                    <button class="cart_btn">{{ cart_btn }}</button>
+                </RouterLink>
             </div>
         </div>
     </section>
@@ -234,12 +236,14 @@ export default {
             background-color: #002451;
             color: #ffffff;
             cursor: pointer;
+            width: 15px;
 
         }
 
         .cart_removeBtn {
             cursor: pointer;
             background-color: transparent;
+            width: 15px;
 
 
         }

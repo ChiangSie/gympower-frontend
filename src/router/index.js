@@ -24,6 +24,21 @@ const router = createRouter({
       component: () => import('../views/BentoView.vue')
     },
     {
+      path: '/bento/bentopage2',
+      name: 'BentoPage2View',
+      component: () => import('../views/Bento/BentoPage2/BentoPage2View.vue')
+    },
+    {
+      path: '/bento/bentopage3',
+      name: 'BentoPage3View',
+      component: () => import('../views/Bento/BentoPage3/BentoPage3View.vue')
+    },
+    {
+      path: '/bento/bentopage4',
+      name: 'BentoPage4View',
+      component: () => import('../views/Bento/BentoPage4/BentoPage4View.vue')
+    },
+    {
       path: '/coach',
       name: 'CoachView',
       component: () => import('../views/CoachView.vue')
@@ -54,6 +69,21 @@ const router = createRouter({
       component: () => import('../views/CartView.vue')
     },
     {
+      path: '/cart/cartpage4',
+      name: 'CartPage4View',
+      component: () => import('../views/Cart/CartPage4/CartPage4View.vue')
+    },
+    {
+      path: '/cart/cartpage5',
+      name: 'CartPage5View',
+      component: () => import('../views/Cart/CartPage5/CartPage5View.vue')
+    },
+    {
+      path: '/asidecart',
+      name: 'AsideCartView',
+      component: () => import('../views/AsideCartView.vue')
+    },
+    {
       path: '/member',
       name: 'MemberView',
       component: () => import('../views/Login/MemberView.vue'),
@@ -81,7 +111,7 @@ const router = createRouter({
       component: () => import('../views/Course/Courseinfo/CourseRating.vue')
     },
     {
-      path: '/aboutmap',
+      path: '/AboutMap',
       name: 'AboutMap',
       component: () => import('../views/About/AboutMap.vue')
     }

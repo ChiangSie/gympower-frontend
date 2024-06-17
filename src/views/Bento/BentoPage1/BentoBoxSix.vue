@@ -10,12 +10,13 @@
                 </div>
             </div>
         </div>
-        <button class="bentobox_button">
+        <RouterLink to='/bento/bentopage2' class="btn_link">
+            <button class="bentobox_button">
+                <p>{{ button_txt }}</p>
+                <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
 
-            <p>{{ button_txt }}</p>
-            <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
-
-        </button>
+            </button>
+        </RouterLink>
     </section>
 
 </template>
@@ -128,28 +129,32 @@ export default {
 
 }
 
-.bentobox_button {
-    color: #ffffff;
-    background-color: #002451;
-    border-radius: 10px;
-    padding: 10px;
-    width: 120px;
-    margin-top: 80px;
-    display: flex;
-    justify-content: space-evenly;
-    cursor: pointer;
-}
+.btn_link {
+    text-decoration: none;
 
-.custom_icon {
-    align-self: center;
-}
+    .bentobox_button {
+        color: #ffffff;
+        background-color: #002451;
+        border-radius: 10px;
+        padding: 10px;
+        width: 120px;
+        margin-top: 80px;
+        display: flex;
+        justify-content: space-evenly;
+        cursor: pointer;
 
+        p {
+            text-align: center;
+        }
+    }
 
-.bentobox_button p {
-    text-align: center;
-}
+    .custom_icon {
+        align-self: center;
+    }
 
-button {
-    border: none;
+    button {
+        border: none;
+    }
+
 }
 </style>

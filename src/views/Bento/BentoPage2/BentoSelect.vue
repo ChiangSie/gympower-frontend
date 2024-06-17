@@ -2,18 +2,22 @@
     <section class="bentobox_banner">
         <div class="bentobox_bg">
             <div class="bento_title_wrap">
-                <button class="bentobox_button_left">
-                    <font-awesome-icon :icon="['fas', 'chevron-left']" class="custom_icon_left" />
-                    <p>{{ button_txt_left }}</p>
-                </button>
+                <RouterLink to='/bento' class="btn_link">
+                    <button class="bentobox_button_left">
+                        <font-awesome-icon :icon="['fas', 'chevron-left']" class="custom_icon_left" />
+                        <p>{{ button_txt_left }}</p>
+                    </button>
+                </RouterLink>
                 <div class="bento_title">
                     <p>{{ subtitle_txt }}</p>
                     <h1>{{ title_txt }}</h1>
                 </div>
-                <button class="bentobox_button_right">
-                    <p>{{ button_txt_right }}</p>
-                    <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
-                </button>
+                <RouterLink to='/bento/bentopage3' class="btn_link">
+                    <button class="bentobox_button_right">
+                        <p>{{ button_txt_right }}</p>
+                        <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
+                    </button>
+                </RouterLink>
             </div>
             <div class="bento_info">
                 <div class="bento_pic">
@@ -89,6 +93,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.btn_link {
+    text-decoration: none;
 }
 
 .bentobox_button_left {

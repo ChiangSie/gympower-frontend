@@ -182,24 +182,26 @@ export default {
 </script>
 
 <!-- lang="sass" -->
+<style lang="scss">
+ // 這個不用加 scoped 不然會吃不到
+ .decorate-txt {
+   -webkit-text-stroke: .8px #7E7E7E;
+   color: #F9F8F7;
+   display: flex;
+   font-size: clamp(60px, 6.25vw, 80px);
+   letter-spacing: 0;
+   font-weight: bold;
+   justify-content: flex-start;
+   margin-left: 5%;
+ }
+
+ .flex-end {
+   justify-content: flex-end;
+   margin-right: 5%;
+ }
+</style>
 <style lang="scss" scoped>
 // test
-.decorate-txt {
-  -webkit-text-stroke: .8px #7E7E7E;
-  color: #F9F8F7;
-  display: flex;
-  font-size: clamp(60px, 6.25vw, 80px);
-  letter-spacing: 0;
-  font-weight: bold;
-  justify-content: flex-start;
-  margin-left: 5%;
-}
-
-.flex-end {
-  justify-content: flex-end;
-  margin-right: 5%;
-}
-
 * {
   margin: 0;
   padding: 0;
