@@ -34,7 +34,7 @@ export default {
         }
     },
     mounted() {
-        fetch('/json/bento.json')
+        fetch('${import.meta.env.BASE_URL}bento.json')
             .then((res) => res.json())
             .then((json) => {
                 //確認有沒有response

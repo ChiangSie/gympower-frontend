@@ -61,7 +61,7 @@ export default{
                 },
                 {
                     id:5,
-                    disnum1:9,
+                    disnum1:90,
                     disnum2:9,
                     distime1:'2024/05/01',
                     distime2:'2024/05/31',
