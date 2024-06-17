@@ -1,10 +1,14 @@
-<script setup></script>
+
 <template>
-    <div>
+    <section>
         <h2>會員課程</h2>
         <hr>
         
-    </div>
+    </section>
 </template>
-<script></script>
-<style lang="scss" scoped></style>
+<script>
+
+</script>
+<style lang="scss" scoped>
+
+</style>

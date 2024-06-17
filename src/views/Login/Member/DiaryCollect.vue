@@ -10,14 +10,17 @@
             <button @click="currentPage = totalPages"><i class="fa-solid fa-angles-right"></i></button>
         </div>
 
-        <div class="diarycollectcard" v-for="item in paginateddiarylist" :key="item.id">
-            <span class="linetitle"> <span>{{ item.date }}</span> <span>{{ item.author }}</span> </span>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.content }}</p>
-            <h4>{{ item.detail }}</h4>
-            <div class="list_part">
-                <li v-for="item2 in item.detailcontent" :key="item2.no">{{ item2.content }}</li>
+        <div class="fullcard" v-for="item in paginateddiarylist" :key="item.id" :class="{ active: item.isActive }">
+            <div class="diarycollectcard" >
+                <span class="linetitle"> <span>{{ item.date }}</span> <span>{{ item.author }}</span> </span>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+                <h4>{{ item.detail }}</h4>
+                <div class="list_part">
+                    <li v-for="item2 in item.detailcontent" :key="item2.no">{{ item2.content }}</li>
+                </div>
             </div>
+            <button @click="extend($event)"> Read More</button>
         </div>
     </section>
 </template>
@@ -104,7 +107,13 @@ export default{
             if (this.currentPage > 1) {
                 this.currentPage--;
                 }
-        }
+        },
+        extend(event) {
+        const button = event.target;
+        const diaryCollectCard = button.parentNode.querySelector('.diarycollectcard'); 
+        diaryCollectCard.style.height = diaryCollectCard.style.height === '300px' ? '100%' : '300px';
+        button.innerText = diaryCollectCard.style.height === '300px' ? 'Read More' : 'Read Less';
+        },
     },
     mounted() {
         this.totalPages = Math.ceil(this.diarylist.length / this.pageSize);
@@ -133,36 +142,49 @@ hr{
             background-color: transparent;
         }
     }
-    .diarycollectcard{
-        width: 100%;
+    .fullcard{
         border-radius: 15px;
-        border: 1px solid black;
-        padding: 35px;
+        border: 1.5px solid black;
+        background-color: #d4eaf7;
         margin: 20px 0;
-        .linetitle{
-            display: flex;
-            justify-content: space-between;
-            span{
-                font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        .diarycollectcard{
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            padding: 35px;
+            .linetitle{
+                display: flex;
+                justify-content: space-between;
+                span{
+                    font-size: 18px;
+                    }
+                }
+                h3{
+                    margin: 15px 0 ;
+                }
+                p{
+                    width: 60%;
+                    font-size: 14px;
+                }
+                h4{
+                    margin: 10px 0;
+                }
+                .list_part{
+                    width: 95%;
+                    margin: auto;
+                    li{
+                    list-style: none;
+                    margin: 5px 0;
+                }
             }
         }
-        h3{
-            margin: 15px 0 ;
-        }
-        p{
-            width: 60%;
-            font-size: 14px;
-        }
-        h4{
-            margin: 10px 0;
-        }
-        .list_part{
-            width: 95%;
-            margin: auto;
-            li{
-            list-style: none;
-            margin: 5px 0;
-        }
+        button{
+            margin: 25px ;
+            border: none;
+            background-color: transparent;
         }
     }
 }
