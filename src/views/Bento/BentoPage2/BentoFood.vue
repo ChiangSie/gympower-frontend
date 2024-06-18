@@ -8,22 +8,49 @@
                     </div>
                     <div class="card_details">
                         <img :src="food.image" alt="食物照片" class="card-image" />
-                        <button class="details_button"><a href="#">營養成分</a></button>
+                        <button class="details_button" @click="showNutrition(food)">
+                            營養成分
+                        </button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div v-if="selectedFood" class="lightbox" @click.self="closeNutritionInfo">
+            <div class="lightbox-content">
+                <NutritionFacts :food="selectedFood" @close="closeNutritionInfo" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import NutritionFacts from './NutritionFacts.vue';
 export default {
+    components: {
+        NutritionFacts
+    },
     props: {
         foods: {
             type: Array,
             default: () => [],
         }
+    },
+    data() {
+        return {
+            selectedFood: null
+        };
+    },
+    methods: {
+        showNutrition(food) {
+            this.selectedFood = food;
+            document.body.style.overflow = 'hidden';
+        },
+        closeNutritionInfo() {
+            this.selectedFood = null;
+            document.body.style.overflow = 'auto';
+        }
     }
+
 };
 </script>
 

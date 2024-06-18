@@ -169,7 +169,7 @@ export default {
             order_subtotal_name: '商品小計',
             discount_name: '優惠卷',
             discount_price_value: -40, // 原始折扣值
-            total_name: '合計', 
+            total_name: '合計',
             next_page: '下一步',
             Previous: '上一步',
             rule: '我已閱讀並同意網站的',
@@ -200,7 +200,7 @@ export default {
         total_price() {
             return this.order_subtotal_price + this.discount_price_value;
         },
-    }
+    },
 }
 </script>
 
@@ -488,19 +488,24 @@ export default {
     justify-content: space-evenly;
     margin: 60px 0 30px 0;
 }
-.bento_list_item_rule_up{
+
+.bento_list_item_rule_up {
     width: 8%;
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #000;
 }
-.bento_list_item_rule_up:hover{
+
+.bento_list_item_rule_up:hover {
     cursor: pointer;
 }
-.bento_list_item_rule_agree .rule_serve a, .rule_return a{
-    color:#000;
+
+.bento_list_item_rule_agree .rule_serve a,
+.rule_return a {
+    color: #000;
     letter-spacing: .6px;
 }
+
 /* 完成跳窗 */
 .overlay {
     position: fixed;
@@ -513,7 +518,8 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 6;
-    }
+}
+
 .confirmation-box {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     padding: 120px 120px;
@@ -521,6 +527,7 @@ export default {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
+
 .confirmation-box .icon {
     width: 200px;
     height: 200px;
@@ -531,12 +538,14 @@ export default {
     margin-bottom: 20px;
     color: #fff
 }
+
 .confirmation-box .message {
     font-size: 18px;
     font-weight: 800;
     color: #000000;
     margin-bottom: 10px;
 }
+
 .confirmation-box .sub-message {
     font-size: 16px;
     color: #000000;
