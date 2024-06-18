@@ -49,32 +49,35 @@ export default {
       <h2 class="title">課程資訊</h2>
       <div class="row">
         <swiper
-          :slidesPerView="2"
+          :slidesPerView="1"
           :spaceBetween="30"
           :loop="true"
           :navigation="true"
           :modules="modules"
+          :breakpoints="{
+            '850': {
+              slidesPerView: 2,
+            },
+          }"
           class="mySwiper"
         >
           <swiper-slide v-for="course in sourceData" :key="course.id">
-            <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
-              <div class="card">
-                <div class="card-head">
-                  <h2>{{ course.title }}</h2>
+            <div class="card">
+              <div class="card-head">
+                <h2>{{ course.title }}</h2>
+              </div>
+              <div class="card-body">
+                <div class="pic"><img :src="course.image" /></div>
+                <div class="txt">
+                  <h3>
+                    <div>{{ course.coach }}</div>
+                    <span>{{ course.price }}</span>
+                  </h3>
                 </div>
-                <div class="card-body">
-                  <div class="pic"><img :src="course.image" /></div>
-                  <div class="txt">
-                    <h3>
-                      <div>{{ course.coach }}</div>
-                      <span>{{ course.price }}</span>
-                    </h3>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <P class="content">{{ course.describe }}</P>
-                  <button class="apply">{{ course.apply }}</button>
-                </div>
+              </div>
+              <div class="card-footer">
+                <P class="content">{{ course.describe }}</P>
+                <button class="apply">{{ course.apply }}</button>
               </div>
             </div>
           </swiper-slide>
@@ -100,6 +103,11 @@ export default {
   }
 
   .row {
+    .swiper-slide {
+      border-radius: 10px;
+      text-align: left;
+      background-color: #f9f8f7;
+    }
     .card {
       margin-bottom: 30px;
       background-color: #fff;
