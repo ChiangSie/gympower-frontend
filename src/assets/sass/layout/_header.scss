@@ -18,9 +18,13 @@ header {
     align-items: center;
     background-color: #fff;
 
-    .none {
+    .d-nav {
       display: flex;
       gap: 20px;
+    }
+
+    .none {
+      display: none;
     }
 
     a>picture {
@@ -49,12 +53,18 @@ header {
 @media screen and (max-width: 850px) {
   header {
     nav {
+
       // position: relative;
+      .d-nav {
+        display: none;
+      }
 
       .none {
+        display: flex;
         text-align: center;
         background-color: #fff;
         opacity: 0;
+        transition: .5s;
         pointer-events: none;
         position: absolute;
         top: 100%;
