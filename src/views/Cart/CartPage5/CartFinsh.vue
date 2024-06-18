@@ -191,6 +191,37 @@ export default {
         total_price() {
             return this.order_subtotal_price + this.discount_price_value;
         },
+    },
+    methods: {
+        addToCart() {
+            if (!this.isChecked) {
+                this.showAlert('請先勾選已閱讀規則');
+            } else {
+                this.showAlertCart();
+            }
+        },
+        showAlert(message) {
+            Swal.fire({
+                icon: 'warning',
+                title: '提示',
+                text: message,
+                confirmButtonText: '確定'
+            });
+        },
+        showAlertCart() {
+            Swal.fire({
+                position: "center",
+                html: `
+                    <div class="confirmation-box">
+                        <div class="icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="message">${this.order_finsh}</div>
+                        <div class="sub-message">${this.check_oreder}</div>
+                    </div>
+                `,
+                showConfirmButton: false,
+                timer: 2000,
+            })
+        },
     }
 }
 </script>
@@ -522,6 +553,7 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 6;
+    display: none;
 }
 
 .confirmation-box {
