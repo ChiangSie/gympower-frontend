@@ -2,6 +2,8 @@
     <BentoSelect />
     <BentoCate />
     <BentoFood />
+
+
 </template>
 
 <script>
@@ -11,11 +13,13 @@ import BentoFood from './BentoFood.vue'
 
 
 
+
 export default {
     components: {
         BentoSelect,
         BentoCate,
         BentoFood,
+
     }
 };
 </script>

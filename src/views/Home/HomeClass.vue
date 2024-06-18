@@ -49,32 +49,35 @@ export default {
       <h2 class="title">課程資訊</h2>
       <div class="row">
         <swiper
-          :slidesPerView="2"
+          :slidesPerView="1"
           :spaceBetween="30"
           :loop="true"
           :navigation="true"
           :modules="modules"
+          :breakpoints="{
+            '850': {
+              slidesPerView: 2,
+            },
+          }"
           class="mySwiper"
         >
           <swiper-slide v-for="course in sourceData" :key="course.id">
-            <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
-              <div class="card">
-                <div class="card-head">
-                  <h2>{{ course.title }}</h2>
+            <div class="card">
+              <div class="card-head">
+                <h2>{{ course.title }}</h2>
+              </div>
+              <div class="card-body">
+                <div class="pic"><img :src="course.image" /></div>
+                <div class="txt">
+                  <h3>
+                    <div>{{ course.coach }}</div>
+                    <span>{{ course.price }}</span>
+                  </h3>
                 </div>
-                <div class="card-body">
-                  <div class="pic"><img :src="course.image" /></div>
-                  <div class="txt">
-                    <h3>
-                      <div>{{ course.coach }}</div>
-                      <span>{{ course.price }}</span>
-                    </h3>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <P class="content">{{ course.describe }}</P>
-                  <button class="apply">{{ course.apply }}</button>
-                </div>
+              </div>
+              <div class="card-footer">
+                <P class="content">{{ course.describe }}</P>
+                <button class="apply">{{ course.apply }}</button>
               </div>
             </div>
           </swiper-slide>
@@ -100,8 +103,12 @@ export default {
   }
 
   .row {
+    .swiper-slide {
+      border-radius: 10px;
+      text-align: left;
+      background-color: #f9f8f7;
+    }
     .card {
-      margin-bottom: 30px;
       background-color: #fff;
       border-radius: 10px;
 
@@ -145,16 +152,20 @@ export default {
         background-color: #d4eaf7;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
         gap: 20px;
 
         .content {
           width: 60%;
         }
-
+        .apply:hover {
+          scale: 1.2;
+          transition: 0.5s;
+        }
         .apply {
+          cursor: pointer;
           color: #fff;
-          width: 10%;
+          width: 30%;
           font-size: clamp(16px, 2.18vw, 28px);
           padding: 10px;
           text-align: center;
@@ -166,8 +177,13 @@ export default {
         }
       }
     }
-
+    .more:hover {
+      transition: 0.5s;
+      scale: 1.2;
+      z-index: 3;
+    }
     .more {
+      cursor: pointer;
       width: 100px;
       height: 40px;
       background-color: #002451;
@@ -177,6 +193,7 @@ export default {
       line-height: 40px;
       margin-left: auto;
       margin-right: 15px;
+      margin-top: 30px;
     }
   }
 }

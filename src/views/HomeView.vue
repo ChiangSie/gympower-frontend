@@ -76,21 +76,16 @@
   <HomeFeedback />
 
   <HomeCoupon />
-
-  <HomeTest />
-
 </template>
 
-
 <script setup>
-import HomeBanner from "@/views/Home/HomeBanner.vue"
-import HomeJoin from "@/views/Home/HomeJoin.vue"
-import HomeClass from "@/views/Home/HomeClass.vue"
-import HomeBento from "@/views/Home/HomeBento.vue"
-import HomeCoach from "@/views/Home/HomeCoach.vue"
-import HomeFeedback from "@/views/Home/HomeFeedback.vue"
-import HomeCoupon from "@/views/Home/HomeCoupon.vue"
-import HomeTest from "@/views/Home/HomeTest.vue"
+import HomeBanner from "@/views/Home/HomeBanner.vue";
+import HomeJoin from "@/views/Home/HomeJoin.vue";
+import HomeClass from "@/views/Home/HomeClass.vue";
+import HomeBento from "@/views/Home/HomeBento.vue";
+import HomeCoach from "@/views/Home/HomeCoach.vue";
+import HomeFeedback from "@/views/Home/HomeFeedback.vue";
+import HomeCoupon from "@/views/Home/HomeCoupon.vue";
 </script>
 <script>
 export default {
@@ -102,103 +97,110 @@ export default {
     HomeCoach,
     HomeFeedback,
     HomeCoupon,
-    HomeTest
   },
   data() {
     return {
       cardlist: [
         {
           id: 1,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: 'title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 2,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '2title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "2title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 3,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '3title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "3title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 4,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '4title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "4title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 5,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '5title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "5title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 6,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '6title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "6title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 7,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '7title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "7title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
         },
         {
           id: 8,
-          imgSrc: 'https://picsum.photos/300/200/?random=10',
-          title: '8title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!'
-        }
-      ]
+          imgSrc: "https://picsum.photos/300/200/?random=10",
+          title: "8title",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!",
+        },
+      ],
     };
   },
   mounted() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navbar = document.querySelector(".navbar");
 
     if (menuToggle && navbar) {
-      menuToggle.addEventListener('click', () => {
-        navbar.classList.toggle('active');
+      menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("active");
       });
 
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add("scrolled");
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove("scrolled");
         }
       });
     } else {
-      console.error('menu-toggle or navbar elements not found');
+      console.error("menu-toggle or navbar elements not found");
     }
-  }
+  },
 };
 </script>
 
 <!-- lang="sass" -->
 <style lang="scss">
- // 這個不用加 scoped 不然會吃不到
- .decorate-txt {
-   -webkit-text-stroke: .8px #7E7E7E;
-   color: #F9F8F7;
-   display: flex;
-   font-size: clamp(60px, 6.25vw, 80px);
-   letter-spacing: 0;
-   font-weight: bold;
-   justify-content: flex-start;
-   margin-left: 5%;
- }
+// 這個不用加 scoped 不然會吃不到
+.decorate-txt {
+  -webkit-text-stroke: 0.8px #7e7e7e;
+  color: #f9f8f7;
+  display: flex;
+  font-size: clamp(60px, 6.25vw, 80px);
+  letter-spacing: 0;
+  font-weight: bold;
+  justify-content: flex-start;
+  margin-left: 5%;
+}
 
- .flex-end {
-   justify-content: flex-end;
-   margin-right: 5%;
- }
+.flex-end {
+  justify-content: flex-end;
+  margin-right: 5%;
+}
 </style>
 <style lang="scss" scoped>
 // test
@@ -276,7 +278,7 @@ body {
   text-align: center;
   padding: 120px 20px 80px;
   position: relative;
-  background: url('img/shaking.jpg') no-repeat center center;
+  background: url("img/shaking.jpg") no-repeat center center;
   background-size: cover;
   color: #fff;
   width: 100%;
@@ -292,8 +294,6 @@ body {
   font-size: 1.2em;
   margin-bottom: 40px;
 }
-
-
 
 .logo img {
   width: 110px;
@@ -344,9 +344,6 @@ body {
   }
 }
 
-
-
-
 // 首頁 BANNER
 // 暫時註解一下
 // .section-banner {
@@ -392,4 +389,5 @@ body {
 //       }
 //     }
 //   }
-// }</style>
+// }
+</style>
