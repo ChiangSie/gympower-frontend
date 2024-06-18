@@ -159,8 +159,12 @@ export default {
         .content {
           width: 60%;
         }
-
+        .apply:hover {
+          scale: 1.2;
+          transition: 0.5s;
+        }
         .apply {
+          cursor: pointer;
           color: #fff;
           width: 30%;
           font-size: clamp(16px, 2.18vw, 28px);
@@ -174,8 +178,13 @@ export default {
         }
       }
     }
-
+    .more:hover {
+      transition: 0.5s;
+      scale: 1.2;
+      z-index: 3;
+    }
     .more {
+      cursor: pointer;
       width: 100px;
       height: 40px;
       background-color: #002451;
