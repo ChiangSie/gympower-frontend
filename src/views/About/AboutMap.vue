@@ -1,7 +1,6 @@
 <template>
 <div id="app">
     <div class="title_area">
-    <h1>Taiwan<br />Weather Map<br /></h1>
     <hr />
     <div class="forcast" v-if="now_area">
         <h5>{{ now_area.place }} {{ now_area.tag }}</h5>
