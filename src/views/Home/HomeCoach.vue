@@ -13,16 +13,16 @@
         </div>
         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
           <div class="txt">
-            <h3>李俊輝</h3>
-            <p>
-              曾在多家頂尖健身房擔任首席教練，指導過200多位客戶，幫助他們實現顯著的身體改變。
-            </p>
-            <ul>
-              專業領域 :
-              <li>有氧運動與耐力訓練</li>
-              <li>核心訓練與穩定性提升</li>
+
+            <h3>李俊輝 </h3>
+            <p>曾在多家頂尖健身房擔任首席教練，指導過200多位客戶，幫助他們實現顯著的身體改變。</p>
+
+            <ul>專業領域 :
+                <li>◆ 有氧運動與耐力訓練</li>
+                <li>◆ 核心訓練與穩定性提升</li>
+                <li>◆ 幫助學員找回健康體態</li>
             </ul>
-            <button>閱讀更多</button>
+            <button><a href="#">閱讀更多</a></button>
           </div>
         </div>
       </div>
@@ -83,10 +83,20 @@
             background-color: #002451;
             color: #fff;
             border: none;
+            a{
+              text-decoration: none;
+              color: #fff;
+              &:hover{
+                color: #c0defa;
+              }
+            }
           }
 
           h3 {
             font-weight: bold;
+          }
+          p{
+            font-size: 15px;
           }
         }
       }

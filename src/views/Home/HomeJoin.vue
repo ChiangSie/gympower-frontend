@@ -14,6 +14,7 @@
 .content {
             padding: 40px 20px;
             text-align: center;
+            background: #fff;
         }
 
         .content h2 {
@@ -33,5 +34,8 @@
             text-decoration: none;
             border-radius: 10px;
             font-size: 13px;
+            &:hover{
+            color:#aaa;
+            }
         }
 </style>
