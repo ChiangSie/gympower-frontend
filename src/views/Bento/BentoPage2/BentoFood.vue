@@ -64,7 +64,8 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    background-color: #F9F8F7;
+    // background-color: #F9F8F7;
+    background-color: transparent;
     justify-content: center;
     padding-top: 60px;
 
