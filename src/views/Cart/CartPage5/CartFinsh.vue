@@ -1,157 +1,165 @@
 <template>
-    <section class="bento_list">
-        <div class="bento_list_title">
-            <div class="bento_cart_select">
-                <span class="bento_cart_select_bento">{{ bento_select }}</span>
-                <span class="bento_cart_select_classes">{{ bento_classes }}</span>
-            </div>
-            <!-- 步驟 -->
-            <ul class="bento_list_step">
-                <li class="step active">
-                    <div class="circle">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <p>{{ circle_num1_con }}</p>
-                </li>
-                <li class="step second">
-                    <div class="circle">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <p>{{ circle_num2_con }}</p>
-                </li>
-                <li class="step">
-                    <div class="circle">{{ circle_num_3 }}</div>
-                    <p>{{ circle_num3_con }}</p>
-                </li>
-            </ul>
-        </div>
-        <!-- 清單標題 -->
-        <div class="bento_list_comfirm">{{ list_title }}</div>
-        <div class="bento_list_con">
-            <!-- 左邊清單確認 -->
-            <div class="bento_list_detail">
-                <!-- 欄位名稱 -->
-                <div class="bento_list_item">
-                    <div class="bento_list_item_buyer">{{ buyer_info }}</div>
-                    <div class="bento_list_item_mem">
-                        <input type="checkbox" class="item-select">
-                        <span>{{ same_info }}</span>
-                    </div>
+    <section>
+        <div class="bento_list">
+            <div class="bento_list_title">
+                <div class="bento_cart_select">
+                    <span class="bento_cart_select_bento">{{ bento_select }}</span>
+                    <span class="bento_cart_select_classes">{{ bento_classes }}</span>
                 </div>
-                <!-- 訂單選項 -->
-                <!-- 外框 -->
-                <div class="bento_list_item_option">
-                    <!-- 姓名 -->
-                    <div class="bento_list_form-group">
-                        <label
-                            for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：</label>
-                        <input type="text" name="name" class="styled-input" id="styled-input_name"
-                            placeholder="請輸入您的姓名">
-                    </div>
-                    <!-- 手機 -->
-                    <div class="bento_list_form-group">
-                        <label
-                            for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
-                        <input type="number" name="phone" class="styled-input" placeholder="請輸入您的手機號碼">
-                    </div>
-                    <!-- 手機 -->
-                    <div class="bento_list_form-group">
-                        <label for="email">電&nbsp;子&nbsp;信&nbsp;箱&nbsp;：</label>
-                        <input type="email" name="email" class="styled-input" placeholder="請輸入您的電子信箱">
-                    </div>
-                    <!-- 付款方式 -->
-                    <div class="bento_list_form-group">
-                        <label for="payment">付&nbsp;款&nbsp;方&nbsp;式&nbsp;：</label>
-                        <input type="radio" name="pay">現金
-                        <input type="radio" name="pay">信用卡
-                        <input type="radio" name="pay">行動支付
-                    </div>
-                    <!-- 取貨據點 -->
-                    <div class="bento_list_form-group">
-                        <label for="pickup">取&nbsp;貨&nbsp;據&nbsp;點&nbsp;：</label>
-                        <select id="pickup" name="pickup">
-                            <option value="store1">請選擇</option>
-                            <option value="store1">台北館</option>
-                            <option value="store2">台中館</option>
-                            <option value="store3">高雄館</option>
-                        </select>
-                    </div>
-                    <!-- 使用優惠券 -->
-                    <div class="bento_list_form-group">
-                        <label for="coupon">使用優惠卷：</label>
-                        <input type="text" name="coupon" class="styled-input" placeholder="請選擇折扣代碼">
-                    </div>
-                </div>
-
+                <!-- 步驟 -->
+                <ul class="bento_list_step">
+                    <li class="step active">
+                        <div class="circle">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p>{{ circle_num1_con }}</p>
+                    </li>
+                    <li class="step second">
+                        <div class="circle">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <p>{{ circle_num2_con }}</p>
+                    </li>
+                    <li class="step">
+                        <div class="circle">{{ circle_num_3 }}</div>
+                        <p>{{ circle_num3_con }}</p>
+                    </li>
+                </ul>
             </div>
-            <!-- 右邊訂單資訊 -->
-            <div class="bento_list_info">
-                <!-- 頭部標題 -->
-                <div class="bento_list_info_up">{{ cart_list }}</div>
-                <!-- 中間項目 -->
-                <div class="bento_list_info_center_type">
-                    <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
-                        <div class="bento_list_info_center_type_con_pic">
-                            <img :src="item.imgSrc" alt="">
+            <!-- 清單標題 -->
+            <div class="bento_list_comfirm">{{ list_title }}</div>
+            <div class="bento_list_con">
+                <!-- 左邊清單確認 -->
+                <div class="bento_list_detail">
+                    <!-- 欄位名稱 -->
+                    <div class="bento_list_item">
+                        <div class="bento_list_item_buyer">{{ buyer_info }}</div>
+                        <!-- <div class="bento_list_item_mem">
+                <input type="checkbox" class="item-select">
+                <span>{{ same_info }}</span>
+            </div> -->
+                    </div>
+                    <!-- 訂單選項 -->
+                    <!-- 外框 -->
+                    <div class="bento_list_item_option">
+                        <!-- 姓名 -->
+                        <div class="bento_list_form-group">
+                            <label
+                                for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：
+                            </label>
+                            <span>{{ buyer_name }}</span>
+                            <!-- <input type="text" name="name" class="styled-input" id="styled-input_name"> -->
                         </div>
-                        <div class="bento_list_info_center_type_con_name">
-                            <span>{{ item.name }}</span>
-                            <span>{{ item.price }}</span>
+                        <!-- 手機 -->
+                        <div class="bento_list_form-group">
+                            <label
+                                for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
+                            <span>{{ buyer_phone }}</span>
+                            <!-- <input type="number" name="phone" class="styled-input"> -->
                         </div>
-                        <div class="bento_list_info_center_type_con_qty">
-                            <span>{{ item.qty }}</span>
+                        <!-- 手機 -->
+                        <div class="bento_list_form-group">
+                            <label for="email">電&nbsp;子&nbsp;信&nbsp;箱&nbsp;：</label>
+                            <span>{{ buyer_email }}</span>
+                            <!-- <input type="email" name="email" class="styled-input"> -->
+                        </div>
+                        <!-- 付款方式 -->
+                        <div class="bento_list_form-group">
+                            <label for="payment">付&nbsp;款&nbsp;方&nbsp;式&nbsp;：</label>
+                            <span>{{ buyer_pay }}</span>
+                            <!-- <input type="radio" name="pay">現金
+                <input type="radio" name="pay">信用卡
+                <input type="radio" name="pay">行動支付 -->
+                        </div>
+                        <!-- 取貨據點 -->
+                        <div class="bento_list_form-group">
+                            <label for="pickup">取&nbsp;貨&nbsp;據&nbsp;點&nbsp;：</label>
+                            <span>{{ buyer_location }}</span>
+                            <!-- <select id="pickup" name="pickup">
+                    <option value="store1">請選擇</option>
+                    <option value="store1">台北館</option>
+                    <option value="store2">台中館</option>
+                    <option value="store3">高雄館</option>
+                </select> -->
+                        </div>
+                        <!-- 使用優惠券 -->
+                        <div class="bento_list_form-group">
+                            <label for="coupon">使用優惠卷：</label>
+                            <span>{{ buyer_coupon }}</span>
+                            <!-- <input type="text" name="coupon" class="styled-input" placeholder="請選擇折扣代碼"> -->
                         </div>
                     </div>
-                </div>
-                <!-- 中間項目小計 -->
-                <div class="bento_list_info_center_total">
-                    <div class="bento_list_info_center_total_price">
-                        <span>{{ order_subtotal_name }}</span>
-                        <span>${{ order_subtotal_price }}</span>
-                    </div>
-                    <div class="bento_list_info_center_total_coupon">
-                        <span>{{ discount_name }}</span>
-                        <span class="coupon_price">${{ discount_price }}</span>
-                    </div>
-                </div>
-                <!-- 尾部總計、下一步 -->
-                <div class="bento_list_info_down">
-                    <div class="bento_list_info_item_total">
-                        <span>{{ total_name }}</span>
-                        <span>${{ total_price }}</span>
-                    </div>
-                    <button class="bento_list_info_btn">{{ next_page }}</button>
-                </div>
 
-
+                </div>
+                <!-- 右邊訂單資訊 -->
+                <div class="bento_list_info">
+                    <!-- 頭部標題 -->
+                    <div class="bento_list_info_up">{{ cart_list }}</div>
+                    <!-- 中間項目 -->
+                    <div class="bento_list_info_center_type">
+                        <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
+                            <div class="bento_list_info_center_type_con_pic">
+                                <img :src="item.imgSrc" alt="">
+                            </div>
+                            <div class="bento_list_info_center_type_con_name">
+                                <span>{{ item.name }}</span>
+                                <span>{{ item.price }}</span>
+                            </div>
+                            <div class="bento_list_info_center_type_con_qty">
+                                <span>{{ item.qty }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 中間項目小計 -->
+                    <div class="bento_list_info_center_total">
+                        <div class="bento_list_info_center_total_price">
+                            <span>{{ order_subtotal_name }}</span>
+                            <span>${{ order_subtotal_price }}</span>
+                        </div>
+                        <div class="bento_list_info_center_total_coupon">
+                            <span>{{ discount_name }}</span>
+                            <span class="coupon_price">${{ discount_price }}</span>
+                        </div>
+                    </div>
+                    <!-- 尾部總計、結帳 -->
+                    <div class="bento_list_info_down">
+                        <div class="bento_list_info_item_total">
+                            <span>{{ total_name }}</span>
+                            <span>${{ total_price }}</span>
+                        </div>
+                        <button @click="addToCart" class="bento_list_info_btn">結帳</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="bento_list_item_rule">
-            <div class="bento_list_item_rule_up">
-                <i class="fa-solid fa-angle-left"></i>
-                <span>{{ Previous }}</span>
+            <div class="bento_list_item_rule">
+                <div class="bento_list_item_rule_up">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <span>{{ Previous }}</span>
+                </div>
+                <div class="bento_list_item_rule_agree">
+                    <input type="checkbox" class="item-rule" v-model="isChecked">
+                    <span>{{ rule }}</span>
+                    <span class="rule_serve"><a href="#">{{ rule_serve }}</a></span>
+                    <span>{{ rule_and }}</span>
+                    <span class="rule_return"><a href="#">{{ rule_return }}</a></span>
+                </div>
             </div>
-            <div class="bento_list_item_rule_agree">
-                <input type="checkbox" class="item-rule">
-                <span>{{ rule }}</span>
-                <span class="rule_serve"><a href="#">{{ rule_serve }}</a></span>
-                <span>{{ rule_and }}</span>
-                <span class="rule_return"><a href="#">{{ rule_return }}</a></span>
-            </div>
-        </div>
-        <!-- 完成圖案 -->
-        <div class="overlay">
-            <div class="confirmation-box">
-                <div class="icon"><i class="fa-solid fa-check"></i></div>
-                <div class="message">{{ order_finsh }}</div>
-                <div class="sub-message">{{ check_oreder }}</div>
+            <!-- 完成圖案 -->
+            <div class="overlay">
+                <div class="confirmation-box">
+                    <div class="icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="message">{{ order_finsh }}</div>
+                    <div class="sub-message">{{ check_oreder }}</div>
+                </div>
             </div>
         </div>
     </section>
+
 </template>
 
 
 <script>
+import Swal from 'sweetalert2';
 export default {
     data() {
         return {
@@ -166,11 +174,16 @@ export default {
             buyer_info: '購買人資訊',
             same_info: '同會員資料',
             cart_list: '購物車明細',
+            buyer_name: 'Alice',
+            buyer_phone: '0987654321',
+            buyer_email: '111@gmail.com',
+            buyer_pay: '現金',
+            buyer_location: '台北館',
+            buyer_coupon: ' 95折優惠券 :  /ASDASDAS',
             order_subtotal_name: '商品小計',
             discount_name: '優惠卷',
             discount_price_value: -40, // 原始折扣值
-            total_name: '合計', 
-            next_page: '下一步',
+            total_name: '合計',
             Previous: '上一步',
             rule: '我已閱讀並同意網站的',
             rule_serve: '服務條款',
@@ -199,6 +212,37 @@ export default {
         },
         total_price() {
             return this.order_subtotal_price + this.discount_price_value;
+        },
+    },
+    methods: {
+        addToCart() {
+            if (!this.isChecked) {
+            this.showAlert('請先勾選已閱讀規則');
+        }   else {
+            this.showAlertCart();
+        }
+        },
+        showAlert(message) {
+            Swal.fire({
+                icon: 'warning',
+                title: '提示',
+                text: message,
+                confirmButtonText: '確定'
+            });
+        },
+        showAlertCart() {
+            Swal.fire({
+                position: "center",
+                html: `
+                    <div class="confirmation-box">
+                        <div class="icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="message">${this.order_finsh}</div>
+                        <div class="sub-message">${this.check_oreder}</div>
+                    </div>
+                `,
+                showConfirmButton: false,
+                timer: 2000,
+            })
         },
     }
 }
@@ -333,12 +377,14 @@ export default {
     display: flex;
     padding-bottom: 1.8%;
     border-bottom: 1px solid #000;
+    width: 100%;
 }
 
 .bento_list_item_buyer {
     margin-right: 20%;
 }
 
+// 填單明細外框
 .bento_list_item_option {
     display: flex;
     flex-direction: column;
@@ -346,31 +392,39 @@ export default {
 }
 
 .bento_list_form-group {
-    margin-bottom: 6%;
+    margin: 5% 0;
 }
 
-.styled-input {
-    border-radius: 4px;
-    border: 1.2px solid #707070;
-    width: 200px;
-    height: 16px;
-    padding: 10px;
+//input前的名稱
+.bento_list_form-group label {
+    width: 100%;
+    text-align: right;
+    margin-right: 10px;
 }
 
-.styled-input:focus {
-    outline: none;
-    border-color: #002451;
-    box-shadow: 0 0 5px #002451;
-}
+// input框
+// .styled-input {
+//     border-radius: 4px;
+//     border: 1.2px solid #707070;
+//     width: 400px;
+//     height: 36px;
+//     padding: 5px;
+// }
 
+// .styled-input:focus {
+//     outline: none;
+//     border-color: #002451;
+//     box-shadow: 0 0 5px #002451;
+// }
+// 姓名那列往下移不貼線
 #styled-input_name {
     margin-top: 30px;
 }
 
 .bento_list_form-group #pickup {
     border-radius: 4px;
-    padding: 10px;
-    width: 222px;
+    padding: 16px;
+    width: 410px;
 }
 
 
@@ -488,19 +542,24 @@ export default {
     justify-content: space-evenly;
     margin: 60px 0 30px 0;
 }
-.bento_list_item_rule_up{
+
+.bento_list_item_rule_up {
     width: 8%;
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #000;
 }
-.bento_list_item_rule_up:hover{
+
+.bento_list_item_rule_up:hover {
     cursor: pointer;
 }
-.bento_list_item_rule_agree .rule_serve a, .rule_return a{
-    color:#000;
+
+.bento_list_item_rule_agree .rule_serve a,
+.rule_return a {
+    color: #000;
     letter-spacing: .6px;
 }
+
 /* 完成跳窗 */
 .overlay {
     position: fixed;
@@ -513,7 +572,9 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 6;
-    }
+    display: none;
+}
+
 .confirmation-box {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     padding: 120px 120px;

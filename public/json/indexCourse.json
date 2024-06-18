@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "週三有氧課程",
+    "image": "/src/assets/img/index/indexcourse.png",
+    "coach": "Wendy老師",
+    "price": "NT.3500|六堂",
+    "describe": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝...",
+    "apply": "立即報名"
+  },
+  {
+    "id": 2,
+    "title": "週三有氧課程",
+    "image": "/src/assets/img/index/indexcourse.png",
+    "coach": "Wendy老師",
+    "price": "NT.3500|六堂",
+    "describe": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝...",
+    "apply": "立即報名"
+  },
+  {
+    "id": 3,
+    "title": "週三有氧課程",
+    "image": "/src/assets/img/index/indexcourse.png",
+    "coach": "Wendy老師",
+    "price": "NT.3500|六堂",
+    "describe": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝...",
+    "apply": "立即報名"
+  },
+  {
+    "id": 4,
+    "title": "週三有氧課程",
+    "image": "/src/assets/img/index/indexcourse.png",
+    "coach": "Wendy老師",
+    "price": "NT.3500|六堂",
+    "describe": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝...",
+    "apply": "立即報名"
+  },
+  {
+    "id": 5,
+    "title": "週三有氧課程",
+    "image": "/src/assets/img/index/indexcourse.png",
+    "coach": "Wendy老師",
+    "price": "NT.3500|六堂",
+    "describe": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝...",
+    "apply": "立即報名"
+  },
+  {
+    "id": 6,
+    "title": "週三有氧課程",
+    "image": "/src/assets/img/index/indexcourse.png",
+    "coach": "Wendy老師",
+    "price": "NT.3500|六堂",
+    "describe": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝...",
+    "apply": "立即報名"
+  }
+]

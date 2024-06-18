@@ -42,17 +42,17 @@
                     <!-- 姓名 -->
                     <div class="bento_list_form-group">
                         <label
-                            for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：</label>
+                            for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：</label>
                         <input type="text" name="name" class="styled-input" id="styled-input_name"
                             placeholder="請輸入您的姓名">
                     </div>
                     <!-- 手機 -->
                     <div class="bento_list_form-group">
                         <label
-                            for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
+                            for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
                         <input type="number" name="phone" class="styled-input" placeholder="請輸入您的手機號碼">
                     </div>
-                    <!-- 手機 -->
+                    <!-- 電子信箱 -->
                     <div class="bento_list_form-group">
                         <label for="email">電&nbsp;子&nbsp;信&nbsp;箱&nbsp;：</label>
                         <input type="email" name="email" class="styled-input" placeholder="請輸入您的電子信箱">
@@ -132,13 +132,13 @@
                 <i class="fa-solid fa-angle-left"></i>
                 <span>{{ Previous }}</span>
             </RouterLink>
-            <div class="bento_list_item_rule_agree">
+            <!-- <div class="bento_list_item_rule_agree">
                 <input type="checkbox" class="item-rule">
                 <span>{{ rule }}</span>
                 <span class="rule_serve"><a href="#">{{ rule_serve }}</a></span>
                 <span>{{ rule_and }}</span>
                 <span class="rule_return"><a href="#">{{ rule_return }}</a></span>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
@@ -324,12 +324,13 @@ export default {
     display: flex;
     padding-bottom: 1.8%;
     border-bottom: 1px solid #000;
+    width: 100%;
 }
 
 .bento_list_item_buyer {
     margin-right: 20%;
 }
-
+// 填單明細外框
 .bento_list_item_option {
     display: flex;
     flex-direction: column;
@@ -339,13 +340,19 @@ export default {
 .bento_list_form-group {
     margin-bottom: 6%;
 }
-
+//input前的名稱
+.bento_list_form-group label {
+    width: 100%;
+    text-align: right;
+    margin-right: 10px;
+}
+// input框
 .styled-input {
     border-radius: 4px;
     border: 1.2px solid #707070;
-    width: 200px;
-    height: 16px;
-    padding: 10px;
+    width: 400px;
+    height: 36px;
+    padding: 5px;
 }
 
 .styled-input:focus {
@@ -353,16 +360,47 @@ export default {
     border-color: #002451;
     box-shadow: 0 0 5px #002451;
 }
-
+// 姓名那列往下移不貼線
 #styled-input_name {
     margin-top: 30px;
 }
 
 .bento_list_form-group #pickup {
     border-radius: 4px;
-    padding: 10px;
-    width: 222px;
+    padding: 16px;
+    width: 410px;
 }
+@media screen and (max-width: 768px) {
+    .bento_list_con {
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+    }
+    .bento_list_item {
+        display: flex;
+        width: 140%;
+        border-bottom: 1px solid #000;
+    }
+    .bento_list_item_option{
+        width: 140%;
+        border: 1px solid red;
+    }
+    .styled-input {
+        border-radius: 4px;
+        border: 1.2px solid #707070;
+        width: 330px;
+        height: 36px;
+        padding: 5px;
+    }
+    #styled-input_name {
+        margin: auto;
+}
+    
+}
+
+
+
+
 
 
 /* 右邊 */

@@ -277,7 +277,7 @@ export default{
             trSeconds.forEach(tr => {
             tr.style.display = tr.style.display === 'none' ? 'table-row' : 'none';
         });
-    }
+        }
     },
     mounted() {
         this.totalPages = Math.ceil(this.orderDataList.length / this.pageSize);
@@ -294,7 +294,7 @@ export default{
         margin: 20px 0;
         .order_card{
         border-radius: 15px;
-        border: 1px solid black;
+        border: 2px solid black;
         overflow: hidden;
         table{
             width: 100%;
@@ -304,13 +304,13 @@ export default{
                 padding: 10px;
                 td{
                     width: 25%;
-                    border: 1px black solid;
+                    border: .5px black solid;
                     padding: 10px;
                     }
                 }
             }
             .tr_first{
-                background-color: deepskyblue;
+            background-color: #d4eaf7;
             }
             .tr_second{
                 display: none;

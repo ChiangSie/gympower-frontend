@@ -408,7 +408,51 @@ export default {
 }
 
 //左邊
-@media screen and (max-width: 1200px) {}
+@media screen and (max-width: 1280px) {
+    .bento_list_detail {
+        width: 100%;
+        margin: auto;
+
+        .bento_list_item{
+            display: flex;
+            margin: 2%;
+        }
+        .bento_list_item_clear button {
+            width: 22%;
+            margin: 2%;
+        }
+        .bento_list_item_option_cart{
+            margin: 2%;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .bento_list_detail {
+        width: 100%;
+        margin: auto;
+
+
+        .bento_list_item{
+            display: flex;
+            margin: 2%;
+        }
+        .bento_list_item_clear button {
+            width: 26%;
+            margin: 2%;
+        }
+        .bento_list_item_option_name{
+            width: 100px;
+        }
+        .bento_list_item_option_btn{
+            padding: 2px 4px;
+        }
+        .bento_list_item_option_cart{
+            margin: 2%;
+        }
+
+    }
+}
 
 @media screen and (max-width: 992px) {
     .bento_list_detail {
@@ -594,13 +638,22 @@ export default {
     margin-top: 16%;
     cursor: pointer;
 }
-
-@media screen and (max-width: 1200px) {
-    .bento_list_info_item {
-        margin-bottom: 130%;
+@media screen and (max-width: 1280px) {
+    .bento_list_info_item{
+        margin-bottom: 230px;
     }
 }
-
+@media screen and (max-width: 1200px) {
+    .bento_list_info_item {
+        margin-bottom: 210px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .bento_list_info_item{
+        margin-bottom: 190px;
+        border: 1px solid red;
+    }
+}
 @media screen and (max-width: 992px) {
     .bento_list_info_title {
         margin-top: 4%;
