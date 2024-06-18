@@ -153,7 +153,7 @@ export default {
         background-color: #d4eaf7;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
         gap: 20px;
 
         .content {
@@ -162,7 +162,7 @@ export default {
 
         .apply {
           color: #fff;
-          width: 10%;
+          width: 30%;
           font-size: clamp(16px, 2.18vw, 28px);
           padding: 10px;
           text-align: center;
