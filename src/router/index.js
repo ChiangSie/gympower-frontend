@@ -101,7 +101,7 @@ const router = createRouter({
       component: () => import('../views/Diary/Diarypage.vue')
     },
     {
-      path: '/Coursepage',
+      path: '/course/:id',
       name: 'Coursepage',
       component: () => import('../views/Course/Coursepage.vue')
     },
