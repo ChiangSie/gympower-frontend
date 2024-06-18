@@ -108,6 +108,7 @@ export default {
     .row {
       .swiper-slide {
         text-align: left;
+        border-radius: 10px;
       }
       .card {
         flex-grow: 1;

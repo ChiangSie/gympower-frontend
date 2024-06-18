@@ -109,7 +109,6 @@ export default {
       background-color: #f9f8f7;
     }
     .card {
-      margin-bottom: 30px;
       background-color: #fff;
       border-radius: 10px;
 
@@ -194,6 +193,7 @@ export default {
       line-height: 40px;
       margin-left: auto;
       margin-right: 15px;
+      margin-top: 30px;
     }
   }
 }
