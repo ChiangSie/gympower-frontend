@@ -5,22 +5,26 @@
             <div class="large-image">
                 <img :src="selectedImageUrl" alt="Large Image Preview" />
             </div>
-            <div class="thumbnail-list">
-                <img v-for="(imageUrl, index) in imageUrls" :key="index" :src="imageUrl" alt="Thumbnail"
-                    class="thumbnail" @click="selectImage(imageUrl)" />
-            </div>
+        <div class="thumbnail-list">
+            <img v-for="(imageUrl, index) in productInfo.imageUrls"
+                :key="index"
+                :src="`/src/assets/img/course/${ imageUrl }`"
+                alt="Thumbnail"
+                class="thumbnail"
+                @click="selectImage(imageUrl)">
+        </div>
         </div>
         <div class="course-info">
-            <h1>{{title}}</h1>
+            <h1>{{productInfo.title}}</h1>
             <div class="course-price">
                 <div class="course-teacher">
-                    <img :src="teacher.src" class="img-teacher" alt="">
-                <h2>{{ teacher.name }}</h2>
+                    <img :src="`src/assets/img/${teacher.src}`" class="img-teacher" alt="">
+                <h2>{{ productInfo.teacher }}</h2>
                 </div>
-                <h2>{{courses.price}} | {{courses.course}}</h2>
+                <h2>{{productInfo.price}} | {{productInfo.course}}</h2>
             </div>
             <div class="course-content">
-            <p>{{content}}</p>
+            <p>{{productInfo.description}}</p>
             </div>
             <div class="course-btn">
              <CourseSelected />
@@ -28,16 +32,20 @@
         </div>
         </div>
     </div>
+    {{ productInfo }}
 </template>
-<script>
-</script>
-
 <script>
 import CourseSelected from './CourseSelected.vue';
 
 export default {
     components: {
         CourseSelected
+    },
+    props: {
+        productInfo: {
+            type: Object,
+            required: true
+        }
     },
     data() {
         return {
@@ -49,16 +57,10 @@ export default {
                 // 其他圖片 URL
             ],
             selectedImageUrl: '', // 初始值為空字串
-            title:'週三有氧課程',
             teacher: {
                 src: 'src/assets/img/banner_aboutus.jpg',
                 name:'windy'
             },
-            courses: {
-                price: 'NT.3500',
-                course:'六堂'
-            },
-            content:'帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能，更能刺激人體代謝。',
     };
   },
   created() {

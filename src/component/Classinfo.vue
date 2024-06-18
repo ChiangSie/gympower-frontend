@@ -18,11 +18,12 @@
       <div class="content">
         <p>{{ cardData.description }}</p>
       </div>
-      <router-link :to="{ name: 'Coursepage' }">
+      <router-link :to="`/course/${cardData.id}`">
         <button class="apply">立即報名</button>
       </router-link>
     </div>
   </div>
+
 </template>
 
 <script>

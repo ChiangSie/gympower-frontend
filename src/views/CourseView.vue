@@ -27,6 +27,7 @@
           </div>
           <div v-else>
             <Classinfo v-for="course in displayList" :key="course.id" :cardData="course" />
+
             <div class="page"><a href="" v-for="n in 5">{{ n }}</a></div>
           </div>
         </div>
@@ -50,36 +51,7 @@ export default {
   data() {
     return {
       courses: [
-        {
-          id: 1,
-          title: '週三有氧課程',
-          imgSrc: 'src/assets/img/index/indexcourse.png',
-          teacher: 'Wendy老師',
-          price: 'NT.3500|六堂',
-          description: '帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝',
-          sort: '有氧課程',
-          type: 1
-        },
-        {
-          id: 2,
-          title: '週五重訓課程',
-          imgSrc: 'src/assets/img/index/indexcourse.png',
-          teacher: 'John老師',
-          price: 'NT.4000|八堂',
-          description: '重訓課程旨在提高肌肉力量和耐力,通過使用啞鈴、杠鈴和機器等器材進行訓練',
-          sort: '重訓課程',
-          type: 2
-        },
-        {
-          id: 3,
-          title: '週日重訓課程',
-          imgSrc: 'src/assets/img/index/indexcourse.png',
-          teacher: 'John老師',
-          price: 'NT.4000|八堂',
-          description: '重訓課程旨在提高肌肉力量和耐力,通過使用啞鈴、杠鈴和機器等器材進行訓練',
-          sort: '重訓課程',
-          type: 2
-        }
+       
         // 添加其他課程數據...
       ],
       displayList: [],
@@ -87,8 +59,18 @@ export default {
   },
   mounted() {
     this.clear();
+    this.fetchProduct();
   },
   methods: {
+    fetchProduct() {
+      fetch('../../public/json/course.json')
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          this.courses = json;
+          this.displayData = json;
+        });
+    },
     clear() {
       this.displayList = this.courses
     },

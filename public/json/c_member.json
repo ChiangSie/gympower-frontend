@@ -1,0 +1,17 @@
+[{
+    "id": 1,
+    "title": "週三有氧課程",
+    "imgSrc": "src/assets/img/index/indexcourse.png",
+    "teacher": "Wendy老師",
+    "price": 3500,
+    "description": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝",
+    "sort": "有氧課程",
+    "type": 1,
+    "course":6,
+    "imageUrls": [
+                "course-Aerobic1-Preview1.png",
+                "course-Aerobic1-Preview2.png",
+                "course-Aerobic1-Preview3.png"
+            ]
+  }
+]
