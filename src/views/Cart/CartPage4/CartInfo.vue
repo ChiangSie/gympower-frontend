@@ -41,47 +41,45 @@
                 <div class="bento_list_item_option">
                     <!-- 姓名 -->
                     <div class="bento_list_form-group">
-                        <label
-                            for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：</label>
-                        <input type="text" name="name" class="styled-input" id="styled-input_name"
+                        <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：</label>
+                        <input v-model="name" type="text" name="name" class="styled-input" id="styled-input_name"
                             placeholder="請輸入您的姓名">
                     </div>
                     <!-- 手機 -->
                     <div class="bento_list_form-group">
-                        <label
-                            for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
-                        <input type="number" name="phone" class="styled-input" placeholder="請輸入您的手機號碼">
+                        <label for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
+                        <input v-model="phone" type="number" name="phone" class="styled-input" placeholder="請輸入您的手機號碼">
                     </div>
                     <!-- 電子信箱 -->
                     <div class="bento_list_form-group">
                         <label for="email">電&nbsp;子&nbsp;信&nbsp;箱&nbsp;：</label>
-                        <input type="email" name="email" class="styled-input" placeholder="請輸入您的電子信箱">
+                        <input v-model="email" type="email" name="email" class="styled-input" placeholder="請輸入您的電子信箱">
                     </div>
                     <!-- 付款方式 -->
                     <div class="bento_list_form-group">
                         <label for="payment">付&nbsp;款&nbsp;方&nbsp;式&nbsp;：</label>
-                        <input type="radio" name="pay">現金
-                        <input type="radio" name="pay">信用卡
-                        <input type="radio" name="pay">行動支付
+                        <input v-model="pay" type="radio" name="pay" value="現金">現金
+                        <input v-model="pay" type="radio" name="pay" value="信用卡">信用卡
+                        <input v-model="pay" type="radio" name="pay" value="行動支付">行動支付
                     </div>
                     <!-- 取貨據點 -->
                     <div class="bento_list_form-group">
                         <label for="pickup">取&nbsp;貨&nbsp;據&nbsp;點&nbsp;：</label>
-                        <select id="pickup" name="pickup">
-                            <option value="store1">請選擇</option>
-                            <option value="store1">台北館</option>
-                            <option value="store2">台中館</option>
-                            <option value="store3">高雄館</option>
+                        <select v-model="pickup" id="pickup" name="pickup">
+                            <option value="">請選擇</option>
+                            <option value="台北館">台北館</option>
+                            <option value="台中館">台中館</option>
+                            <option value="高雄館">高雄館</option>
                         </select>
                     </div>
                     <!-- 使用優惠券 -->
                     <div class="bento_list_form-group">
                         <label for="coupon">使用優惠卷：</label>
-                        <input type="text" name="coupon" class="styled-input" placeholder="請選擇折扣代碼">
+                        <input v-model="coupon" type="text" name="coupon" class="styled-input" placeholder="請選擇折扣代碼">
                     </div>
                 </div>
-
             </div>
+
             <!-- 右邊訂單資訊 -->
             <div class="bento_list_info">
                 <!-- 頭部標題 -->
@@ -118,12 +116,13 @@
                         <span>{{ total_name }}</span>
                         <span>${{ total_price }}</span>
                     </div>
-                    <RouterLink to='/cart/cartpage5'>
-                        <button class="bento_list_info_btn">{{ next_page }}</button>
+                    <RouterLink :to="buildQuery">
+                        <button class="bento_list_info_btn">下一頁</button>
                     </RouterLink>
+                    <!-- <RouterLink to='/cart/cartpage5'>
+                        <button class="bento_list_info_btn">{{ next_page }}</button>
+                    </RouterLink> -->
                 </div>
-
-
             </div>
         </div>
         <!--服務條款 、 上一步 -->
@@ -132,13 +131,6 @@
                 <i class="fa-solid fa-angle-left"></i>
                 <span>{{ Previous }}</span>
             </RouterLink>
-            <!-- <div class="bento_list_item_rule_agree">
-                <input type="checkbox" class="item-rule">
-                <span>{{ rule }}</span>
-                <span class="rule_serve"><a href="#">{{ rule_serve }}</a></span>
-                <span>{{ rule_and }}</span>
-                <span class="rule_return"><a href="#">{{ rule_return }}</a></span>
-            </div> -->
         </div>
     </section>
 </template>
@@ -158,6 +150,14 @@ export default {
             list_title: '購物清單確認',
             buyer_info: '購買人資訊',
             same_info: '同會員資料',
+
+            name: '',
+            phone: '',
+            email: '',
+            pay: '',
+            pickup: '',
+            coupon: '',
+
             cart_list: '購物車明細',
             order_subtotal_name: '商品小計',
             discount_name: '優惠卷',
@@ -191,7 +191,21 @@ export default {
         total_price() {
             return this.order_subtotal_price + this.discount_price_value;
         },
-    }
+        buildQuery() {
+            return {
+                path: '/cart/cartpage5',
+                query: {
+                    name: this.name,
+                    phone: this.phone,
+                    email: this.email,
+                    pay: this.pay,
+                    pickup: this.pickup,
+                    coupon: this.coupon
+                }
+            };
+        },
+    },
+    
 }
 </script>
 
@@ -330,6 +344,7 @@ export default {
 .bento_list_item_buyer {
     margin-right: 20%;
 }
+
 // 填單明細外框
 .bento_list_item_option {
     display: flex;
@@ -340,12 +355,14 @@ export default {
 .bento_list_form-group {
     margin-bottom: 6%;
 }
+
 //input前的名稱
 .bento_list_form-group label {
     width: 100%;
     text-align: right;
     margin-right: 10px;
 }
+
 // input框
 .styled-input {
     border-radius: 4px;
@@ -360,6 +377,7 @@ export default {
     border-color: #002451;
     box-shadow: 0 0 5px #002451;
 }
+
 // 姓名那列往下移不貼線
 #styled-input_name {
     margin-top: 30px;
@@ -370,21 +388,25 @@ export default {
     padding: 16px;
     width: 410px;
 }
+
 @media screen and (max-width: 768px) {
     .bento_list_con {
         border: 1px solid red;
         display: flex;
         flex-direction: column;
     }
+
     .bento_list_item {
         display: flex;
         width: 140%;
         border-bottom: 1px solid #000;
     }
-    .bento_list_item_option{
+
+    .bento_list_item_option {
         width: 140%;
         border: 1px solid red;
     }
+
     .styled-input {
         border-radius: 4px;
         border: 1.2px solid #707070;
@@ -392,10 +414,11 @@ export default {
         height: 36px;
         padding: 5px;
     }
+
     #styled-input_name {
         margin: auto;
-}
-    
+    }
+
 }
 
 
