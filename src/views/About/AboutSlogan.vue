@@ -1,48 +1,83 @@
 <template>
-  <section class="slogan">
-    <p>
-      {{ text }}
-    </p>
-    <div class="slogan_img">
-      <img :src="imgSrc" />
+  <div class="features">
+    <div class="feature" v-for="feature in features" :key="feature.title">
+      <img :src="feature.icon" />
+      <h3>{{ feature.title }}</h3>
+      <h4>{{ feature.title_cn }}</h4>
+      <p>{{ feature.description }}</p>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      imgSrc: '/src/assets/img/aboutus_slogan.jpg',
-      text: 'GYM 力的誕生源於我們對健康和運動的熱愛，以及對改善人們生活質量的強烈願望。在創始人親身經歷了通過健身改變生活的過程後，他們深刻認識到健身對於提升體能、強化心理素質以及增進整體健康的重要性。因此，GYM力的創立目標是為社區提供一個專業、友好且充滿激勵的健身環境，讓每個人都能找到屬於自己的健身方式。'
+      features: [
+        {
+          icon: '/src/assets/img/about_pilates.png',
+          title: 'Premium Environment',
+          title_cn: '優質環境',
+          description: '配備先進的健身器材，滿足各種有氧和力量訓練需求。'
+        },
+        {
+          icon: '/src/assets/img/about_trainer.png',
+          title: 'Professional Trainers',
+          title_cn: '專業教練',
+          description: '根據您的需求提供健康營養計劃，助您達成健身目標。'
+        },
+        {
+          icon: '/src/assets/img/about_exercise.png',
+          title: 'Advanced Equipment',
+          title_cn: '高級設備',
+          description: '提供乾淨舒適的淋浴設施，讓您在運動後放鬆身心。'
+        },
+        {
+          icon: '/src/assets/img/about_course.png',
+          title: 'Group Classes',
+          title_cn: '團體課程',
+          description: '專業教練根據您的需求量身訂製健身計劃，確保最佳效果。'
+        }
+      ]
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.slogan {
-  width: 100%;
-  padding: 3% 12%;
+// *{
+//   font-family: Noto Serif TC;
+// }
+.features {
   display: flex;
-  flex-direction: row;
-  // justify-content: center;
-  gap: 15px;
-  p {
-    width: 35%;
-    margin-left: 10%;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 16px 20px;
+  background-color: #E9E9E9;
+  height: 280px;
+}
+
+.feature {
+  max-width: 230px;
+  // height: 230px;
+  // border-radius: 50%;
+  // background-color: #D4EAF7;
+  img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+}
+
+.feature {
+  h3, h4 {
+    font-size: 16px;
+    margin: 5px 0;
   }
-  .slogan_img {
-    width: 35%;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
-    overflow: hidden;
-    img {
-      width: 100%;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      object-position: 50% 50%;
-    }
+  p {
+    font-size: 13px;
+    color: #666;
   }
 }
 </style>

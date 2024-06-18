@@ -6,9 +6,9 @@
             <hr />
             <div class="forcast" v-if="now_area">
                 <h2>{{ now_area.place }} {{ now_area.tag }}</h2>
-                <h4>電話:{{ now_area.low }}</h4>
-                <h4>地址:{{ now_area.high }}</h4>
-                <h6>營業時間:{{ now_area.weather }}</h6>
+                <h4>電話：{{ now_area.low }}</h4>
+                <h4>地址：{{ now_area.high }}</h4>
+                <h6>營業時間：{{ now_area.weather }}</h6>
                 
             </div>
         </div>
@@ -103,9 +103,10 @@ svg {
 }
 
 body {
-    background-color: #ebf2f6;
+    background-color: #f9f8f7;
+    /* background-color: #ebf2f6; */
+    /* margin: 32px; */
 }
-
 path {
     stroke: #002451;
     fill: transparent;
@@ -114,18 +115,18 @@ path {
 }
 
 path:hover {
-    fill: #002451;
+    fill: #D4EAF7;
     transform: translate(-5px, -5px);
 }
 
 .title_area {
     position: absolute;
-    right: 50px;
-    top: 1000px;
+    right: 80px;
+    top: 900px;
     color: rgb(26, 68, 76);
     border: 5px solid rgb(26, 68, 76);
     border-radius:20px;
-    padding: 30px 25px;
+    padding: 40px 35px;
     background-color: #dfdfdf;
 }
 
