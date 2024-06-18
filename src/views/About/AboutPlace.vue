@@ -1,98 +1,186 @@
 <template>
-  <section class="place">
-    <div class="place_card" v-for="card in list" :key="card.id">
-      <div class="card_left">
-        <h3>
-          <div class="title-part1">{{ card.titlePart1 }}</div>
-          <div class="title-part2">{{ card.titlePart2 }}</div>
-        </h3>
-        <p>{{ card.text }}</p>
-      </div>
-      <div class="card_right">
-        <img :src="card.imgSrc" alt="" />
+  <div>
+    <!-- 1 -->
+    <div class="outdoor-sports">
+      <div class="header">場館分類</div>
+      <div class="content">
+        <div class="main-image">
+          <img :src="selectedImage1" alt="Selected Image" />
+        </div>
+        <div class="info">
+          <h3>高級健身俱樂部</h3>
+          <p>
+            根據各個會所的地點和環境條件，我們規劃了多種特殊的運動健身設施。例如：台北詠安店設有游泳池，讓喜愛游泳的會員能在舒適的環境中進行水中鍛鍊；桃園中壢店配備了籃球場，不僅滿足籃球愛好者的需求，還提供了團體籃球訓練課程；台中中正店擁有專業級別的網球室，會員可以在這裡享受高品質的網球運動。<br />
+            除此之外，每個會所還配備了現代化的健身器材，包括最新款的跑步機、力量訓練設備以及綜合訓練器械，確保會員能夠進行全面的身體鍛鍊。我們還提供各類團體課程，例如瑜伽、有氧舞蹈、普拉提等，這些課程由經驗豐富的教練帶領，旨在提升會員的運動體驗，增加健身樂趣。
+          </p>
+          <div class="some-images">
+            <img v-for="(image, index) in images1" :key="index" :src="image" @click="selectImage1(image)" />
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <div class="separator-container">
+      <div class="separator"></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="outdoor-sports">
+      <div class="content">
+        <div class="main-image">
+          <img :src="selectedImage2" alt="Selected Image" />
+        </div>
+        <div class="info">
+          <h3>高級健身俱樂部</h3>
+          <p>
+            根據各個會所的地點和環境條件，我們規劃了多種特殊的運動健身設施。例如：台北詠安店設有游泳池，讓喜愛游泳的會員能在舒適的環境中進行水中鍛鍊；桃園中壢店配備了籃球場，不僅滿足籃球愛好者的需求，還提供了團體籃球訓練課程；台中中正店擁有專業級別的網球室，會員可以在這裡享受高品質的網球運動。<br />
+            除此之外，每個會所還配備了現代化的健身器材，包括最新款的跑步機、力量訓練設備以及綜合訓練器械，確保會員能夠進行全面的身體鍛鍊。我們還提供各類團體課程，例如瑜伽、有氧舞蹈、普拉提等，這些課程由經驗豐富的教練帶領，旨在提升會員的運動體驗，增加健身樂趣。
+          </p>
+          <div class="some-images">
+            <img v-for="(image, index) in images2" :key="index" :src="image" @click="selectImage2(image)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator-container">
+      <div class="separator"></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="outdoor-sports">
+      <div class="content">
+        <div class="main-image">
+          <img :src="selectedImage3" alt="Selected Image" />
+        </div>
+        <div class="info">
+          <h3>高級健身俱樂部</h3>
+          <p>
+            根據各個會所的地點和環境條件，我們規劃了多種特殊的運動健身設施。例如：台北詠安店設有游泳池，讓喜愛游泳的會員能在舒適的環境中進行水中鍛鍊；桃園中壢店配備了籃球場，不僅滿足籃球愛好者的需求，還提供了團體籃球訓練課程；台中中正店擁有專業級別的網球室，會員可以在這裡享受高品質的網球運動。<br />
+            除此之外，每個會所還配備了現代化的健身器材，包括最新款的跑步機、力量訓練設備以及綜合訓練器械，確保會員能夠進行全面的身體鍛鍊。我們還提供各類團體課程，例如瑜伽、有氧舞蹈、普拉提等，這些課程由經驗豐富的教練帶領，旨在提升會員的運動體驗，增加健身樂趣。
+          </p>
+          <div class="some-images">
+            <img v-for="(image, index) in images3" :key="index" :src="image" @click="selectImage3(image)" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      list: [
-        {
-          id: 1,
-          imgSrc: '/src/assets/img/aboutus_slogan.jpg',
-          titlePart1: '戶外',
-          titlePart2: '運動場',
-          text: '根據各個會所的地點和環境條件，我們規劃了多種特殊的運動健身設施。例如：台北詠安店設有游泳池、桃園中壢店配備了籃球場、台中中正店擁有網球室。這些設施為了提供會員多樣化的運動選擇，滿足不同需求。'
-        },
-        {
-          id: 2,
-          imgSrc: '/src/assets/img/aboutus_slogan.jpg',
-          titlePart1: '高級',
-          titlePart2:'健身樂部',
-          text: '根據各個會所的地點和環境條件，我們規劃了不同種的健身設備及環境供會員多種選擇，讓您在健身之餘，也能感受到尊貴與奢華。'
-        },
-        {
-          id: 3,
-          imgSrc: '/src/assets/img/aboutus_slogan.jpg',
-          titlePart1: '兒童',
-          titlePart2:'遊樂場',
-          text: '忙碌的爸爸媽媽在運動之餘，不用擔心小寶貝在家沒人照顧，來到GYM力健身房，提供您的孩子免費使用兒童遊樂場，並且有專人替您照顧您的孩子，除了讓您擁有健康身體，也能兼顧家庭。'
-        }
+      selectedImage1: '/src/assets/img/banner_aboutus.jpg',
+      images1: [
+        '/src/assets/img/about_gym_1.jpg',
+        '/src/assets/img/about_gym_2.jpg',
+        '/src/assets/img/about_gym_3.jpg',
+        '/src/assets/img/about_gym_4.jpg'
+      ],
+      selectedImage2: '/src/assets/img/banner_aboutus.jpg',
+      images2: [
+        '/src/assets/img/about_kids_1.jpg',
+        '/src/assets/img/about_kids_2.jpg',
+        '/src/assets/img/about_kids_3.jpg',
+        '/src/assets/img/about_kids_1.jpg',
+        
+      ],
+      selectedImage3: '/src/assets/img/banner_aboutus.jpg',
+      images3: [
+        '/src/assets/img/about_gym_1.jpg',
+        '/src/assets/img/about_gym_2.jpg',
+        '/src/assets/img/about_gym_3.jpg',
+        '/src/assets/img/about_gym_4.jpg'
       ]
+    }
+  },
+  methods: {
+    selectImage1(image) {
+      this.selectedImage1 = image;
+    },
+    selectImage2(image) {
+      this.selectedImage2 = image;
+    },
+    selectImage3(image) {
+      this.selectedImage3 = image;
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.place {
-  width: 100%;
-  padding: 3% 12%;
-  background-color: #F9F8F7;
+.outdoor-sports {
+  .header {
+    background-color: #004eaf;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    margin: 20px 35px;
+    font-size: 25px;
+    font-weight: 600;
+  }
 
-  .place_card {
-    width: 100%;
+  .content {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin: 5% 0;
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    .card_left {
-      width: 55%;
-      margin: 0 2%;
+    padding: 40px;
+
+    .main-image {
+      width: 40%;
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      p{
-          font-size: 13px;
-        }
-      h3{
-        font-size: 36px;
-        font-weight: 600;
-        .title-part1{
-        color: #004EAF;
-        }
-        .title-part2{
-        color: #71C4EF;  
-        }
+
+      img {
+        width: 80%;
+        height: auto;
+        max-height: 500px;
       }
     }
-    .card_right {
-      width: 60%;
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        max-height: 300px;
-        display: block;
+
+    .info {
+      width: 55%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      h3 {
+        margin: 20px 0 10px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      .some-images {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+
+        img {
+          width: 120px;
+          height: 120px;
+          cursor: pointer;
+          transition: transform 0.2s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
       }
     }
   }
+}
+
+.separator-container {
+  display: flex;
+  justify-content: center;
+}
+
+.separator {
+  width: 90%;
+  height: 1px;
+  background-color: #898b8a;
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <div class="title_area">
-            <!-- <h1>Taiwan<br />Weather Map<br /></h1> -->
             <h1>全國門市據點</h1>
             <hr />
             <div class="forcast" v-if="now_area">
