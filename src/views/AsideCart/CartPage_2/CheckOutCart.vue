@@ -226,6 +226,7 @@ export default {
         justify-content: center;
 
 
+
         input {
             border: 1px solid #002451;
             width: 60px;
@@ -236,14 +237,12 @@ export default {
             background-color: #002451;
             color: #ffffff;
             cursor: pointer;
-            width: 15px;
 
         }
 
         .cart_removeBtn {
             cursor: pointer;
             background-color: transparent;
-            width: 15px;
 
 
         }

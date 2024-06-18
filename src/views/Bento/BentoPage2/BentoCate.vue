@@ -30,7 +30,7 @@ export default {
         return {
             sourceData: [],
             currentTag: '',
-            foods: [{}]
+            // foods: [{}]
         }
     },
     mounted() {
@@ -63,6 +63,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style lang="scss" scoped>

@@ -184,6 +184,7 @@ export default {
             discount_name: '優惠卷',
             discount_price_value: -40, // 原始折扣值
             total_name: '合計',
+            next_page: '下一步',
             Previous: '上一步',
             rule: '我已閱讀並同意網站的',
             rule_serve: '服務條款',
@@ -212,37 +213,6 @@ export default {
         },
         total_price() {
             return this.order_subtotal_price + this.discount_price_value;
-        },
-    },
-    methods: {
-        addToCart() {
-            if (!this.isChecked) {
-            this.showAlert('請先勾選已閱讀規則');
-        }   else {
-            this.showAlertCart();
-        }
-        },
-        showAlert(message) {
-            Swal.fire({
-                icon: 'warning',
-                title: '提示',
-                text: message,
-                confirmButtonText: '確定'
-            });
-        },
-        showAlertCart() {
-            Swal.fire({
-                position: "center",
-                html: `
-                    <div class="confirmation-box">
-                        <div class="icon"><i class="fa-solid fa-check"></i></div>
-                        <div class="message">${this.order_finsh}</div>
-                        <div class="sub-message">${this.check_oreder}</div>
-                    </div>
-                `,
-                showConfirmButton: false,
-                timer: 2000,
-            })
         },
     }
 }
@@ -572,7 +542,6 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 6;
-    display: none;
 }
 
 .confirmation-box {
@@ -582,6 +551,7 @@ export default {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
+
 .confirmation-box .icon {
     width: 200px;
     height: 200px;
@@ -592,12 +562,14 @@ export default {
     margin-bottom: 20px;
     color: #fff
 }
+
 .confirmation-box .message {
     font-size: 18px;
     font-weight: 800;
     color: #000000;
     margin-bottom: 10px;
 }
+
 .confirmation-box .sub-message {
     font-size: 16px;
     color: #000000;
