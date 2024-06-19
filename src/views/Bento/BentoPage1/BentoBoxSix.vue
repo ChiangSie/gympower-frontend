@@ -1,12 +1,12 @@
 <template>
     <section class="bentobox6_info">
-        <div class="bentobox6_bg">
+        <div class="bentobox6_bg" @click="selectBento(6)">
             <div class="bentobox6_con">
                 <div class="bentobox6_txt">
                     <h3>{{ text }}</h3>
                 </div>
                 <div class="bentobox6_pic">
-                    <img :src="imgSrc" alt="" />
+                    <img :src="imgSrc6" alt="" />
                 </div>
             </div>
         </div>
@@ -21,17 +21,29 @@
 
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            imgSrc: '/src/assets/img/bento_box_six.png',
-            text: '滿腹六合一',
-            button_txt: '下一步'
 
-        }
-    }
-}</script>
+<script>
+import { useBentoStore } from '@/stores/bentobox';
+import { mapWritableState } from 'pinia';
+
+export default {
+    setup() {
+        const bentoStore = useBentoStore();
+
+        const selectBento = (id) => {
+            bentoStore.setContainerId(id);
+        };
+
+        return {
+            selectBento,
+            imgSrc6: '/src/assets/img/bento_box_six.png',
+            text: '滿腹六合一',
+            button_txt: '下一步',
+        };
+    },
+
+}
+</script>
 
 
 <style lang="scss" scoped>
