@@ -1,27 +1,29 @@
 <template>
-    <div class="section section-coursedetail">
-        <div class="container">
-        <div class="image-preview">
-            <div class="large-image">
-                <img :src="selectedImageUrl" alt="Large Image Preview" />
+     <div class="section section-coursedetail">
+         <div class="container">
+            <div class="image-preview">
+                <div class="large-image">
+                     <img  :src="previewImageUrl" alt="Large Image Preview" />
+                </div>
+                <div class="thumbnail-list">
+                    <img
+                        v-for="(imageUrl, index) in productInfo.imageUrls"
+                        :key="index"
+                        :src="getImageUrl(imageUrl)"
+                        alt="Thumbnail"
+                        class="thumbnail"
+                        @click="selectImage(getImageUrl(imageUrl))"
+                    />
+                </div>
             </div>
-        <div class="thumbnail-list">
-            <img v-for="(imageUrl, index) in productInfo.imageUrls"
-                :key="index"
-                :src="`/src/assets/img/course/${ imageUrl }`"
-                alt="Thumbnail"
-                class="thumbnail"
-                @click="selectImage(imageUrl)">
-        </div>
-        </div>
         <div class="course-info">
             <h1>{{productInfo.title}}</h1>
             <div class="course-price">
                 <div class="course-teacher">
-                    <img :src="`src/assets/img/${teacher.src}`" class="img-teacher" alt="">
+                    <img :src="`/src/assets/img/c_coach/${productInfo.teacherSrc}`" class="img-teacher" alt="">
                 <h2>{{ productInfo.teacher }}</h2>
                 </div>
-                <h2>{{productInfo.price}} | {{productInfo.course}}</h2>
+                <h2>NT.{{productInfo.price}} | {{productInfo.course}}堂</h2>
             </div>
             <div class="course-content">
             <p>{{productInfo.description}}</p>
@@ -32,10 +34,10 @@
         </div>
         </div>
     </div>
-    {{ productInfo }}
 </template>
+
 <script>
-import CourseSelected from './CourseSelected.vue';
+import CourseSelected from '@/component/Course/CourseSelected.vue';
 
 export default {
     components: {
@@ -47,31 +49,27 @@ export default {
             required: true
         }
     },
+
     data() {
         return {
-            imageUrls: [
-                'src/assets/img/banner_aboutus.jpg',
-                'src/assets/img/index/indexcourse.png',
-                'src/assets/img/banner_aboutus.jpg',
-
-                // 其他圖片 URL
-            ],
-            selectedImageUrl: '', // 初始值為空字串
+            previewImageUrl: '/src/assets/img/course/course-Aerobic1-Preview1.png', // 初始值為空字串這裡需要修改為動態的
             teacher: {
-                src: 'src/assets/img/banner_aboutus.jpg',
-                name:'windy'
-            },
-    };
-  },
-  created() {
-    // 在組件創建時,設置初始顯示的大圖片為第一張圖片
-    this.selectedImageUrl = this.imageUrls[0];
-  },
+                src: '',
+                name: ''
+            }
+        };
+    },
+    mounted() {
+
+    },
     methods: {
         selectImage(imageUrl) {
-            this.selectedImageUrl = imageUrl;
+            this.previewImageUrl = imageUrl;
         },
-    },
+        getImageUrl(imageUrl) {
+            return `/src/assets/img/course/${imageUrl}`;
+        }
+    }
 };
 </script>
 
@@ -124,7 +122,7 @@ export default {
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-                            padding-bottom: .6rem;  
+            padding-bottom: .6rem;  
             .course-teacher{
                 display: flex;
                 align-items:center;
@@ -141,12 +139,11 @@ export default {
         }
         .course-content{
             padding: 5%;
-            background-color: #ff8a8a;
+            background-color: #D4EAF7;
             border-radius: 10px;
         }
         .course-btn{
             padding-top: 1rem;            
-
         }
     }
     @media screen and (max-width: 768px) {

@@ -36,12 +36,9 @@
   </div>
 </template>
 
-<script setup>
-import Banner from '../component/Banner.vue';
-import Classinfo from '../component/Classinfo.vue';
-</script>
-
 <script>
+import Banner from '@/component/Banner.vue';
+import Classinfo from '@/component/Classinfo.vue';
 
 export default {
   components: {
@@ -51,7 +48,7 @@ export default {
   data() {
     return {
       courses: [
-       
+
         // 添加其他課程數據...
       ],
       displayList: [],
@@ -63,7 +60,7 @@ export default {
   },
   methods: {
     fetchProduct() {
-      fetch('../../public/json/course.json')
+      fetch(`${import.meta.env.BASE_URL}json/course.json`)
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
@@ -144,15 +141,16 @@ export default {
         height: 30px;
         background-color: #333;
         /* 調整box顏色 */
-      }      
-    }
-  }
-  @media screen and (max-width: 768px) {
-      .btn-sort h3{
-        font-size: 16px;
-        white-space: wrap;
       }
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    .btn-sort h3 {
+      font-size: 16px;
+      white-space: wrap;
+    }
+  }
 
   .section-classinfo {
     width: 80%;
@@ -170,18 +168,20 @@ export default {
         border-radius: 10px;
       }
     }
+
     .page {
-    text-align: center;
-    padding-bottom: 2rem;
-    a {
-      margin: 0 .3rem;
-      padding: .3rem .5rem;
-      background-color: #002451;
-      color: #fff;
-      border-radius: 50%;
-      text-decoration: none;
+      text-align: center;
+      padding-bottom: 2rem;
+
+      a {
+        margin: 0 .3rem;
+        padding: .3rem .5rem;
+        background-color: #002451;
+        color: #fff;
+        border-radius: 50%;
+        text-decoration: none;
+      }
     }
-  }
   }
 }
 </style>
