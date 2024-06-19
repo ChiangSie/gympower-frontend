@@ -13,7 +13,7 @@ import HomeCoupon from '@/views/Home/HomeCoupon.vue';
   <HomeCoupon />
 </template>
 
-<style>
+<style scoped>
 body{
 background-color: #f9f8f7;
     background-image: url(http://www.transparenttextures.com/patterns/bedge-grunge.png);
