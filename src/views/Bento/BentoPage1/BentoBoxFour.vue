@@ -1,8 +1,8 @@
 <template>
     <section class="bentobox4_info">
-        <div class="bentobox4_bg">
+        <div class="bentobox4_bg" @click="selectBento(4)">
             <div class="bentobox4_pic">
-                <img :src="imgSrc" alt="" />
+                <img :src="imgSrc4" alt="" />
             </div>
             <div class="bentobox4_txt">
                 <h3>{{ text }}</h3>
@@ -12,14 +12,27 @@
 </template>
 
 <script>
+import { useBentoStore } from '@/stores/bentobox';
+import { mapWritableState } from 'pinia';
+
+
 export default {
-    data() {
+    setup() {
+        const bentoStore = useBentoStore();
+
+        const selectBento = (id) => {
+            bentoStore.setContainerId(id);
+        };
+
         return {
-            imgSrc: '/src/assets/img/bento_box_four.png',
-            text: '饗食四合一'
-        }
-    }
-}
+            selectBento,
+            imgSrc4: '/src/assets/img/bento_box_four.png',
+            text: '饗食四合一',
+        };
+    },
+
+};
+
 </script>
 
 <style lang="scss" scoped>

@@ -26,30 +26,31 @@
 
 <script>
 import { useCartStore } from '@/stores/cart';
-import { defineComponent } from 'vue';
 
 export default {
 
     data() {
         return {
             list_title: '饗食四合一',
-            bentoList: [
-                {
-                    id: '',
-                    name: '',
-                    qty: '',
-                    heat: '',
-                    imgSrc: '',
-                },
-            ]
+            // bentoList: [
+            //     {
+            //         id: '',
+            //         name: '',
+            //         qty: '',
+            //         heat: '',
+            //         imgSrc: '',
+            //     },
+            // ]
         }
     },
     computed: {
+        bentoList() {
+            const cartStore = useCartStore();
+            return cartStore.bentoList;
+        },
         totalHeat() {
-            return this.bentoList.reduce((total, item) => {
-                const heat = parseInt(item.heat.replace('kcal', ''));
-                return total + heat;
-            }, 0);
+            const cartStore = useCartStore();
+            return cartStore.totalHeat;
         },
     },
 }

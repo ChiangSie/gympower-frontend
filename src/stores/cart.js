@@ -9,31 +9,26 @@ export const useCartStore = defineStore('cart', {
   }),
 
   // 對應 computed (物件形式)
-//   getters: {
-//     totalHeat: (state) => {
-//         return state.bentoList.reduce((total, item) => {
-//             const heat = parseInt(item.calories);
-//             return total + heat;
-//         }, 0);
-//     }
-// },
+  getters: {
+    totalHeat: (state) => {
+        return state.bentoList.reduce((total, item) => {
+            const heat = parseInt(item.calories);
+            return total + heat;
+        }, 0);
+    }
+},
 
   // 對應 methods (物件形式)
-  // actions: {
-  //   addItem(food) {
-  //       this.bentoList.push({
-  //           id: food.id,
-  //           ItemName: food.ItemName,
-  //           qty: 1,
-  //           calories: food.calories,
-  //           imgSrc: food.image,
-  //       });
-  //   } 
-  // }
   actions: {
-    addItem(item) {
-        this.bentoList.push(item);
-        this.totalHeat += item.calories;
-    }
-}
+    addItem(food) {
+        this.bentoList.push({
+            id: food.id,
+            ItemName: food.ItemName,
+            qty: 1,
+            calories: food.calories,
+            imgSrc: food.image,
+        });
+    } 
+  }
+  
 })

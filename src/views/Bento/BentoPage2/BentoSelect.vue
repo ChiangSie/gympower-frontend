@@ -21,7 +21,28 @@
             </div>
             <div class="bento_info">
                 <div class="bento_pic">
-                    <img :src="imgSrc" alt="" />
+                    <!-- 顯示四格餐盒圖片 -->
+                    <div v-if="containerId === 4" class="four_grid_cus_box">
+                        <img :src="imgSrcBox4" alt="四格餐盒">
+                        <div class="grid_container">
+                            <div class="grid_item"><img :src="imgSrcBoxIn[0]" alt="四格餐盒第一格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[1]" alt="四格餐盒第二格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[2]" alt="四格餐盒第三格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[3]" alt="四格餐盒第四格"></div>
+                        </div>
+                    </div>
+                    <!-- 顯示六格餐盒圖片 -->
+                    <div v-else-if="containerId === 6" class="six_grid_cus_box">
+                        <img :src="imgSrcBox6" alt="六格餐盒">
+                        <div class="grid_container">
+                            <div class="grid_item"><img :src="imgSrcBoxIn[0]" alt="六格餐盒第一格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[1]" alt="六格餐盒第二格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[2]" alt="六格餐盒第三格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[3]" alt="六格餐盒第四格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[4]" alt="六格餐盒第五格"></div>
+                            <div class="grid_item"><img :src="imgSrcBoxIn[5]" alt="六格餐盒第六格"></div>
+                        </div>
+                    </div>
                     <p>{{ hint_txt }}</p>
                 </div>
                 <div class="bento_price">
@@ -36,19 +57,32 @@
 </template>
 
 <script>
+import { useBentoStore } from '@/stores/bentobox';
+import { RouterLink } from 'vue-router';
+
 export default {
-    data() {
+    components: {
+        RouterLink,
+    },
+
+    setup() {
+        const bentoStore = useBentoStore();
+
         return {
-            imgSrc: '/src/assets/img/bento_box_four.png',
+            containerId: bentoStore.containerId,
+            imgSrcBox4: '/src/assets/img/bento_box_four.png',
+            imgSrcBox6: '/src/assets/img/bento_box_six.png',
+            imgSrcBoxIn: ['/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png'],
             button_txt_right: '下一步',
             button_txt_left: '上一步',
             hint_txt: '*點選格子即可替換商品',
             sum_price: '當前總額 : $',
             title_txt: '選擇餐盒內容',
             subtitle_txt: 'STEP 2',
-            imgSrcWave: '/src/assets/img/wave.svg'
-        }
-    }
+            imgSrcWave: '/src/assets/img/wave.svg',
+        };
+    },
+
 }
 </script>
 
@@ -169,14 +203,76 @@ button {
 
 /* ====================================================== */
 /* 餐盒照片替換 */
+
 .bento_pic {
     width: 35%;
     aspect-ratio: 4/3.5;
+    position: relative;
 
+    .four_grid_cus_box {
+        position: relative;
+
+        .grid_container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 80%;
+            height: 60%;
+        }
+
+        .grid_item {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        .grid_item img {
+            width: 150%;
+            height: 150%;
+            object-fit: cover;
+            object-position: -55px 60%;
+        }
+    }
+
+    .six_grid_cus_box {
+        position: relative;
+
+        .grid_container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 80%;
+            height: 60%;
+        }
+
+        .grid_item {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        .grid_item img {
+            width: 175%;
+            height: 180%;
+            object-fit: cover;
+            object-position: -50px 90%;
+        }
+    }
 
     img {
         vertical-align: middle;
         width: 100%;
+        height: 100%;
         object-fit: cover;
         object-position: 50% 50%;
     }
@@ -184,7 +280,6 @@ button {
     p {
         text-align: center;
     }
-
 }
 
 .bento_price {
