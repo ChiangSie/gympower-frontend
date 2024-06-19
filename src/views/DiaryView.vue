@@ -1,36 +1,67 @@
 <template>
-  <Banner :title="'健身日記'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
-
-  <div class="section section-search">
-    <div class="container container-search">
-      <div class="search">
-        <p>健身交換日記</p>
-        <input class="search-input" type="text" v-model="searchText" />
-        <button class="search-btn">+ 新增</button>
+  <div class="background">
+    <Banner :title="'健身日記'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
+    <div class="section section-search">
+      <div class="container container-search">
+        <div class="search">
+          <p>健身交換日記</p>
+          <input class="search-input" type="text" v-model="searchText" />
+          <button class="search-btn" id="search-btn" @click="showlightbox">+ 新增</button>
+        </div>
+        <div class="page">
+          <a
+            href=""
+            v-for="n in totalPages"
+            :key="n"
+            @click.prevent="currentPage = n"
+            :class="{ 'active-page': currentPage === n }"
+            >{{ n }}</a
+          >
+        </div>
       </div>
-      <div class="page">
-        <a
-          href=""
-          v-for="n in totalPages"
-          :key="n"
-          @click.prevent="currentPage = n"
-          :class="{ 'active-page': currentPage === n }"
-          >{{ n }}</a
-        >
+    </div>
+    <div class="section section-diary">
+      <div class="container container-diary">
+        <div class="row">
+          <div
+            class="col-6 col-md-4 col-lg-4 col-xl-3"
+            v-for="card in paginatedCards"
+            :key="card.id"
+          >
+            <DiaryCard :cardData="card" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="section section-diary">
-    <div class="container container-diary">
-      <div class="row">
-        <div
-          class="col-6 col-md-4 col-lg-4 col-xl-3"
-          v-for="card in paginatedCards"
-          :key="card.id"
-        >
-          <DiaryCard :cardData="card" />
-        </div>
+
+  <div class="create">
+    <div class="create-head">
+      <h2>建立貼文</h2>
+      <p id="close" class="close" @click="closelightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </p>
+    </div>
+    <div class="border"></div>
+    <div class="create-body">
+      <div class="author">
+        <p>貼文者</p>
+        <p>sam</p>
       </div>
+      <div class="create-date">
+        <p>發佈日期</p>
+        <p>2024/05/25</p>
+      </div>
+    </div>
+    <div class="create-content">
+      <p>內容</p>
+      <textarea name="" id=""></textarea>
+      <p>上傳照片</p>
+      <input type="file" />
+    </div>
+    <div class="create-footer">
+      <div class="cancel" @click="closelightbox"><p>取消</p></div>
+      <div class="upload"><p>發佈</p></div>
     </div>
   </div>
 </template>
@@ -87,9 +118,115 @@ export default {
         this.sourceData = json;
       });
   },
+  methods: {
+    showlightbox() {
+      document.querySelector(".create").style.display = "block";
+      document.querySelector(".background").style.opacity = ".2";
+      document.querySelector(".background").style.pointerEvents = "none";
+    },
+    closelightbox() {
+      document.querySelector(".create").style.display = "none";
+      document.querySelector(".background").style.opacity = "1";
+      document.querySelector(".background").style.pointerEvents = "auto";
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
+.create {
+  background-color: #fff;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  border: solid 1px #000000;
+  border-radius: 10px;
+  .create-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    background-color: #71c4ef;
+    border-radius: 10px 10px 0 0;
+    h2 {
+      padding: 5%;
+    }
+    .close {
+      padding: 5%;
+      i {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .create-body {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    align-items: center;
+    .author,
+    .create-date {
+      padding: 0 5%;
+
+      display: flex;
+      flex-direction: column;
+    }
+    .create-date {
+      align-items: flex-end;
+    }
+  }
+  .create-content {
+    padding: 0 5%;
+
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+    textarea {
+      margin-bottom: 20px;
+      border-radius: 10px;
+      outline: none;
+    }
+  }
+  .create-footer {
+    padding: 0 5%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    .cancel {
+      cursor: pointer;
+      border: 1px solid #000;
+      border-radius: 10px;
+      width: clamp(58px, 6.64vw, 85px);
+      aspect-ratio: 2/1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .upload {
+      cursor: pointer;
+
+      border: 1px solid #000;
+      border-radius: 10px;
+      width: clamp(58px, 6.64vw, 85px);
+      aspect-ratio: 2/1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #002451;
+      color: #fff;
+    }
+  }
+}
 .section {
   background-color: #f9f8f7;
 }
@@ -131,6 +268,7 @@ a {
     }
 
     .search-btn {
+      cursor: pointer;
       padding: 10px 15px;
       border: solid 0.1px #ffffff;
       background-color: #002451;

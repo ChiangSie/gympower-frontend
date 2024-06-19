@@ -25,6 +25,8 @@
 
 <script>
 import NutritionFacts from './NutritionFacts.vue';
+
+
 export default {
     components: {
         NutritionFacts
@@ -48,6 +50,11 @@ export default {
         closeNutritionInfo() {
             this.selectedFood = null;
             document.body.style.overflow = 'auto';
+        }, addToCartAndShowNutrition(food) {
+            const cartStore = useCartStore();
+            cartStore.addItem(food);
+            this.showNutrition(food);
+            console.log(`${food.ItemName} added to cart`);
         }
     }
 

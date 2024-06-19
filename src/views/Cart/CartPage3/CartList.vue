@@ -121,7 +121,7 @@ export default {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     border-radius: 0 10px 10px 10px;
     backdrop-filter: blur(10px);
-    margin: 10% auto;
+    margin: 20% auto 20% ;
     padding: 50px 10px;
     text-align: center;
 }
@@ -651,7 +651,6 @@ export default {
 @media screen and (max-width: 1024px) {
     .bento_list_info_item{
         margin-bottom: 190px;
-        border: 1px solid red;
     }
 }
 @media screen and (max-width: 992px) {
@@ -676,9 +675,12 @@ export default {
 @media screen and (max-width: 768px) {
     .bento_list_info {
         width: 100%;
+        margin-top: 6%;
     }
 
     .bento_list_info_btn {
+        padding: 2%;
+        width: 36%;
         margin-bottom: 10%;
     }
 }

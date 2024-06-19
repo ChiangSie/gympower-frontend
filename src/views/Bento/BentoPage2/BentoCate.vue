@@ -14,13 +14,14 @@
             <!-- <BentoFood >
                 {{sourceData }}
             </BentoFood> -->
-            <BentoFood :foods="filterList" />
+            <BentoFood :foods="filterList" @show-nutrition="showNutrition" />
         </div>
     </section>
 </template>
 
 <script>
 import BentoFood from './BentoFood.vue'
+
 
 export default {
     components: {
@@ -30,7 +31,7 @@ export default {
         return {
             sourceData: [],
             currentTag: '',
-            // foods: [{}]
+
         }
     },
     mounted() {
