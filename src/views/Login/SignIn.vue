@@ -14,7 +14,6 @@
             <div class="form-login sign-in">
                 <form action="#">
                     <h2>會員登入</h2>
-                    <input type="text" placeholder="Name">
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                     <span>忘記密碼?</span>

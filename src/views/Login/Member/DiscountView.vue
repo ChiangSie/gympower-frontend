@@ -91,7 +91,7 @@ hr{
     width: 100%;
     border-width: 1px;
     border-color: #000000;
-    margin: 0;
+    margin: 10px 0;
 }
 .discount_page{
     width: 100%;
