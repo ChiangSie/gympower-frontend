@@ -2,8 +2,7 @@
   <div id="app">
     <CourseDetail :productInfo="productInfo" />
     <CourseList :imageUrls="imageUrls" />
-    <CourseRating :ratingPosts="ratingPosts" />
-    <hr>
+    <CourseRating :ratingPosts="ratingPosts" :productInfo="productInfo" />
   </div>
 </template>
 
@@ -20,9 +19,12 @@ export default {
   },
   data() {
     return {
-      productInfo: {},
+        productInfo: {
+            locations: [],
+            courseTimes: {}
+      },
         ratingPosts: [],
-      imageUrls: [],
+        imageUrls: [],
     };
   },
     methods: {

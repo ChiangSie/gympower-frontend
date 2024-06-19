@@ -10,7 +10,7 @@
       </div>
       <div class="txt">
         <h3>
-          <div>{{ cardData.teacher }}</div><span>{{ cardData.price }}</span>
+          <div>{{ cardData.teacher }}</div><span>NT.{{ cardData.price }} | {{ cardData.course }}堂</span>
         </h3>
       </div>
     </div>

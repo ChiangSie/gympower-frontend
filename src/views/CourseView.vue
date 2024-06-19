@@ -26,9 +26,12 @@
             <h3 class="txt">目前未開課</h3>
           </div>
           <div v-else>
-            <Classinfo v-for="course in displayList" :key="course.id" :cardData="course" />
+            <Classinfo v-for="course in paginatedPosts" :key="course.id" :cardData="course" />
 
-            <div class="page"><a href="" v-for="n in 5">{{ n }}</a></div>
+            <div class="page">
+              <a href="#" v-for="n in totalPages" :key="n" @click.prevent="currentPage = n"
+                :class="{ 'active-page': currentPage === n }">{{ n }}</a>
+            </div>
           </div>
         </div>
       </div>
@@ -47,10 +50,9 @@ export default {
   },
   data() {
     return {
-      courses: [
-
-        // 添加其他課程數據...
-      ],
+      currentPage: 1,
+      itemsPerPage: 3,
+      courses: [],
       displayList: [],
     }
   },
@@ -65,11 +67,12 @@ export default {
         .then((json) => {
           console.log(json);
           this.courses = json;
-          this.displayData = json;
+          this.displayList = json;
         });
     },
     clear() {
-      this.displayList = this.courses
+      this.displayList = this.courses;
+      this.currentPage = 1;
     },
     parseImg(file) {
       return new URL(`../assets/img/${file}`, import.meta.url).href
@@ -78,8 +81,19 @@ export default {
       this.displayList = this.courses.filter(course => {
         return course.type === type;
       })
+      this.currentPage = 1;
     }
-  }
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.displayList.length / this.itemsPerPage);
+    },
+    paginatedPosts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.displayList.slice(start, end);
+    }
+  },
 }
 </script>
 

@@ -4,18 +4,41 @@
     "title": "週三有氧課程",
     "imgSrc": "/src/assets/img/course/course-Retrain-Preview2.png",
     "teacher": "Wendy老師",
-    "teacherSrc":"windy.png",
+    "teacherSrc": "windy.png",
     "price": 3500,
     "description": "帶領學員在高強度的燃脂動作和中低強度的恢復階段之間進行切換。這種間歇式訓練不僅能提高心肺功能,更能刺激人體代謝",
     "sort": "有氧課程",
     "type": 1,
-    "course":6,
+    "course": 6,
     "imageUrls": [
-                "course-Aerobic1-Preview1.png",
-                "course-Aerobic1-Preview2.png",
-                "course-Aerobic1-Preview3.png"
-            ]
-  },
+        "course-Aerobic1-Preview1.png",
+        "course-Aerobic1-Preview2.png",
+        "course-Aerobic1-Preview3.png"
+    ],
+    "locations": [
+        "中壢門市",
+        "大安門市",
+        "東門門市"
+    ],
+    "courseTimes": {
+        "中壢門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ],
+        "大安門市": [
+            "10:00 - 12:00",
+            "14:00 - 16:00",
+            "19:00 - 21:00"
+        ],
+        "東門門市": [
+            "11:00 - 13:00",
+            "15:00 - 17:00",
+            "20:00 - 22:00"
+        ]
+    }
+},
+
   {
     "id": 2,
     "title": "週五重訓課程",
@@ -31,7 +54,17 @@
                 "course-Aerobic1-Preview1.png",
                 "course-Aerobic1-Preview2.png",
                 "course-Aerobic1-Preview3.png"
-            ]
+            ],
+    "locations": [
+        "中壢門市"
+    ],
+    "courseTimes": {
+        "中壢門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ]
+    }
   },
   {
     "id": 3,
@@ -48,7 +81,17 @@
                 "course-Aerobic1-Preview1.png",
                 "course-Aerobic1-Preview2.png",
                 "course-Aerobic1-Preview3.png"
-            ]
+            ],
+    "locations": [
+          "大安門市"
+    ],
+    "courseTimes": {
+        "大安門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ]
+    }
   },
   {
     "id": 4,
@@ -66,7 +109,23 @@
                 "course-Aerobic1-Preview1.png",
                 "course-Aerobic1-Preview2.png",
                 "course-Aerobic1-Preview3.png"
-            ]
+            ],
+    "locations": [
+        "中壢門市",
+        "東門門市"
+    ],
+    "courseTimes": {
+        "中壢門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ],
+         "東門門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ]
+    }
   },
   {
     "id": 5,
@@ -84,7 +143,17 @@
                 "course-Aerobic1-Preview1.png",
                 "course-Aerobic1-Preview2.png",
                 "course-Aerobic1-Preview3.png"
-            ]
+            ],
+    "locations": [
+          "大安門市"
+    ],
+    "courseTimes": {
+        "大安門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ]
+      }
   },
   {
     "id": 6,
@@ -102,6 +171,16 @@
                 "course-Aerobic1-Preview1.png",
                 "course-Aerobic1-Preview2.png",
                 "course-Aerobic1-Preview3.png"
-            ]
+            ],
+    "locations": [
+        "中壢門市"
+    ],
+    "courseTimes": {
+        "中壢門市": [
+            "09:00 - 11:00",
+            "13:00 - 15:00",
+            "18:00 - 20:00"
+        ]
+    }
   }
 ]
