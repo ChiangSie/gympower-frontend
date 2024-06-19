@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted() {
-    fetch("${import.meta.env.BASE_URL}json/indexCourse.json")
+    fetch(`${import.meta.env.BASE_URL}json/indexCourse.json`)
       .then((res) => res.json())
       .then((json) => {
         //確認有沒有response
