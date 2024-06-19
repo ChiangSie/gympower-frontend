@@ -1,5 +1,5 @@
 <template>
-    <div class="order_page">
+    <section class="order_page">
         <h2>訂單查詢</h2>
         <hr>
         <div class="pagination">
@@ -41,7 +41,7 @@
             <button @click="showtr($event)"><i class="fa-solid fa-circle-info"></i> 查看明細</button>
         </div>
         
-    </div>
+    </section>
 </template>
 
 
@@ -288,6 +288,12 @@ export default{
 
 
 <style lang="scss" scoped>
+hr{
+    width: 100%;
+    border-width: 1px;
+    border-color: #000000;
+    margin: 10px 0;
+}
 .order_page{
     width: 100%;
     .order_search{
