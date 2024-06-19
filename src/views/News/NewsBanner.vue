@@ -27,15 +27,15 @@ export default {
   justify-content: flex-end;
   position: relative;
   .banner_news_img {
-    width: 70%;
+   width: 70%;
     aspect-ratio: 2.5/1;
     border-radius: 10px;
     overflow: hidden;
     img {
+      vertical-align: middle;
       width: 100%;
       aspect-ratio: 2.5/1;
       object-fit: cover;
-      object-position: 50% 50%;
     }
   }
   h1 {
