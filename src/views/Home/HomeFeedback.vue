@@ -30,7 +30,7 @@ export default {
     };
   },
   mounted() {
-    fetch("/json/feedback.json")
+    fetch("${import.meta.env.BASE_URL}json/feedback.json")
       .then((res) => res.json())
       .then((json) => {
         //確認有沒有response
