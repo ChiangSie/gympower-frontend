@@ -5,28 +5,39 @@
     <div class="container container-search">
       <div class="search">
         <p>健身交換日記</p>
-        <input class="search-input" type="text">
+        <input class="search-input" type="text" v-model="searchText" />
         <button class="search-btn">+ 新增</button>
       </div>
-      <div class="page"><a href="" v-for="n in 5">{{ n }}</a></div>
+      <div class="page">
+        <a
+          href=""
+          v-for="n in totalPages"
+          :key="n"
+          @click.prevent="currentPage = n"
+          :class="{ 'active-page': currentPage === n }"
+          >{{ n }}</a
+        >
+      </div>
     </div>
   </div>
   <div class="section section-diary">
     <div class="container container-diary">
       <div class="row">
-        <div class="col-6 col-md-4 col-lg-4 col-xl-3" v-for="card in cardlist" :key="card.id">
+        <div
+          class="col-6 col-md-4 col-lg-4 col-xl-3"
+          v-for="card in paginatedCards"
+          :key="card.id"
+        >
           <DiaryCard :cardData="card" />
         </div>
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script setup>
-import Banner from '../component/Banner.vue';
-import DiaryCard from '../component/DiaryCard.vue';
+import Banner from "../component/Banner.vue";
+import DiaryCard from "../component/DiaryCard.vue";
 </script>
 
 <script>
@@ -37,52 +48,50 @@ export default {
   },
   data() {
     return {
-      cardlist: [
-        {
-          id: 1,
-          imgSrc: 'https://picsum.photos/300/350/?random=10',
-          title: '健康飲食健身者的營養指南',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          date: '2021-01-01'
-
-        },
-        {
-          id: 2,
-          imgSrc: 'https://picsum.photos/300/350/?random=10',
-          title: '高效訓練打造完美體態',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          date: '2021-01-01'
-
-        },
-        {
-          id: 3,
-          imgSrc: 'https://picsum.photos/300/350/?random=10',
-          title: '3title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          date: '2021-01-01'
-        },
-        {
-          id: 4,
-          imgSrc: 'https://picsum.photos/300/350/?random=10',
-          title: '4title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          date: '2021-01-01'
-        },
-        {
-          id: 4,
-          imgSrc: 'https://picsum.photos/300/350/?random=10',
-          title: '4title',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quisvoluptatibus a!',
-          date: '2021-01-01'
-        }
-      ]
-    }
-  }
-}
+      // v-model 參考
+      searchText: "",
+      // 引入 json 資料
+      sourceData: [],
+      // 當前頁碼
+      currentPage: 1,
+      // 每頁顯示的卡片數量
+      itemsPerPage: 8,
+    };
+  },
+  computed: {
+    filteredCards() {
+      return this.sourceData.filter(
+        (card) =>
+          card.text.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          card.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          card.date.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    },
+    paginatedCards() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredCards.slice(start, end);
+    },
+    totalPages() {
+      // 自動生成頁碼
+      return Math.ceil(this.filteredCards.length / this.itemsPerPage);
+    },
+  },
+  mounted() {
+    fetch("/json/diarylist.json")
+      .then((res) => res.json())
+      .then((json) => {
+        //確認有沒有response
+        console.log(json);
+        //顯示用
+        this.sourceData = json;
+      });
+  },
+};
 </script>
 <style lang="scss" scoped>
 .section {
-  background-color: #F9F8F7;
+  background-color: #f9f8f7;
 }
 
 img {
@@ -114,7 +123,7 @@ a {
 
     .search-input {
       padding: 10px 10px 10px 35px;
-      border: solid .1px #b4def2;
+      border: solid 0.1px #b4def2;
       color: #fff;
       border-radius: 35px;
       background-color: #b4def2;
@@ -123,7 +132,7 @@ a {
 
     .search-btn {
       padding: 10px 15px;
-      border: solid .1px #ffffff;
+      border: solid 0.1px #ffffff;
       background-color: #002451;
       color: #fff;
       border-radius: 35px;
@@ -140,20 +149,22 @@ a {
 
   .page {
     align-self: center;
-
     a {
-      margin: 0 .3rem;
-      padding: .3rem .5rem;
-      background-color: #002451;
+      margin: 0 0.3rem;
+      padding: 0.3rem 0.5rem;
+      background-color: #999;
       color: #fff;
       border-radius: 50%;
       align-self: center;
+    }
+    .active-page {
+      background-color: #002451;
     }
   }
 
   @media screen and (max-width: 768px) {
     .page {
-      padding-top: .5rem;
+      padding-top: 0.5rem;
     }
   }
 }
