@@ -73,13 +73,25 @@ export default {
     gap: 1rem;
     .prev-button{
         position: absolute;
-        left: 10px;
+        left: 0;
         z-index: 2;
+        font-size: 2rem;
+        height: 100%;
+        width: 4rem;
+        background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0));       
+        border: none;
+        border-radius: 10px;
     }
     .next-button{
         position: absolute;
-        right: 10px;
+        right: 0;
+        font-size: 2rem;
         z-index: 2;
+        height: 100%;
+        width: 4rem;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff);
+        border: none;
+        border-radius: 10px;
     }
 .image-container {
     width: 60%;

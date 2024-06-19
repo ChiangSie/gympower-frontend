@@ -29,7 +29,7 @@
             <p>{{productInfo.description}}</p>
             </div>
             <div class="course-btn">
-             <CourseSelected />
+             <CourseSelected :productInfo="productInfo"/>
             </div>
         </div>
         </div>
