@@ -27,11 +27,15 @@ export default{
     border: 1px solid black;
     border-radius: 15px;
     display: flex;
+    background-color: #d4eaf7;
     .card_left{
         width: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
+        span{
+            color: rgb(215, 119, 119);
+        }
     }
     .card_right{
         width: 70%;

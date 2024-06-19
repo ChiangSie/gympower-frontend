@@ -52,28 +52,28 @@ export default{
             orderDataList:[
                 {
                     id : 1,
-                    serialnumber : '1111111',
+                    serialnumber : 'aa00001',
                     date : '2024/05/31',
                     sumprice : 450,
                     type : 0 ,
                     detail : [
                         {
                             no : 1,
-                            name : 'aaa',
+                            name : '蛋白套餐',
                             amount : 2,
                             price : 150,
                             used : 0
                         },
                         {
                             no : 2,
-                            name : 'bbb',
+                            name : '自由套餐配',
                             amount : 1,
                             price : 200,
                             used : 1
                         },
                         {
                             no : 3,
-                            name : 'ccc',
+                            name : '套餐自由配',
                             amount : 1,
                             price : 100,
                             used : 0
@@ -82,35 +82,35 @@ export default{
                 },
                 {
                     id : 2,
-                    serialnumber : '22222222',
+                    serialnumber : 'aa00002',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,
                     detail : [
                         {
                             no : 1,
-                            name : 'aaa',
+                            name : '雞胸肉套餐',
                             amount : 1,
                             price : 200,
                             used : 1
                         },
                         {
                             no : 2,
-                            name : 'bbb',
+                            name : '水煮蛋套餐',
                             amount : 1,
                             price : 200,
                             used : 0
                         },
                         {
                             no : 3,
-                            name : 'ccc',
+                            name : '神秘蛋白套餐',
                             amount : 1,
                             price : 100,
                             used : 0
                         },
                         {
                             no : 4,
-                            name : 'ddd',
+                            name : '蛋白粉套餐',
                             amount : 1,
                             price : 100,
                             used : 0
@@ -119,35 +119,35 @@ export default{
                 },
                 {
                     id : 3,
-                    serialnumber : '333',
+                    serialnumber : 'aa00003',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,
                     detail : [
                         {
                             no : 1,
-                            name : 'aaa',
+                            name : '雞胸自由配',
                             amount : 1,
                             price : 200,
                             used : 1
                         },
                         {
                             no : 2,
-                            name : 'bbb',
+                            name : '蛋白自由配',
                             amount : 1,
                             price : 200,
                             used : 0
                         },
                         {
                             no : 3,
-                            name : 'ccc',
+                            name : '嘎啦嘎拉自由配',
                             amount : 1,
                             price : 100,
                             used : 0
                         },
                         {
                             no : 4,
-                            name : 'ddd',
+                            name : '神秘蛋白自由配',
                             amount : 1,
                             price : 100,
                             used : 0
@@ -156,7 +156,7 @@ export default{
                 },
                 {
                     id : 4,
-                    serialnumber : '44444',
+                    serialnumber : 'aa00004',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,
@@ -179,7 +179,7 @@ export default{
                 },
                 {
                     id : 5,
-                    serialnumber : '55555',
+                    serialnumber : 'aa00005',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,
@@ -202,7 +202,7 @@ export default{
                 },
                 {
                     id : 6,
-                    serialnumber : '666666',
+                    serialnumber : 'aa00006',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,
@@ -225,7 +225,7 @@ export default{
                 },
                 {
                     id : 7,
-                    serialnumber : '777777777777',
+                    serialnumber : 'aa00007',
                     date : '2024/07/31',
                     sumprice : 600,
                     type : 0 ,

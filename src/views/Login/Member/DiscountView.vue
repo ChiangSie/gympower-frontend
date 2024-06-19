@@ -7,7 +7,7 @@
             <div class="dis_button">
                 <button @click="showall">全部</button>
                 <button @click="fl(0)">未使用</button>
-                <button @click="fl(1)">已使用/已失效</button>
+                <button @click="fl(1)">已使用</button>
             </div>
             <hr>
             <div class="dis_card_area">
