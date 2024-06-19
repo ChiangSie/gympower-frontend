@@ -1,9 +1,9 @@
 <template>
     <section class="member">
         <aside>
-            <div class="member_pic">
-                <img src="" alt="">
-            </div>
+            <!-- <div class="member_pic">
+                <img v-bind:src="selfieUrl" alt="">
+            </div> -->
             <ul>
                 <router-link to="/AccountMangerView">帳號管理</router-link>
                 <hr>
@@ -43,7 +43,7 @@ export default defineComponent({
     column-gap: 15px;
     aside {
         width: 20%;
-        height: 500px;
+        height: fit-content;
         border: 1.5px solid black;
         border-radius: 15px;
         display: flex;
@@ -63,7 +63,7 @@ export default defineComponent({
         }
         ul{
             margin-top: 17px;
-            padding: 0;
+            padding: 15px 0;
             display: flex;
             flex-direction: column;
             align-items: center;

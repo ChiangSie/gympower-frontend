@@ -7,9 +7,9 @@
                 <h3>個人頭像</h3>
                 <div class="person-pic">
                     <div class="pic">
-                        <img src="#" alt="user picture">
+                        <img :src="selfieUrl" alt="">
                     </div>
-                <input type="file" name="#" id="#">
+                <input type="file" name="selfie" id="#" @change="handleFileChange">
                 </div>
             </div>
             <hr>
@@ -18,15 +18,15 @@
                 <div class="account_detail">
                     <div class="name ks">
                         <h4>姓名</h4>
-                        <input type="text">
+                        <input type="text" v-model="namedata">
                     </div>
                     <div class="sex ks">
                         <h4>姓別</h4>
-                        <input type="text">
+                        <input type="text" v-model="sexdata">
                     </div>
                     <div class="phone ks">
                         <h4>電話號碼</h4>
-                        <input type="tel">
+                        <input type="tel" v-model="phonedata">
                     </div>
                     <div class="or-password ks">
                         <h4>原密碼</h4>
@@ -52,7 +52,29 @@
     </section>
 </template>
 
-<script></script>
+<script>
+export default{
+    data(){
+        return{
+            selfieFile: null,
+      selfieUrl: '',
+      namedata:'',
+      sexdata:'',
+      phonedata:''
+        }
+    },
+    methods: {
+    handleFileChange(event) {
+      this.selfieFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.selfieUrl = reader.result;
+      };
+      reader.readAsDataURL(this.selfieFile);
+     }
+    },
+}
+</script>
 
 
 <style lang="scss" scoped>
@@ -77,9 +99,11 @@ section{
                 align-items: center;
                 margin: 10px auto;
                 .pic{
-                    width: 80px;
+                    width: 100px;
                     aspect-ratio: 1/1;
                     border-radius: 50%;
+                    overflow: hidden;
+                    border: 0.5px solid black;
                     img{
                         width: 100%;
                         aspect-ratio: 1/1;
