@@ -5,7 +5,7 @@
             <div class="image-carousel">
                 <button class="prev-button" @click="prevImages" :disabled="isFirstGroup"><</button>
                 <router-link class="image-container" v-for="(imageUrl, index) in displayedImageUrls" :key="index" :to="`/course/${imageUrl.id}`">
-                    <img  :src="imageUrl.imgSrc" alt="Current Image"
+                    <img  :src="getImageUrl(imageUrl.imgSrc)" alt="Current Image"
                         class="carousel-image" />
                 </router-link>
                 <button class="next-button" @click="nextImages" :disabled="isLastGroup">></button>
@@ -52,6 +52,9 @@ export default {
             if (!this.isLastGroup) {
                 this.currentIndex += this.imagesPerGroup;
             }
+        },
+        getImageUrl(imageUrl) {
+            return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
         }
     }
 };

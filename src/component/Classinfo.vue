@@ -23,7 +23,6 @@
       </router-link>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -40,8 +39,8 @@ export default {
   },
   methods: {
         parseImg(imgURL) {
-      return new URL(`../../../assets/img/course/${imgURL}`, import.meta.url).href;
-    },
+      return new URL(`../assets/img/course/${imgURL}`, import.meta.url).href;
+    }
   }
 }
 </script>
