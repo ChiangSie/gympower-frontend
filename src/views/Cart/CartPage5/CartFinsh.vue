@@ -81,7 +81,7 @@
                     <div class="bento_list_info_center_type">
                         <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
                             <div class="bento_list_info_center_type_con_pic">
-                                <img :src="item.imgSrc" alt="">
+                                <img :src="parseImg(item.imgSrc)" alt="">
                             </div>
                             <div class="bento_list_info_center_type_con_name">
                                 <span>{{ item.name }}</span>
@@ -173,7 +173,7 @@ export default {
                 id: 1,
                 name: '饗食四合一',
                 price: 120,
-                imgSrc: '/src/assets/img/bento_box_four.png',
+                imgSrc: 'bento_box_four.png',
                 qty: 1,
             },
             ]
@@ -222,7 +222,11 @@ export default {
                 timer: 1200,
             })
         },
-    }
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    },
+
 }
 </script>
 
@@ -301,6 +305,7 @@ export default {
     margin-top: 10px;
     font-size: .9em;
 }
+
 .step.active .circle {
     background-color: #002451;
     color: white;
@@ -403,16 +408,19 @@ export default {
     padding: 16px;
     width: 410px;
 }
+
 @media screen and (max-width: 768px) {
     .bento_list_con {
         display: flex;
         flex-direction: column;
     }
-    .bento_list_item{
+
+    .bento_list_item {
         margin-top: 10%;
         width: 140%;
     }
-    .bento_list_item_option{
+
+    .bento_list_item_option {
         margin-top: 10%;
     }
 }
@@ -530,21 +538,25 @@ export default {
     margin: 2% 0 14% 0;
     cursor: pointer;
 }
+
 @media screen and (max-width: 992px) {
-    .bento_list_info_center_type_con{
+    .bento_list_info_center_type_con {
         width: 70%;
     }
+
     .bento_list_info_center_type_con_name span {
         width: 196%;
         font-size: .8em;
         margin-left: 16%;
     }
+
     .bento_list_info_center_type_con_pic {
         width: 40%;
     }
 }
+
 @media screen and (max-width: 768px) {
-    .bento_list_info_center_type_con{
+    .bento_list_info_center_type_con {
         width: 84%;
     }
 }
@@ -578,13 +590,15 @@ export default {
     color: #000;
     letter-spacing: .6px;
 }
+
 @media screen and (max-width: 992px) {
-    .bento_list_item_rule{
+    .bento_list_item_rule {
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
     }
-    .bento_list_item_rule_up{
+
+    .bento_list_item_rule_up {
         width: 12%;
         display: flex;
         align-items: center;
@@ -592,22 +606,26 @@ export default {
         margin: 10% 0 0 44%;
     }
 }
+
 @media screen and (max-width: 768px) {
-    .bento_list_info{
+    .bento_list_info {
         width: 98%;
     }
-    .bento_list_item_rule{
+
+    .bento_list_item_rule {
         display: flex;
         flex-direction: column-reverse;
         justify-content: center;
     }
+
     .bento_list_item_rule_up {
-        width:20%;
+        width: 20%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 10% 0 0 38%;
     }
+
     .bento_list_info_btn {
         padding: 2%;
         width: 36%;
