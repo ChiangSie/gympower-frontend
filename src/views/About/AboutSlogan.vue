@@ -14,32 +14,6 @@ export default {
   data() {
     return {
       features:[]
-      // features: [
-      //   {
-      //     icon: '/src/assets/img/about_pilates.png',
-      //     title: 'Premium Environment',
-      //     title_cn: '優質環境',
-      //     description: '配備先進的健身器材，滿足各種有氧和力量訓練需求。'
-      //   },
-      //   {
-      //     icon: '/src/assets/img/about_trainer.png',
-      //     title: 'Professional Trainers',
-      //     title_cn: '專業教練',
-      //     description: '根據您的需求提供健康營養計劃，助您達成健身目標。'
-      //   },
-      //   {
-      //     icon: '/src/assets/img/about_exercise.png',
-      //     title: 'Advanced Equipment',
-      //     title_cn: '高級設備',
-      //     description: '提供乾淨舒適的淋浴設施，讓您在運動後放鬆身心。'
-      //   },
-      //   {
-      //     icon: '/src/assets/img/about_course.png',
-      //     title: 'Group Classes',
-      //     title_cn: '團體課程',
-      //     description: '專業教練根據您的需求量身訂製健身計劃，確保最佳效果。'
-      //   }
-      // ]
     }
   },
   mounted() {
