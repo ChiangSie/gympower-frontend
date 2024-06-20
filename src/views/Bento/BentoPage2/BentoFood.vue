@@ -7,7 +7,7 @@
                         <h4>${{ food.price }}</h4>
                     </div>
                     <div class="card_details">
-                        <img :src="food.image" alt="食物照片" class="card-image" />
+                        <img :src="parseImg(food.image)" alt="食物照片" class="card-image" />
                         <button class="details_button" @click="showNutrition(food)">
                             營養成分
                         </button>
@@ -55,6 +55,9 @@ export default {
             cartStore.addItem(food);
             this.showNutrition(food);
             console.log(`${food.ItemName} added to cart`);
+        },
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
         }
     }
 

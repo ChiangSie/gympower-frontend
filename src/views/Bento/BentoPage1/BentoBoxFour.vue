@@ -2,7 +2,7 @@
     <section class="bentobox4_info">
         <div class="bentobox4_bg" @click="selectBento(4)">
             <div class="bentobox4_pic">
-                <img :src="imgSrc4" alt="" />
+                <img :src="parseImg('bento_box_four.png')" alt="" />
             </div>
             <div class="bentobox4_txt">
                 <h3>{{ text }}</h3>
@@ -26,11 +26,14 @@ export default {
 
         return {
             selectBento,
-            imgSrc4: '/src/assets/img/bento_box_four.png',
             text: '饗食四合一',
         };
     },
-
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    }
 };
 
 </script>
