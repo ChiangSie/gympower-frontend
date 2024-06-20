@@ -88,14 +88,14 @@
                 <div class="bento_list_info_center_type">
                     <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
                         <div class="bento_list_info_center_type_con_pic">
-                            <img :src="item.imgSrc" alt="">
+                            <img :src="parseImg(item.imgSrc)" alt="">
                         </div>
                         <div class="bento_list_info_center_type_con_name">
                             <span>{{ item.name }}</span>
-                            <span>{{ item.price }}</span>
+                            <span>${{ item.price }}</span>
                         </div>
                         <div class="bento_list_info_center_type_con_qty">
-                            <span>{{ item.qty }}</span>
+                            <span>x{{ item.qty }}</span>
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@ export default {
                 id: 1,
                 name: '饗食四合一',
                 price: 120,
-                imgSrc: '/src/assets/img/bento_box_four.png',
+                imgSrc: 'bento_box_four.png',
                 qty: 1,
             },
             ]
@@ -205,7 +205,11 @@ export default {
             };
         },
     },
-    
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    }
 }
 </script>
 
@@ -217,7 +221,7 @@ export default {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     border-radius: 0 10px 10px 10px;
     backdrop-filter: blur(10px);
-    margin: 10% auto;
+    margin: 26% auto 20%;
     padding: 50px 10px;
     text-align: center;
 }
@@ -227,23 +231,23 @@ export default {
     display: flex;
     margin-top: -101.4px;
     margin-left: -10px;
-}
 
-.bento_cart_select_bento,
-.bento_cart_select_classes {
-    padding: 10px 20px;
-}
+    .bento_cart_select_bento,
+    .bento_cart_select_classes {
+        padding: 10px 20px;
+    }
 
-.bento_cart_select_bento {
-    background-color: #FADFBF;
-    padding: 18px 40px;
-    border-radius: 10px 10px 0 0;
-}
+    .bento_cart_select_bento {
+        background-color: #FADFBF;
+        padding: 18px 40px;
+        border-radius: 10px 10px 0 0;
+    }
 
-.bento_cart_select_classes {
-    background-color: #DAEEF9;
-    padding: 18px 40px;
-    border-radius: 10px 10px 0 0;
+    .bento_cart_select_classes {
+        background-color: #DAEEF9;
+        padding: 18px 40px;
+        border-radius: 10px 10px 0 0;
+    }
 }
 
 /* 步驟 */
@@ -391,20 +395,27 @@ export default {
 
 @media screen and (max-width: 768px) {
     .bento_list_con {
-        border: 1px solid red;
         display: flex;
         flex-direction: column;
+    }
+
+    .bento_list_detail {
+        margin-top: 4%;
     }
 
     .bento_list_item {
         display: flex;
         width: 140%;
+        margin-bottom: 10%;
         border-bottom: 1px solid #000;
     }
 
     .bento_list_item_option {
         width: 140%;
-        border: 1px solid red;
+    }
+
+    .bento_list_form-group label {
+        display: none;
     }
 
     .styled-input {
@@ -417,6 +428,10 @@ export default {
 
     #styled-input_name {
         margin: auto;
+    }
+
+    .bento_list_form-group #pickup {
+        width: 340px;
     }
 
 }
@@ -560,6 +575,23 @@ export default {
 .rule_return a {
     color: #000;
     letter-spacing: .6px;
+}
 
+@media screen and (max-width: 768px) {
+    .bento_list_info {
+        width: 98%;
+    }
+
+    .bento_list_item_rule_up {
+        width: 20%;
+        display: flex;
+        align-items: center;
+    }
+
+    .bento_list_info_btn {
+        padding: 2%;
+        width: 36%;
+        margin-bottom: 10%;
+    }
 }
 </style>

@@ -14,11 +14,10 @@
             <div class="form-login sign-in">
                 <form action="#">
                     <h2>會員登入</h2>
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
+                    <input type="email" placeholder="Email" v-model="textData">
+                    <input type="password" placeholder="Password"  v-model="pswData">
                     <span>忘記密碼?</span>
-                    <RouterLink to='/AccountMangerView'><button>登入</button></RouterLink>
+                    <button @click="memlogin()">登入</button>
                     <a href="#"><i class="fa-brands fa-google"></i> Google登入</a>
                 </form>
             </div>
@@ -44,7 +43,54 @@
 </template>
 
 <script>
+import{LoginAccount} from '/src/stores/LoginAccount.js'
+
 export default {
+    data() {
+    return {
+      // 管理ID輸入框的值
+      textData: '',
+      // 密碼輸入框的值
+      pswData: ''
+    }
+  },
+  methods: {
+    async memlogin() {
+      try {
+        // 獲取 Pinia Store 的實例
+        const store = LoginAccount()
+
+        // fetch 資料
+        const response = await fetch(`${import.meta.env.BASE_URL}json/loginaccount.json`)
+        const users = await response.json()
+
+        // 查找用戶
+        const loggedInUser = users.find(
+          (u) => u.account === this.textData && u.password === this.pswData
+        )
+
+        if (loggedInUser) {
+          // 設置當前用戶到 Pinia
+          store.setCurrentUser(loggedInUser)
+          // 重置輸入框值
+          this.textData = ''
+          this.pswData = ''
+          // 跳轉到主頁
+          this.$router.push('/AccountMangerView')
+        } else {
+          // 顯示錯誤訊息
+          alert("帳帳號密碼錯誤")
+          // 重置輸入框值
+          this.textData = ''
+          this.pswData = ''
+        }
+      } catch (error) {
+        // 顯示錯誤訊息
+        console.error('登入失敗:', error)
+        alert('登入失敗')
+      }
+    }
+  },
     mounted() {
         const login = document.getElementById('login');
         const registerBtn = document.getElementById('signup');

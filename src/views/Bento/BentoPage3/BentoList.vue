@@ -7,13 +7,13 @@
             <div class="bento_list_detail">
                 <div class="bento_list_con" v-for="item in bentoList" :key="item.id">
                     <div class="bento_list_pic">
-                        <img :src="item.imgSrc" :alt="item.name">
+                        <img :src="parseImg(item.imgSrc)" :alt="item.name">
                     </div>
                     <!-- 餐盒內容含名稱、份量、卡路里 -->
                     <div class="bento_list_text">
-                        <div class="bento_list_con_name">{{ item.name }}</div>
+                        <div class="bento_list_con_name">{{ item.ItemName }}</div>
                         <div class="bento_list_con_qty">{{ item.qty }}</div>
-                        <div class="bento_list_con_heat">{{ item.heat }}</div>
+                        <div class="bento_list_con_heat">{{ item.calories }}kcal</div>
                     </div>
                 </div>
                 <div class="bento_list_total">
@@ -24,54 +24,42 @@
     </section>
 </template>
 
-
 <script>
+import { useCartStore } from '@/stores/cart';
+
 export default {
+
     data() {
         return {
             list_title: '饗食四合一',
-            bentoList: [{
-                id: 1,
-                name: '炸春捲',
-                qty: 'x2',
-                heat: '190kcal',
-                imgSrc: '/src/assets/img/1.png',
-            },
-            {
-                id: 2,
-                name: '雞胸肉',
-                qty: 'x1',
-                heat: '190kcal',
-                imgSrc: '/src/assets/img/2.png',
-            },
-            {
-                id: 3,
-                name: '糙米飯',
-                qty: 'x1',
-                heat: '190kcal',
-                imgSrc: '/src/assets/img/3.png',
-            },
-            {
-                id: 4,
-                name: '糖心蛋',
-                qty: 'x1',
-                heat: '190kcal',
-                imgSrc: '/src/assets/img/4.png',
-            },
-            ]
+            // bentoList: [
+            //     {
+            //         id: '',
+            //         name: '',
+            //         qty: '',
+            //         heat: '',
+            //         imgSrc: '',
+            //     },
+            // ]
         }
     },
     computed: {
+        bentoList() {
+            const cartStore = useCartStore();
+            return cartStore.bentoList;
+        },
         totalHeat() {
-            return this.bentoList.reduce((total, item) => {
-                const heat = parseInt(item.heat.replace('kcal', ''));
-                return total + heat;
-            }, 0);
+            const cartStore = useCartStore();
+            return cartStore.totalHeat;
         },
     },
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        },
+    }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .bento_list {
@@ -96,7 +84,7 @@ export default {
     display: inline-block;
     position: absolute;
     transform: translate(-50%, -50%);
-    
+
 }
 
 .bento_list_title h3 {

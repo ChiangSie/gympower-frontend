@@ -5,12 +5,12 @@
     </div>
     <div class="card-body">
       <div class="pic">
-        <img :src="cardData.imgSrc" :alt="cardData.title">
+        <img :src="parseImg(cardData.imgSrc)" :alt="cardData.title">
         <p>{{ cardData.sort }}</p>
       </div>
       <div class="txt">
         <h3>
-          <div>{{ cardData.teacher }}</div><span>{{ cardData.price }}</span>
+          <div>{{ cardData.teacher }}</div><span>NT.{{ cardData.price }} | {{ cardData.course }}堂</span>
         </h3>
       </div>
     </div>
@@ -23,7 +23,6 @@
       </router-link>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -33,6 +32,14 @@ export default {
     cardData: {
       type: Object,
       required: true
+    }
+  },
+  mounted() { 
+     parseImg(); 
+  },
+  methods: {
+        parseImg(imgURL) {
+      return new URL(`../assets/img/course/${imgURL}`, import.meta.url).href;
     }
   }
 }

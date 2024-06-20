@@ -19,3 +19,5 @@ import Place from './About/AboutPlace.vue'
 </template>
 
 <style lang="scss" scoped></style>
+
+

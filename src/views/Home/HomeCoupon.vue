@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
                     <div class="pic">
-                        <img src="../../assets/img/index/coupon.png">
+                        <egg/>
                     </div>
                 </div>
                 <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
@@ -32,6 +32,7 @@
             </div>
         </div>
     </section>
+    
 </template>
 
 <style lang="scss" scoped>
@@ -77,7 +78,7 @@
     .col {
 
         .pic {
-            width: 50%;
+            width: 100%;
             margin: auto;
         }
 
@@ -89,3 +90,13 @@
     }
 }
 </style>
+
+<script>
+import egg from '@/component/Egg/EggView.vue';
+
+export default {
+    components: {
+        egg
+    }
+}
+</script>

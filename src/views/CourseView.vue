@@ -1,5 +1,5 @@
 <template>
-  <Banner :title="'課程資訊'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
+  <Banner :title="'課程資訊'" />
 
   <div class="section section-course">
     <div class="container">
@@ -26,9 +26,12 @@
             <h3 class="txt">目前未開課</h3>
           </div>
           <div v-else>
-            <Classinfo v-for="course in displayList" :key="course.id" :cardData="course" />
+            <Classinfo v-for="course in paginatedPosts" :key="course.id" :cardData="course" />
 
-            <div class="page"><a href="" v-for="n in 5">{{ n }}</a></div>
+            <div class="page">
+              <a href="#" v-for="n in totalPages" :key="n" @click.prevent="currentPage = n"
+                :class="{ 'active-page': currentPage === n }">{{ n }}</a>
+            </div>
           </div>
         </div>
       </div>
@@ -36,12 +39,9 @@
   </div>
 </template>
 
-<script setup>
-import Banner from '../component/Banner.vue';
-import Classinfo from '../component/Classinfo.vue';
-</script>
-
 <script>
+import Banner from '@/component/Banner.vue';
+import Classinfo from '@/component/Classinfo.vue';
 
 export default {
   components: {
@@ -50,10 +50,9 @@ export default {
   },
   data() {
     return {
-      courses: [
-       
-        // 添加其他課程數據...
-      ],
+      currentPage: 1,
+      itemsPerPage: 3,
+      courses: [],
       displayList: [],
     }
   },
@@ -63,26 +62,38 @@ export default {
   },
   methods: {
     fetchProduct() {
-      fetch('../../public/json/course.json')
+      fetch(`${import.meta.env.BASE_URL}json/course.json`)
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
           this.courses = json;
-          this.displayData = json;
+          this.displayList = json;
         });
     },
     clear() {
-      this.displayList = this.courses
+      this.displayList = this.courses;
+      this.currentPage = 1;
     },
-    parseImg(file) {
-      return new URL(`../assets/img/${file}`, import.meta.url).href
+    parseImg(imgURL) {
+      return new URL(`../../../assets/img/course/${imgURL}`, import.meta.url).href;
     },
     filter(type) {
       this.displayList = this.courses.filter(course => {
         return course.type === type;
       })
+      this.currentPage = 1;
     }
-  }
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.displayList.length / this.itemsPerPage);
+    },
+    paginatedPosts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.displayList.slice(start, end);
+    }
+  },
 }
 </script>
 
@@ -144,15 +155,16 @@ export default {
         height: 30px;
         background-color: #333;
         /* 調整box顏色 */
-      }      
-    }
-  }
-  @media screen and (max-width: 768px) {
-      .btn-sort h3{
-        font-size: 16px;
-        white-space: wrap;
       }
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    .btn-sort h3 {
+      font-size: 16px;
+      white-space: wrap;
+    }
+  }
 
   .section-classinfo {
     width: 80%;
@@ -170,18 +182,20 @@ export default {
         border-radius: 10px;
       }
     }
+
     .page {
-    text-align: center;
-    padding-bottom: 2rem;
-    a {
-      margin: 0 .3rem;
-      padding: .3rem .5rem;
-      background-color: #002451;
-      color: #fff;
-      border-radius: 50%;
-      text-decoration: none;
+      text-align: center;
+      padding-bottom: 2rem;
+
+      a {
+        margin: 0 .3rem;
+        padding: .3rem .5rem;
+        background-color: #002451;
+        color: #fff;
+        border-radius: 50%;
+        text-decoration: none;
+      }
     }
-  }
   }
 }
 </style>

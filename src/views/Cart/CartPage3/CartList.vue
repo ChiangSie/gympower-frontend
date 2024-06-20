@@ -50,7 +50,7 @@
                         <div class="bento_list_item_option_cart" v-for="item in bentoOption" :key="item.id">
                             <div class="bento_list_item_option_pic">
                                 <input type="checkbox" class="item-select">
-                                <img :src="item.imgSrc" :alt="item.name">
+                                <img :src="parseImg(item.imgSrc)" :alt="item.name">
                             </div>
                             <div class="bento_list_item_option_center">
                                 <div class="bento_list_item_option_name">
@@ -104,14 +104,20 @@ export default {
             order_subtotal_price: '$480', total_name: '合計', total_price: '$480', next_page: '下一步',
             bentoOption: [{
                 id: 1, name: '饗食四合一', details: '查看餐盒明細', price: '$120',
-                imgSrc: '/src/assets/img/bento_box_four.png',
+                imgSrc: 'bento_box_four.png',
             }, {
                 id: 2, name: '滿腹六合一', details: '查看餐盒明細',
-                price: '$200', imgSrc: '/src/assets/img/bento_box_six.png',
+                price: '$200', imgSrc: 'bento_box_six.png',
             },]
         }
+    },
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
     }
-} </script>
+} 
+</script>
 
 <style lang="scss" scoped>
 /* 外框 */
@@ -121,7 +127,7 @@ export default {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     border-radius: 0 10px 10px 10px;
     backdrop-filter: blur(10px);
-    margin: 10% auto;
+    margin: 20% auto 20%;
     padding: 50px 10px;
     text-align: center;
 }
@@ -413,15 +419,17 @@ export default {
         width: 100%;
         margin: auto;
 
-        .bento_list_item{
+        .bento_list_item {
             display: flex;
             margin: 2%;
         }
+
         .bento_list_item_clear button {
             width: 22%;
             margin: 2%;
         }
-        .bento_list_item_option_cart{
+
+        .bento_list_item_option_cart {
             margin: 2%;
         }
     }
@@ -433,21 +441,25 @@ export default {
         margin: auto;
 
 
-        .bento_list_item{
+        .bento_list_item {
             display: flex;
             margin: 2%;
         }
+
         .bento_list_item_clear button {
             width: 26%;
             margin: 2%;
         }
-        .bento_list_item_option_name{
+
+        .bento_list_item_option_name {
             width: 100px;
         }
-        .bento_list_item_option_btn{
+
+        .bento_list_item_option_btn {
             padding: 2px 4px;
         }
-        .bento_list_item_option_cart{
+
+        .bento_list_item_option_cart {
             margin: 2%;
         }
 
@@ -638,22 +650,25 @@ export default {
     margin-top: 16%;
     cursor: pointer;
 }
+
 @media screen and (max-width: 1280px) {
-    .bento_list_info_item{
+    .bento_list_info_item {
         margin-bottom: 230px;
     }
 }
+
 @media screen and (max-width: 1200px) {
     .bento_list_info_item {
         margin-bottom: 210px;
     }
 }
+
 @media screen and (max-width: 1024px) {
-    .bento_list_info_item{
+    .bento_list_info_item {
         margin-bottom: 190px;
-        border: 1px solid red;
     }
 }
+
 @media screen and (max-width: 992px) {
     .bento_list_info_title {
         margin-top: 4%;
@@ -676,9 +691,12 @@ export default {
 @media screen and (max-width: 768px) {
     .bento_list_info {
         width: 100%;
+        margin-top: 6%;
     }
 
     .bento_list_info_btn {
+        padding: 2%;
+        width: 36%;
         margin-bottom: 10%;
     }
 }

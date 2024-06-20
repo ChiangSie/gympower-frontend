@@ -1,71 +1,83 @@
 <template>
-    <CourseDetail :productInfo="productInfo"/>
-
-    <CourseList />
-
-    <CourseRating />
-{{productInfo}}
+  <div id="app">
+    <CourseDetail :productInfo="productInfo" />
+    <CourseList :imageUrls="imageUrls" />
+    <CourseRating :ratingPosts="ratingPosts" :productInfo="productInfo" />
+  </div>
 </template>
 
-<script setup>
-import CourseDetail from '../Course/Courseinfo/CourseDetail.vue';
-import CourseList from '../Course/Courseinfo/CourseList.vue';
-import CourseRating from './Courseinfo/CourseRating.vue';
-
-</script>
-
 <script>
+import CourseDetail from '@/component/Course/CourseDetail.vue';
+import CourseList from '@/component/Course/CourseList.vue';
+import CourseRating from '@/component/Course/CourseRating.vue';
+
 export default {
-    components: {
-        CourseDetail,
-        CourseList,
-        CourseRating
-    },
+  components: {
+    CourseDetail,
+    CourseList,
+    CourseRating
+  },
+  data() {
+    return {
+        productInfo: {
+            locations: [],
+            courseTimes: {}
+      },
+        ratingPosts: [],
+        imageUrls: [],
+    };
+  },
     methods: {
-        fetchProduct() {
-            fetch("../../../public/json/course.json")
-                .then(res => res.json())
-                .then(json => {
-                    console.log(json);
-                    this.responseData = json;
-                    const sortedData = json.sort((a, b) => b.rating - a.rating);
-                    this.displayData = sortedData;
-                });
-        },
-         fetchInfo(){
-            fetch("../../../public/json/course.json")
-            .then(res => res.json())
-            .then(json => {
-                // 確認有沒有response
-                this.productInfo = json.find(item =>
-                {
-                return item.id == this.$route.params.id
-                })
-            })
-            .catch((error) => {
-                console.log(`error: ${error}`);
-            })
-        }
+    fetchRating() {
+      fetch(`${import.meta.env.BASE_URL}json/c_member.json`)
+        .then(res => res.json())
+        .then(json => {
+          console.log(json);
+          this.ratingPosts = json;
+        })
+        .catch((error) => {
+          console.log(`error: ${error}`);
+        });
     },
-    data() {
-        return {
-           productInfo: {},
-        }
+    fetchProduct() {
+      fetch(`${import.meta.env.BASE_URL}json/course.json`)
+        .then(res => res.json())
+        .then(json => {
+          console.log(json);
+          this.imageUrls = json;
+          const sortedData = json.sort((a, b) => b.rating - a.rating);
+          this.imageUrls = sortedData;
+        });
     },
-    watch: {
-        '$route.params.id': {
-            handler(newObj) { // newObj會是更動後的參數 
-                console.log(newObj);
-                this.fetchInfo()
-            },
-            deep: true
-        }
-    },
-    mounted() {
-        this.fetchInfo()
-        this.fetchProduct()
+    fetchInfo() {
+      fetch(`${import.meta.env.BASE_URL}json/course.json`)
+        .then(res => res.json())
+        .then(json => {
+          // 確認有沒有response
+          this.productInfo = json.find(item => {
+            return item.id == this.$route.params.id;
+          });
+        })
+        .catch((error) => {
+          console.log(`error: ${error}`);
+        });
     }
-}
+  },
+  watch: {
+    '$route.params.id': {
+      handler(newObj) {
+        console.log(newObj);
+        this.fetchInfo();
+      },
+      deep: true
+    }
+  },
+  mounted() {
+    this.fetchInfo();
+    this.fetchProduct();
+    this.fetchRating();
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>

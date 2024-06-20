@@ -7,7 +7,7 @@
                         <h4>${{ food.price }}</h4>
                     </div>
                     <div class="card_details">
-                        <img :src="food.image" alt="食物照片" class="card-image" />
+                        <img :src="parseImg(food.image)" alt="食物照片" class="card-image" />
                         <button class="details_button" @click="showNutrition(food)">
                             營養成分
                         </button>
@@ -25,6 +25,8 @@
 
 <script>
 import NutritionFacts from './NutritionFacts.vue';
+
+
 export default {
     components: {
         NutritionFacts
@@ -48,6 +50,14 @@ export default {
         closeNutritionInfo() {
             this.selectedFood = null;
             document.body.style.overflow = 'auto';
+        }, addToCartAndShowNutrition(food) {
+            const cartStore = useCartStore();
+            cartStore.addItem(food);
+            this.showNutrition(food);
+            console.log(`${food.ItemName} added to cart`);
+        },
+        parseImg(imgURL) {
+            return new URL(`/src/assets/img/${imgURL}`, import.meta.url).href;
         }
     }
 

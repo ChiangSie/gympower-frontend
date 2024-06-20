@@ -1,6 +1,5 @@
 <template>
   <section class="newsclass">
-    <h2>{{ title }}</h2>
 
     <div class="newsclass_info">
       <div class="newsclass_txt">

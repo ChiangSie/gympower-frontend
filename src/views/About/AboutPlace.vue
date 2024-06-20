@@ -14,7 +14,7 @@
             除此之外，每個會所還配備了現代化的健身器材，包括最新款的跑步機、力量訓練設備以及綜合訓練器械，確保會員能夠進行全面的身體鍛鍊。我們還提供各類團體課程，例如瑜伽、有氧舞蹈、普拉提等，這些課程由經驗豐富的教練帶領，旨在提升會員的運動體驗，增加健身樂趣。
           </p>
           <div class="some-images">
-            <img v-for="(image, index) in images1" :key="index" :src="image" @click="selectImage1(image)" />
+            <img v-for="image1pic in images1" :key="image1pic.id" :src="parseImg(image1pic.image)" @click="selectImage1(image)" />
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
             除此之外，每個會所還配備了現代化的健身器材，包括最新款的跑步機、力量訓練設備以及綜合訓練器械，確保會員能夠進行全面的身體鍛鍊。我們還提供各類團體課程，例如瑜伽、有氧舞蹈、普拉提等，這些課程由經驗豐富的教練帶領，旨在提升會員的運動體驗，增加健身樂趣。
           </p>
           <div class="some-images">
-            <img v-for="(image, index) in images2" :key="index" :src="image" @click="selectImage2(image)" />
+            <img v-for="image2pic in images2" :key="image2pic.id" :src="parseImg(image2pic.image)" @click="selectImage2(image)" />
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
             除此之外，每個會所還配備了現代化的健身器材，包括最新款的跑步機、力量訓練設備以及綜合訓練器械，確保會員能夠進行全面的身體鍛鍊。我們還提供各類團體課程，例如瑜伽、有氧舞蹈、普拉提等，這些課程由經驗豐富的教練帶領，旨在提升會員的運動體驗，增加健身樂趣。
           </p>
           <div class="some-images">
-            <img v-for="(image, index) in images3" :key="index" :src="image" @click="selectImage3(image)" />
+            <img v-for="image3pic in images3" :key="image3pic.id" :src="parseImg(image3pic.image)" @click="selectImage3(image)" />
           </div>
         </div>
       </div>
@@ -69,31 +69,38 @@
 </template>
 
 <script>
+import selectedImage1 from '/src/assets/img/banner_aboutus.jpg'
+import selectedImage2 from '/src/assets/img/banner_aboutus.jpg'
+import selectedImage3 from '/src/assets/img/banner_aboutus.jpg'
+
 export default {
   data() {
     return {
-      selectedImage1: '/src/assets/img/banner_aboutus.jpg',
-      images1: [
-        '/src/assets/img/about_gym_1.jpg',
-        '/src/assets/img/about_gym_2.jpg',
-        '/src/assets/img/about_gym_3.jpg',
-        '/src/assets/img/about_gym_4.jpg'
-      ],
-      selectedImage2: '/src/assets/img/banner_aboutus.jpg',
-      images2: [
-        '/src/assets/img/about_kids_1.jpg',
-        '/src/assets/img/about_kids_2.jpg',
-        '/src/assets/img/about_kids_3.jpg',
-        '/src/assets/img/about_kids_1.jpg',
+      selectedImage1,
+      selectedImage2,
+      selectedImage3,
+      images1:[],
+      images2:[],
+      images3:[],
+      // images1: [
+      //   '/src/assets/img/about_gym_1.jpg',
+      //   '/src/assets/img/about_gym_2.jpg',
+      //   '/src/assets/img/about_gym_3.jpg',
+      //   '/src/assets/img/about_gym_4.jpg'
+      // ],
+      // images2: [
+      //   '/src/assets/img/about_kids_1.jpg',
+      //   '/src/assets/img/about_kids_2.jpg',
+      //   '/src/assets/img/about_kids_3.jpg',
+      //   '/src/assets/img/about_kids_1.jpg',
         
-      ],
-      selectedImage3: '/src/assets/img/banner_aboutus.jpg',
-      images3: [
-        '/src/assets/img/about_gym_1.jpg',
-        '/src/assets/img/about_gym_2.jpg',
-        '/src/assets/img/about_gym_3.jpg',
-        '/src/assets/img/about_gym_4.jpg'
-      ]
+      // ],
+      // images3: [
+      //   '/src/assets/img/about_gym_1.jpg',
+      //   '/src/assets/img/about_gym_2.jpg',
+      //   '/src/assets/img/about_gym_3.jpg',
+      //   '/src/assets/img/about_gym_4.jpg'
+      // ]
     }
   },
   methods: {
@@ -105,8 +112,38 @@ export default {
     },
     selectImage3(image) {
       this.selectedImage3 = image;
-    }
-  }
+    },
+    parseImg(imgURL) {
+      // 放在vue專案的圖檔路徑會被轉譯，因此需要這樣更改
+      return new URL(`../../assets/img/${imgURL}`, import.meta.url).href
+    },
+  },
+  mounted() {
+        fetch(`${import.meta.env.BASE_URL}json/aboutplace1.json`)
+            .then((res) => res.json())
+            .then((json) => {
+                //確認有沒有response
+                console.log(json)
+                //顯示用
+                this.images1 = json
+        }),
+        fetch(`${import.meta.env.BASE_URL}json/aboutplace2.json`)
+            .then((res) => res.json())
+            .then((json) => {
+                //確認有沒有response
+                console.log(json)
+                //顯示用
+                this.images2 = json
+        }),
+        fetch(`${import.meta.env.BASE_URL}json/aboutplace3.json`)
+            .then((res) => res.json())
+            .then((json) => {
+                //確認有沒有response
+                console.log(json)
+                //顯示用
+                this.images3 = json
+        })
+  },
 }
 </script>
 

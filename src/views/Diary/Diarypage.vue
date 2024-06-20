@@ -1,5 +1,5 @@
 <template>
-    <Banner :title="'健身日記'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
+    <Banner :title="'健身日記'"  />
     <div class="section section-author">
 <p>222</p>
     </div>

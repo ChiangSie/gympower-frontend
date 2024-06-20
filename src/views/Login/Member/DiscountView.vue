@@ -7,7 +7,7 @@
             <div class="dis_button">
                 <button @click="showall">全部</button>
                 <button @click="fl(0)">未使用</button>
-                <button @click="fl(1)">已使用/已失效</button>
+                <button @click="fl(1)">已使用</button>
             </div>
             <hr>
             <div class="dis_card_area">
@@ -91,7 +91,7 @@ hr{
     width: 100%;
     border-width: 1px;
     border-color: #000000;
-    margin: 0;
+    margin: 10px 0;
 }
 .discount_page{
     width: 100%;

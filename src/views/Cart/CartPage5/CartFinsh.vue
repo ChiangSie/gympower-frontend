@@ -9,7 +9,7 @@
                 <!-- 步驟 -->
                 <ul class="bento_list_step">
                     <li class="step active">
-                        <div class="circle">
+                        <div class="circle" id="circle_1">
                             <i class="fa-solid fa-check"></i>
                         </div>
                         <p>{{ circle_num1_con }}</p>
@@ -81,14 +81,14 @@
                     <div class="bento_list_info_center_type">
                         <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
                             <div class="bento_list_info_center_type_con_pic">
-                                <img :src="item.imgSrc" alt="">
+                                <img :src="parseImg(item.imgSrc)" alt="">
                             </div>
                             <div class="bento_list_info_center_type_con_name">
                                 <span>{{ item.name }}</span>
-                                <span>{{ item.price }}</span>
+                                <span>${{ item.price }}</span>
                             </div>
                             <div class="bento_list_info_center_type_con_qty">
-                                <span>{{ item.qty }}</span>
+                                <span>x{{ item.qty }}</span>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@ export default {
                 id: 1,
                 name: '饗食四合一',
                 price: 120,
-                imgSrc: '/src/assets/img/bento_box_four.png',
+                imgSrc: 'bento_box_four.png',
                 qty: 1,
             },
             ]
@@ -219,10 +219,14 @@ export default {
                     </div>
                 `,
                 showConfirmButton: false,
-                timer: 2000,
+                timer: 1200,
             })
         },
-    }
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    },
+
 }
 </script>
 
@@ -299,7 +303,7 @@ export default {
 
 .step p {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: .9em;
 }
 
 .step.active .circle {
@@ -405,6 +409,25 @@ export default {
     width: 410px;
 }
 
+@media screen and (max-width: 768px) {
+    .bento_list_con {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bento_list_item {
+        margin-top: 10%;
+        width: 140%;
+    }
+
+    .bento_list_item_option {
+        margin-top: 10%;
+    }
+}
+
+
+
+
 
 /* 右邊 */
 .bento_list_info {
@@ -442,6 +465,7 @@ export default {
     border-bottom: 1px dashed #000;
     margin: 0 28px;
     padding-bottom: 6px;
+    width: 80%;
 }
 
 /* 中間項目圖片 */
@@ -460,10 +484,12 @@ export default {
     flex-direction: column;
     text-align: left;
     margin-right: 40px;
+    width: 50%;
 }
 
 .bento_list_info_center_type_con_name span {
     margin: 4px 0;
+    font-size: 1em;
 }
 
 /* 中間項目小計 */
@@ -490,7 +516,7 @@ export default {
     font-weight: 400;
 }
 
-/* 尾部總計、下一步 */
+/* 尾部總計、結帳 */
 .bento_list_info_item_total {
     border-top: 1px solid #000;
     margin: 6px 30px 20px 30px;
@@ -512,6 +538,30 @@ export default {
     margin: 2% 0 14% 0;
     cursor: pointer;
 }
+
+@media screen and (max-width: 992px) {
+    .bento_list_info_center_type_con {
+        width: 70%;
+    }
+
+    .bento_list_info_center_type_con_name span {
+        width: 196%;
+        font-size: .8em;
+        margin-left: 16%;
+    }
+
+    .bento_list_info_center_type_con_pic {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bento_list_info_center_type_con {
+        width: 84%;
+    }
+}
+
+
 
 
 /* 上一步、同意條款 */
@@ -540,6 +590,49 @@ export default {
     color: #000;
     letter-spacing: .6px;
 }
+
+@media screen and (max-width: 992px) {
+    .bento_list_item_rule {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .bento_list_item_rule_up {
+        width: 12%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10% 0 0 44%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bento_list_info {
+        width: 98%;
+    }
+
+    .bento_list_item_rule {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .bento_list_item_rule_up {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10% 0 0 38%;
+    }
+
+    .bento_list_info_btn {
+        padding: 2%;
+        width: 36%;
+        margin-bottom: 10%;
+    }
+}
+
 
 /* 完成跳窗 */
 .overlay {

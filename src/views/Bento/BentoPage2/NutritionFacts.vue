@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { useCartStore } from '@/stores/cart';
 export default {
     props: {
         food: {
@@ -35,7 +36,10 @@ export default {
     },
     methods: {
         addToCart() {
+            const cartStore = useCartStore();
+            cartStore.addItem(this.food);
             console.log(`${this.food.ItemName} added to cart`);
+            this.$emit('close');
         },
         closeNutritionInfo() {
             this.$emit('close');
