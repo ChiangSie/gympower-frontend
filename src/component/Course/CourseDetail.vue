@@ -67,7 +67,7 @@ export default {
             this.previewImageUrl = imageUrl;
         },
         getImageUrl(imageUrl) {
-            return `/src/assets/img/course/${imageUrl}`;
+            return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
         }
     }
 };
