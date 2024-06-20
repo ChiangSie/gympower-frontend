@@ -69,17 +69,22 @@
 </template>
 
 <script>
+import selectedImage1 from '/src/assets/img/banner_aboutus.jpg'
+import selectedImage2 from '/src/assets/img/banner_aboutus.jpg'
+import selectedImage3 from '/src/assets/img/banner_aboutus.jpg'
+
 export default {
   data() {
     return {
-      selectedImage1: '/src/assets/img/banner_aboutus.jpg',
+      selectedImage1,
+      selectedImage2,
+      selectedImage3,
       images1: [
         '/src/assets/img/about_gym_1.jpg',
         '/src/assets/img/about_gym_2.jpg',
         '/src/assets/img/about_gym_3.jpg',
         '/src/assets/img/about_gym_4.jpg'
       ],
-      selectedImage2: '/src/assets/img/banner_aboutus.jpg',
       images2: [
         '/src/assets/img/about_kids_1.jpg',
         '/src/assets/img/about_kids_2.jpg',
@@ -87,7 +92,6 @@ export default {
         '/src/assets/img/about_kids_1.jpg',
         
       ],
-      selectedImage3: '/src/assets/img/banner_aboutus.jpg',
       images3: [
         '/src/assets/img/about_gym_1.jpg',
         '/src/assets/img/about_gym_2.jpg',
@@ -105,7 +109,11 @@ export default {
     },
     selectImage3(image) {
       this.selectedImage3 = image;
-    }
+    },
+    parseImg(imgURL) {
+      // 放在vue專案的圖檔路徑會被轉譯，因此需要這樣更改
+      return new URL(`../../assets/img/${imgURL}`, import.meta.url).href
+    },
   }
 }
 </script>

@@ -23,7 +23,12 @@ export default {
       modules: [Autoplay, Pagination, Navigation],
     };
   },
-  methods: {},
+  methods: {
+    parseImg(imgURL) {
+      // 放在vue專案的圖檔路徑會被轉譯，因此需要這樣更改
+      return new URL(`../../assets/img/index/${imgURL}`, import.meta.url).href
+    },
+  },
   data() {
     return {
       sourceData: [],
@@ -65,7 +70,7 @@ export default {
             <div class="card">
               <div class="coach">
                 <div class="pic">
-                  <img :src="feedback.image" />
+                  <img :src="parseImg(feedback.image)" />
                 </div>
                 <div class="name">
                   <p>{{ feedback.coach }}</p>

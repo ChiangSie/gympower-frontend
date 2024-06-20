@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "週三有氧課程",
-    "image": "/src/assets/img/index/coach.png",
+    "image": "coach.png",
     "coach": "林佳穎",
     "course": "課程： 核心訓練班",
     "date": "2024/04/16",
@@ -12,7 +12,7 @@
   {
     "id": 2,
     "title": "週三有氧課程",
-    "image": "/src/assets/img/index/coach2.png",
+    "image": "coach2.png",
     "coach": "林佳穎",
     "course": "課程： 核心訓練班",
     "date": "2024/04/16",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "title": "週三有氧課程",
-    "image": "/src/assets/img/index/coach2.png",
+    "image": "coach2.png",
     "coach": "林佳穎",
     "course": "課程： 核心訓練班",
     "date": "2024/04/16",
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "title": "週三有氧課程",
-    "image": "/src/assets/img/index/coach2.png",
+    "image": "coach2.png",
     "coach": "林佳穎",
     "course": "課程： 核心訓練班",
     "date": "2024/04/16",
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "title": "週三有氧課程",
-    "image": "/src/assets/img/index/coach2.png",
+    "image": "coach2.png",
     "coach": "林佳穎",
     "course": "課程： 核心訓練班",
     "date": "2024/04/16",
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "title": "週三有氧課程",
-    "image": "/src/assets/img/index/coach2.png",
+    "image": "coach2.png",
     "coach": "林佳穎",
     "course": "課程： 核心訓練班",
     "date": "2024/04/16",
