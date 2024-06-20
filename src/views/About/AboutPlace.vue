@@ -116,8 +116,9 @@ export default {
     background-color: #004eaf;
     color: white;
     text-align: center;
-    padding: 16px;
-    margin: 20px 35px;
+    padding: 16px 0 16px;
+    margin: 20px 30px;
+    height: 55px;
     font-size: 25px;
     font-weight: 600;
   }
@@ -129,6 +130,7 @@ export default {
 
     .main-image {
       width: 40%;
+      height: 450px;
       display: flex;
       justify-content: center;
 
@@ -146,17 +148,18 @@ export default {
       justify-content: flex-start;
 
       h3 {
-        margin: 20px 0 10px;
+        margin: 20px 0 20px;
       }
 
       p {
-        margin-bottom: 20px;
+        margin: 20px 0 20px;
+        font-size: 14px;
       }
 
       .some-images {
         display: flex;
         justify-content: space-between;
-        padding-top: 20px;
+        padding-top: 40px;
 
         img {
           width: 120px;
