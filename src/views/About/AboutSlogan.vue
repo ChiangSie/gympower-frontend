@@ -2,8 +2,8 @@
   <div class="features">
     <div class="feature" v-for="feature in features" :key="feature.title">
       <img :src="feature.icon" />
-      <h3>{{ feature.title }}</h3>
       <h4>{{ feature.title_cn }}</h4>
+      <h3>{{ feature.title }}</h3>
       <p>{{ feature.description }}</p>
     </div>
   </div>
@@ -64,16 +64,16 @@ export default {
   // border-radius: 50%;
   // background-color: #D4EAF7;
   img {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   margin-bottom: 10px;
 }
 }
 
 .feature {
   h3, h4 {
-    font-size: 16px;
-    margin: 5px 0;
+    font-size: 18px;
+    margin: 3px 0;
   }
   p {
     font-size: 13px;
