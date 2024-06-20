@@ -5,7 +5,7 @@
           <h1>{{ title }}</h1>
         </div>
         <div class="banner-img">
-            <img :src="imgSrc" alt="banner" />
+            <img src="../assets/img/banner_aboutus.jpg" alt="banner" />
           </div>
       </div>
   </div>
@@ -13,21 +13,15 @@
 
 <script>
 export default {
-   props: {
-    title: {
-      type: String,
-      required: true
-    },
-    imgSrc: {
-      type: String,
-      required: true
-    }
-  },
+   props: ['title','imgSrc'],
   data() {
     return {
    
     }
-  }
+  },
+  methods: {
+
+  },
 }
 </script>
 

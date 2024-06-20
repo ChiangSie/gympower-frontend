@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <div class="pic">
-        <img :src="cardData.imgSrc" :alt="cardData.title">
+        <img :src="parseImg(cardData.imgSrc)" :alt="cardData.title">
         <p>{{ cardData.sort }}</p>
       </div>
       <div class="txt">
@@ -34,6 +34,14 @@ export default {
       type: Object,
       required: true
     }
+  },
+  mounted() { 
+     parseImg(); 
+  },
+  methods: {
+        parseImg(imgURL) {
+      return new URL(`../../../assets/img/course/${imgURL}`, import.meta.url).href;
+    },
   }
 }
 </script>

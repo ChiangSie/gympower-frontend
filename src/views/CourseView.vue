@@ -1,5 +1,5 @@
 <template>
-  <Banner :title="'課程資訊'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
+  <Banner :title="'課程資訊'" />
 
   <div class="section section-course">
     <div class="container">
@@ -74,8 +74,8 @@ export default {
       this.displayList = this.courses;
       this.currentPage = 1;
     },
-    parseImg(file) {
-      return new URL(`../assets/img/${file}`, import.meta.url).href
+    parseImg(imgURL) {
+      return new URL(`../../../assets/img/course/${imgURL}`, import.meta.url).href;
     },
     filter(type) {
       this.displayList = this.courses.filter(course => {
