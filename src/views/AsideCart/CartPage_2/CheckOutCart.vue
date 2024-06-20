@@ -74,14 +74,14 @@ export default {
                         id: '1',
                         productName: '饗食四合一',
                         price: '$120',
-                        // image: '/src/assets/img/bento_box_four.png'
+                        image: 'bento_box_four.png'
 
                     },
                     {
                         id: '2',
                         productName: '滿腹六合一',
                         price: '$360',
-                        // image: '/src/assets/img/bento_box_six.png'
+                        image: 'bento_box_six.png'
                     }
                 ]
             }
