@@ -67,9 +67,27 @@
                         <label for="pickup">取&nbsp;貨&nbsp;據&nbsp;點&nbsp;：</label>
                         <select v-model="pickup" id="pickup" name="pickup">
                             <option value="">請選擇</option>
-                            <option value="台北館">台北館</option>
-                            <option value="台中館">台中館</option>
-                            <option value="高雄館">高雄館</option>
+                            <option value="台北大安店">台北大安店</option>
+                            <option value="新北板橋店">新北板橋店</option>
+                            <option value="台中中港店">台中中港店</option>
+                            <option value="臺南府城店">臺南府城店</option>
+                            <option value="高雄小港店">高雄小港店</option>
+                            <option value="基隆中正店">基隆中正店</option>
+                            <option value="桃園中原店">桃園中原店</option>
+                            <option value="新竹科技園區店">新竹科技園區店</option>
+                            <option value="苗栗苗栗店">苗栗苗栗店</option>
+                            <option value="彰化員林店">彰化員林店</option>
+                            <option value="南投埔里店">南投埔里店</option>
+                            <option value="雲林斗六店">雲林斗六店</option>
+                            <option value="嘉義嘉義市店">嘉義嘉義市店</option>
+                            <option value="嘉義縣民雄店">嘉義縣民雄店</option>
+                            <option value="屏東屏東大學店">屏東屏東大學店</option>
+                            <option value="宜蘭羅東店">宜蘭羅東店</option>
+                            <option value="花蓮東華大學店">花蓮東華大學店</option>
+                            <option value="台東縣鐵花村店">台東縣鐵花村店</option>
+                            <option value="澎湖縣馬公店">澎湖縣馬公店</option>
+                            <option value="金門縣中山店">金門縣中山店</option>
+                            <option value="連江縣lienchiang_country">連江縣lienchiang_country</option>
                         </select>
                     </div>
                     <!-- 使用優惠券 -->
@@ -151,12 +169,12 @@ export default {
             buyer_info: '購買人資訊',
             same_info: '同會員資料',
 
-            name: '',
-            phone: '',
-            email: '',
-            pay: '',
-            pickup: '',
-            coupon: '',
+            name: sessionStorage.getItem('name') || '',
+            phone: sessionStorage.getItem('phone') || '',
+            email: sessionStorage.getItem('email') || '',
+            pay: sessionStorage.getItem('pay') || '',
+            pickup: sessionStorage.getItem('pickup') || '',
+            coupon: sessionStorage.getItem('coupon') || '',
 
             cart_list: '購物車明細',
             order_subtotal_name: '商品小計',
@@ -175,8 +193,7 @@ export default {
                 price: 120,
                 imgSrc: 'bento_box_four.png',
                 qty: 1,
-            },
-            ]
+            }]
         }
     },
     computed: {
@@ -203,7 +220,38 @@ export default {
                     coupon: this.coupon
                 }
             };
+        }
+    },
+    watch: {
+        name(value) {
+            sessionStorage.setItem('name', value);
         },
+        phone(value) {
+            sessionStorage.setItem('phone', value);
+        },
+        email(value) {
+            sessionStorage.setItem('email', value);
+        },
+        pay(value) {
+            sessionStorage.setItem('pay', value);
+        },
+        pickup(value) {
+            sessionStorage.setItem('pickup', value);
+        },
+        coupon(value) {
+            sessionStorage.setItem('coupon', value);
+        }
+    },
+    mounted() {
+        if (performance.navigation.type == 1) {
+            // 页面刷新
+            sessionStorage.removeItem('name');
+            sessionStorage.removeItem('phone');
+            sessionStorage.removeItem('email');
+            sessionStorage.removeItem('pay');
+            sessionStorage.removeItem('pickup');
+            sessionStorage.removeItem('coupon');
+        }
     },
     methods: {
         parseImg(imgURL) {
