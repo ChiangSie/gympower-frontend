@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <div class="container">
         <div class="title_area">
             <h1>全國門市據點</h1>
             <hr />
@@ -10,7 +11,9 @@
                 <h6>營業時間：{{ now_area.weather }}</h6>
             </div>
         </div>
+    </div>
         <div v-html="svgContent"></div>
+        
     </div>
 </template>
 
@@ -99,12 +102,13 @@ path:hover {
 }
 .title_area {
     position: absolute;
+    width: 40%;
     right: 80px;
     top: 900px;
     color: rgb(26, 68, 76);
     border: 5px solid rgb(26, 68, 76);
     border-radius:20px;
-    padding: 40px 35px;
+    padding: 30px 25px;
     background-color: #dfdfdf;
 }
 hr {
@@ -117,13 +121,17 @@ h1 {
     margin: 0;
     padding: 0;
     font-weight: 600;
+    font-size: 30px;
 }
 h2 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 600;
 }
+h4{
+    font-size: 20px;
+}
 h6 {
-    font-size: 22px;
+    font-size: 18px;
 }
 .forcast h2,
 .forcast h4,
@@ -131,6 +139,7 @@ h6 {
     margin: 0;
 }
 .forcast h2 {
-    margin-top: 50px;
+    margin-top: 20px;
 }
+
 </style>

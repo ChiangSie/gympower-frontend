@@ -2,8 +2,6 @@
   <div class="features">
     <div class="feature" v-for="feature in features" :key="feature.title">
       <img :src="parseImg(feature.icon)" />
-      <h3>{{ feature.title }}</h3>
-      <!-- <img :src="feature.icon" /> -->
       <h4>{{ feature.title_cn }}</h4>
       <h3>{{ feature.title }}</h3>
       <p>{{ feature.description }}</p>
