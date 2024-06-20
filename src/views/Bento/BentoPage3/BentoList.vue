@@ -7,7 +7,7 @@
             <div class="bento_list_detail">
                 <div class="bento_list_con" v-for="item in bentoList" :key="item.id">
                     <div class="bento_list_pic">
-                        <img :src="item.imgSrc" :alt="item.name">
+                        <img :src="parseImg(item.imgSrc)" :alt="item.name">
                     </div>
                     <!-- 餐盒內容含名稱、份量、卡路里 -->
                     <div class="bento_list_text">
@@ -53,6 +53,11 @@ export default {
             return cartStore.totalHeat;
         },
     },
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        },
+    }
 }
 </script>
 

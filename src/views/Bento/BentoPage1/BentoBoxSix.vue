@@ -6,7 +6,7 @@
                     <h3>{{ text }}</h3>
                 </div>
                 <div class="bentobox6_pic">
-                    <img :src="imgSrc6" alt="" />
+                    <img :src="parseImg('bento_box_six.png')" alt="" />
                 </div>
             </div>
         </div>
@@ -36,11 +36,15 @@ export default {
 
         return {
             selectBento,
-            imgSrc6: '/src/assets/img/bento_box_six.png',
             text: '滿腹六合一',
             button_txt: '下一步',
         };
     },
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    }
 
 }
 </script>

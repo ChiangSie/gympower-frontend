@@ -21,7 +21,7 @@
                 <div v-for="item in item.lists" :key="item.id">
                     <div class="cart_checkoutItem">
                         <input type="checkbox">
-                        <img :src="item.image" alt="商品圖片">
+                        <img :src="parseImg(item.image)" alt="商品圖片">
                         <div class="cart_itemInfo">
                             <h3>{{ item.productName }}</h3>
                             <p>{{ item.price }}</p>
@@ -74,18 +74,23 @@ export default {
                         id: '1',
                         productName: '饗食四合一',
                         price: '$120',
-                        image: '/src/assets/img/bento_box_four.png'
+                        // image: '/src/assets/img/bento_box_four.png'
 
                     },
                     {
                         id: '2',
                         productName: '滿腹六合一',
                         price: '$360',
-                        image: '/src/assets/img/bento_box_six.png'
+                        // image: '/src/assets/img/bento_box_six.png'
                     }
                 ]
             }
         };
+    },
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
     }
 }
 </script>

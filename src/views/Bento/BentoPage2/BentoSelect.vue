@@ -23,7 +23,7 @@
                 <div class="bento_pic">
                     <!-- 顯示四格餐盒圖片 -->
                     <div v-if="containerId === 4" class="four_grid_cus_box">
-                        <img :src="imgSrcBox4" alt="四格餐盒">
+                        <img :src="parseImg4('bento_box_four.png')" alt="四格餐盒">
                         <div class="grid_container">
                             <div class="grid_item"><img :src="imgSrcBoxIn[0]" alt="四格餐盒第一格"></div>
                             <div class="grid_item"><img :src="imgSrcBoxIn[1]" alt="四格餐盒第二格"></div>
@@ -33,7 +33,7 @@
                     </div>
                     <!-- 顯示六格餐盒圖片 -->
                     <div v-else-if="containerId === 6" class="six_grid_cus_box">
-                        <img :src="imgSrcBox6" alt="六格餐盒">
+                        <img :src="parseImg6('bento_box_six.png')" alt="六格餐盒">
                         <div class="grid_container">
                             <div class="grid_item"><img :src="imgSrcBoxIn[0]" alt="六格餐盒第一格"></div>
                             <div class="grid_item"><img :src="imgSrcBoxIn[1]" alt="六格餐盒第二格"></div>
@@ -70,8 +70,6 @@ export default {
 
         return {
             containerId: bentoStore.containerId,
-            imgSrcBox4: '/src/assets/img/bento_box_four.png',
-            imgSrcBox6: '/src/assets/img/bento_box_six.png',
             imgSrcBoxIn: ['/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png'],
             button_txt_right: '下一步',
             button_txt_left: '上一步',
@@ -82,6 +80,14 @@ export default {
             imgSrcWave: '/src/assets/img/wave.svg',
         };
     },
+    methods: {
+        parseImg4(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        },
+        parseImg6(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    }
 
 }
 </script>
