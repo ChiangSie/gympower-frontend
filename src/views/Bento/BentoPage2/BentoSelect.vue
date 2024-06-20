@@ -66,10 +66,10 @@ import six from '/src/assets/img/bento_box_six.png'
 export default {
     components: {
         RouterLink,
-        
+
     },
-    data(){
-        return{
+    data() {
+        return {
             one,
             four,
             six
