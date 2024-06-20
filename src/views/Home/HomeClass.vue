@@ -23,12 +23,6 @@ export default {
       modules: [Autoplay, Pagination, Navigation],
     };
   },
-  methods: {},
-  data() {
-    return {
-      sourceData: [],
-    };
-  },
   mounted() {
     fetch(`${import.meta.env.BASE_URL}json/indexCourse.json`)
       .then((res) => res.json())
@@ -38,6 +32,17 @@ export default {
         //顯示用
         this.sourceData = json;
       });
+  },
+  data() {
+      return {
+        sourceData: []
+      };
+    },
+  methods: {
+    parseImg(imgURL) {
+      // 放在vue專案的圖檔路徑會被轉譯，因此需要這樣更改
+      return new URL(`../../assets/img/index/${imgURL}`, import.meta.url).href
+    },
   },
 };
 </script>
@@ -67,7 +72,9 @@ export default {
                 <h2>{{ course.title }}</h2>
               </div>
               <div class="card-body">
-                <div class="pic"><img :src="course.image" /></div>
+                <div class="pic">
+                  <img :src ="parseImg(course.image)" />
+                </div>
                 <div class="txt">
                   <h3>
                     <div>{{ course.coach }}</div>
