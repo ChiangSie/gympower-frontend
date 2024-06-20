@@ -86,7 +86,7 @@ export default {
         '/src/assets/img/about_kids_4.jpg',
         
       ],
-      selectedImage3: '/src/assets/img/about_gym_3.jpg',
+      selectedImage3: '/src/assets/img/about_outside_3.jpg',
       images3: [
         '/src/assets/img/about_outside_1.jpg',
         '/src/assets/img/about_outside_2.jpg',
