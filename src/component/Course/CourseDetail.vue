@@ -20,7 +20,7 @@
             <h1>{{productInfo.title}}</h1>
             <div class="course-price">
                 <div class="course-teacher">
-                    <img :src="parseImg(productInfo.teacherSrc)" class="img-teacher" alt="">
+                    <img :src="`/src/assets/img/c_coach/${productInfo.teacherSrc}`" class="img-teacher" alt="">
                 <h2>{{ productInfo.teacher }}</h2>
                 </div>
                 <h2>NT.{{productInfo.price}} | {{productInfo.course}}堂</h2>
