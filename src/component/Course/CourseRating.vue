@@ -15,7 +15,7 @@
           <div class="container-post">
             <div class="raiting-member">
               <div class="raiting-img">
-                <img :src="ratingPost.image" alt="">
+                <img :src="parseImg(ratingPost.image)" alt="">
               </div>
               <p>{{ ratingPost.member }}</p>
             </div>
@@ -48,6 +48,11 @@ export default {
     ratingPosts: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+        parseImg(imgURL) {
+      return new URL(`../assets/img/course/${imgURL}`, import.meta.url).href;
     }
   },
   computed: {
