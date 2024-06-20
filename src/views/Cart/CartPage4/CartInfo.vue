@@ -88,7 +88,7 @@
                 <div class="bento_list_info_center_type">
                     <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
                         <div class="bento_list_info_center_type_con_pic">
-                            <img :src="item.imgSrc" alt="">
+                            <img :src="parseImg(item.imgSrc)" alt="">
                         </div>
                         <div class="bento_list_info_center_type_con_name">
                             <span>{{ item.name }}</span>
@@ -173,7 +173,7 @@ export default {
                 id: 1,
                 name: '饗食四合一',
                 price: 120,
-                imgSrc: '/src/assets/img/bento_box_four.png',
+                imgSrc: 'bento_box_four.png',
                 qty: 1,
             },
             ]
@@ -205,7 +205,11 @@ export default {
             };
         },
     },
-    
+    methods: {
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        }
+    }
 }
 </script>
 
@@ -217,7 +221,7 @@ export default {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     border-radius: 0 10px 10px 10px;
     backdrop-filter: blur(10px);
-    margin: 26% auto 20% ;
+    margin: 26% auto 20%;
     padding: 50px 10px;
     text-align: center;
 }
@@ -395,9 +399,10 @@ export default {
         flex-direction: column;
     }
 
-    .bento_list_detail{
+    .bento_list_detail {
         margin-top: 4%;
     }
+
     .bento_list_item {
         display: flex;
         width: 140%;
@@ -408,6 +413,7 @@ export default {
     .bento_list_item_option {
         width: 140%;
     }
+
     .bento_list_form-group label {
         display: none;
     }
@@ -423,9 +429,10 @@ export default {
     #styled-input_name {
         margin: auto;
     }
+
     .bento_list_form-group #pickup {
-    width: 340px;
-}
+        width: 340px;
+    }
 
 }
 
@@ -571,14 +578,16 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    .bento_list_info{
+    .bento_list_info {
         width: 98%;
     }
+
     .bento_list_item_rule_up {
         width: 20%;
         display: flex;
         align-items: center;
     }
+
     .bento_list_info_btn {
         padding: 2%;
         width: 36%;
