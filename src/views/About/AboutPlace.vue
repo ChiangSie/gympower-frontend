@@ -76,31 +76,28 @@ import selectedImage3 from '/src/assets/img/banner_aboutus.jpg'
 export default {
   data() {
     return {
-      selectedImage1,
-      selectedImage2,
-      selectedImage3,
-      images1:[],
-      images2:[],
-      images3:[],
-      // images1: [
-      //   '/src/assets/img/about_gym_1.jpg',
-      //   '/src/assets/img/about_gym_2.jpg',
-      //   '/src/assets/img/about_gym_3.jpg',
-      //   '/src/assets/img/about_gym_4.jpg'
-      // ],
-      // images2: [
-      //   '/src/assets/img/about_kids_1.jpg',
-      //   '/src/assets/img/about_kids_2.jpg',
-      //   '/src/assets/img/about_kids_3.jpg',
-      //   '/src/assets/img/about_kids_1.jpg',
-        
-      // ],
-      // images3: [
-      //   '/src/assets/img/about_gym_1.jpg',
-      //   '/src/assets/img/about_gym_2.jpg',
-      //   '/src/assets/img/about_gym_3.jpg',
-      //   '/src/assets/img/about_gym_4.jpg'
-      // ]
+      selectedImage1: '/src/assets/img/about_gym_1.jpg',
+
+      images1: [
+        '/src/assets/img/about_gym_1.jpg',
+        '/src/assets/img/about_gym_2.jpg',
+        '/src/assets/img/about_gym_3.jpg',
+        '/src/assets/img/about_gym_4.jpg'
+      ],
+      selectedImage2: '/src/assets/img/about_kids_2.jpg',
+      images2: [
+        '/src/assets/img/about_kids_1.jpg',
+        '/src/assets/img/about_kids_2.jpg',
+        '/src/assets/img/about_kids_3.jpg',
+        '/src/assets/img/about_kids_4.jpg',
+      ],
+      selectedImage3: '/src/assets/img/about_outside_3.jpg',
+      images3: [
+        '/src/assets/img/about_outside_1.jpg',
+        '/src/assets/img/about_outside_2.jpg',
+        '/src/assets/img/about_outside_3.jpg',
+        '/src/assets/img/about_outside_4.jpg',
+    ]
     }
   },
   methods: {

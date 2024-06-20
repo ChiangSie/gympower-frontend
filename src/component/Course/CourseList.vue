@@ -54,7 +54,7 @@ export default {
             }
         },
         getImageUrl(imageUrl) {
-            return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
+            return new URL(`../../assets/img/course/${imageUrl}`, import.meta.url).href;
         }
     }
 };
