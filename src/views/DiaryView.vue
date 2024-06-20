@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <Banner :title="'健身日記'" :imgSrc="'src/assets/img/banner_aboutus.jpg'" />
+    <Banner :title="'健身日記'" />
     <div class="section section-search">
       <div class="container container-search">
         <div class="search">
@@ -109,7 +109,7 @@ export default {
     },
   },
   mounted() {
-    fetch("/json/diarylist.json")
+    fetch(`${import.meta.env.BASE_URL}json/diarylist.json`)
       .then((res) => res.json())
       .then((json) => {
         //確認有沒有response
@@ -129,6 +129,9 @@ export default {
       document.querySelector(".background").style.opacity = "1";
       document.querySelector(".background").style.pointerEvents = "auto";
     },
+     parseImg(imgURL) {
+      return new URL(`../assets/img/Diary/${imgURL}`, import.meta.url).href;
+    }
   },
 };
 </script>
