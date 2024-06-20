@@ -6,7 +6,7 @@
                     <h3>{{ text }}</h3>
                 </div>
                 <div class="bentobox6_pic">
-                    <img :src="parseImg('bento_box_six.png')" alt="" />
+                    <img :src="six" alt="" />
                 </div>
             </div>
         </div>
@@ -24,9 +24,16 @@
 
 <script>
 import { useBentoStore } from '@/stores/bentobox';
+import six from '/src/assets/img/bento_box_four.png'
+
 import { mapWritableState } from 'pinia';
 
 export default {
+    data(){
+        return{
+            six,
+        }
+    },
     setup() {
         const bentoStore = useBentoStore();
 

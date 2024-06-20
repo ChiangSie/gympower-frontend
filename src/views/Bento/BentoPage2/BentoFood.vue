@@ -57,7 +57,7 @@ export default {
             console.log(`${food.ItemName} added to cart`);
         },
         parseImg(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+            return new URL(`/src/assets/img/${imgURL}`, import.meta.url).href;
         }
     }
 
