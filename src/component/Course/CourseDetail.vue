@@ -52,7 +52,7 @@ export default {
 
     data() {
         return {
-            previewImageUrl: '`${import.meta.env.BASE_URL}course/course-Aerobic1-Preview1.png`', // 初始值為空字串這裡需要修改為動態的
+            previewImageUrl: '', // 初始值為空字串這裡需要修改為動態的
             teacher: {
                 src: '',
                 name: ''
@@ -60,7 +60,7 @@ export default {
         };
     },
     mounted() {
-
+       
     },
     methods: {
         selectImage(imageUrl) {
@@ -159,8 +159,4 @@ export default {
     
 }
 }
-
-
-
-
 </style>
