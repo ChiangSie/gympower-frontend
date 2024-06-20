@@ -24,7 +24,7 @@
 
 <script>
 import { useBentoStore } from '@/stores/bentobox';
-import six from '/src/assets/img/bento_box_four.png'
+import six from '/src/assets/img/bento_box_six.png'
 
 import { mapWritableState } from 'pinia';
 
