@@ -134,11 +134,9 @@
                         <span>{{ total_name }}</span>
                         <span>${{ total_price }}</span>
                     </div>
-                    <RouterLink :to="buildQuery">
+                    <button @click="validateAndProceed" class="bento_list_info_btn">下一頁</button>
+                    <!-- <RouterLink :to="buildQuery">
                         <button class="bento_list_info_btn">下一頁</button>
-                    </RouterLink>
-                    <!-- <RouterLink to='/cart/cartpage5'>
-                        <button class="bento_list_info_btn">{{ next_page }}</button>
                     </RouterLink> -->
                 </div>
             </div>
@@ -155,6 +153,7 @@
 
 
 <script>
+import Swal from 'sweetalert2';
 export default {
     data() {
         return {
@@ -243,7 +242,8 @@ export default {
         }
     },
     mounted() {
-        if (performance.navigation.type == 1) {
+        const [navigationEntry] = performance.getEntriesByType('navigation');
+        if (navigationEntry && navigationEntry.type === 'reload') {
             // 页面刷新
             sessionStorage.removeItem('name');
             sessionStorage.removeItem('phone');
@@ -256,6 +256,29 @@ export default {
     methods: {
         parseImg(imgURL) {
             return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        },
+        validateAndProceed() {
+            if (!this.name) {
+                this.showAlert('請輸入您的姓名');
+            } else if (!this.phone) {
+                this.showAlert('請輸入您的手機號碼');
+            } else if (!this.email) {
+                this.showAlert('請輸入您的電子信箱');
+            } else if (!this.pay) {
+                this.showAlert('請選擇付款方式');
+            } else if (!this.pickup) {
+                this.showAlert('請選擇取貨據點');
+            } else {
+                this.$router.push(this.buildQuery);
+            }
+        },
+        showAlert(message) {
+            Swal.fire({
+                icon: 'warning',
+                title: '提示',
+                text: message,
+                confirmButtonText: '確定'
+            });
         }
     }
 }
