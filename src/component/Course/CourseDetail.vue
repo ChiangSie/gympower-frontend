@@ -3,7 +3,7 @@
          <div class="container">
             <div class="image-preview">
                 <div class="large-image">
-                     <img  :src="previewImageUrl" alt="Large Image Preview" />
+                    <img  :src="previewImageUrl ? previewImageUrl : getImageUrl(productInfo.imgSrc)" alt="Large Image Preview" />
                 </div>
                 <div class="thumbnail-list">
                     <img
@@ -29,7 +29,7 @@
             <p>{{productInfo.description}}</p>
             </div>
             <div class="course-btn">
-             <CourseSelected :productInfo="productInfo"/>
+                <CourseSelected :productInfo="productInfo"/>
             </div>
         </div>
         </div>
@@ -60,7 +60,7 @@ export default {
         };
     },
     mounted() {
-       
+        
     },
     methods: {
         selectImage(imageUrl) {
@@ -69,7 +69,7 @@ export default {
         getImageUrl(imageUrl) {
             return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
         }
-    }
+    },
 };
 </script>
 

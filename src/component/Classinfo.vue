@@ -35,10 +35,9 @@ export default {
     }
   },
   mounted() { 
-     parseImg(); 
   },
   methods: {
-        parseImg(imgURL) {
+    parseImg(imgURL) {
       return new URL(`../assets/img/course/${imgURL}`, import.meta.url).href;
     }
   }
