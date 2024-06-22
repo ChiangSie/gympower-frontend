@@ -96,7 +96,7 @@
   {
     "id": 4,
     "title": "週三有氧課程",
-    "imgSrc": "/src/assets/img/course/course-Retrain-Preview2.png",
+    "imgSrc": "course-Retrain-Preview2.png",
     "teacher": "Wendy老師",
         "teacherSrc":"windy.png",
 
@@ -130,7 +130,7 @@
   {
     "id": 5,
     "title": "週五重訓課程",
-    "imgSrc": "/src/assets/img/course/course-Retrain-Preview1.png",
+    "imgSrc": "course-Retrain-Preview1.png",
     "teacher": "John老師",
         "teacherSrc":"windy.png",
 
@@ -158,7 +158,7 @@
   {
     "id": 6,
     "title": "週日重訓課程",
-    "imgSrc": "/src/assets/img/course/course-Retrain-Preview3.png",
+    "imgSrc": "course-Retrain-Preview3.png",
     "teacher": "John老師",
         "teacherSrc":"windy.png",
 

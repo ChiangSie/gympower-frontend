@@ -76,10 +76,19 @@ export default {
 .button_list {
     button {
         display: inline-block;
-        margin: 0 8px 0;
+        margin: 20px 8px;
     }
 }
 
+@media screen and (max-width: 768px) {
+
+    .button_list {
+        button {
+            margin: 8px;
+        }
+    }
+
+}
 
 .btn_tag {
     display: inline-block;

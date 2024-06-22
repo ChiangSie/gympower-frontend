@@ -4,8 +4,8 @@
             <h2>其他課程</h2>
             <div class="image-carousel">
                 <button class="prev-button" @click="prevImages" :disabled="isFirstGroup"><</button>
-                <router-link class="image-container" v-for="(imageUrl, index) in displayedImageUrls" :key="index" :to="`/course/${imageUrl.id}`">
-                    <img  :src="getImageUrl(imageUrl.imgSrc)" alt="Current Image"
+                <router-link class="image-container" v-for="(image, index) in displayedImages" :key="index" :to="`/course/${image.id}`">
+                    <img :src="getImageUrl(image.imgSrc)" :alt="image.imgSrc"
                         class="carousel-image" />
                 </router-link>
                 <button class="next-button" @click="nextImages" :disabled="isLastGroup">></button>
@@ -29,7 +29,7 @@ export default {
         };
     },
     computed: {
-        displayedImageUrls() {
+        displayedImages() {
             const startIndex = this.currentIndex;
             const endIndex = startIndex + this.imagesPerGroup;
             return this.imageUrls.slice(startIndex, endIndex);
@@ -40,7 +40,7 @@ export default {
         isLastGroup() {
             const lastIndex = this.imageUrls.length - this.imagesPerGroup;
             return this.currentIndex >= lastIndex;
-        }
+        }   
     },
     methods: {
         prevImages() {
@@ -53,8 +53,11 @@ export default {
                 this.currentIndex += this.imagesPerGroup;
             }
         },
-        getImageUrl(imageUrl) {
-            return new URL(`../../assets/img/course/${imageUrl}`, import.meta.url).href;
+        getImageUrl(imgSrc) {
+            if (typeof imgSrc === 'string') {
+                return new URL(`../../assets/img/course/${imgSrc}`, import.meta.url).href;
+            }
+            return imgSrc; // 如果已經是完整的 URL，直接返回
         }
     }
 };

@@ -1,6 +1,6 @@
 <template>
     <section class="bentobox6_info">
-        <div class="bentobox6_bg" @click="selectBento(6)">
+        <div :class="['bentobox6_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]" @click="selectBento(6)">
             <div class="bentobox6_con">
                 <div class="bentobox6_txt">
                     <h3>{{ text }}</h3>
@@ -14,12 +14,11 @@
             <button class="bentobox_button">
                 <p>{{ button_txt }}</p>
                 <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
-
             </button>
         </RouterLink>
     </section>
-
 </template>
+
 
 
 <script>
@@ -29,8 +28,8 @@ import six from '/src/assets/img/bento_box_six.png'
 import { mapWritableState } from 'pinia';
 
 export default {
-    data(){
-        return{
+    data() {
+        return {
             six,
         }
     },
@@ -40,18 +39,26 @@ export default {
         const selectBento = (id) => {
             bentoStore.setContainerId(id);
         };
-
         return {
             selectBento,
             text: '滿腹六合一',
             button_txt: '下一步',
+            bentoStore,
         };
+    },
+    computed: {
+        isSelected() {
+            return this.bentoStore.containerId === 6;
+        },
+        isAnyBentoSelected() {
+            return this.bentoStore.containerId !== null && this.bentoStore.containerId !== undefined;
+        },
     },
     methods: {
         parseImg(imgURL) {
             return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
         }
-    }
+    },
 
 }
 </script>
@@ -73,6 +80,7 @@ export default {
         object-position: 50% 50%;
         cursor: pointer;
         transition: .3s;
+        max-width: 100%; /* 圖片最大寬度 */
 
 
         &:hover {
@@ -97,6 +105,12 @@ export default {
     width: 80%;
     margin-left: auto;
     height: 100%;
+    max-width: 100%;
+    /* 防止寬度超出視窗 */
+    overflow: hidden;
+    /* 隱藏溢出的內容 */
+    box-sizing: border-box;
+    /* 包括邊框和內距在寬度內 */
 
     &:hover .bentobox6_txt h3 {
         transform: scale(1.1);
@@ -106,6 +120,10 @@ export default {
     }
 
 }
+.not-selected {
+    opacity: 0.5;
+}
+
 
 @media screen and (max-width: 768px) {
     .bentobox6_bg {
@@ -149,6 +167,7 @@ export default {
 .bentobox6_con {
     display: flex;
     justify-content: flex-end;
+    width: 100%; /* 讓內容寬度適應父容器 */
 
 }
 

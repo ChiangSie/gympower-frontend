@@ -73,6 +73,7 @@ export default {
             one,
             four,
             six
+
         }
     },
 
@@ -116,10 +117,10 @@ export default {
 
 .wave {
     position: absolute;
-    top: 70%;
+    top: 65%;
     width: 100%;
     left: 0;
-    height: 20vh;
+    height: 10vh;
 }
 
 @media screen and (max-width: 768px) {
@@ -131,6 +132,7 @@ export default {
     .wave {
         position: absolute;
         top: 85%;
+
     }
 }
 
