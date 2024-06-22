@@ -123,7 +123,7 @@ export default {
 
 
         .large_img {
-            width: 150%;
+            width: 163%;
             height: 30%;
             aspect-ratio: 4 / 3.5;
             margin-right: -70px;
@@ -145,10 +145,10 @@ export default {
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            width: 50%;
+            width: 70%;
             height: 15%;
             aspect-ratio: 4 / 3.5;
-            margin-right: 80px;
+            margin-right: 55px;
 
 
             img {
@@ -197,5 +197,92 @@ export default {
         }
     }
 
+}
+
+
+@media screen and (max-width: 768px) {
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #FEEFDA;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #EB9340;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #002451;
+    }
+
+    .coach_list {
+        .close_btn {
+            margin-left: 80%;
+            margin-top: 5%;
+        }
+
+
+        .coach_detail {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            height: auto;
+            overflow: auto;
+
+            .img_preview {
+
+                margin-top: 25px;
+
+
+                .large_img {
+                    margin-right: 0;
+                    width: 105%;
+                    height: 35%;
+                    aspect-ratio: 4 / 3.5;
+
+
+                    img {
+                        width: 85%;
+                        height: 42vh;
+
+
+                    }
+                }
+
+                .thumbnail_list {
+                    margin-right: 0;
+                    margin-top: 5px;
+                    width: 90%;
+                    height: 50%;
+                    aspect-ratio: 4 / 3.5;
+
+
+                    img {
+                        width: 50%;
+
+                    }
+
+                }
+            }
+
+
+            .coach_info {
+                width: 80%;
+                margin-top: -40%;
+
+                .custom_p {
+                    display: block;
+                    margin-top: 5px;
+
+                }
+
+            }
+        }
+
+    }
 }
 </style>
