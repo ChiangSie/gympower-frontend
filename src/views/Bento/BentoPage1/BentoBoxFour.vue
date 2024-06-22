@@ -1,6 +1,6 @@
 <template>
     <section class="bentobox4_info">
-        <div class="bentobox4_bg" @click="selectBento(4)">
+        <div :class="['bentobox4_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]" @click="selectBento(4)">
             <div class="bentobox4_pic">
                 <img :src="four" alt="" />
             </div>
@@ -18,8 +18,8 @@ import { mapWritableState } from 'pinia';
 
 
 export default {
-    data(){
-        return{
+    data() {
+        return {
             four,
         }
     },
@@ -29,17 +29,26 @@ export default {
         const selectBento = (id) => {
             bentoStore.setContainerId(id);
         };
-
         return {
             selectBento,
             text: '饗食四合一',
+            bentoStore,
         };
+    },
+    computed: {
+        isSelected() {
+            return this.bentoStore.containerId === 4;
+        },
+        isAnyBentoSelected() {
+            return this.bentoStore.containerId !== null && this.bentoStore.containerId !== undefined;
+        },
     },
     methods: {
         parseImg(imgURL) {
             return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
         }
-    }
+    },
+    
 };
 
 </script>
@@ -87,6 +96,10 @@ export default {
     justify-content: flex-start;
     width: 80%;
     height: 100%;
+}
+
+.not-selected {
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {
