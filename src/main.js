@@ -1,4 +1,5 @@
 import './assets/sass/style.scss'
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -10,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+
 
 
 library.add(faChevronRight);
