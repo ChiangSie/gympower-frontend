@@ -57,7 +57,7 @@
 {
     "id": 6,
     "price": 50,
-    "image": "food_6.png",
+    "image": "food_20.png",
     "tag": "海鮮類",
     "ItemName": "高麗菜",
     "calories": 100,
@@ -68,7 +68,7 @@
 {
     "id": 7,
     "price": 40,
-    "image": "food_7.png",
+    "image": "food_21.png",
     "tag": "海鮮類",
     "ItemName": "麵",
     "calories": 100,
@@ -79,7 +79,7 @@
 {
     "id": 8,
     "price": 30,
-    "image": "food_8.png",
+    "image": "food_22.png",
     "tag": "海鮮類",
     "ItemName": "糙米飯",
     "calories": 100,
