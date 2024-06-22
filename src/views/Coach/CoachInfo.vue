@@ -8,12 +8,15 @@
             <div class="coach_detail">
                 <div class="img_preview">
                     <div class="large_img">
-                        <img :src="thumbnailPic1" alt="教練照片" class="card-image" />
+                        <img :src="largeImgSrc" alt="教練照片" class="card-image" />
                     </div>
                     <div class="thumbnail_list">
-                        <img :src="thumbnailPic2" alt="教練照片" class="card-image" />
-                        <img :src="thumbnailPic3" alt="教練照片" class="card-image" />
-                        <img :src="thumbnailPic4" alt="教練照片" class="card-image" />
+                        <img :src="thumbnailPic2" alt="教練照片" class="card-image"
+                            @click="changeLargeImg(thumbnailPic2)" />
+                        <img :src="thumbnailPic3" alt="教練照片" class="card-image"
+                            @click="changeLargeImg(thumbnailPic3)" />
+                        <img :src="thumbnailPic4" alt="教練照片" class="card-image"
+                            @click="changeLargeImg(thumbnailPic4)" />
                     </div>
                 </div>
                 <div class="coach_info">
@@ -33,9 +36,8 @@
 </template>
 
 <script>
-import thumbnailPic1 from '/src/assets/img/coach_info/thumbnail_pic_1.png'
-import thumbnailPic2 from '/src/assets/img/coach_info/thumbnail_pic_2.png'
-import thumbnailPic3 from '/src/assets/img/coach_info/thumbnail_pic_3.png'
+import thumbnailPic2 from '/src/assets/img/coach_info/thumbnail_pic_2.jpg'
+import thumbnailPic3 from '/src/assets/img/coach_info/thumbnail_pic_3.jpg'
 import thumbnailPic4 from '/src/assets/img/coach_info/thumbnail_pic_4.png'
 
 export default {
@@ -47,10 +49,10 @@ export default {
     },
     data() {
         return {
-            thumbnailPic1,
             thumbnailPic2,
             thumbnailPic3,
-            thumbnailPic4
+            thumbnailPic4,
+            largeImgSrc: thumbnailPic2
         };
     },
     methods: {
@@ -58,6 +60,9 @@ export default {
         closeCoachInfo() {
             this.$emit('close');
         },
+        changeLargeImg(src) {
+            this.largeImgSrc = src;
+        }
     }
 };
 </script>
@@ -116,19 +121,23 @@ export default {
         justify-content: space-around;
 
 
+
         .large_img {
-            width: 135%;
+            width: 150%;
             height: 30%;
             aspect-ratio: 4 / 3.5;
             margin-right: -70px;
             margin-bottom: 100px;
 
 
+
             img {
                 width: 100%;
+                height: 42vh;
                 object-fit: cover;
                 object-position: 50% 50%;
                 cursor: pointer;
+                border-radius: 10px;
             }
         }
 
@@ -136,15 +145,16 @@ export default {
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            width: 40%;
+            width: 50%;
             height: 15%;
             aspect-ratio: 4 / 3.5;
-            margin-right: 120px;
+            margin-right: 80px;
 
 
             img {
                 vertical-align: middle;
                 width: 100%;
+                height: 11vh;
                 object-fit: cover;
                 object-position: 50% 50%;
                 cursor: pointer;

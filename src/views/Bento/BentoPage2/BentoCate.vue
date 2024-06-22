@@ -75,15 +75,13 @@ export default {
     text-decoration: none;
 }
 
+section {
+    margin-top: -10px;
+}
+
 .category {
     text-align: center;
     padding-top: 20px;
-}
-
-@media screen and (min-width: 1130px) {
-    .category {
-        padding-top: 50px;
-    }
 }
 
 .button_list {
