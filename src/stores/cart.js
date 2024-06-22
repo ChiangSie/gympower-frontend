@@ -9,6 +9,7 @@ export const useCartStore = defineStore('cart', {
   }),
 
   // 對應 computed (物件形式)
+ 
   getters: {
     totalHeat: (state) => {
         return state.bentoList.reduce((total, item) => {

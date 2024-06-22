@@ -1,5 +1,10 @@
 <template>
     <section class="bentobox_banner">
+        <!-- 剩餘提示字 -->
+        <div class="custom_reminder">
+            <p>{{ custom_reminder_txt }}</p>
+        </div>
+        <!-- 客製化餐盒內容 -->
         <div class="bentobox_bg">
             <div class="bento_title_wrap">
                 <RouterLink to='/bento' class="btn_link">
@@ -57,11 +62,14 @@
 </template>
 
 <script>
+import { computed } from 'vue';
 import { useBentoStore } from '@/stores/bentobox';
+import { useCartStore } from '@/stores/cart';
 import { RouterLink } from 'vue-router';
 import one from '/src/assets/img/boxIn.png'
 import four from '/src/assets/img/bento_box_four.png'
 import six from '/src/assets/img/bento_box_six.png'
+import { useReminderAlertStore } from '@/stores/ReminderAlert';
 
 export default {
     components: {
@@ -72,17 +80,7 @@ export default {
         return {
             one,
             four,
-            six
-
-        }
-    },
-
-    setup() {
-        const bentoStore = useBentoStore();
-
-        return {
-            containerId: bentoStore.containerId,
-            imgSrcBoxIn: '/src/assets/img/boxIn.png',
+            six,
             button_txt_right: '下一步',
             button_txt_left: '上一步',
             hint_txt: '*點選格子即可替換商品',
@@ -90,6 +88,24 @@ export default {
             title_txt: '選擇餐盒內容',
             subtitle_txt: 'STEP 2',
             imgSrcWave: '/src/assets/img/wave.svg',
+
+        }
+    },
+
+    setup() {
+        const bentoStore = useBentoStore();
+        const cartStore = useCartStore();
+        const reminderAlertStore = useReminderAlertStore();
+
+        const reminderText = computed(() => reminderAlertStore.reminderText);
+
+        return {
+            containerId: bentoStore.containerId,
+            imgSrcBoxIn: '/src/assets/img/boxIn.png',
+            reminderText,
+            one,
+            four,
+            six
         };
     },
     methods: {
@@ -101,7 +117,7 @@ export default {
         },
     }
 
-}
+};
 </script>
 
 <style lang="scss" scoped>
