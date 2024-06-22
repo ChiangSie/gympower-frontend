@@ -1,6 +1,6 @@
 [
     {
-      "icon": "about_pilates.png",
+      "icon": "about_exercise.png",
       "title": "Premium Environment",
       "title_cn": "優質環境",
       "description": "配備先進的健身器材，滿足各種有氧和力量訓練需求。"
@@ -12,7 +12,7 @@
       "description": "根據您的需求提供健康營養計劃，助您達成健身目標。"
     },
     {
-      "icon": "about_exercise.png",
+      "icon": "about_pilates.png",
       "title": "Advanced Equipment",
       "title_cn": "高級設備",
       "description": "提供乾淨舒適的淋浴設施，讓您在運動後放鬆身心。"

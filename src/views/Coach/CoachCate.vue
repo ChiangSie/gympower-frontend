@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            title: '教練分類',
+            title: '',
             sourceData: [],
             currentTag: '',
             selectedFood: null
