@@ -29,7 +29,7 @@ export default {
   methods:{
     parseImg(imgURL) {
       // 放在vue專案的圖檔路徑會被轉譯，因此需要這樣更改
-      return new URL(`../../assets/img/${imgURL}`, import.meta.url).href
+      return new URL(`/src/assets/img/about/${imgURL}`, import.meta.url).href
     },
   }
 }

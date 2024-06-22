@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            title: '專業陣容',
+            title: '',
             sourceData: [],
             currentTag: '',
             selectedFood: null

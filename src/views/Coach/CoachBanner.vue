@@ -11,7 +11,7 @@
 export default{
     data() {
         return {
-            imgSrc:'/src/assets/img/coach.png',
+            imgSrc:'/src/assets/img/banner/banner_5.jpg',
             title: '教練介紹'
         }
     }
@@ -21,28 +21,30 @@ export default{
 <style lang="scss" scoped>
 .coach {
 width: 100%;
-margin-top: 67px;
-padding: 3% 12%;
-display: flex;
-justify-content: flex-end;
+margin-top: 40px;
+// margin-top: 67px;
+// padding: 3% 12%;
+// display: flex;
+// justify-content: flex-end;
 position: relative;
 .coach_banner {
-    width: 70%;
+    width: 100%;
     aspect-ratio: 2.5/1;
-    border-radius: 10px;
+    // border-radius: 10px;
     overflow: hidden;
     img {
     vertical-align: middle;
     width: 100%;
-    aspect-ratio: 2.5/1;
+    height: 400px;
+    // aspect-ratio: 2.5/1;
     object-fit: cover;
     }
 }
 h1 {
     transform: translate(0, -50%);
     position: absolute;
-    top: 50%;
-    left: 20%;
+    top: 40%;
+    left:42%;
 }
 }
 
