@@ -131,7 +131,6 @@ export default {
           flex-direction: column;
           align-items: center;
           gap: 15px;
-
           .pic {
             border-radius: 50%;
             overflow: hidden;
@@ -143,17 +142,28 @@ export default {
             }
           }
         }
+        p{
+              font-size: 13.5px;
+              color: #343333;
+            }
 
         .course {
           width: 70%;
           display: flex;
           flex-direction: column;
           gap: 20px;
-
+          
           .course-title {
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
+
+            p{
+            font-size: 15.5px;
+            font-weight: 600;
+            color: #002451;
+            // border-bottom: 2px solid #002451;
+          }
           }
         }
       }

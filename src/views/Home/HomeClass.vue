@@ -103,21 +103,18 @@ export default {
     font-weight: bold;
   }
 
-  .title {
-    text-align: center;
-    margin-bottom: 60px;
-    font-weight: bold;
-  }
-
   .row {
     .swiper-slide {
       border-radius: 10px;
       text-align: left;
       background-color: #f9f8f7;
+
     }
     .card {
-      background-color: #fff;
+      background-color: #eaf2f6;
       border-radius: 10px;
+      width: 96%;
+      gap: 0;
 
       .card-head {
         padding: 30px 20px 0 20px;
@@ -130,6 +127,7 @@ export default {
       h2 {
         margin-bottom: 15px;
         font-weight: bold;
+        font-size: 24px;
       }
 
       .txt {
@@ -137,6 +135,7 @@ export default {
           font-weight: bold;
           display: flex;
           justify-content: space-between;
+          font-size: 22px;
         }
       }
 
@@ -144,7 +143,7 @@ export default {
         width: 100%;
         aspect-ratio: 3 / 1;
         object-fit: cover;
-        border-radius: 10px;
+        // border-radius: 10px;
         margin-bottom: 15px;
       }
 
@@ -163,7 +162,10 @@ export default {
         gap: 20px;
 
         .content {
-          width: 60%;
+          width: 70%;
+        }
+        p{
+          font-size: 13px;
         }
         .apply:hover {
           scale: 1.2;
@@ -173,8 +175,8 @@ export default {
           cursor: pointer;
           color: #fff;
           width: 30%;
-          font-size: clamp(16px, 2.18vw, 28px);
-          padding: 10px;
+          font-size: clamp(14px, 2.18vw, 18px);
+          padding: 8px 10px;
           text-align: center;
           width: 25%;
           background-color: #002451;
@@ -191,16 +193,15 @@ export default {
     }
     .more {
       cursor: pointer;
-      width: 100px;
-      height: 40px;
-      background-color: #002451;
-      border-radius: 10px;
-      color: #fff;
+      width: 70px;
+      color: #002451;
       text-align: center;
-      line-height: 40px;
+      line-height: 16px;
       margin-left: auto;
-      margin-right: 15px;
+      margin-right: 20px;
       margin-top: 30px;
+      display: inline-block;
+      border-bottom:1px solid #002451;
     }
   }
 }
