@@ -113,6 +113,11 @@ export default {
     border-radius: 8px;
     margin-top: 20px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* 添加過渡效果 */
+}
+
+.card_details img:hover {
+    transform: scale(1.1); /* 在 hover 時放大圖片 */
 }
 
 .card-image {
