@@ -104,12 +104,13 @@ path:hover {
     position: absolute;
     width: 40%;
     right: 80px;
-    top: 900px;
-    color: rgb(26, 68, 76);
-    border: 5px solid rgb(26, 68, 76);
-    border-radius:20px;
+    top: 1100px;
+    color: #00000;
+    /* border: 3px solid rgb(26, 68, 76); */
+    /* border-radius:10px; */
     padding: 30px 25px;
-    background-color: #dfdfdf;
+    background-color: #fff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
 }
 hr {
     width: 160px;

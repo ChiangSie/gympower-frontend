@@ -14,7 +14,7 @@
         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
           <div class="txt">
             <span>
-              <h3>李俊輝 教練</h3>
+              <h3>李恩智 教練</h3>
             </span>
             <p>曾在多家頂尖健身房擔任首席教練，指導過200多位客戶，幫助他們實現顯著的身體改變。</p>
             <ul>專業領域 :
@@ -62,7 +62,7 @@
         }
 
         .txt {
-          width: 60%;
+          width: 65%;
           display: flex;
           flex-direction: column;
           justify-content: center;
