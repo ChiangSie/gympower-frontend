@@ -1,9 +1,5 @@
 <template>
     <section class="bentobox_banner">
-        <!-- 剩餘提示字 -->
-        <div class="custom_reminder">
-            <p>{{ custom_reminder_txt }}</p>
-        </div>
         <!-- 客製化餐盒內容 -->
         <div class="bentobox_bg">
             <div class="bento_title_wrap">
