@@ -96,7 +96,7 @@ const router = createRouter({
       ]
     },
     {
-      path: '/Diarypage',
+      path: '/diary/:id',
       name: 'Diarypage',
       component: () => import('../views/Diary/Diarypage.vue')
     },

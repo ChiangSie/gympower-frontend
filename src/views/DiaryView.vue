@@ -29,6 +29,7 @@
             :key="card.id"
           >
             <DiaryCard :cardData="card" />
+            <Diarypage :abc="card" />
           </div>
         </div>
       </div>
@@ -129,9 +130,9 @@ export default {
       document.querySelector(".background").style.opacity = "1";
       document.querySelector(".background").style.pointerEvents = "auto";
     },
-     parseImg(imgURL) {
+    parseImg(imgURL) {
       return new URL(`../assets/img/Diary/${imgURL}`, import.meta.url).href;
-    }
+    },
   },
 };
 </script>

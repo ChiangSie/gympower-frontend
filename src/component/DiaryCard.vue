@@ -1,8 +1,8 @@
 <template>
-  <router-link :to="{ name: 'Diarypage' }">
+  <router-link :to="`/diary/${cardData.id}`">
     <div class="card">
       <div class="pic">
-        <img :src=" parseImg(cardData.imgSrc)" />
+        <img :src="parseImg(cardData.imgSrc)" />
         <div class="box"></div>
         <div class="title">
           <h3>{{ cardData.title }}</h3>
@@ -26,10 +26,10 @@ export default {
     },
   },
   methods: {
-         parseImg(imgURL) {
+    parseImg(imgURL) {
       return new URL(`../assets/img/Diary/${imgURL}`, import.meta.url).href;
-    }
-  }
+    },
+  },
 };
 </script>
 
