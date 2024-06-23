@@ -26,32 +26,38 @@
             </div>
             <div class="bento_info">
                 <div class="bento_pic">
-                    <!-- 顯示四格餐盒圖片 -->
                     <div v-if="containerId === 4" class="four_grid_cus_box">
                         <img :src="four" alt="四格餐盒">
                         <div class="grid_container">
-                            <div class="grid_item"><img :src="one" alt="四格餐盒第一格"></div>
-                            <div class="grid_item"><img :src="one" alt="四格餐盒第二格"></div>
-                            <div class="grid_item"><img :src="one" alt="四格餐盒第三格"></div>
-                            <div class="grid_item"><img :src="one" alt="四格餐盒第四格"></div>
+                            <div 
+                                class="grid_item" 
+                                v-for="(image, index) in selectedFoodImages" 
+                                :key="index" 
+                                :class="{ clicked: clickedIndex === index, dimmed: clickedIndex !== index && clickedIndex !== null }"
+                                @click="handleClick(index)"
+                            >
+                                <img :src="image || one" :alt="`四格餐盒第${index + 1}格`">
+                            </div>
                         </div>
                     </div>
-                    <!-- 顯示六格餐盒圖片 -->
                     <div v-else-if="containerId === 6" class="six_grid_cus_box">
                         <img :src="six" alt="六格餐盒">
                         <div class="grid_container">
-                            <div class="grid_item"><img :src="one" alt="六格餐盒第一格"></div>
-                            <div class="grid_item"><img :src="one" alt="六格餐盒第二格"></div>
-                            <div class="grid_item"><img :src="one" alt="六格餐盒第三格"></div>
-                            <div class="grid_item"><img :src="one" alt="六格餐盒第四格"></div>
-                            <div class="grid_item"><img :src="one" alt="六格餐盒第五格"></div>
-                            <div class="grid_item"><img :src="one" alt="六格餐盒第六格"></div>
+                            <div 
+                                class="grid_item" 
+                                v-for="(image, index) in selectedFoodImages" 
+                                :key="index" 
+                                :class="{ clicked: clickedIndex === index, dimmed: clickedIndex !== index && clickedIndex !== null }"
+                                @click="handleClick(index)"
+                            >
+                                <img :src="image || one" :alt="`六格餐盒第${index + 1}格`">
+                            </div>
                         </div>
                     </div>
                     <p>{{ hint_txt }}</p>
                 </div>
                 <div class="bento_price">
-                    <h3>{{ sum_price }}</h3>
+                    <h3>當前總額 : ${{ sum_price }}</h3>
                 </div>
             </div>
         </div>
@@ -64,12 +70,14 @@
 <script>
 import { computed } from 'vue';
 import { useBentoStore } from '@/stores/bentobox';
+import { useFoodStore } from '@/stores/foodStore';
 import { useCartStore } from '@/stores/cart';
 import { RouterLink } from 'vue-router';
 import one from '/src/assets/img/boxIn.png'
 import four from '/src/assets/img/bento_box_four.png'
 import six from '/src/assets/img/bento_box_six.png'
 import { useReminderAlertStore } from '@/stores/ReminderAlert';
+import { onMounted, ref } from 'vue';
 
 export default {
     components: {
@@ -81,31 +89,60 @@ export default {
             one,
             four,
             six,
-            button_txt_right: '下一步',
-            button_txt_left: '上一步',
-            hint_txt: '*點選格子即可替換商品',
-            sum_price: '當前總額 : $',
-            title_txt: '選擇餐盒內容',
-            subtitle_txt: 'STEP 2',
-            imgSrcWave: '/src/assets/img/wave.svg',
+            // button_txt_right: '下一步',
+            // button_txt_left: '上一步',
+            // hint_txt: '*點選格子即可替換商品',
+            // sum_price: '當前總額 : $',
+            // title_txt: '選擇餐盒內容',
+            // subtitle_txt: 'STEP 2',
+            // imgSrcWave: '/src/assets/img/wave.svg',
 
         }
     },
 
     setup() {
         const bentoStore = useBentoStore();
+        const foodStore = useFoodStore();
         const cartStore = useCartStore();
         const reminderAlertStore = useReminderAlertStore();
 
         const reminderText = computed(() => reminderAlertStore.reminderText);
 
+        const containerId = bentoStore.containerId;
+        foodStore.setBoxSize(containerId);
+
+        const selectedFoodImages = computed(() => foodStore.selectedFoodImages);
+        const sum_price = computed(() => foodStore.totalPrice);
+
+        onMounted(() => {
+            foodStore.reset();
+        });
+
+        const clickedIndex = ref(null);
+
+        const handleClick = (index) => {
+            clickedIndex.value = index;
+            foodStore.updateSelectedIndex(index); // 更新FoodStore中的選中索引
+        };
+
         return {
             containerId: bentoStore.containerId,
+            // imgSrcBoxIn: '/src/assets/img/boxIn.png',
+            // reminderText,
+            // one,
+            // four,
+            // six
+            selectedFoodImages,
+            sum_price,
             imgSrcBoxIn: '/src/assets/img/boxIn.png',
-            reminderText,
-            one,
-            four,
-            six
+            button_txt_right: '下一步',
+            button_txt_left: '上一步',
+            hint_txt: '*點選格子即可替換商品',
+            title_txt: '選擇餐盒內容',
+            subtitle_txt: 'STEP 2',
+            imgSrcWave: '/src/assets/img/wave.svg',
+            clickedIndex,
+            handleClick,
         };
     },
     methods: {
@@ -263,7 +300,18 @@ button {
             height: 100%;
             overflow: hidden;
             position: relative;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            opacity: 1;
 
+        }
+
+        .grid_item.dimmed {
+            filter: brightness(0.5);
+        }
+
+        .grid_item.clicked {
+            opacity: 1;
         }
 
         .grid_item img {
@@ -293,7 +341,18 @@ button {
             height: 100%;
             overflow: hidden;
             position: relative;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            opacity: 1;
 
+        }
+
+        .grid_item.dimmed {
+            filter: brightness(0.5);
+        }
+
+        .grid_item.clicked {
+            opacity: 1;
         }
 
         .grid_item img {

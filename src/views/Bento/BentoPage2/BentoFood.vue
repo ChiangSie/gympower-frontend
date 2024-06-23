@@ -7,8 +7,8 @@
                         <h4>${{ food.price }}</h4>
                     </div>
                     <div class="card_details">
-                        <img :src="parseImg(food.image)" alt="食物照片" class="card-image" />
-                        <button class="details_button" @click="showNutrition(food)">
+                        <img :src="parseImg(food.image)" alt="食物照片" class="card-image" @click="selectFoodImage(food)" />
+                        <button class="details_button" @click="addToCartAndShowNutrition(food)">
                             營養成分
                         </button>
                     </div>
@@ -25,7 +25,8 @@
 
 <script>
 import NutritionFacts from './NutritionFacts.vue';
-
+import { useFoodStore } from '@/stores/foodStore';
+// import { useCartStore } from '@/stores/cartStore'; // 如果有用到 cartStore，取消註釋並引入
 
 export default {
     components: {
@@ -34,7 +35,7 @@ export default {
     props: {
         foods: {
             type: Array,
-            default: () => [],
+            default: () => []
         }
     },
     data() {
@@ -50,35 +51,45 @@ export default {
         closeNutritionInfo() {
             this.selectedFood = null;
             document.body.style.overflow = 'auto';
-        }, addToCartAndShowNutrition(food) {
-            const cartStore = useCartStore();
-            cartStore.addItem(food);
+        },
+        addToCartAndShowNutrition(food) {
+            // const cartStore = useCartStore(); // 如果有用到 cartStore，取消註釋
+            // cartStore.addItem(food); // 如果有用到 cartStore，取消註釋
             this.showNutrition(food);
-            console.log(`${food.ItemName} added to cart`);
+            console.log(`${food.ItemName} added to cart`); // 如果有用到 cartStore，取消註釋
         },
         parseImg(imgURL) {
             return new URL(`/src/assets/img/${imgURL}`, import.meta.url).href;
+        },
+        selectFoodImage(food) {
+            const foodStore = useFoodStore();
+            const selectedIndex = foodStore.selectedIndex;
+            if (selectedIndex !== null) {
+                foodStore.updateSelectedFoodImage(this.parseImg(food.image), food.price, selectedIndex);
+            } else {
+                console.log('No grid slot selected');
+            }
         }
+    },
+    mounted() {
+        const foodStore = useFoodStore();
+        foodStore.setFoods(this.foods); // 確保 foods 正確設置到 store 中
     }
-
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
     position: relative;
-
 }
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    // background-color: #F9F8F7;
     background-color: transparent;
     justify-content: center;
     padding-top: 60px;
-
 }
 
 .row {
@@ -93,12 +104,7 @@ export default {
     padding: 16px;
     text-align: center;
     margin: 30px 0 30px;
-    // border: 1px solid #ccc;
-
 }
-
-/* ====================================================== */
-/* 食物照片 */
 
 .card_details img {
     width: 100%;
@@ -125,8 +131,6 @@ export default {
     }
 }
 
-/* ====================================================== */
-/* 價格標籤 */
 .price_tag {
     width: 70px;
     height: 70px;
@@ -135,7 +139,6 @@ export default {
     position: absolute;
     top: -30px;
 
-
     h4 {
         text-align: center;
         padding-top: 18px;
@@ -143,12 +146,10 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-
     .price_tag {
         width: 55px;
         height: 55px;
     }
-
 }
 
 .details_button {
@@ -168,6 +169,6 @@ export default {
 
 .details_button:hover {
     background-color: #1aa1d6;
-
 }
 </style>
+
