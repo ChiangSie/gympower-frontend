@@ -1,8 +1,7 @@
 <template>
   <Banner :title="'健身日記'" />
-  <div class="section section-author">
-    <p>{{ abc.id }}</p>
-  </div>
+  <div class="section section-author"></div>
+  <p>12</p>
   <div class="section section-article"></div>
 </template>
 
@@ -19,33 +18,7 @@ export default {
     Banner,
   },
   data() {
-    return {
-      diaryList: [],
-    };
-  },
-  methods: {
-    fetchDiarylist() {
-      fetch(`${import.meta.env.BASE_URL}json/diarylist.json`)
-        .then((res) => res.json())
-        .then((json) => {
-          //確認有沒有response
-          console.log(json);
-          //顯示用
-          this.diaryList = json;
-        });
-    },
-  },
-  watch: {
-    "$route.params.id": {
-      handler(newObj) {
-        console.log(newObj);
-        this.fetchDiarylist();
-      },
-      deep: true,
-    },
-  },
-  mounted() {
-    this.fetchDiarylist();
+    return {};
   },
 };
 </script>
