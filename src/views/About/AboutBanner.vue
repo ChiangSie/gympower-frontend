@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      imgSrc: '/src/assets/img/banner/banner_6.jpg',
+      imgSrc: '/src/assets/img/banner/banner_9.jpg',
       title: '關於我們'
     }
   }
@@ -44,7 +44,7 @@ export default {
     transform: translate(0, -50%);
     position: absolute;
     top: 40%;
-    left: 42%;
+    left: 45%;
   }
 }
 </style>
