@@ -25,13 +25,9 @@
                     <div v-if="containerId === 4" class="four_grid_cus_box">
                         <img :src="four" alt="四格餐盒">
                         <div class="grid_container">
-                            <div 
-                                class="grid_item" 
-                                v-for="(image, index) in selectedFoodImages" 
-                                :key="index" 
+                            <div class="grid_item" v-for="(image, index) in selectedFoodImages" :key="index"
                                 :class="{ clicked: clickedIndex === index, dimmed: clickedIndex !== index && clickedIndex !== null }"
-                                @click="handleClick(index)"
-                            >
+                                @click="handleClick(index)">
                                 <img :src="image || one" :alt="`四格餐盒第${index + 1}格`">
                             </div>
                         </div>
@@ -39,18 +35,14 @@
                     <div v-else-if="containerId === 6" class="six_grid_cus_box">
                         <img :src="six" alt="六格餐盒">
                         <div class="grid_container">
-                            <div 
-                                class="grid_item" 
-                                v-for="(image, index) in selectedFoodImages" 
-                                :key="index" 
+                            <div class="grid_item" v-for="(image, index) in selectedFoodImages" :key="index"
                                 :class="{ clicked: clickedIndex === index, dimmed: clickedIndex !== index && clickedIndex !== null }"
-                                @click="handleClick(index)"
-                            >
+                                @click="handleClick(index)">
                                 <img :src="image || one" :alt="`六格餐盒第${index + 1}格`">
                             </div>
                         </div>
                     </div>
-                    <p>{{ hint_txt }}</p>
+                    <p class="bento_hint">{{ hint_txt }}</p>
                 </div>
                 <div class="bento_price">
                     <h3>當前總額 : ${{ sum_price }}</h3>
@@ -133,7 +125,7 @@ export default {
             imgSrcBoxIn: '/src/assets/img/boxIn.png',
             button_txt_right: '下一步',
             button_txt_left: '上一步',
-            hint_txt: '*點選格子即可替換商品',
+            hint_txt: '*點選格子即可加入或替換食材',
             title_txt: '選擇餐盒內容',
             subtitle_txt: 'STEP 2',
             imgSrcWave: '/src/assets/img/wave.svg',
@@ -383,6 +375,13 @@ button {
     justify-content: center;
     margin-left: 10%;
 
+}
+
+.bento_hint {
+    font-size: 20px;
+    margin-top: -25px;
+    font-weight: 600;
+    color: #EB9340;
 }
 
 @media screen and (max-width: 768px) {
