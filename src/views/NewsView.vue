@@ -7,14 +7,12 @@ import HomeCoupon from '@/views/Home/HomeCoupon.vue';
 
 <template>
   
-  <Banner :title="'最新消息'" :imgSrc="'src/assets/img/banner_aboutus.jpg'"/>
+  <Banner :title="'最新消息'" :imgSrc="'/src/assets/img/banner/banner_6.jpg'"/>
   <NewsClass />
   <NewsDiary />
   <HomeCoupon />
 </template>
 
 <style scoped>
-body{
 
-}
 </style>

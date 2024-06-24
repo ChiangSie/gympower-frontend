@@ -162,4 +162,19 @@ export default {
 .features .feature:not(:last-child) {
   margin-right: -2px;
 }
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    height: auto; 
+  }
+
+  .feature {
+    width: 100%; 
+    margin-bottom: 16px;
+  }
+
+  .features .feature:not(:last-child) {
+    margin-right: 0; 
+  }
+}
 </style>

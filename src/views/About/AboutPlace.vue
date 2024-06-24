@@ -79,7 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  background-color: #004eaf;
+  background-color: #71C4EF;
   color: white;
   text-align: center;
   padding: 16px 0;
@@ -152,5 +152,39 @@ export default {
   width: 90%;
   height: 1px;
   background-color: #898b8a;
+}
+@media (max-width: 768px) {
+  .outdoor-sports {
+    .content {
+      flex-direction: column; 
+      align-items: center;
+
+      .main-image {
+        width: 100%;
+        height: auto; 
+        margin-bottom: 20px;
+
+        img {
+          width: 100%; 
+          height: auto;
+        }
+      }
+
+      .info {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .some-images {
+        justify-content: center; 
+        img {
+          width: 45px;
+          height: 45px;
+          gap: 5px;
+        }
+      }
+    }
+  }
 }
 </style>
