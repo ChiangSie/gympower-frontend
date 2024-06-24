@@ -81,9 +81,7 @@ export default {
 </script>
 
 <style>
-* {
-    font-family: Noto Serif TC;
-}
+
 svg {
     height: 100vh;
 }
@@ -104,8 +102,8 @@ path:hover {
     position: absolute;
     width: 40%;
     right: 80px;
-    top: 1100px;
-    color: #00000;
+    top: 1400px;
+    color: #000000;
     /* border: 3px solid rgb(26, 68, 76); */
     /* border-radius:10px; */
     padding: 30px 25px;
@@ -143,4 +141,76 @@ h6 {
     margin-top: 20px;
 }
 
+@media (max-width: 768px) {
+    .title_area {
+        position: relative;
+        width: 100%;
+        top: auto;
+        right: auto;
+        margin-top: 20px;
+    }
+
+    svg {
+        height: 50vh;
+        width: 100%;
+    }
+}
+
+svg {
+    height: 80vh;
+    width: auto;
+}
+
+body {
+    background-color: #f9f8f7;
+}
+
+path {
+    stroke: #002451;
+    fill: transparent;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+path:hover {
+    fill: #D4EAF7;
+    transform: translate(-5px, -5px);
+}
+
+hr {
+    width: 160px;
+    margin-left: 0;
+    border: none;
+    border-bottom: solid 5px #b99362;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 18px;
+}
+
+.forcast h2,
+.forcast h4,
+.forcast h5 {
+    margin: 0;
+}
+
+.forcast h2 {
+    margin-top: 20px;
+}
 </style>

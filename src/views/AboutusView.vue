@@ -9,11 +9,11 @@ import Place from './About/AboutPlace.vue'
 <template>
   <Banner />
 
+  <Intro />
+
   <Slogan />
-
+  
   <Map />
-
-  <!-- <Intro /> -->
 
   <Place />
 </template>

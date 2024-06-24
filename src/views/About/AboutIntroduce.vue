@@ -25,8 +25,8 @@ export default {
       // ],
       intro2: [
         {
-          title: '多品牌經營',
-          text: 'GYM力以擁有健康的身體為首要目標 ，提供各年齡層及族群，提供每個人所想要的健身環境。'
+          title: '給您全方位的健身體驗',
+          text: '「GYM 力」專注於打造多元化健身體驗，不論是舒適的高級健身俱樂部、充滿樂趣的兒童遊樂場，還是活力四射的戶外運動場，都能滿足不同年齡層與健身需求。專業教練、現代化設備與豐富的團體課程，讓每位會員都能在這裡找到適合自己的健身方式，實現健康生活目標。'
         }
       ]
     }
@@ -37,22 +37,22 @@ export default {
 <style lang="scss" scoped>
 .introduce {
   width: 100%;
-  padding: 3% 12%;
   display: flex;
   flex-direction: column;
   text-align: center;
-  // .intro-first {
-  //   width: 100%;
-  //   padding: 10%;
-  // }
+
   .intro-second {
     width: 100%;
-    padding: 10%;
+    padding: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     p {
       width: 100%;
+    }
+    h2{
+      color: #004EAF;
+      margin: 10px 0;
     }
   }
 }

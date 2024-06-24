@@ -22,29 +22,36 @@ export default {
 .banner {
   width: 100%;
   margin-top: 40px;
-  // padding: 3% 12%;
-  // display: flex;
-  // justify-content: flex-end;
   position: relative;
+
   .banner_aboutus_img {
-    width: 100%;
-    aspect-ratio: 2.5/1;
-    // border-radius: 10px;
+    width: calc(100% - 60px); 
+    height: 400px;
     overflow: hidden;
+    border-radius: 10px; 
+    margin: 30px; 
     img {
-      vertical-align: middle;
       width: 100%;
-      height: 400px;
-      // aspect-ratio: 2.5/1;
+      height: 100%;
       object-fit: cover;
-      opacity: 70%;
+      border-radius: 10px; 
     }
   }
+
   h1 {
-    transform: translate(0, -50%);
     position: absolute;
-    top: 40%;
-    left: 45%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(0, 0, 0);
+    font-size: clamp(24px, 5vw, 40px);
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: clamp(20px, 4vw, 35px);
   }
 }
 </style>

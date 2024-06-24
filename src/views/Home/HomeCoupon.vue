@@ -39,9 +39,6 @@
 </template>
 
 <style lang="scss" scoped>
-*{
-    font-family: Noto Sans TC;
-}
 .section-coupon {
     .container-coupon {
         max-width: 800px;
