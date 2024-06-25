@@ -18,11 +18,8 @@
                     <button class="button_shopping">繼續購物</button>
                 </div>
                 <div class="bento_clear_button_1">
-                    <RouterLink to='/asidecart' class="button_cart_1">
-                        <button>前往購物車</button>
-                    </RouterLink>
-                    <RouterLink to='/bento' class="button_shopping_1"><button>繼續購物</button>
-                    </RouterLink>
+                    <button class="button_cart_1" @click="goToCart">前往購物車</button>
+                    <button class="button_shopping_1" @click="continueShopping">繼續購物</button>
                 </div>
                 <div class="blurred_box"></div>
             </div>
@@ -32,8 +29,26 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
+
 export default {
-    name: 'BentoView',
+    name: 'BentoClear',
+    setup() {
+        const router = useRouter();
+
+        const goToCart = () => {
+            router.push('/asidecart');
+        };
+
+        const continueShopping = () => {
+            router.push('/bento');
+        };
+
+        return {
+            goToCart,
+            continueShopping
+        };
+    }
 };
 </script>
 
@@ -145,9 +160,8 @@ export default {
 .bento_clear_button_1 .button_cart_1,
 .button_shopping_1 {
     width: 40%;
-
-
-
+    padding: 10px;
+    cursor: pointer;
 }
 
 .bento_clear_button .button_cart {
@@ -158,15 +172,13 @@ export default {
     border-radius: 10px;
 }
 
-.bento_clear_button_1 .button_cart_1 button {
+.bento_clear_button_1 .button_cart_1 {
     font-size: 16px;
     font-weight: 600;
     color: #002451;
     border: 2px solid #002451;
     background-color: transparent;
     border-radius: 10px;
-    width: 100%;
-    padding: 10px;
     cursor: pointer;
 
 }
@@ -179,14 +191,12 @@ export default {
     border-radius: 10px;
 }
 
-.bento_clear_button_1 .button_shopping_1 button {
+.bento_clear_button_1 .button_shopping_1 {
     font-size: 16px;
     color: #fff;
     background-color: #002451;
     border: 2px solid #002451;
     border-radius: 10px;
-    width: 100%;
-    padding: 10px;
     cursor: pointer;
 }
 

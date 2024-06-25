@@ -43,6 +43,7 @@ export default {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
+        this.filter_tag('有氧運動');
     },
     computed: {
         filterList() {

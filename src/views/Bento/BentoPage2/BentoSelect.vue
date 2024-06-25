@@ -13,7 +13,8 @@
                     <p>{{ subtitle_txt }}</p>
                     <h1>{{ title_txt }}</h1>
                 </div>
-                <RouterLink to='/bento/bentopage3' class="btn_link">
+                <!-- <RouterLink to='/bento/bentopage3' class="btn_link"> -->
+                <RouterLink :to="{ path: '/bento/bentopage3', query: { selectedImages: selectedFoodImages } }" class="btn_link">
                     <button class="bentobox_button_right">
                         <p>{{ button_txt_right }}</p>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
