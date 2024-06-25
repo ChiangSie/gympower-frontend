@@ -36,6 +36,8 @@ export default {
 <style lang="scss" scoped>
 img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 a {
@@ -45,6 +47,7 @@ a {
 
 .card {
   .pic {
+    height: 200px;
     position: relative;
     border-radius: 10px;
 
