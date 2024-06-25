@@ -28,8 +28,7 @@
             v-for="card in paginatedCards"
             :key="card.id"
           >
-            <DiaryCard :cardData="card" />
-            <Diarypage :abc="card" />
+            <DiaryCard :cardData="card" :diary="card" />
           </div>
         </div>
       </div>
