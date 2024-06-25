@@ -1,55 +1,3 @@
-<!-- <template>
-    <section class="coach">
-        <h1>{{ title }}</h1>
-        <div class="coach_banner">
-            <img :src="imgSrc" alt="banner" />
-        </div>
-    </section>
-</template>
-
-<script>
-export default{
-    data() {
-        return {
-            imgSrc:'/src/assets/img/banner/banner_5.jpg',
-            title: '教練介紹'
-        }
-    }
-}
-</script>
-
-<style lang="scss" scoped>
-.coach {
-width: 100%;
-margin-top: 40px;
-// margin-top: 67px;
-// padding: 3% 12%;
-// display: flex;
-// justify-content: flex-end;
-position: relative;
-.coach_banner {
-    width: 100%;
-    aspect-ratio: 2.5/1;
-    // border-radius: 10px;
-    overflow: hidden;
-    img {
-    vertical-align: middle;
-    width: 100%;
-    height: 400px;
-    // aspect-ratio: 2.5/1;
-    object-fit: cover;
-    }
-}
-h1 {
-    transform: translate(0, -50%);
-    position: absolute;
-    top: 40%;
-    left:42%;
-}
-}
-
-</style> -->
-
 <template>
     <section class="banner">
         <div class="banner_aboutus_img">
@@ -63,8 +11,8 @@ h1 {
 export default {
     data() {
         return {
-            imgSrc: '/src/assets/img/banner/banner_7.jpg',
-            title: '教練介紹'
+            imgSrc: '/src/assets/img/banner/banner_1.jpg',
+            title: '課程資訊'
         }
     }
 }
