@@ -53,6 +53,7 @@ export default {
     h2{
       color: #004EAF;
       margin: 10px 0;
+      font-size: 30px;
     }
   }
 }

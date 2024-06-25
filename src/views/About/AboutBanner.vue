@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      imgSrc: '/src/assets/img/banner/banner_9.jpg',
+      imgSrc: '/src/assets/img/banner/banner_11.jpg',
       title: '關於我們'
     }
   }
@@ -26,7 +26,7 @@ export default {
 
   .banner_aboutus_img {
     width: calc(100% - 60px); 
-    height: 400px;
+    height: 450px;
     overflow: hidden;
     border-radius: 10px; 
     margin: 30px; 
@@ -43,15 +43,19 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: clamp(24px, 5vw, 40px);
     text-align: center;
+    text-shadow:
+    1px 1px 3px black,
+		5px 3px 0 #71C4EF;
+  
   }
 }
 
 @media (max-width: 768px) {
   .banner h1 {
-    font-size: clamp(20px, 4vw, 35px);
+    font-size: clamp(24px, 4vw, 35px);
   }
 }
 </style>

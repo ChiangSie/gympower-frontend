@@ -16,13 +16,13 @@
               <img v-for="image in section.images" :key="image" :src="image" @click="selectImage(index, image)" />
             </div>
           </div>
+          </div>
         </div>
         <div class="separator-container" v-if="index < sections.length - 1">
           <div class="separator"></div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -93,7 +93,7 @@ export default {
   .content {
     display: flex;
     justify-content: center;
-    padding: 40px;
+    padding: 20px;
 
     .main-image {
       width: 40%;
@@ -129,8 +129,8 @@ export default {
         padding-top: 40px;
 
         img {
-          width: 120px;
-          height: 120px;
+          width: 150px;
+          height: 150px;
           cursor: pointer;
           transition: transform 0.2s;
 
@@ -158,14 +158,14 @@ export default {
     .content {
       flex-direction: column; 
       align-items: center;
-
+      padding: 10px;
       .main-image {
         width: 100%;
         height: auto; 
         margin-bottom: 20px;
 
         img {
-          width: 100%; 
+          width: 60%; 
           height: auto;
         }
       }
@@ -175,14 +175,18 @@ export default {
         margin-bottom: 20px;
         text-align: center;
       }
-
       .some-images {
+        width: 100%;
+        display: flex;
         justify-content: center; 
+        flex-wrap: wrap;
+        object-fit: cover;
         img {
-          width: 45px;
-          height: 45px;
-          gap: 5px;
+          width: 30px ;
+          height: 30px;
+          // margin: 5px;
         }
+        
       }
     }
   }

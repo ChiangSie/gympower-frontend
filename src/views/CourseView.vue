@@ -1,6 +1,6 @@
 <template>
-  <Banner :title="'課程資訊'" />
-
+  <Banner />
+  
   <div class="section section-course">
     <div class="container">
       <div class="section section-sort">
@@ -40,8 +40,10 @@
 </template>
 
 <script>
-import Banner from '@/component/Banner.vue';
+// import Banner from '@/component/Banner.vue';
 import Classinfo from '@/component/Classinfo.vue';
+import Banner from './Course/CourseBanner.vue'
+
 
 export default {
   components: {

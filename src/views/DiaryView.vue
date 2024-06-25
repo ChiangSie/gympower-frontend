@@ -1,6 +1,8 @@
 <template>
+  <Banner />
+
   <div class="background">
-    <Banner :title="'健身日記'" />
+    <!-- <Banner :title="'健身日記'" /> -->
     <div class="section section-search">
       <div class="container container-search">
         <div class="search">
@@ -68,8 +70,9 @@
 </template>
 
 <script setup>
-import Banner from "../component/Banner.vue";
 import DiaryCard from "../component/DiaryCard.vue";
+import Banner from './Diary/DiaryBanner.vue'
+
 </script>
 
 <script>
