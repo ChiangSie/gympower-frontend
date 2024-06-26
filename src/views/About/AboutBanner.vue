@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      imgSrc: '/src/assets/img/banner/banner_11.jpg',
+      imgSrc: '/src/assets/img/banner/banner_14.jpg',
       title: '關於我們'
     }
   }

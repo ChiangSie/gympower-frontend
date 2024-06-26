@@ -11,7 +11,7 @@
 export default {
     data() {
         return {
-            imgSrc: '/src/assets/img/banner/banner_1.jpg',
+            imgSrc: '/src/assets/img/banner/banner_5.jpg',
             title: '課程資訊'
         }
     }

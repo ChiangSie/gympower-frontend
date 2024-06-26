@@ -63,7 +63,7 @@ h1 {
 export default {
     data() {
         return {
-            imgSrc: '/src/assets/img/banner/banner_7.jpg',
+            imgSrc: '/src/assets/img/banner/banner_17.jpg',
             title: '教練介紹'
         }
     }
@@ -88,6 +88,7 @@ export default {
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
+            opacity: 90%;
         }
     }
 
