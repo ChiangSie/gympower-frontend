@@ -12,7 +12,7 @@
 export default {
     data() {
         return {
-            imgSrc: "/src/assets/img/banner/banner_10.jpg",
+            imgSrc: "/src/assets/img/banner/banner_6.jpg",
             title: '健身日記'
         }
     }
