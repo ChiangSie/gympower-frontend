@@ -170,7 +170,6 @@ export default {
 
   .feature {
     width: 100%; 
-    margin-bottom: 16px;
   }
 
   .features .feature:not(:last-child) {
