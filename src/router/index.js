@@ -114,6 +114,11 @@ const router = createRouter({
       path: '/AboutMap',
       name: 'AboutMap',
       component: () => import('../views/About/AboutMap.vue')
+    },
+    {
+      path: '/111',
+      name: 'cart',
+      component: () => import('../component/Cart/Cart.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition) {
