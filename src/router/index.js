@@ -116,9 +116,11 @@ const router = createRouter({
       component: () => import('../views/About/AboutMap.vue')
     },
     {
+
       path: '/Homelightbox',
       name: 'Homelightbox',
       component: () => import('../views/Home/HomeLightBox.vue')
+
     }
   ],
   scrollBehavior(to, from, savedPosition) {
