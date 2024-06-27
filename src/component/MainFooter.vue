@@ -5,13 +5,13 @@ export default {
       links: [
         {
           id: 1,
-          link: "/diary",
-          title: "常見問題"
+          link: "/news",
+          title: "最新消息"
         },
         {
           id: 2,
-          link: "/course",
-          title: "聯絡我們"
+          link: "/about",
+          title: "關於我們"
         },
         {
           id: 3,
@@ -20,7 +20,7 @@ export default {
         },
         {
           id: 4,
-          link: "/coach",
+          link: "/Homelightbox",
           title: "隱私權政策"
         },
       ]
