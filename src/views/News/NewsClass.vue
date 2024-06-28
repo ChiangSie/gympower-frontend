@@ -20,7 +20,7 @@ export default {
       title: '最新消息',
       classtitle: '皮拉提斯核心訓練',
       text: '適合所有健身水平的學員。課程重點是通過控制、呼吸和精準動作來強化核心肌群，包括腹部、下背部和骨盆區域。訓練包括動作如卷腹、橋式和皮拉提斯百次等，有助於改善姿勢、增強核心力量及提升整體身體的協調性。',
-      imgSrc: '/src/assets/img/banner_aboutus.jpg' //記得換圖片//
+      imgSrc: '/src/assets/img/banner/banner_7.jpg' //記得換圖片//
     }
   }
 }

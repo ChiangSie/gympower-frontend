@@ -27,14 +27,15 @@
         </p>
       </div>
       <div class="row">
-        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
           <div class="content">
             <p>
               {{ diaryContent.text }}
             </p>
+            
           </div>
         </div>
-        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="col-12 col-md-12 col-lg-6 col-xl-6">
           <div class="pic">
             <img :src="parseImg(diaryContent.imgSrc)" alt="" />
           </div>
@@ -84,16 +85,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .container {
   max-width: 900px;
+  .date{
+      font-size: 16px;
+  }
   .author {
     margin: 5px 0;
     font-weight: bold;
+    p{
+      font-size: 20px;
+    }
   }
   .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 20px;
+    P{
+      font-size: 22px;
+    }
     .text {
       font-weight: bold;
     }
@@ -104,7 +116,11 @@ export default {
   }
   .subtitle {
     width: 50%;
-    margin: 10px 10px;
+    margin:10px 0;
+    p{
+      font-size: 16px;
+      font-weight: 600;
+    }
   }
   .line {
     border-bottom: 1px solid #000;
@@ -112,11 +128,27 @@ export default {
   }
   .row {
     .pic {
+      width: 100%;
+      height: 100%;
+      
       img {
         width: 100%;
-        border-radius: 10px;
+        height: 100%;
+        // border-radius: 10px;
       }
+    }
+    .content{
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
+@media screen and (min-width: 768px){
+  // .container{
+  //   // width: 100%;
+  // }
+}
+  
+
 </style>

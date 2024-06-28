@@ -220,7 +220,6 @@ export default {
     }
     .upload {
       cursor: pointer;
-
       border: 1px solid #000;
       border-radius: 10px;
       width: clamp(58px, 6.64vw, 85px);

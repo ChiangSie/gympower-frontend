@@ -24,7 +24,7 @@ export default {
     Diary
   },
   computed: {
-     paginatedCards() {
+    paginatedCards() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
       return this.sourceData.slice(start, end);
@@ -62,7 +62,7 @@ export default {
   padding: 3% 12%;
   h2 {
     text-align: center;
-     padding: 1rem 0;
+    padding: 1rem 0;
   }
 
 }

@@ -15,7 +15,7 @@ export default {
         },
         {
           id: 3,
-          link: "/bento",
+          link: "/Homelightbox",
           title: "服務條款"
         },
         {
