@@ -10,8 +10,8 @@
                 </div>
             </div>
         </div>
-        <RouterLink to='/bento/bentopage2' class="btn_link">
-            <button class="bentobox_button">
+        <RouterLink to='/bento/bentopage2' class="btn_link" >
+            <button class="bentobox_button" @click="handleButtonClick($event)">
                 <p>{{ button_txt }}</p>
                 <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
             </button>
@@ -24,6 +24,7 @@
 <script>
 import { useBentoStore } from '@/stores/bentobox';
 import six from '/src/assets/img/bento_box_six.png'
+// import { useRouter } from 'vue-router';
 
 import { mapWritableState } from 'pinia';
 
@@ -35,15 +36,25 @@ export default {
     },
     setup() {
         const bentoStore = useBentoStore();
+        // const router = useRouter();
 
         const selectBento = (id) => {
             bentoStore.setContainerId(id);
+        };
+        const handleButtonClick = (event) => {
+            if (bentoStore.containerId === null || bentoStore.containerId === undefined) {
+                event.preventDefault(); // 阻止默认导航行为
+                event.stopPropagation(); // 阻止事件冒泡，确保提示框按钮不会触发导航
+                alert('請選擇一個便當盒');
+            }
         };
         return {
             selectBento,
             text: '滿腹六合一',
             button_txt: '下一步',
             bentoStore,
+            handleButtonClick,
+            // router,
         };
     },
     computed: {
