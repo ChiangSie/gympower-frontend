@@ -34,14 +34,14 @@ export default {
       });
   },
   data() {
-      return {
-        sourceData: []
-      };
-    },
+    return {
+      sourceData: [],
+    };
+  },
   methods: {
     parseImg(imgURL) {
       // 放在vue專案的圖檔路徑會被轉譯，因此需要這樣更改
-      return new URL(`../../assets/img/index/${imgURL}`, import.meta.url).href
+      return new URL(`../../assets/img/index/${imgURL}`, import.meta.url).href;
     },
   },
 };
@@ -73,7 +73,7 @@ export default {
               </div>
               <div class="card-body">
                 <div class="pic">
-                  <img :src ="parseImg(course.image)" />
+                  <img :src="parseImg(course.image)" />
                 </div>
                 <div class="txt">
                   <h3>
@@ -108,7 +108,6 @@ export default {
       border-radius: 10px;
       text-align: left;
       background-color: #f9f8f7;
-
     }
     .card {
       background-color: #eaf2f6;
@@ -164,7 +163,7 @@ export default {
         .content {
           width: 70%;
         }
-        p{
+        p {
           font-size: 13px;
         }
         .apply:hover {
@@ -174,7 +173,6 @@ export default {
         .apply {
           cursor: pointer;
           color: #fff;
-          width: 30%;
           font-size: clamp(14px, 2.18vw, 18px);
           padding: 8px 10px;
           text-align: center;
@@ -201,7 +199,7 @@ export default {
       margin-right: 20px;
       margin-top: 30px;
       display: inline-block;
-      border-bottom:1px solid #002451;
+      border-bottom: 1px solid #002451;
     }
   }
 }

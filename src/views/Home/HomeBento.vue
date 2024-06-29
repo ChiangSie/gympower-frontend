@@ -11,7 +11,10 @@
             <div class="customized">
               <h3>客製餐盒</h3>
 
-              <p>會員專屬客製化餐盒，為你的健康而設計。依據你的運動目標和營養需求精心搭配， 無論是增肌、減脂，還是保持健康體型，我們的餐點都能助你達成健身目標。健康從飲食開始，讓我們陪伴你走向更強壯、更健康的未來。</p>
+              <p>
+                會員專屬客製化餐盒，為你的健康而設計。依據你的運動目標和營養需求精心搭配，
+                無論是增肌、減脂，還是保持健康體型，我們的餐點都能助你達成健身目標。健康從飲食開始，讓我們陪伴你走向更強壯、更健康的未來。
+              </p>
               <button><a href="#">開始客製</a></button>
 
               <div class="pic-bento">
@@ -96,19 +99,20 @@
           }
           button {
             cursor: pointer;
-            line-height: 30px;
-            width: clamp(100px, 30%, 150px);
-            height: 50px;
-            border: none;
-            background: #002451;
-            border-radius: 10px;
             color: #fff;
-            font-size: clamp(16px, 1.5625vw, 20px);
-            a{
+            font-size: clamp(14px, 2.18vw, 18px);
+            padding: 8px 10px;
+            text-align: center;
+            width: 25%;
+            background-color: #002451;
+            border: none;
+            border-radius: 10px;
+            width: fit-content;
+            a {
               text-decoration: none;
               color: #fff;
-              &:hover{
-                color:#c0defa;
+              &:hover {
+                color: #c0defa;
               }
             }
           }

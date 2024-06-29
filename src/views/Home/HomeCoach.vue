@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
           <div class="pic">
-            <img src="../../assets/img/index/coachCard_6-removebg.png"/>
+            <img src="../../assets/img/index/coachCard_6-removebg.png" />
           </div>
         </div>
         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
@@ -16,11 +16,14 @@
             <span>
               <h3>李恩智 教練</h3>
             </span>
-            <p>曾在多家頂尖健身房擔任首席教練，指導過200多位客戶，幫助他們實現顯著的身體改變。</p>
-            <ul>專業領域 :
-                <li>◆ 有氧運動與耐力訓練</li>
-                <li>◆ 核心訓練與穩定性提升</li>
-                <li>◆ 幫助學員找回健康體態</li>
+            <p>
+              曾在多家頂尖健身房擔任首席教練，指導過200多位客戶，幫助他們實現顯著的身體改變。
+            </p>
+            <ul>
+              專業領域 :
+              <li>◆ 有氧運動與耐力訓練</li>
+              <li>◆ 核心訓練與穩定性提升</li>
+              <li>◆ 幫助學員找回健康體態</li>
             </ul>
             <button><a href="#">閱讀更多</a></button>
           </div>
@@ -68,9 +71,9 @@
           justify-content: center;
           gap: 20px;
           display: blockS;
-          h3{
+          h3 {
             font-size: 24px;
-            p{
+            p {
               font-size: 18px;
             }
           }
@@ -80,16 +83,19 @@
           }
           button {
             cursor: pointer;
-            width: 100px;
-            height: 32px;
-            border-radius: 10px;
-            background-color: #002451;
             color: #fff;
+            font-size: clamp(14px, 2.18vw, 18px);
+            padding: 8px 10px;
+            text-align: center;
+            width: 25%;
+            background-color: #002451;
             border: none;
-            a{
+            border-radius: 10px;
+            width: fit-content;
+            a {
               text-decoration: none;
               color: #fff;
-              &:hover{
+              &:hover {
                 color: #c0defa;
               }
             }
@@ -97,7 +103,7 @@
           h3 {
             font-weight: bold;
           }
-          p{
+          p {
             font-size: 15px;
           }
         }
