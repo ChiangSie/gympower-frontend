@@ -28,9 +28,11 @@
         <RouterLink to="/login" @click="closeNav">
           <span class="material-symbols-outlined"> person </span>
         </RouterLink>
-        <RouterLink to="/asidecart" @click="closeNav">
-          <span class="material-symbols-outlined"> shopping_cart </span>
-        </RouterLink>
+<span  :class="isCartVisible ? 'fa-regular fa-circle-xmark' : 'material-symbols-outlined'" @click="toggleCartVisibility" style="color: #002451">
+   <span>shopping_cart</span>
+</span>
+          <!-- <span class="material-symbols-outlined" @click="toggleCartVisibility" > shopping_cart </span> -->
+
         <div class="hb" id="hb" @click="showNav">
           <span></span>
           <span></span>
@@ -39,9 +41,66 @@
       </div>
     </nav>
   </header>
+      <div class="cart_card" v-if="isCartVisible">
+      <div class="cart_navbar">
+        <div class="cart_title">
+          <h4>{{ cart_title }}</h4>
+        </div>
+        <div class="cart_tag">
+          <div class="cart_tag1" :class="{ active: currentCartType === 'A' }" @click="showCartA">
+            <p>{{ cart_tag1 }}</p>
+          </div>
+          <div class="cart_tag2" :class="{ active: currentCartType === 'B' }" @click="showCartB">
+            <p>{{ cart_tag2 }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="cart_content">
+        <div v-if="currentCart.length > 0">
+          <div class="cart_checkoutItem" v-for="(item, index) in currentCart" :key="index">
+            <input type="checkbox" v-model="item.selected">
+            <img :src="getItemImage(item)" alt="商品圖片">
+            <div class="cart_itemInfo">
+              <h3>{{ item.name }}</h3>
+              <p v-if="currentCartType === 'A'">{{ item.food1 }}, {{ item.food2 }}, {{ item.food3 }}</p>
+              <p v-else>{{ item.description }}</p>
+              <p>{{ item.price }}</p>
+              <div class="cart_itemQty">
+                <button class="cart_removeBtn" @click="decreaseQuantity(index)">-</button>
+                <input type="text" class="cart_qty" v-model.number="item.quantity" @input="updateQuantity(index)">
+                <button class="cart_addBtn" @click="increaseQuantity(index)">+</button>
+              </div>
+            </div>
+            <div class="cart_itemBtn">
+              <i class="fa-solid fa-trash-can" @click="removeFromCurrentCart(index)"></i>
+              <button class="cart_detailsBtn" v-if="currentCartType === 'A'">{{ details_btn }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="cart_details" v-else>
+          <div class="shop_cart_check"></div>
+          <p>{{ cart_content }}</p>
+        </div>
+        <div class="cart_footer">
+      <span class="underline"></span>
+      <button class="delete_btn" @click="deleteSelectedItems">{{ delete_btn }}</button>
+      <div class="cart_sum">
+        <p>{{ sum_title }}</p>
+        <p>$ {{ totalAmount }}</p>
+      </div>
+      <RouterLink to='/cart'>
+        <button class="cart_btn">{{ cart_btn }}</button>
+      </RouterLink>
+    </div>
+
+      </div>
+    </div>
 </template>
 
 <script>
+import { ref, computed, onMounted } from 'vue'
+import { useCartStore } from '@/stores/cartStore'
+import { storeToRefs } from 'pinia'
 export default {
   methods: {
     showNav() {
@@ -60,5 +119,89 @@ export default {
       none.style.opacity = "0";
     },
   },
+
+  setup() {
+    const cartStore = useCartStore()
+
+    const { cartA, cartB, totalItemsA, totalItemsB, totalAmountA, totalAmountB } = storeToRefs(cartStore)
+
+    const currentCartType = ref('A')
+     
+    const isCartVisible = ref(false)
+
+    const currentCart = computed(() => {
+      return currentCartType.value === 'A' ? cartA.value : cartB.value
+    })
+
+    const totalAmount = computed(() => {
+      return currentCartType.value === 'A' ? totalAmountA.value : totalAmountB.value
+    })
+
+    const showCartA = () => {
+      currentCartType.value = 'A'
+    }
+
+    const showCartB = () => {
+      currentCartType.value = 'B'
+    }
+
+    const toggleCartVisibility = () => {
+      isCartVisible.value = !isCartVisible.value
+    }
+
+    const removeFromCurrentCart = (index) => {
+      if (currentCartType.value === 'A') {
+        cartStore.removeFromCartA(index)
+      } else {
+        cartStore.removeFromCartB(index)
+      }
+    }
+
+    const increaseQuantity = (index) => {
+      cartStore.increaseQuantity(currentCartType.value, index)
+    }
+     const getItemImage = (item) => {
+      return item.image || (currentCartType.value === 'A' ? 'path/to/default_food.jpg' : 'path/to/default_course.jpg')
+    }
+
+    const decreaseQuantity = (index) => {
+      cartStore.decreaseQuantity(currentCartType.value, index)
+    }
+
+    const updateQuantity = (index) => {
+      cartStore.updateQuantity(currentCartType.value, index)
+    }
+
+    const deleteSelectedItems = () => {
+      cartStore.deleteSelectedItems(currentCartType.value)
+    }
+
+    return {
+      cartStore,
+      currentCart,
+      currentCartType,
+      totalAmount,
+      totalItemsA,
+      totalItemsB,
+      showCartA,
+      showCartB,
+      removeFromCurrentCart,
+      isCartVisible,
+      toggleCartVisibility,
+      increaseQuantity,
+      decreaseQuantity,
+      updateQuantity,
+      deleteSelectedItems,
+       getItemImage,
+      cart_title: '購物車',
+      cart_tag1: '餐盒',
+      cart_tag2: '課程',
+      cart_content: '購物車還是空的哦！',
+      delete_btn: '刪除選中',
+      cart_btn: '前往結帳',
+      sum_title: '小計',
+      details_btn: '查看餐盒明細'
+          }
+  }
 };
 </script>
