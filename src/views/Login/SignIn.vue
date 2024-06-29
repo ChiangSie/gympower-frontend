@@ -24,14 +24,14 @@
             <div class="toggle-login">
                 <div class="toggle">
                     <div class="toggle-panel toggle-left">
-                        <h2>Welcome Back!</h2>
-                        <p>Enter your personal details to use all of site features</p>
-                        <button class="hidden" id="signin">Sign In</button>
+                        <h2>歡迎您!</h2>
+                        <p>註冊您的個人帳號<br>即可獲得更多好康資訊。</p>
+                        <button class="hidden" id="signin">登入</button>
                     </div>
                     <div class="toggle-panel toggle-right">
-                        <h2>Hello Friend!</h2>
-                        <p>Register with your personal details to use all of site features</p>
-                        <button class="hidden" id="signup">Sign Up</button>
+                        <h2>歡迎加入!</h2>
+                        <p>註冊您的個人帳號<br>即可獲得更多好康資訊。</p>
+                        <button class="hidden" id="signup">註冊</button>
                     </div>
                 </div>
             </div>
@@ -125,7 +125,8 @@ export default {
     width: 768px;
     max-width: 100%;
     min-height: 450px;
-    border: 3px solid black;
+    /* border: 3px solid black; */
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .login p {

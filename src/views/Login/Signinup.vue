@@ -25,13 +25,13 @@
             <div class="toggle-login">
                 <div class="toggle">
                     <div class="toggle-panel toggle-left">
-                        <h2>Welcome Back!</h2>
-                        <p>Enter your personal details to use all of site features</p>
+                        <h2>歡迎您!</h2>
+                        <p>註冊您的個人帳號<br>即可獲得更多好康資訊。</p>
                         <button class="hidden" id="signin">Sign In</button>
                     </div>
                     <div class="toggle-panel toggle-right">
-                        <h2>Hello Friend!</h2>
-                        <p>Register with your personal details to use all of site features</p>
+                        <h2>歡迎加入!</h2>
+                        <p>註冊您的個人帳號<br>即可獲得更多好康資訊。</p>
                         <button class="hidden" id="signup">Sign Up</button>
                     </div>
                 </div>

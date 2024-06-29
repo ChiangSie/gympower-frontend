@@ -90,7 +90,7 @@
 },{
     "id": 9,
     "price": 25,
-    "image": "food_bento/vege_01.png",
+    "image": "food_bento/vege_05.png",
     "tag": "蔬菜類",
     "ItemName": "大白菜",
     "calories": 12,
@@ -100,7 +100,7 @@
 },{
     "id": 10,
     "price": 30,
-    "image": "food_bento/vege_02.png",
+    "image": "food_bento/vege_06.png",
     "tag": "蔬菜類",
     "ItemName": "玉米",
     "calories": 86,
@@ -110,7 +110,7 @@
 },{
     "id": 11,
     "price": 35,
-    "image": "food_bento/vege_03.png",
+    "image": "food_bento/vege_07.png",
     "tag": "蔬菜類",
     "ItemName": "番茄",
     "calories": 18,

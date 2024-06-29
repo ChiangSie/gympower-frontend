@@ -89,7 +89,10 @@ export default {
             </div>
           </swiper-slide>
         </swiper>
+        <router-link to="#">
         <div class="more">了解更多</div>
+        </router-link>
+        
       </div>
     </div>
   </section>
@@ -102,8 +105,10 @@ export default {
     margin-bottom: 60px;
     font-weight: bold;
   }
-
   .row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* 調整為靠右對齊 */
     .swiper-slide {
       border-radius: 10px;
       text-align: left;
@@ -190,6 +195,7 @@ export default {
       z-index: 3;
     }
     .more {
+      font-size: 15px;
       cursor: pointer;
       width: 70px;
       color: #002451;
