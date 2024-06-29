@@ -1,19 +1,21 @@
 <template>
-  <router-link :to="`/diary/${cardData.id}`">
-    <div class="card">
-      <div class="pic">
-        <img :src="parseImg(cardData.imgSrc)" />
-        <div class="box"></div>
-        <div class="title">
-          <h3>{{ cardData.title }}</h3>
+  <section>
+    <router-link :to="`/diary/${cardData.id}`">
+      <div class="card">
+        <div class="pic">
+          <img :src="parseImg(cardData.imgSrc)" />
+          <div class="box"></div>
+          <div class="title">
+            <h3>{{ cardData.title }}</h3>
+          </div>
         </div>
+        <div class="txt">
+          <p>{{ cardData.text }}</p>
+        </div>
+        <div class="date">{{ cardData.date }}</div>
       </div>
-      <div class="txt">
-        <p>{{ cardData.text }}</p>
-      </div>
-      <div class="date">{{ cardData.date }}</div>
-    </div>
-  </router-link>
+    </router-link>
+  </section>
 </template>
 
 <script>
@@ -46,6 +48,13 @@ a {
 }
 
 .card {
+  padding: 10px;
+  p {
+    margin: 10px;
+  }
+  .date {
+    margin: 10px;
+  }
   .pic {
     height: 200px;
     position: relative;

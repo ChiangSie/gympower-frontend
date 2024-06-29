@@ -32,7 +32,6 @@
             <p>
               {{ diaryContent.text }}
             </p>
-            
           </div>
         </div>
         <div class="col-12 col-md-12 col-lg-6 col-xl-6">
@@ -85,16 +84,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .container {
   max-width: 900px;
-  .date{
-      font-size: 16px;
+  .date {
+    font-size: 16px;
   }
   .author {
     margin: 5px 0;
     font-weight: bold;
-    p{
+    p {
       font-size: 20px;
     }
   }
@@ -103,7 +101,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
-    P{
+    P {
       font-size: 22px;
     }
     .text {
@@ -116,8 +114,8 @@ export default {
   }
   .subtitle {
     width: 50%;
-    margin:10px 0;
-    p{
+    margin: 10px 0;
+    p {
       font-size: 16px;
       font-weight: 600;
     }
@@ -127,28 +125,34 @@ export default {
     margin: 10px 0;
   }
   .row {
+    align-items: center;
     .pic {
       width: 100%;
       height: 100%;
-      
+
       img {
         width: 100%;
         height: 100%;
         // border-radius: 10px;
       }
     }
-    .content{
+    .content {
       display: flex;
       align-items: center;
       justify-content: center;
     }
   }
 }
-@media screen and (min-width: 768px){
-  // .container{
-  //   // width: 100%;
-  // }
+@media screen and (max-width: 992px) {
+  .container {
+    .subtitle {
+      width: 100%;
+    }
+    .row {
+      .content {
+        padding: 20px 0 30px 0;
+      }
+    }
+  }
 }
-  
-
 </style>
