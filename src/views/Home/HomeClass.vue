@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "../../assets/sass/plugin/_swiper.scss";
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
@@ -83,13 +82,13 @@ export default {
                 </div>
               </div>
               <div class="card-footer">
-                <P class="content">{{ course.describe }}</P>
+                <p class="content">{{ course.describe }}</p>
                 <button class="apply">{{ course.apply }}</button>
               </div>
             </div>
           </swiper-slide>
         </swiper>
-        <router-link to="#">
+        <router-link to="/course">
         <div class="more">了解更多</div>
         </router-link>
         
