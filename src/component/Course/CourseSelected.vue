@@ -12,7 +12,7 @@
     </select>
 
     <div class="button" v-if="selectedLocation && selectedCourseTime">
-      <button @click="addToCart" class="btn">加入購物車</button>
+      <button @click="addToCartB(product)" class="btn">加入購物車</button>
     </div>
     <div class="button" v-else>
       <button @click="addtoClass" class="btn">加入購物車</button>
@@ -29,8 +29,19 @@
 </template>
 
 <script>
+import { useCartStore } from '@/stores/cartStore';
+import { storeToRefs } from 'pinia';
 import Swal from 'sweetalert2';
 export default {
+  setup() {
+    const cartStore = useCartStore();
+    const { cartB } = storeToRefs(cartStore);
+
+    return {
+      cartStore,
+      cartB
+    }
+  },
   props: {
     productInfo: {
       type: Object,
@@ -44,15 +55,23 @@ export default {
       selectedCourseTime: '',
       cart: [],
       alertMessage: '',
-      alertTimeout: null
+      alertTimeout: null,
     }
   },
 
   methods: {
-    addToCart() {
-      this.cart.push(`${this.productInfo.title} ${this.selectedLocation} - ${this.selectedCourseTime}`);
-      this.showAlertCart('已加入購物車');
-    },
+    addToCartB() {
+    const item = {
+      name: `${this.productInfo.title} 
+      ${this.selectedLocation} - ${this.selectedCourseTime}`,
+      price: this.productInfo.price, // 確保 productInfo 中有 price 屬性
+      location: this.selectedLocation,
+      courseTime: this.selectedCourseTime,
+      // 可以根據需要添加其他屬性
+    };
+    this.cartStore.addToCartB(item);
+    this.showAlertCart('已加入購物車');
+  },
     addtoClass() {
       this.showAlertClass('請先選擇地點和課程時間');
     },

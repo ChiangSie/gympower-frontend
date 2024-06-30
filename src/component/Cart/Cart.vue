@@ -36,7 +36,7 @@
             </div>
             <div class="cart_itemBtn">
               <i class="fa-solid fa-trash-can" @click="removeFromCurrentCart(index)"></i>
-              <button class="cart_detailsBtn" v-if="currentCartType === 'A'">{{ details_btn }}</button>
+              <button class="cart_detailsBtn">{{ details_btn }}</button>
             </div>
           </div>
         </div>

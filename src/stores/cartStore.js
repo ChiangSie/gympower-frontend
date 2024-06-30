@@ -32,13 +32,17 @@ export const useCartStore = defineStore('cart', {
       this.saveToLocalStorage()
     },
     addToCartB(item) {
-      const existingItem = this.cartB.find(i => i.name === item.name)
+      const existingItem = this.cartB.find(i => 
+        i.name === item.name && 
+        i.location === item.location && 
+        i.courseTime === item.courseTime
+      );
       if (existingItem) {
-        existingItem.quantity++
+        existingItem.quantity++;
       } else {
-        this.cartB.push({ ...item, quantity: 1, selected: false })
+        this.cartB.push({ ...item, quantity: 1 });
       }
-      this.saveToLocalStorage()
+      this.saveToLocalStorage();
     },
     removeFromCartA(index) {
       this.cartA.splice(index, 1)
