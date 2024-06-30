@@ -8,7 +8,7 @@
                     </div>
                     <div class="card_details">
                         <img :src="parseImg(food.image)" alt="食物照片" class="card-image" @click="selectFoodImage(food)" />
-                        <button class="details_button" @click="addToCartAndShowNutrition(food)">
+                        <button class="details_button" @click="showNutrition(food)">
                             營養成分
                         </button>
                     </div>
@@ -24,9 +24,11 @@
 </template>
 
 <script>
+import 'sweetalert2/dist/sweetalert2.min.css';
+import Swal from 'sweetalert2';
 import NutritionFacts from './NutritionFacts.vue';
 import { useFoodStore } from '@/stores/foodStore';
-// import { useCartStore } from '@/stores/cartStore'; // 如果有用到 cartStore，取消註釋並引入
+import { useCartStore } from '@/stores/cart'; // 如果有用到 cartStore，取消註釋並引入
 
 export default {
     components: {
@@ -52,10 +54,9 @@ export default {
             this.selectedFood = null;
             document.body.style.overflow = 'auto';
         },
-        addToCartAndShowNutrition(food) {
-            // const cartStore = useCartStore(); // 如果有用到 cartStore，取消註釋
-            // cartStore.addItem(food); // 如果有用到 cartStore，取消註釋
-            this.showNutrition(food);
+        addToCart(food) {
+            const cartStore = useCartStore(); // 如果有用到 cartStore，取消註釋
+            cartStore.addItem(food); // 如果有用到 cartStore，取消註釋
             console.log(`${food.ItemName} added to cart`); // 如果有用到 cartStore，取消註釋
         },
         parseImg(imgURL) {
@@ -63,11 +64,56 @@ export default {
         },
         selectFoodImage(food) {
             const foodStore = useFoodStore();
+            const cartStore = useCartStore();
             const selectedIndex = foodStore.selectedIndex;
             if (selectedIndex !== null) {
-                foodStore.updateSelectedFoodImage(this.parseImg(food.image), food.price, selectedIndex);
+                const result = foodStore.updateSelectedFoodImage(this.parseImg(food.image), food.price, selectedIndex, food);
+                if (result) {
+                    if (result.removedFood) {
+                        cartStore.removeItem(result.removedFood);
+                    }
+                    if (result.addedFood) {
+                        cartStore.addItem(result.addedFood);
+                    }
+
+                    if (result.remainingSlots > 0) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '成功加入食材到您的餐盒！',
+                            text: `剩餘${result.remainingSlots}格空格`,
+                            customClass: {
+                                container: 'sweetalert-container',
+                                popup: 'sweetalert-popup',
+                                title: 'sweetalert-title',
+                                confirmButton: 'sweetalert-confirm-button'
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'info',
+                            title: '餐盒已滿',
+                            text: '您的餐盒已經裝滿了所有食材',
+                            customClass: {
+                                container: 'sweetalert-container',
+                                popup: 'sweetalert-popup',
+                                title: 'sweetalert-title',
+                                confirmButton: 'sweetalert-confirm-button'
+                            }
+                        });
+                    }
+                }
             } else {
-                console.log('No grid slot selected');
+                Swal.fire({
+                    icon: 'warning',
+                    title: '未選中格子',
+                    text: '請先選擇一個格子來添加食物',
+                    customClass: {
+                        container: 'sweetalert-container',
+                        popup: 'sweetalert-popup',
+                        title: 'sweetalert-title',
+                        confirmButton: 'sweetalert-confirm-button'
+                    }
+                });
             }
         }
     },
@@ -113,11 +159,13 @@ export default {
     border-radius: 8px;
     margin-top: 20px;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out; /* 添加過渡效果 */
+    transition: transform 0.3s ease-in-out;
+    /* 添加過渡效果 */
 }
 
 .card_details img:hover {
-    transform: scale(1.1); /* 在 hover 時放大圖片 */
+    transform: scale(1.1);
+    /* 在 hover 時放大圖片 */
 }
 
 .card-image {
@@ -176,4 +224,3 @@ export default {
     background-color: #1aa1d6;
 }
 </style>
-

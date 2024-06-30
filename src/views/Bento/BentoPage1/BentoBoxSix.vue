@@ -131,6 +131,7 @@ export default {
     }
 
 }
+
 .not-selected {
     opacity: 0.5;
 }

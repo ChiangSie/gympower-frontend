@@ -14,7 +14,8 @@
                     <h1>{{ title_txt }}</h1>
                 </div>
                 <!-- <RouterLink to='/bento/bentopage3' class="btn_link"> -->
-                <RouterLink :to="{ path: '/bento/bentopage3', query: { selectedImages: selectedFoodImages } }" class="btn_link">
+                <RouterLink :to="{ path: '/bento/bentopage3', query: { selectedImages: selectedFoodImages } }"
+                    class="btn_link">
                     <button class="bentobox_button_right">
                         <p>{{ button_txt_right }}</p>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
@@ -57,7 +58,7 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useBentoStore } from '@/stores/bentobox';
 import { useFoodStore } from '@/stores/foodStore';
 import { useCartStore } from '@/stores/cart';
@@ -66,42 +67,23 @@ import one from '/src/assets/img/boxIn.png'
 import four from '/src/assets/img/bento_box_four.png'
 import six from '/src/assets/img/bento_box_six.png'
 import { useReminderAlertStore } from '@/stores/ReminderAlert';
-import { onMounted, ref } from 'vue';
+
 
 export default {
     components: {
         RouterLink,
 
     },
-    data() {
-        return {
-            one,
-            four,
-            six,
-            // button_txt_right: '下一步',
-            // button_txt_left: '上一步',
-            // hint_txt: '*點選格子即可替換商品',
-            // sum_price: '當前總額 : $',
-            // title_txt: '選擇餐盒內容',
-            // subtitle_txt: 'STEP 2',
-            // imgSrcWave: '/src/assets/img/wave.svg',
-
-        }
-    },
-
     setup() {
         const bentoStore = useBentoStore();
         const foodStore = useFoodStore();
         const cartStore = useCartStore();
-        const reminderAlertStore = useReminderAlertStore();
-
-        const reminderText = computed(() => reminderAlertStore.reminderText);
 
         const containerId = bentoStore.containerId;
         foodStore.setBoxSize(containerId);
 
         const selectedFoodImages = computed(() => foodStore.selectedFoodImages);
-        const sum_price = computed(() => foodStore.totalPrice);
+        const sum_price = computed(() => cartStore.totalPrice);
 
         onMounted(() => {
             foodStore.reset();
@@ -111,16 +93,11 @@ export default {
 
         const handleClick = (index) => {
             clickedIndex.value = index;
-            foodStore.updateSelectedIndex(index); // 更新FoodStore中的選中索引
+            foodStore.updateSelectedIndex(index);
         };
 
         return {
-            containerId: bentoStore.containerId,
-            // imgSrcBoxIn: '/src/assets/img/boxIn.png',
-            // reminderText,
-            // one,
-            // four,
-            // six
+            containerId,
             selectedFoodImages,
             sum_price,
             imgSrcBoxIn: '/src/assets/img/boxIn.png',
@@ -132,17 +109,13 @@ export default {
             imgSrcWave: '/src/assets/img/wave.svg',
             clickedIndex,
             handleClick,
+            one,
+            four,
+            six,
+            selectedFoodImages,
+            sum_price,
         };
-    },
-    methods: {
-        parseImg4(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
-        },
-        parseImg6(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
-        },
     }
-
 };
 </script>
 

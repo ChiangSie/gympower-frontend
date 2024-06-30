@@ -10,10 +10,7 @@
                 <h4>熱量 :{{ food.calories }} kcal</h4>
                 <h4>蛋白質 :{{ food.protein }} g</h4>
                 <h4>醣類 :{{ food.carbohydrate }} g</h4>
-                <h4>脂肪 :{{ food.fat }} g</h4>
-            </div>
-            <div class="add_btn" @click="addToCart">
-                <button>{{ button }}</button>
+                <h4 class="custom_nutrition_txt">脂肪 :{{ food.fat }} g</h4>
             </div>
 
         </div>
@@ -23,12 +20,6 @@
 
 
 <script>
-import 'sweetalert2/dist/sweetalert2.min.css';
-import { computed } from 'vue';
-import Swal from 'sweetalert2';
-import { useCartStore } from '@/stores/cart';
-import { useBentoStore } from '@/stores/bentobox';
-import { useReminderAlertStore } from '@/stores/ReminderAlert';
 
 
 export default {
@@ -38,61 +29,13 @@ export default {
             required: true
         }
     },
-    data() {
-        return {
-            button: '加入'
-        };
-    },
-    computed: {
-        remainingSlots() {
-            const cartStore = useCartStore();
-            const bentoStore = useBentoStore();
-            const maxSlots = bentoStore.containerId;
-            return maxSlots - cartStore.bentoList.length;
-        }
-    },
     methods: {
-        addToCart() {
-            if (this.remainingSlots > 0) {
-                const cartStore = useCartStore();
-                cartStore.addItem(this.food);
-                console.log(`${this.food.ItemName} added to cart`);
-                this.$emit('close');
-                Swal.fire({
-                    icon: 'success',
-                    title: '成功加入食材到您的餐盒！',
-                    text: `剩餘${this.remainingSlots}格空格`,
-                    customClass: {
-                        container: 'sweetalert-container',
-                        popup: 'sweetalert-popup',
-                        title: 'sweetalert-title',
-                        confirmButton: 'sweetalert-confirm-button'
-                    }
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: '餐盒已滿，無法再加入任何項目囉!',
-                    customClass: {
-                        container: 'sweetalert-container',
-                        popup: 'sweetalert-popup',
-                        title: 'sweetalert-title',
-                        confirmButton: 'sweetalert-confirm-button'
-                    }
-                });
-            }
-        }, closeNutritionInfo() {
+        closeNutritionInfo() {
             this.$emit('close');
-        }
-    },
-    watch: {
-        remainingSlots() {
-            this.button = this.remainingSlots > 0 ? '加入' : '餐盒已滿';
         }
     }
 };
 </script>
-
 
 <style lang="scss" scoped>
 .lightbox {
@@ -114,7 +57,7 @@ export default {
     width: 320px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin: 0 auto;
     background-color: #fff;
@@ -122,6 +65,10 @@ export default {
     .nutrition_info {
         width: 75%;
         text-align: center;
+
+        .custom_nutrition_txt {
+            border-bottom: none;
+        }
     }
 
     h4 {
@@ -140,8 +87,8 @@ export default {
         font-size: 30px;
         cursor: pointer;
         color: #002451;
+        margin-bottom: 8%;
         margin-left: 70%;
-        margin-top: 5%;
     }
 
     .add_btn {

@@ -3,7 +3,7 @@
         <div class="bentobox_bg">
             <div class="bento_title_wrap">
                 <RouterLink to='/bento/bentopage2' class="btn_link">
-                    <button class="bentobox_button_left">
+                    <button class="bentobox_button_left" @click="clearFoodList">
                         <font-awesome-icon :icon="['fas', 'chevron-left']" class="custom_icon_left" />
                         <p>{{ button_txt_left }}</p>
                     </button>
@@ -64,6 +64,7 @@
 
 <script>
 import { useBentoStore } from '@/stores/bentobox';
+import { useCartStore } from '@/stores/cart';
 import { RouterLink, useRoute } from 'vue-router';
 
 export default {
@@ -73,9 +74,14 @@ export default {
 
     setup() {
         const bentoStore = useBentoStore();
+        const cartStore = useCartStore();
 
         const route = useRoute();
         const selectedFoodImages = route.query.selectedImages; // 假設它作為查詢參數傳遞進來
+
+        const clearFoodList = () => {
+            cartStore.clearCart(); // 清空購物車
+        };
 
         return {
             containerId: bentoStore.containerId,
@@ -88,6 +94,7 @@ export default {
             subtitle_txt: 'STEP 3',
             imgSrcWave: '/src/assets/img/wave.svg',
             selectedFoodImages,
+            clearFoodList
         };
     },
     methods: {
