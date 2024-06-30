@@ -7,7 +7,7 @@
             <div class="bento_list_detail">
                 <div class="bento_list_con" v-for="item in bentoList" :key="item.id">
                     <div class="bento_list_pic">
-                        <img :src="parseImg(item.imgSrc)" :alt="item.name">
+                        <img :src="parseImg(item.image)" :alt="item.name">
                     </div>
                     <!-- 餐盒內容含名稱、份量、卡路里 -->
                     <div class="bento_list_text">
@@ -33,30 +33,22 @@ export default {
     data() {
         return {
             list_title: '饗食四合一',
-            // bentoList: [
-            //     {
-            //         id: '',
-            //         name: '',
-            //         qty: '',
-            //         heat: '',
-            //         imgSrc: '',
-            //     },
-            // ]
+
         }
     },
     computed: {
         bentoList() {
-            const cartStore = useCartStore();
-            return cartStore.bentoList;
+            const cartStore = useCartStore(); // 確認正確調用 cartStore
+            return cartStore.items;
         },
         totalHeat() {
             const cartStore = useCartStore();
-            return cartStore.totalHeat;
-        },
+            return cartStore.totalCalories;
+        }
     },
     methods: {
         parseImg(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+            return new URL(`/src/assets/img/${imgURL}`, import.meta.url).href;
         },
     }
 }

@@ -3,34 +3,37 @@ import { defineStore } from 'pinia';
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
-    bentoList: [],
-    totalHeat: 0,
+    items: []
   }),
-
   getters: {
-    computedTotalHeat: (state) => {
-      return state.bentoList.reduce((total, item) => {
-        const heat = parseInt(item.calories);
-        return total + heat;
-      }, 0);
-    },
+    totalCalories: (state) => {
+      return state.items.reduce((total, item) => total + (item.calories || 0), 0);
+    }
   },
-
+  totalPrice: (state) => {
+    return state.items.reduce((total, item) => total + (item.price || 0), 0);
+},
   actions: {
     addItem(food) {
-      this.bentoList.push({
-        id: food.id,
-        ItemName: food.ItemName,
-        qty: 1,
-        calories: food.calories,
-        imgSrc: food.image,
-      });
-     
-      this.totalHeat += food.calories;
+      const existingItem = this.items.find(item => item.id === food.id);
+      if (existingItem) {
+        existingItem.qty++;
+      } else {
+        this.items.push({ ...food, qty: 1 });
+      }
+    },
+    removeItem(food) {
+      const index = this.items.findIndex(item => item.id === food.id);
+      if (index !== -1) {
+        if (this.items[index].qty > 1) {
+            this.items[index].qty--;
+        } else {
+            this.items.splice(index, 1);
+        }
+    }
     },
     clearCart() {
-      this.bentoList = [];
-      this.totalCalories = 0;
-    },
-  },
+      this.items = [];
+    }
+  }
 });
