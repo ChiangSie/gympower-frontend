@@ -293,7 +293,7 @@ h6 span {
     line-height: 22px;
     letter-spacing: 0.5px;
     outline: none;
-    color: #c4c3ca;
+    color: #000000;
     background-color: #c2c5c6;
     border: none;
     -webkit-transition: all 200ms linear;
