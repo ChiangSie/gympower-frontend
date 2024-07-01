@@ -83,7 +83,9 @@ export default {
               </div>
               <div class="card-footer">
                 <p class="content">{{ course.describe }}</p>
+                <router-link :to="`/course/${course.id}`">
                 <button class="apply">{{ course.apply }}</button>
+                </router-link>
               </div>
             </div>
           </swiper-slide>

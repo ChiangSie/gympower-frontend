@@ -25,7 +25,9 @@
               <li>◆ 核心訓練與穩定性提升</li>
               <li>◆ 幫助學員找回健康體態</li>
             </ul>
+            <router-link to="/coach">
             <button><a href="#">閱讀更多</a></button>
+            </router-link>
           </div>
         </div>
       </div>
