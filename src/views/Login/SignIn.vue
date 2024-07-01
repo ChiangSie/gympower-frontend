@@ -45,15 +45,15 @@
                                                 </div>
                                                 <div class="form-group mt-2">
                                                     <input type="tel" class="form-style" placeholder="Phone Number">
-                                                    <i class="input-icon uil uil-phone"></i>
+                                                    <!-- <i class="input-icon uil uil-phone"></i> -->
                                                 </div>
                                                 <div class="form-group mt-2">
                                                     <input type="email" class="form-style" placeholder="Email">
-                                                    <i class="input-icon uil uil-at"></i>
+                                                    <!-- <i class="input-icon uil uil-at"></i> -->
                                                 </div>
                                                 <div class="form-group mt-2">
                                                     <input type="password" class="form-style" placeholder="Password">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                    <!-- <i class="input-icon uil uil-lock-alt"></i> -->
                                                 </div>
                                                 <a href="https://www.web-leb.com/code" class="btn mt-4">點我註冊</a>
                                             </div>
@@ -293,7 +293,7 @@ h6 span {
     line-height: 22px;
     letter-spacing: 0.5px;
     outline: none;
-    color: #c4c3ca;
+    color: #000000;
     background-color: #c2c5c6;
     border: none;
     -webkit-transition: all 200ms linear;
