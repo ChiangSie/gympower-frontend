@@ -1,45 +1,72 @@
 <template>
-    <section class="login_page">
-        <div class="login" id="login">
-            <div class="form-login sign-up">
-                <form action="#">
-                    <h2>會員註冊</h2>
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="text" placeholder="Phone">
-                    <input type="password" placeholder="Password">
-                    <button>註冊</button>
-                </form>
-            </div>
-            <div class="form-login sign-in">
-                <form action="#">
-                    <h2>會員登入</h2>
-                    <input type="email" placeholder="Email" v-model="textData">
-                    <input type="password" placeholder="Password" v-model="pswData">
-                    <span>忘記密碼?</span>
-                    <button @click="memlogin()">登入</button>
-                    <a href="#"><i class="fa-brands fa-google"></i> Google登入</a>
-                </form>
-            </div>
-            <div class="toggle-login">
-                <div class="toggle">
-                    <div class="toggle-panel toggle-left">
-                        <h2>歡迎您!</h2>
-                        <p>註冊您的個人帳號<br>即可獲得更多好康資訊。</p>
-                        <button class="hidden" id="signin">登入</button>
-                    </div>
-                    <div class="toggle-panel toggle-right">
-                        <h2>歡迎加入!</h2>
-                        <p>註冊您的個人帳號<br>即可獲得更多好康資訊。</p>
-                        <button class="hidden" id="signup">註冊</button>
+
+    <body>
+        <div class="section">
+            <div class="container">
+                <div class="row full-height justify-content-center">
+                    <div class="col-12 text-center align-self-center py-5">
+                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                            <h6 class="mb-0 pb-3"><span>登入</span><span>註冊</span></h6>
+                            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                            <label for="reg-log"></label>
+                            <div class="card-3d-wrap mx-auto">
+                                <div class="card-3d-wrapper">
+                                    <div class="card-front">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                <h4 class="pb-3">會員登入</h4>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-style" placeholder="Email">
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style" placeholder="Password">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+                                                <a href="https://www.web-leb.com/code" class="btn mt-4">登入</a>
+                                                <div class="form-group mt-2">
+                                                    <p>Or</p>
+                                                    <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-facebook-f"></i></a> -->
+                                                    <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-google"></i></a> -->
+                                                    <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-github"></i></a> -->
+                                                </div>
+                                                <p class="mb-0 mt-4 text-center"><a href="https://www.web-leb.com/code"
+                                                        class="link">忘記密碼?</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                <h4 class="mb-3 pb-3">註冊帳號</h4>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-style" placeholder="Name">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="tel" class="form-style" placeholder="Phone Number">
+                                                    <i class="input-icon uil uil-phone"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="email" class="form-style" placeholder="Email">
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style" placeholder="Password">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+                                                <a href="https://www.web-leb.com/code" class="btn mt-4">點我註冊</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <Sign />
-
+    </body>
 </template>
 
 <script>
@@ -106,196 +133,214 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
-.login_page {
-    width: 100%;
-    padding: 3% 12%;
-    margin-top: 47px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login {
-    background-color: #fff;
-    border-radius: 30px;
-    position: relative;
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #004EAF;
+    background-color: #1f2029;
     overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 450px;
-    /* border: 3px solid black; */
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
-.login p {
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.3px;
-    margin: 20px 0;
-}
-
-.login span {
-    font-size: 13px;
-}
-
-.login a {
-    color: #333;
-    font-size: 13px;
+a:hover {
     text-decoration: none;
-    margin: 15px 0 10px;
 }
 
-.login button {
-    background-color: #002451;
-    color: #fff;
-    font-size: 12px;
-    padding: 5px 20px;
-    border: 1px solid transparent;
-    border-radius: 8px;
+.link {
+    color: #004EAF;
+}
+
+.link:hover {
+    color: #c4c3ca;
+}
+
+p {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+h4 {
     font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
 }
 
-.login form {
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 40px;
-    height: 100%;
+h6 span {
+    padding: 0 20px;
+    font-weight: 700;
 }
 
-.login input {
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    font-size: 13px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
-}
-
-.form-login {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-}
-
-.sign-in {
-    left: 0;
-    width: 50%;
-    z-index: 2;
-}
-
-.login.active .sign-in {
-    transform: translateX(100%);
-}
-
-.sign-up {
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
-
-.login.active .sign-up {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: move 0.6s;
-}
-
-@keyframes move {
-
-    0%,
-    49.99% {
-        opacity: 0;
-        z-index: 1;
-    }
-
-    50%,
-    100% {
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.toggle-login {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    border-radius: 150px 0 0 100px;
-    z-index: 100;
-}
-
-.login.active .toggle-login {
-    transform: translateX(-100%);
-    border-radius: 0 150px 100px 0;
-}
-
-.toggle {
-    background-color: #F0EEE9;
-    height: 100%;
-    background: linear-gradient(to right, #EB9340, #71C4EF);
-    color: #fff;
+.section {
     position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+    width: 100%;
+    display: block;
 }
 
-.login.active .toggle {
-    transform: translateX(50%);
+.full-height {
+    min-height: 100vh;
 }
 
-.login button.hidden {
-    background-color: transparent;
-    border-color: #fff;
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    display: none;
 }
 
-.toggle-panel {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 30px;
+.checkbox:checked+label,
+.checkbox:not(:checked)+label {
+    position: relative;
+    display: block;
     text-align: center;
+    width: 60px;
+    height: 16px;
+    border-radius: 8px;
+    padding: 0;
+    margin: 10px auto;
+    cursor: pointer;
+    background-color: #71C4EF;
+}
+
+.checkbox:checked+label:before,
+.checkbox:not(:checked)+label:before {
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: #ffeba7;
+    background-color: #020305;
+    font-family: 'unicons';
+    content: '\eb4f';
+    z-index: 20;
+    top: -10px;
+    left: -10px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 24px;
+    transition: all 0.5s ease;
+}
+
+.checkbox:checked+label:before {
+    transform: translateX(44px) rotate(-270deg);
+}
+
+.card-3d-wrap {
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    height: 450px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    margin-top: 60px;
+}
+
+.card-3d-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out;
+    border: 2px solid #004EAF;
+    border-radius: 10px;
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    background-color: #2b2e38;
+    background-image: url('/img/pattern_japanese-pattern-2_1_2_0-0_0_1__ffffff00_000000.png');
+    position: absolute;
+    border-radius: 6px;
+    -webkit-transform-style: preserve-3d;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.checkbox:checked~.card-3d-wrap .card-3d-wrapper {
+    transform: rotateY(180deg);
+}
+
+.center-wrap {
+    position: absolute;
+    width: 100%;
+    padding: 0 35px;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 35px) perspective(100px);
+    z-index: 20;
+    display: block;
+}
+
+.form-group {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.form-style {
+    padding: 13px 20px;
+    /* padding-left: 55px; */
+    height: 48px;
+    width: 95%;
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: #c4c3ca;
+    background-color: #c2c5c6;
+    border: none;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+}
+
+.form-style:focus,
+.form-style:active {
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2);
+}
+
+.input-icon {
+    position: absolute;
     top: 0;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+    left: 18px;
+    height: 48px;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: left;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
 }
 
-.toggle-left {
-    transform: translateX(-200%);
+.btn {
+    border-radius: 4px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    align-items: center;
+    background-color: #004EAF;
+    color: #fff;
 }
 
-.login.active .toggle-left {
-    transform: translateX(0);
-}
-
-.toggle-right {
-    right: 0;
-    transform: translateX(0);
-}
-
-.login.active .toggle-right {
-    transform: translateX(200%);
+.btn:hover {
+    background-color: #000000;
+    color: #71C4EF;
+    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }
 </style>

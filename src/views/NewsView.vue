@@ -1,6 +1,7 @@
 <script setup>
 import Banner from '@/views/News/NewsBanner.vue';
-import NewsClass from './News/NewsClass.vue'
+import HomeClass from '@/views/Home/HomeClass.vue'
+// import NewsClass from './News/NewsClass.vue'
 import NewsDiary from './News/NewsDiary.vue'
 import HomeCoupon from '@/views/Home/HomeCoupon.vue';
 </script>
@@ -8,7 +9,7 @@ import HomeCoupon from '@/views/Home/HomeCoupon.vue';
 <template>
   
   <Banner :title="'最新消息'" :imgSrc="'/src/assets/img/banner/banner_6.jpg'"/>
-  <NewsClass />
+  <HomeClass/>
   <NewsDiary />
   <HomeCoupon />
 </template>
