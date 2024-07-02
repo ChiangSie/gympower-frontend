@@ -15,7 +15,10 @@
                 會員專屬客製化餐盒，為你的健康而設計。依據你的運動目標和營養需求精心搭配，
                 無論是增肌、減脂，還是保持健康體型，我們的餐點都能助你達成健身目標。健康從飲食開始，讓我們陪伴你走向更強壯、更健康的未來。
               </p>
+              <router-link to="/bento">
               <button><a href="#">開始客製</a></button>
+              </router-link>
+              
 
               <div class="pic-bento">
                 <img src="../../assets/img/pic-bento.png" />

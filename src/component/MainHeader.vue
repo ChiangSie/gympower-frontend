@@ -126,7 +126,7 @@ export default {
     const { cartA, cartB, totalItemsA, totalItemsB, totalAmountA, totalAmountB } = storeToRefs(cartStore)
 
     const currentCartType = ref('A')
-     
+    
     const isCartVisible = ref(false)
 
     const currentCart = computed(() => {
@@ -160,7 +160,7 @@ export default {
     const increaseQuantity = (index) => {
       cartStore.increaseQuantity(currentCartType.value, index)
     }
-     const getItemImage = (item) => {
+    const getItemImage = (item) => {
       return item.image || (currentCartType.value === 'A' ? 'path/to/default_food.jpg' : 'path/to/default_course.jpg')
     }
 
@@ -192,7 +192,7 @@ export default {
       decreaseQuantity,
       updateQuantity,
       deleteSelectedItems,
-       getItemImage,
+      getItemImage,
       cart_title: '購物車',
       cart_tag1: '餐盒',
       cart_tag2: '課程',

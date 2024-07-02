@@ -27,8 +27,8 @@
                     <p><span class="custom_p">簡介：</span><br>{{ coach.intro }}</p>
                     <p><span class="custom_p">專業領域：</span><br>•{{ coach.expertise }}</p>
                     <p><span class="custom_p">經驗：</span><br>{{ coach.experience }}</p>
-                    <p><span class="custom_p">專業資格或證照：</span><br>• {{ coach.qualifications }}<br>• {{ coach.licenses }}
-                    </p>
+                    <!-- <p><span class="custom_p">專業資格或證照：</span><br>• {{ coach.qualifications }}<br>• {{ coach.licenses }}
+                    </p> -->
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@ export default {
     .coach_detail {
         display: flex;
         justify-content: space-around;
-        height: 85%;
+        height: 80%;
     }
 
     h3 {
@@ -168,7 +168,8 @@ export default {
     }
 
     .coach_info {
-        margin-top: 1%;
+        margin-top: 2%;
+
         width: 60%;
         display: flex;
         flex-direction: column;
@@ -221,7 +222,7 @@ export default {
 
     .coach_list {
         .close_btn {
-            margin-left: 80%;
+            margin-left: 70%;
             margin-top: 5%;
         }
 
