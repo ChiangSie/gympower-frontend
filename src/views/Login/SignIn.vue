@@ -118,17 +118,6 @@ export default {
             }
         }
     },
-    mounted() {
-        const login = document.getElementById('login');
-        const registerBtn = document.getElementById('signup');
-        const loginBtn = document.getElementById('signin');
-        registerBtn.addEventListener('click', () => {
-            login.classList.add("active");
-        });
-        loginBtn.addEventListener('click', () => {
-            login.classList.remove("active");
-        });
-    },
 }
 </script>
 
