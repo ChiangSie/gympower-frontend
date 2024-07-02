@@ -3,7 +3,7 @@
         <div class="bentobox_bg">
             <div class="bento_title_wrap">
                 <RouterLink to='/bento/bentopage2' class="btn_link">
-                    <button class="bentobox_button_left" @click="clearFoodList">
+                    <button class="bentobox_button_left">
                         <font-awesome-icon :icon="['fas', 'chevron-left']" class="custom_icon_left" />
                         <p>{{ button_txt_left }}</p>
                     </button>
@@ -25,10 +25,6 @@
                     <div v-if="containerId === 4" class="four_grid_cus_box">
                         <img :src="parseImg4('bento_box_four.png')" alt="四格餐盒">
                         <div class="grid_container">
-                            <!-- <div class="grid_item"><img :src="imgSrcBoxIn[0]" alt="四格餐盒第一格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[1]" alt="四格餐盒第二格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[2]" alt="四格餐盒第三格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[3]" alt="四格餐盒第四格"></div> -->
                             <div class="grid_item" v-for="(image, index) in selectedFoodImages" :key="index"
                                 :class="{ clicked: clickedIndex === index, dimmed: clickedIndex !== index && clickedIndex !== null }"
                                 @click="handleClick(index)">
@@ -40,12 +36,6 @@
                     <div v-else-if="containerId === 6" class="six_grid_cus_box">
                         <img :src="parseImg6('bento_box_six.png')" alt="六格餐盒">
                         <div class="grid_container">
-                            <!-- <div class="grid_item"><img :src="imgSrcBoxIn[0]" alt="六格餐盒第一格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[1]" alt="六格餐盒第二格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[2]" alt="六格餐盒第三格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[3]" alt="六格餐盒第四格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[4]" alt="六格餐盒第五格"></div>
-                            <div class="grid_item"><img :src="imgSrcBoxIn[5]" alt="六格餐盒第六格"></div> -->
                             <div class="grid_item" v-for="(image, index) in selectedFoodImages" :key="index"
                                 :class="{ clicked: clickedIndex === index, dimmed: clickedIndex !== index && clickedIndex !== null }"
                                 @click="handleClick(index)">
@@ -75,13 +65,8 @@ export default {
     setup() {
         const bentoStore = useBentoStore();
         const cartStore = useCartListStore();
-
         const route = useRoute();
         const selectedFoodImages = route.query.selectedImages; // 假設它作為查詢參數傳遞進來
-
-        const clearFoodList = () => {
-            cartStore.clearCart(); // 清空購物車
-        };
 
         return {
             containerId: bentoStore.containerId,
@@ -94,7 +79,7 @@ export default {
             subtitle_txt: 'STEP 3',
             imgSrcWave: '/src/assets/img/wave.svg',
             selectedFoodImages,
-            clearFoodList
+
         };
     },
     methods: {
@@ -107,6 +92,7 @@ export default {
     }
 }
 </script>
+
 
 <style lang="scss" scoped>
 .bentobox_banner {

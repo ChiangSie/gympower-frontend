@@ -31,9 +31,6 @@ export const useCartListStore = defineStore('cart2', {
           this.items.splice(index, 1)
         }
       }
-    },
-    clearCart() {
-      this.items = []
     }
   }
 })

@@ -1,3 +1,4 @@
+// import { defineStore } from 'pinia'
 import { defineStore } from 'pinia'
 
 export const useFoodStore = defineStore('foodStore', {
@@ -6,19 +7,19 @@ export const useFoodStore = defineStore('foodStore', {
     foods: [],
     totalPrice: 0,
     selectedIndex: null,
-    boxSize: 0,
-    bentoList: [
-      //   {
-      //     id: 1,
-      //     max_amount: 4,
-      //     plates: [
-      //       {
-      //         id: 1,
-      //         image: '111'
-      //       }
-      //     ]
-      //   }
-    ]
+    boxSize: 0
+    //bentoList: [
+    //       //   {
+    //       //     id: 1,
+    //       //     max_amount: 4,
+    //       //     plates: [
+    //       //       {
+    //       //         id: 1,
+    //       //         image: '111'
+    //       //       }
+    //       //     ]
+    //       //   }
+    //     ]
   }),
   getters: {
     selectedFoods() {
@@ -37,14 +38,17 @@ export const useFoodStore = defineStore('foodStore', {
   actions: {
     setBoxSize(size) {
       this.boxSize = size
-      this.selectedFoodImages = new Array(size).fill('')
+      //當有資料時，更新盒子內的食材圖片
+      //如果 this.selectedFoodImages[i] 有值（即不是 undefined 或 null 等 falsy 值），則保留該值，否則將其設為空字串
+      this.selectedFoodImages = Array.from({ length: size }, (_, i) => {
+        return this.selectedFoodImages[i] ? this.selectedFoodImages[i] : ''
+      })
     },
     updateSelectedFoodImage(image, price, index, food) {
       // 如果新的图片和当前图片相同，则不做任何操作
       if (this.selectedFoodImages[index] === image) {
         return null
       }
-
       // 如果这个位置已有图片，减去旧图片对应的价格
       const oldImage = this.selectedFoodImages[index]
       let oldFood = null
@@ -58,7 +62,6 @@ export const useFoodStore = defineStore('foodStore', {
       // 更新图片并增加新图片的价格
       this.selectedFoodImages[index] = image
       this.totalPrice += price
-
       return { addedFood: food, removedFood: oldFood, remainingSlots: this.remainingSlots }
     },
     setFoods(foods) {
@@ -72,7 +75,7 @@ export const useFoodStore = defineStore('foodStore', {
       })
     },
     reset() {
-      this.selectedFoodImages = new Array(this.selectedFoodImages.length).fill('')
+      this.selectedFoodImages = new Array(this.boxSize).fill('')
       this.totalPrice = 0
       this.selectedIndex = null
     },
