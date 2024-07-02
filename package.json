@@ -26,6 +26,7 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "fontawesome": "^5.6.3",
+    "gapi-script": "^1.2.0",
     "pinia": "^2.1.7",
     "prod": "^1.0.1",
     "svg": "^0.1.0",
@@ -45,6 +46,7 @@
     "prettier": "^3.2.5",
     "sass": "^1.77.2",
     "vite": "^5.2.8",
-    "vite-plugin-vue-devtools": "^7.0.25"
+    "vite-plugin-vue-devtools": "^7.0.25",
+    "vue3-google-login": "^2.0.26"
   }
 }

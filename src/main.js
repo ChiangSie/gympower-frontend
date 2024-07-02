@@ -11,9 +11,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+import { gapi } from 'gapi-script';
+function handleClientLoad() {
+    gapi.load('auth2', () => {
+        gapi.auth2.init({
+            client_id: '917030762317-rlv30pu6g4pbeml4i38b2v1ld9rc402n.apps.googleusercontent.com',
+        });
+    });
+}
 
-
-
+window.handleClientLoad = handleClientLoad;
 library.add(faChevronRight);
 library.add(faChevronLeft);
 library.add(faTimesCircle);
