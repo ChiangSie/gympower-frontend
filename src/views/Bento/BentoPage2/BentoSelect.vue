@@ -84,9 +84,9 @@ export default {
         const selectedFoodImages = computed(() => foodStore.selectedFoodImages);
         const sum_price = computed(() => cartListStore.totalPrice);
 
-        onMounted(() => {
-            foodStore.reset();
-        });
+        // onMounted(() => {
+        //     foodStore.reset();
+        // });
 
         const clickedIndex = ref(null);
 
