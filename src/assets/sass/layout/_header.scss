@@ -54,6 +54,25 @@ header {
   a {
     color: #002451;
     text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      display: block;
+      margin-top: 5px;
+      right: 0;
+      transition: width 0.4s ease;
+      -webkit-transition: width 0.4s ease;
+    }
+    &:hover::after {
+      width: 100%;
+      left: 0;
+      background: #002451;
+    }
+
   }
 }
 
