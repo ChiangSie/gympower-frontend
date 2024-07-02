@@ -23,7 +23,7 @@
                                                     <input type="password" class="form-style" placeholder="Password">
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
-                                                <a href="https://www.web-leb.com/code" class="btn mt-4">登入</a>
+                                                <a href="/member" class="btn mt-4">登入</a>
                                                 <div class="form-group mt-2">
                                                     <p>Or</p>
                                                     <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-facebook-f"></i></a> -->

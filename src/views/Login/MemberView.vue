@@ -7,8 +7,8 @@
             <ul>
                 <router-link to="/AccountMangerView">帳號管理</router-link>
                 <hr>
-                <router-link to="/DiscountView">專屬折扣</router-link>
-                <hr>
+                <!-- <router-link to="/DiscountView">專屬折扣</router-link>
+                <hr> -->
                 <router-link to="/MemberCourse">會員課程</router-link>
                 <hr>
                 <router-link to="/OrderView">訂單查詢</router-link>
