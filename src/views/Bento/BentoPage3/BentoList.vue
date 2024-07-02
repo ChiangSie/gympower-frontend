@@ -25,7 +25,8 @@
 </template>
 
 <script>
-import { useCartStore } from '@/stores/cart';
+import { useCartListStore } from '@/stores/cart';
+import { ref, computed } from 'vue';
 
 
 export default {
@@ -38,11 +39,11 @@ export default {
     },
     computed: {
         bentoList() {
-            const cartStore = useCartStore(); // 確認正確調用 cartStore
+            const cartStore = useCartListStore();// 確認正確調用 cartStore
             return cartStore.items;
         },
         totalHeat() {
-            const cartStore = useCartStore();
+            const cartStore = useCartListStore();
             return cartStore.totalCalories;
         }
     },

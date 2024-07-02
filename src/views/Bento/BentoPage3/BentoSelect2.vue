@@ -64,7 +64,7 @@
 
 <script>
 import { useBentoStore } from '@/stores/bentobox';
-import { useCartStore } from '@/stores/cart';
+import { useCartListStore } from '@/stores/cart';
 import { RouterLink, useRoute } from 'vue-router';
 
 export default {
@@ -74,7 +74,7 @@ export default {
 
     setup() {
         const bentoStore = useBentoStore();
-        const cartStore = useCartStore();
+        const cartStore = useCartListStore();
 
         const route = useRoute();
         const selectedFoodImages = route.query.selectedImages; // 假設它作為查詢參數傳遞進來
