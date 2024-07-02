@@ -21,7 +21,7 @@
 
 <script>
 import BentoFood from './BentoFood.vue'
-import { useCartStore } from '@/stores/cart';
+import { useCartListStore } from '@/stores/cart';
 
 export default {
     components: {

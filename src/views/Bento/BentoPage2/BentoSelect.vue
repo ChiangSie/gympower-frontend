@@ -1,6 +1,6 @@
 <template>
     <section class="bentobox_banner">
-        <!-- 客製化餐盒內容 -->
+        <!-- 客製化餐盒內容  -->
         <div class="bentobox_bg">
             <div class="bento_title_wrap">
                 <RouterLink to='/bento' class="btn_link">
@@ -13,7 +13,6 @@
                     <p>{{ subtitle_txt }}</p>
                     <h1>{{ title_txt }}</h1>
                 </div>
-                <!-- <RouterLink to='/bento/bentopage3' class="btn_link"> -->
                 <RouterLink :to="{ path: '/bento/bentopage3', query: { selectedImages: selectedFoodImages } }"
                     class="btn_link">
                     <button class="bentobox_button_right">
@@ -61,7 +60,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { useBentoStore } from '@/stores/bentobox';
 import { useFoodStore } from '@/stores/foodStore';
-import { useCartStore } from '@/stores/cart';
+import { useCartListStore } from '@/stores/cart';
 import { RouterLink } from 'vue-router';
 import one from '/src/assets/img/boxIn.png'
 import four from '/src/assets/img/bento_box_four.png'
@@ -77,13 +76,13 @@ export default {
     setup() {
         const bentoStore = useBentoStore();
         const foodStore = useFoodStore();
-        const cartStore = useCartStore();
+        const cartListStore = useCartListStore();
 
         const containerId = bentoStore.containerId;
         foodStore.setBoxSize(containerId);
 
         const selectedFoodImages = computed(() => foodStore.selectedFoodImages);
-        const sum_price = computed(() => cartStore.totalPrice);
+        const sum_price = computed(() => cartListStore.totalPrice);
 
         onMounted(() => {
             foodStore.reset();
@@ -112,8 +111,6 @@ export default {
             one,
             four,
             six,
-            selectedFoodImages,
-            sum_price,
         };
     }
 };

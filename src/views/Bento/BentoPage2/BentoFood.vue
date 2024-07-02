@@ -28,7 +28,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import Swal from 'sweetalert2';
 import NutritionFacts from './NutritionFacts.vue';
 import { useFoodStore } from '@/stores/foodStore';
-import { useCartStore } from '@/stores/cart'; // 如果有用到 cartStore，取消註釋並引入
+import { useCartListStore } from '@/stores/cart'; // 如果有用到 cartStore，取消註釋並引入
 
 export default {
     components: {
@@ -55,7 +55,7 @@ export default {
             document.body.style.overflow = 'auto';
         },
         addToCart(food) {
-            const cartStore = useCartStore(); // 如果有用到 cartStore，取消註釋
+            const cartStore = useCartListStore(); // 如果有用到 cartStore，取消註釋
             cartStore.addItem(food); // 如果有用到 cartStore，取消註釋
             console.log(`${food.ItemName} added to cart`); // 如果有用到 cartStore，取消註釋
         },
@@ -64,16 +64,18 @@ export default {
         },
         selectFoodImage(food) {
             const foodStore = useFoodStore();
-            const cartStore = useCartStore();
+            const cartStore = useCartListStore();
             const selectedIndex = foodStore.selectedIndex;
             if (selectedIndex !== null) {
                 const result = foodStore.updateSelectedFoodImage(this.parseImg(food.image), food.price, selectedIndex, food);
                 if (result) {
                     if (result.removedFood) {
                         cartStore.removeItem(result.removedFood);
+                        console.log(`${result.removedFood.ItemName} removed from cart`);
                     }
                     if (result.addedFood) {
                         cartStore.addItem(result.addedFood);
+                        console.log(`${result.addedFood.ItemName} added to cart`);
                     }
 
                     if (result.remainingSlots > 0) {
