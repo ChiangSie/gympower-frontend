@@ -204,7 +204,6 @@ export default defineComponent({
         border: 1.5px solid black;
         border-radius: 10px;
         padding: 20px 50px;
-        background-color:
     }
 }
 
