@@ -33,6 +33,7 @@
     "swiper": "^11.1.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
+    "vue3-google-login": "^2.0.26",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
