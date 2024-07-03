@@ -15,7 +15,7 @@
                 </div>
                 <RouterLink :to="{ path: '/bento/bentopage3', query: { selectedImages: selectedFoodImages } }"
                     class="btn_link">
-                    <button class="bentobox_button_right">
+                    <button class="bentobox_button_right" @click="handleNextStep">
                         <p>{{ button_txt_right }}</p>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
                     </button>
@@ -61,7 +61,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useBentoStore } from '@/stores/bentobox';
 import { useFoodStore } from '@/stores/foodStore';
 import { useCartListStore } from '@/stores/cart';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter} from 'vue-router';
 import one from '/src/assets/img/boxIn.png'
 import four from '/src/assets/img/bento_box_four.png'
 import six from '/src/assets/img/bento_box_six.png'
@@ -77,6 +77,7 @@ export default {
         const bentoStore = useBentoStore();
         const foodStore = useFoodStore();
         const cartListStore = useCartListStore();
+        const router = useRouter();
 
         const containerId = bentoStore.containerId;
         foodStore.setBoxSize(containerId);
@@ -93,6 +94,16 @@ export default {
         const handleClick = (index) => {
             clickedIndex.value = index;
             foodStore.updateSelectedIndex(index);
+        };
+        const handleNextStep = (event) => {
+            const hasEmptyGrid = selectedFoodImages.value.some(image => !image);
+            if (hasEmptyGrid) {
+                event.preventDefault(); // 阻止默認導航行為
+                alert('尚有格子未選取食材');
+            } else {
+                // 所有格子都有圖片，執行跳轉
+                router.push({ path: '/bento/bentopage3', query: { selectedImages: selectedFoodImages.value } });
+            }
         };
 
         return {
@@ -111,6 +122,7 @@ export default {
             one,
             four,
             six,
+            handleNextStep
         };
     }
 };

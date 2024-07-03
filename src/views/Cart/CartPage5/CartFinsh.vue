@@ -378,11 +378,11 @@ export default {
 }
 
 //input前的名稱
-.bento_list_form-group label {
-    width: 100%;
-    text-align: right;
-    margin-right: 10px;
-}
+// .bento_list_form-group label {
+//     width: 100%;
+//     text-align: right;
+//     margin-right: 10px;
+// }
 
 // input框
 // .styled-input {
