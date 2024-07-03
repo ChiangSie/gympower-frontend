@@ -66,6 +66,7 @@ a {
   h2 {
     margin-bottom: 15px;
     font-weight: bold;
+    
   }
 
   .txt {
@@ -134,4 +135,18 @@ a {
     }
   }
 }
+@media screen and (max-width: 768px){
+  .txt {
+    h3 {
+      font-size: 22px;
+    }
+  }
+  .card{
+    .card-footer{
+      padding: 10px 15px;
+    }
+  }
+}
+  
+
 </style>
