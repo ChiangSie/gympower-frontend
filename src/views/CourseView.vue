@@ -1,9 +1,20 @@
 <template>
   <Banner />
-  
+
   <div class="section section-course">
+    <!-- Dropdown for smaller screens -->
+    <div v-if="isMobile" class="mobile-dropdown-wrapper">
+      <select v-model="selectedOption" @change="handleSelectChange" class="mobile-dropdown">
+        <option value="all">全部課程</option>
+        <option value="1">有氧課程</option>
+        <option value="2">重訓課程</option>
+        <option value="3">瑜珈課程</option>
+      </select>
+    </div>
+    
     <div class="container">
-      <div class="section section-sort">
+      <!-- Buttons for larger screens -->
+      <div class="section-sort" v-if="!isMobile">
         <div class="btn-sort">
           <button @click="clear">
             <h3>全部課程</h3>
@@ -40,10 +51,8 @@
 </template>
 
 <script>
-// import Banner from '@/component/Banner.vue';
 import Classinfo from '@/component/Classinfo.vue';
-import Banner from './Course/CourseBanner.vue'
-
+import Banner from './Course/CourseBanner.vue';
 
 export default {
   components: {
@@ -56,11 +65,18 @@ export default {
       itemsPerPage: 3,
       courses: [],
       displayList: [],
+      selectedOption: 'all',
+      isMobile: false,
     }
   },
   mounted() {
+    this.checkScreenSize();
+    window.addEventListener('resize', this.checkScreenSize);
     this.clear();
     this.fetchProduct();
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.checkScreenSize);
   },
   methods: {
     fetchProduct() {
@@ -80,10 +96,18 @@ export default {
       return new URL(`../../../assets/img/course/${imgURL}`, import.meta.url).href;
     },
     filter(type) {
-      this.displayList = this.courses.filter(course => {
-        return course.type === type;
-      })
+      this.displayList = this.courses.filter(course => course.type === type);
       this.currentPage = 1;
+    },
+    checkScreenSize() {
+      this.isMobile = window.innerWidth < 768;
+    },
+    handleSelectChange() {
+      if (this.selectedOption === 'all') {
+        this.clear();
+      } else {
+        this.filter(parseInt(this.selectedOption));
+      }
     }
   },
   computed: {
@@ -95,7 +119,7 @@ export default {
       const end = start + this.itemsPerPage;
       return this.displayList.slice(start, end);
     }
-  },
+  }
 }
 </script>
 
@@ -111,6 +135,24 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: row;
+  }
+
+  .mobile-dropdown-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+
+    .mobile-dropdown {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
   }
 }
 
@@ -161,13 +203,6 @@ export default {
     }
   }
 
-  @media screen and (max-width: 768px) {
-    .btn-sort h3 {
-      font-size: 16px;
-      white-space: wrap;
-    }
-  }
-
   .section-classinfo {
     width: 80%;
 
@@ -197,6 +232,12 @@ export default {
         border-radius: 50%;
         text-decoration: none;
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-sort {
+      display: none;
     }
   }
 }

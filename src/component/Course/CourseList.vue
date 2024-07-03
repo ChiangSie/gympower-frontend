@@ -112,7 +112,7 @@ export default {
     margin: 10px;
     img{
         width: 100%;
-         object-fit: contain; 
+        object-fit: contain; 
     }
 }
 }
