@@ -148,7 +148,6 @@ export default {
         width: 100%;
         aspect-ratio: 3 / 1;
         object-fit: cover;
-        // border-radius: 10px;
         margin-bottom: 15px;
       }
 
