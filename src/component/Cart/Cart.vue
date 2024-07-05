@@ -45,16 +45,16 @@
           <p>{{ cart_content }}</p>
         </div>
         <div class="cart_footer">
-      <span class="underline"></span>
-      <button class="delete_btn" @click="deleteSelectedItems">{{ delete_btn }}</button>
-      <div class="cart_sum">
-        <p>{{ sum_title }}</p>
-        <p>$ {{ totalAmount }}</p>
-      </div>
-      <RouterLink to='/cart'>
-        <button class="cart_btn">{{ cart_btn }}</button>
-      </RouterLink>
-    </div>
+          <span class="underline"></span>
+          <button class="delete_btn" @click="deleteSelectedItems">{{ delete_btn }}</button>
+          <div class="cart_sum">
+            <p>{{ sum_title }}</p>
+            <p>$ {{ totalAmount }}</p>
+          </div>
+          <RouterLink to='/cart'>
+            <button class="cart_btn">{{ cart_btn }}</button>
+          </RouterLink>
+        </div>
 
       </div>
     </div>
@@ -91,9 +91,9 @@ import { storeToRefs } from 'pinia'
 export default {
   setup() {
     const cartStore = useCartStore()
-    
+
     const { cartA, cartB, totalItemsA, totalItemsB, totalAmountA, totalAmountB } = storeToRefs(cartStore)
-    
+
     const currentCartType = ref('A')
     const isCartVisible = ref(false)
 
@@ -234,206 +234,210 @@ export default {
 }
 
 .cart_card {
-    padding-top: 4%;
-    background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 0 0 5px 5px;
-    width: 30%;
-    margin-left: auto;
+  padding-top: 4%;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0 0 5px 5px;
+  width: 30%;
+  margin-left: auto;
 }
 
 .close_btn {
-    font-size: 25px;
-    cursor: pointer;
-    color: #002451;
-    margin-bottom: 25px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #002451;
+  margin-bottom: 25px;
 
-    i {
-        margin-left: 89%;
-    }
+  i {
+    margin-left: 89%;
+  }
 }
 
 .cart_navbar {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 2px solid #000000;
-    width: 85%;
-    margin: auto;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #000000;
+  width: 85%;
+  margin: auto;
 }
 
 .cart_title h4 {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .cart_tag {
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 
 }
 
 .cart_tag1 {
-    background-color: #71C4EF;
-    width: 60px;
-    border-radius: 5px 5px 0 0;
-    height: 35px;
-    cursor: pointer;
+  background-color: #71C4EF;
+  width: 60px;
+  border-radius: 5px 5px 0 0;
+  height: 35px;
+  cursor: pointer;
 
-    p {
-        color: #fff;
-        text-align: center;
-        padding-top: 7px;
+  p {
+    color: #fff;
+    text-align: center;
+    padding-top: 7px;
 
-    }
+  }
 }
 
 .cart_tag2 {
-    background-color: #D4EAF7;
-    width: 60px;
-    border-radius: 5px 5px 0 0;
-    height: 35px;
-    cursor: pointer;
+  background-color: #D4EAF7;
+  width: 60px;
+  border-radius: 5px 5px 0 0;
+  height: 35px;
+  cursor: pointer;
 
-    p {
-        color: #000000;
-        text-align: center;
-        padding-top: 7px;
+  p {
+    color: #000000;
+    text-align: center;
+    padding-top: 7px;
 
-    }
+  }
 }
 
 @media screen and (max-width: 768px) {
 
-    .cart_card {
-        padding-top: 12%;
-        border: none;
-        width: 100%;
-    }
+  .cart_card {
+    padding-top: 12%;
+    border: none;
+    width: 100%;
+  }
 
-    .cart_title h4 {
-        font-size: 24px;
-    }
+  .cart_title h4 {
+    font-size: 24px;
+  }
 }
 
 /* ====================================================== */
 /* 購物車內容 */
 
 .cart_content {
-    text-align: center;
-    padding: 3% 0 0 0;
-    z-index: 6;
+  text-align: center;
+  padding: 3% 0 0 0;
+  z-index: 6;
 
-    .cart_checkoutItem {
-        display: flex;
-        justify-content: space-evenly;
-        padding-bottom: 15px;
-        padding-top: 15px;
-        border-bottom: 2px dashed #002451;
-        width: 85%;
-        margin: auto;
+  .cart_checkoutItem {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 2px dashed #002451;
+    width: 85%;
+    margin: auto;
 
 
 
-        img {
-            width: 25%;
-            aspect-ratio: 4 / 3.5;
-        }
-
+    img {
+      width: 25%;
+      aspect-ratio: 4 / 3.5;
     }
 
-    .cart_itemInfo {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+  }
 
-        h3 {
-            font-size: 16px;
-            font-weight: 600;
-        }
+  .cart_itemInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-        p {
-            font-size: 14px;
-        }
-
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
     }
 
-    .cart_details {
-        height: 49%;
-        margin-top: 100px;
+    p {
+      font-size: 14px;
+    }
+
+  }
+
+  .cart_details {
+    height: 49%;
+    margin-top: 100px;
 
 
-        .shop_cart_check {
-            background-image: url('@/assets/img/shopping_cart_check.svg');
-            width: 60px;
-            height: 60px;
-            margin: auto;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 50% 50%;
-        }
-
-
-
+    .shop_cart_check {
+      background-image: url('@/assets/img/shopping_cart_check.svg');
+      width: 60px;
+      height: 60px;
+      margin: auto;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
     }
 
 
 
-    .cart_itemQty {
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
+  }
 
 
 
-        input {
-            border: 1px solid #002451;
-            width: 60px;
-            text-align: center;
-        }
-
-        .cart_addBtn {
-            background-color: #002451;
-            color: #ffffff;
-            cursor: pointer;
-
-        }
-
-        .cart_removeBtn {
-            cursor: pointer;
-            background-color: transparent;
+  .cart_itemQty {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 
 
-        }
+
+    input {
+      border: 1px solid #002451;
+      width: 60px;
+      text-align: center;
+    }
+
+    .cart_addBtn {
+      background-color: #002451;
+      color: #ffffff;
+      cursor: pointer;
 
     }
 
-    .cart_itemBtn {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: space-around;
+    .cart_removeBtn {
+      cursor: pointer;
+      background-color: transparent;
 
-        i {
-            cursor: pointer;
-            color: #002451;
-        }
 
-        button {
-            width: 80px;
-            height: 30px;
-            border-radius: 50px;
-            font-size: 10px;
-            cursor: pointer;
-            background-color: transparent;
-        }
     }
+
+  }
+
+  .cart_itemBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+
+    i {
+      cursor: pointer;
+      color: #002451;
+    }
+
+    button {
+      width: 80px;
+      height: 30px;
+      border-radius: 50px;
+      font-size: 10px;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+
+  }
+
+
 
 }
 
 @media screen and (max-width: 768px) {
-    .cart_content {
-        padding: 3% 0;
-    }
+  .cart_content {
+    padding: 3% 0;
+  }
 }
 
 
@@ -442,55 +446,55 @@ export default {
 
 .cart_footer {
 
-    .underline {
-        border-bottom: 2px solid #000000;
-        display: block;
-        width: 85%;
-        margin: auto;
-    }
+  .underline {
+    border-bottom: 2px solid #000000;
+    display: block;
+    width: 85%;
+    margin: auto;
+  }
 
-    .delete_btn {
-        background-color: #71C4EF;
-        border: none;
-        width: 100px;
-        height: 30px;
-        border-radius: 50px;
-        color: white;
-        padding: 4px 16px;
-        cursor: pointer;
-        margin-top: 16px;
-        margin-left: -58%;
-    }
+  .delete_btn {
+    background-color: #71C4EF;
+    border: none;
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    color: white;
+    padding: 4px 16px;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-left: -58%;
+  }
 
-    .cart_sum {
-        display: flex;
-        justify-content: space-between;
-        width: 85%;
-        margin: auto;
-        margin-top: 16px;
+  .cart_sum {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: auto;
+    margin-top: 16px;
 
-        p {
-            font-size: 18px;
-        }
+    p {
+      font-size: 18px;
     }
+  }
 
-    .cart_btn {
-        background-color: #002451;
-        border: none;
-        width: 100%;
-        height: 30px;
-        color: white;
-        padding: 4px 16px;
-        cursor: pointer;
-        margin-top: 16px;
-    }
+  .cart_btn {
+    background-color: #002451;
+    border: none;
+    width: 100%;
+    height: 30px;
+    color: white;
+    padding: 4px 16px;
+    cursor: pointer;
+    margin-top: 16px;
+  }
 
 }
 
 @media screen and (max-width: 768px) {
-    .cart_btn {
-        height: 40px;
-    }
+  .cart_btn {
+    height: 40px;
+  }
 
 }
 </style>

@@ -8,8 +8,10 @@ export const useCartStore = defineStore('cart', {
   getters: {
     totalItemsA: (state) => state.cartA.reduce((sum, item) => sum + item.quantity, 0),
     totalItemsB: (state) => state.cartB.reduce((sum, item) => sum + item.quantity, 0),
-    totalAmountA: (state) => state.cartA.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
-    totalAmountB: (state) => state.cartB.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
+    totalAmountA: (state) =>
+      state.cartA.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
+    totalAmountB: (state) =>
+      state.cartB.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)
   },
   actions: {
     initializeStore() {
@@ -23,26 +25,26 @@ export const useCartStore = defineStore('cart', {
       localStorage.setItem('cartB', JSON.stringify(this.cartB))
     },
     addToCartA(item) {
-      const existingItem = this.cartA.find(i => i.name === item.name)
+      const existingItem = this.cartA.find((i) => i.name === item.name)
       if (existingItem) {
         existingItem.quantity++
+        existingItem.image = item.image // 更新圖片
       } else {
         this.cartA.push({ ...item, quantity: 1, selected: false })
       }
       this.saveToLocalStorage()
     },
     addToCartB(item) {
-      const existingItem = this.cartB.find(i => 
-        i.name === item.name && 
-        i.location === item.location && 
-        i.courseTime === item.courseTime
-      );
+      const existingItem = this.cartB.find(
+        (i) =>
+          i.name === item.name && i.location === item.location && i.courseTime === item.courseTime
+      )
       if (existingItem) {
-        existingItem.quantity++;
+        existingItem.quantity++
       } else {
-        this.cartB.push({ ...item, quantity: 1 });
+        this.cartB.push({ ...item, quantity: 1 })
       }
-      this.saveToLocalStorage();
+      this.saveToLocalStorage()
     },
     removeFromCartA(index) {
       this.cartA.splice(index, 1)
@@ -73,9 +75,9 @@ export const useCartStore = defineStore('cart', {
     },
     deleteSelectedItems(cartType) {
       if (cartType === 'A') {
-        this.cartA = this.cartA.filter(item => !item.selected)
+        this.cartA = this.cartA.filter((item) => !item.selected)
       } else {
-        this.cartB = this.cartB.filter(item => !item.selected)
+        this.cartB = this.cartB.filter((item) => !item.selected)
       }
       this.saveToLocalStorage()
     },

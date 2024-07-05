@@ -13,7 +13,7 @@
                     <h1>{{ title_txt }}</h1>
                 </div>
                 <RouterLink to='/bento/bentopage4' class="btn_link">
-                    <button class="bentobox_button_right">
+                    <button class="bentobox_button_right" @click="addToCartA">
                         <p>{{ button_txt_right }}</p>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
                     </button>
@@ -53,45 +53,101 @@
 </template>
 
 <script>
+import { ref, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { useBentoStore } from '@/stores/bentobox';
 import { useCartListStore } from '@/stores/cart';
-import { RouterLink, useRoute } from 'vue-router';
+import { useCartStore } from '@/stores/cartStore';
+import { useFoodStore } from '@/stores/foodStore';
+import html2canvas from 'html2canvas';
 
 export default {
-    components: {
-        RouterLink,
-    },
-
     setup() {
+        const router = useRouter();
+        const route = useRoute();
         const bentoStore = useBentoStore();
         const cartStore = useCartListStore();
-        const route = useRoute();
-        const selectedFoodImages = route.query.selectedImages; // 假設它作為查詢參數傳遞進來
+        const shopCartStore = useCartStore();
+        const foodStore = useFoodStore();
+
+        const selectedFoodImages = ref(route.query.selectedImages || []);
+        const containerId = computed(() => bentoStore.containerId);
+        const clickedIndex = ref(null);
+
+        const button_txt_left = '上一步';
+        const button_txt_right = '確認';
+        const title_txt = '確認餐點明細';
+        const subtitle_txt = 'STEP 3';
+        const imgSrcWave = '/src/assets/img/wave.svg';
+
+        const parseImg = (imgURL) => {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
+        };
+
+        const handleClick = (index) => {
+            clickedIndex.value = index;
+        };
+
+        const addToCartA = async () => {
+            if (!cartStore.items || !Array.isArray(cartStore.items) || cartStore.items.length === 0) {
+                console.error('購物車內容為空或不是有效的陣列');
+                return;
+            }
+
+            const bentoBoxElement = document.querySelector('.bento_pic');
+            const options = { scale: 1 };
+
+            try {
+                const canvas = await html2canvas(bentoBoxElement, options);
+                const compositeImage = canvas.toDataURL();
+
+                const products = selectedFoodImages.value.map((image, index) => {
+                    const food = cartStore.items[index];
+                    if (!food || !food.ItemName) {
+                        console.error(`索引 ${index} 的食材未定義或缺少 ItemName`);
+                        return null;
+                    }
+                    return {
+                        name: containerId.value === 4 ? '饗食四合一' : '滿腹六合一',
+                        quantity: food.qty,
+                        image: compositeImage,
+                        // selected: false,
+                        // showDetails: false,
+                        foods: selectedFoodImages.value,
+                        price: food.price,
+                        totalPrice: food.price * food.qty
+                    };
+                }).filter(product => product !== null);
+
+                products.forEach(product => {
+                    shopCartStore.addToCartA(product);
+                });
+
+                console.log('已添加到購物車的產品:', products);
+                router.push('/bento/bentopage4');
+            } catch (error) {
+                console.error('生成圖片或添加到購物車時發生錯誤:', error);
+            }
+        };
 
         return {
-            containerId: bentoStore.containerId,
-            // imgSrcBox4: '/src/assets/img/bento_box_four.png',
-            imgSrcBox6: '/src/assets/img/bento_box_six.png',
-            imgSrcBoxIn: ['/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png', '/src/assets/img/boxIn.png'],
-            button_txt_right: '下一步',
-            button_txt_left: '上一步',
-            title_txt: '確認餐點明細',
-            subtitle_txt: 'STEP 3',
-            imgSrcWave: '/src/assets/img/wave.svg',
+            containerId,
+            button_txt_right,
+            button_txt_left,
+            title_txt,
+            subtitle_txt,
+            imgSrcWave,
             selectedFoodImages,
-
+            clickedIndex,
+            addToCartA,
+            parseImg4: parseImg,
+            parseImg6: parseImg,
+            handleClick
         };
-    },
-    methods: {
-        parseImg4(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
-        },
-        parseImg6(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
-        }
     }
 }
 </script>
+
 
 
 <style lang="scss" scoped>

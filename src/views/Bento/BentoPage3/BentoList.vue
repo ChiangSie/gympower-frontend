@@ -26,32 +26,54 @@
 
 <script>
 import { useCartListStore } from '@/stores/cart';
+import { useBentoStore } from '@/stores/bentobox';
 import { ref, computed } from 'vue';
 
 
 export default {
 
-    data() {
-        return {
-            list_title: '饗食四合一',
+    setup() {
+        const bentoStore = useBentoStore();
+        const cartStore = useCartListStore();
 
-        }
+        const list_title = computed(() => {
+            return bentoStore.containerId === 4 ? '饗食四合一' : '滿腹六合一';
+        });
+
+        // 獲取購物車中的食物列表,並合併相同項的數量
+        const bentoList = computed(() => {
+            const items = cartStore.items;
+            const list = [];
+
+            // 合併相同項並累加數量
+            items.forEach(item => {
+                const existingItem = list.find(i => i.id === item.id);
+                if (existingItem) {
+                    existingItem.qty += item.qty;
+                } else {
+                    list.push({ ...item });
+                }
+            });
+
+            return list;
+        });
+
+        // 計算總熱量
+        const totalHeat = computed(() => {
+            return bentoList.value.reduce((total, item) => {
+                return total + (item.calories * item.qty);
+            }, 0);
+        });
+
+        return {
+            list_title,
+            bentoList,
+            totalHeat,
+            parseImg(imgURL) {
+                return new URL(`/src/assets/img/${imgURL}`, import.meta.url).href;
+            },
+        };
     },
-    computed: {
-        bentoList() {
-            const cartStore = useCartListStore();// 確認正確調用 cartStore
-            return cartStore.items;
-        },
-        totalHeat() {
-            const cartStore = useCartListStore();
-            return cartStore.totalCalories;
-        }
-    },
-    methods: {
-        parseImg(imgURL) {
-            return new URL(`/src/assets/img/${imgURL}`, import.meta.url).href;
-        },
-    }
 }
 </script>
 

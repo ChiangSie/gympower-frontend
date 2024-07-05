@@ -7,19 +7,31 @@ export const useFoodStore = defineStore('foodStore', {
     foods: [],
     totalPrice: 0,
     selectedIndex: null,
-    boxSize: 0
-    //bentoList: [
-    //       //   {
-    //       //     id: 1,
-    //       //     max_amount: 4,
-    //       //     plates: [
-    //       //       {
-    //       //         id: 1,
-    //       //         image: '111'
-    //       //       }
-    //       //     ]
-    //       //   }
-    //     ]
+    boxSize: 0,
+    bentoList: [
+      {
+        id: 1,
+        max_amount: 4,
+        plates: [
+          { id: 1, image: '111', price: 100, amount: 1 },
+          { id: 2, image: '111', price: 100, amount: 1 },
+          { id: 3, image: '111', price: 100, amount: 1 },
+          { id: 4, image: '111', price: 100, amount: 1 }
+        ]
+      },
+      {
+        id: 2,
+        max_amount: 6,
+        plates: [
+          { id: 1, image: '111', price: 100, amount: 1 },
+          { id: 2, image: '111', price: 100, amount: 1 },
+          { id: 3, image: '111', price: 100, amount: 1 },
+          { id: 4, image: '111', price: 100, amount: 1 },
+          { id: 5, image: '111', price: 100, amount: 1 },
+          { id: 6, image: '111', price: 100, amount: 1 }
+        ]
+      }
+    ]
   }),
   getters: {
     selectedFoods() {
@@ -87,6 +99,9 @@ export const useFoodStore = defineStore('foodStore', {
     },
     isBentoFull() {
       return this.selectedFoodImages.every((img) => img !== '')
+    },
+    setBentoList(bentoItems) {
+      this.bentoList = bentoItems
     }
   }
 })

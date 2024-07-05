@@ -27,6 +27,7 @@
     "bootstrap": "^5.3.3",
     "fontawesome": "^5.6.3",
     "gapi-script": "^1.2.0",
+    "html2canvas": "^1.4.1",
     "pinia": "^2.1.7",
     "prod": "^1.0.1",
     "svg": "^0.1.0",
