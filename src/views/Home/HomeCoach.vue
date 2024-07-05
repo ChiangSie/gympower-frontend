@@ -221,7 +221,7 @@ onMounted(() => {
       border-radius: 550px 550px 0 0;
 
       .col {
-        > .pic {
+        >.pic {
           margin: auto;
           width: 60%;
           overflow: hidden;
@@ -240,16 +240,20 @@ onMounted(() => {
           justify-content: center;
           gap: 20px;
           display: blockS;
+
           h3 {
             font-size: 24px;
+
             p {
               font-size: 18px;
             }
           }
+
           button:hover {
             transition: 0.5s;
             scale: 1.2;
           }
+
           button {
             cursor: pointer;
             color: #fff;
@@ -261,17 +265,21 @@ onMounted(() => {
             border: none;
             border-radius: 10px;
             width: fit-content;
+
             a {
               text-decoration: none;
               color: #fff;
+
               &:hover {
                 color: #c0defa;
               }
             }
           }
+
           h3 {
             font-weight: bold;
           }
+
           p {
             font-size: 15px;
           }

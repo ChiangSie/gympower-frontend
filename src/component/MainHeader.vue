@@ -58,6 +58,7 @@
     </div>
     <div class="cart_content">
       <div v-if="currentCart.length > 0">
+
         <div class="cart_checkoutItem" v-for="(item, index) in currentCart" :key="index">
           <input type="checkbox" v-model="item.selected">
           <img :src="getItemImage(item)" alt="商品圖片">
@@ -74,13 +75,14 @@
             <i class="fa-solid fa-trash-can" @click="removeFromCurrentCart(index)"></i>
             <button class="cart_detailsBtn" v-if="currentCartType === 'A'" @click="toggleDetails(index)">{{ details_btn
               }}</button>
-          </div>
-          <div v-if="item.showDetails" class="food_details">
-            <p v-for="(food, foodIndex) in item.foods" :key="foodIndex">
-              {{ item.price }} x {{ item.quantity }}
-            </p>
+            <div v-if="item.showDetails" class="food_details">
+              <p v-for="(food, foodIndex) in item.foods" :key="foodIndex">
+                {{ item.price }} x {{ item.quantity }}
+              </p>
+            </div>
           </div>
         </div>
+
       </div>
       <div class="cart_details" v-else>
         <div class="shop_cart_check"></div>
