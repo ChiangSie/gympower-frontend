@@ -4,8 +4,14 @@
             <!-- 餐盒、課程選單 -->
             <div class="bento_list_title">
                 <div class="bento_cart_select">
-                    <span class="bento_cart_select_bento">{{ bento_select }}</span>
-                    <span class="bento_cart_select_classes">{{ bento_classes }}</span>
+                    <span @click="activeCart = 'A'" :class="{ active: activeCart === 'A' }"
+                        class="bento_cart_select_bento">
+                        {{ bento_select }}
+                    </span>
+                    <span @click="activeCart = 'B'" :class="{ active: activeCart === 'B' }"
+                        class="bento_cart_select_classes">
+                        {{ bento_classes }}
+                    </span>
                 </div>
                 <!-- 步驟 -->
                 <ul class="bento_list_step">
@@ -26,66 +32,98 @@
             <!-- 清單標題 -->
             <div class="bento_list_comfirm">{{ list_title }}</div>
             <div class="bento_list_con">
-                <!-- 左邊清單確認 -->
                 <div class="bento_list_detail">
-                    <!-- 欄位名稱 -->
-                    <div class="bento_list_item">
-                        <div class="bento_list_item_name">{{ list_item_name }}</div>
-                        <div class="bento_list_item_con">
-                            <span>{{ list_item_qty }}</span>
-                            <span>{{ list_item_subtotal }}</span>
+                    <!-- 購物車 A 内容 -->
+                    <div v-if="activeCart === 'A'" class="bento_list_item_option">
+                        <!-- 垃圾桶按鈕 -->
+                        <div class="bento_list_item_clear" @click="clearCart(activeCart)">
+                            <button class="bento_list_item_clear_trash">
+                                <p>{{ clear_trash }}</p>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
                         </div>
-                    </div>
-                    <!-- 垃圾桶按鈕 -->
-                    <div class="bento_list_item_clear">
-                        <button class="bento_list_item_clear_trash">
-                            <p>{{ clear_trash }}</p>
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                    <!-- 訂單選項 -->
-                    <!-- 外框 -->
-                    <div class="bento_list_item_option">
-                        <!-- 第一個項目 -->
-                        <div class="bento_list_item_option_cart" v-for="item in bentoOption" :key="item.id">
+                        <div v-for="(item, index) in cartStore.cartA" :key="item.id"
+                            class="bento_list_item_option_cart">
                             <div class="bento_list_item_option_pic">
-                                <input type="checkbox" class="item-select">
+                                <input type="checkbox" v-model="item.selected" class="item-select">
                                 <img :src="parseImg(item.imgSrc)" :alt="item.name">
                             </div>
                             <div class="bento_list_item_option_center">
                                 <div class="bento_list_item_option_name">
                                     <p>{{ item.name }}</p>
-                                    <button class="bento_list_item_option_btn">{{ item.details }}</button>
+                                    <button class="bento_list_item_option_btn"
+                                        @click="showDetails(item)">查看餐盒明细</button>
                                 </div>
                                 <div class="bento_list_item_option_qty">
-                                    <button class="qty-btn_reduce">-</button>
-                                    <input type="text" value="1" class="quantity-input">
-                                    <button class="qty-btn_plus">+</button>
+                                    <button class="qty-btn_reduce"
+                                        @click="cartStore.decreaseQuantity('A', index)">-</button>
+                                    <input type="text" v-model.number="item.quantity"
+                                        @change="cartStore.updateQuantity('A', index)" class="quantity-input">
+                                    <button class="qty-btn_plus"
+                                        @click="cartStore.increaseQuantity('A', index)">+</button>
                                 </div>
                                 <div class="bento_list_item_option_price">
-                                    <span>{{ item.price }}</span>
+                                    <span>{{ calculateItemTotal(item) }}</span>
                                 </div>
                             </div>
                             <div class="bento_list_item_option_icon">
-                                <i class="fa-solid fa-trash-can"></i>
+                                <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartA(index)"></i>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- 右邊訂單資訊 -->
-                <div class="bento_list_info">
-                    <div class="bento_list_info_title">{{ order_title }}</div>
-                    <div class="bento_list_info_item">
-                        <div class="order_subtotal_name">{{ order_subtotal_name }}</div>
-                        <div class="order_subtotal_price">{{ order_subtotal_price }}</div>
+
+                    <!-- 購物車 B 内容 -->
+                    <div v-if="activeCart === 'B'" class="bento_list_item_option">
+                        <!-- 垃圾桶按鈕 -->
+                        <div class="bento_list_item_clear" @click="clearCart(activeCart)">
+                            <button class="bento_list_item_clear_trash">
+                                <p>{{ clear_trash }}</p>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                        <div v-for="(item, index) in cartStore.cartB" :key="item.id"
+                            class="bento_list_item_option_cart">
+                            <div class="bento_list_item_option_pic">
+                                <input type="checkbox" v-model="item.selected" class="item-select">
+                            </div>
+                            <div class="bento_list_item_option_center">
+                                <div class="bento_list_item_option_name">
+                                    <p>{{ item.name }}</p>
+                                </div>
+                                <div class="bento_list_item_option_qty">
+                                    <button class="qty-btn_reduce"
+                                        @click="cartStore.decreaseQuantity('B', index)">-</button>
+                                    <input type="text" v-model.number="item.quantity"
+                                        @change="cartStore.updateQuantity('B', index)" class="quantity-input">
+                                    <button class="qty-btn_plus"
+                                        @click="cartStore.increaseQuantity('B', index)">+</button>
+                                </div>
+                                <div class="bento_list_item_option_price">
+                                    <span>{{ calculateItemTotal(item) }}</span>
+                                </div>
+                            </div>
+                            <div class="bento_list_item_option_icon">
+                                <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartB(index)"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bento_list_info_item_total">
-                        <div class="total_name">{{ total_name }}</div>
-                        <div class="total_price">{{ total_price }}</div>
+                    <!-- 右邊訂單資訊 -->
+                    <div class="bento_list_info">
+                        <div class="bento_list_info_title">{{ order_title }}</div>
+                        <div class="bento_list_info_item">
+                            <div class="order_subtotal_name">{{ order_subtotal_name }}</div>
+                            <div class="order_subtotal_price">
+                                {{ activeCart === 'A' ? cartStore.totalAmountA : cartStore.totalAmountB }}
+                            </div>
+                        </div>
+                        <div class="bento_list_info_item_total">
+                            <div class="total_name">{{ total_name }}</div>
+                            <div class="total_price">{{ total_price }}</div>
+                        </div>
+                        <RouterLink to='/cart/cartpage4'>
+                            <button class="bento_list_info_btn">{{ next_page }}</button>
+                        </RouterLink>
                     </div>
-                    <RouterLink to='/cart/cartpage4'>
-                        <button class="bento_list_info_btn">{{ next_page }}</button>
-                    </RouterLink>
                 </div>
             </div>
         </div>
@@ -94,29 +132,74 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useCartStore } from '../../../stores/cartStore'
+
 export default {
+    setup() {
+        const cartStore = useCartStore()
+        const activeCart = ref('A') // 默认显示购物车 A
+
+        return {
+            cartStore,
+            activeCart,
+        }
+    },
     data() {
         return {
+            bentoOption: [],
             bento_select: ' 餐盒', bento_classes: '課程', circle_num_1: '1', circle_num1_con: '購物清單確認',
             circle_num_2: '2', circle_num2_con: '訂購資訊', circle_num_3: '3', circle_num3_con: '訂單成立',
             list_title: '購物清單確認', list_item_name: '商品名稱', list_item_qty: '數量', list_item_subtotal: '小計',
             clear_trash: '清空購物車', order_title: '訂單資訊', order_subtotal_name: '商品小計',
             order_subtotal_price: '$480', total_name: '合計', total_price: '$480', next_page: '下一步',
-            bentoOption: [{
-                id: 1, name: '饗食四合一', details: '查看餐盒明細', price: '$120',
-                imgSrc: 'bento_box_four.png',
-            }, {
-                id: 2, name: '滿腹六合一', details: '查看餐盒明細',
-                price: '$200', imgSrc: 'bento_box_six.png',
-            },]
+
         }
     },
     methods: {
+        showDetails(item) {
+            console.log(`顯示 ${item.name} 的詳細訊息`)
+            // 实现显示详细信息的逻辑
+        },
+        increaseQuantity(item) {
+            item.quantity++
+        },
+       calculateItemTotal(item) {
+    return item.price * item.quantity;
+  },
+
+        decreaseQuantity(item) {
+            if (item.quantity > 1) {
+                item.quantity--
+            }
+        },
+        updateQuantity(item) {
+            if (item.quantity < 1) {
+                item.quantity = 1
+            }
+        },
+        removeItem(item) {
+            const index = this.bentoOption.findIndex(i => i.id === item.id)
+            if (index !== -1) {
+                this.bentoOption.splice(index, 1)
+            }
+        },
+        clearCart() {
+            this.bentoOption = []
+        },
         parseImg(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
-        }
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href
+        },
+        clearCart(cartType) {
+            if (cartType === 'A') {
+                this.cartStore.clearCart('A');
+            } else if (cartType === 'B') {
+                this.cartStore.clearCart('B');
+            }
+        },
     }
-} 
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -127,7 +210,7 @@ export default {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     border-radius: 0 10px 10px 10px;
     backdrop-filter: blur(10px);
-    margin: 20% auto 20%;
+    margin: 8rem auto 20%;
     padding: 50px 10px;
     text-align: center;
 }
@@ -240,15 +323,15 @@ export default {
 @media screen and (max-width: 768px) {
     .bento_list_con {
         display: flex;
-        flex-direction: column;
     }
 }
 
 /* 左邊 */
 .bento_list_detail {
-    width: 70%;
     margin-right: 2%;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 
     /* 欄位名稱 */
     .bento_list_item {
@@ -270,6 +353,7 @@ export default {
         }
     }
 
+
     /* 垃圾桶按鈕 */
     .bento_list_item_clear {
         display: flex;
@@ -277,11 +361,11 @@ export default {
     }
 
     .bento_list_item_clear_trash {
-        width: 24%;
+        width: 5rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 1% 1.6%;
+        padding: .5rem 1.6%;
         border-radius: 10px;
         border: 1px solid #000;
         background-color: #fff;
@@ -299,9 +383,16 @@ export default {
     }
 
     /* 項目內容 */
+
     .bento_list_item_option {
         display: flex;
         flex-direction: column;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .bento_list_item_option {
+            width: 70%;
+        }
     }
 
     .bento_list_item_option_cart {
@@ -316,7 +407,6 @@ export default {
     /* 圖片 */
     .bento_list_item_option_pic {
         display: flex;
-        width: 16%;
         margin-right: 4%;
     }
 
@@ -339,7 +429,7 @@ export default {
     /* 名稱、明細 */
     .bento_list_item_option_name {
         display: flex;
-        width: 20%;
+        width: 40%;
         flex-direction: column;
         justify-content: center;
         margin-right: 6%;
@@ -375,7 +465,7 @@ export default {
 
     /* 按鈕加減 */
     .bento_list_item_option_qty button {
-        width: 12%;
+        width: 24%;
         height: 28px;
         border-radius: 10px;
         border: 2px solid #002451;
@@ -390,7 +480,6 @@ export default {
 
     .quantity-input {
         width: 30%;
-        height: 24%;
         text-align: center;
         margin: 0 4px;
         border-radius: 10px;
@@ -413,130 +502,33 @@ export default {
 
 }
 
-//左邊
-@media screen and (max-width: 1280px) {
-    .bento_list_detail {
-        width: 100%;
-        margin: auto;
+.bento_list_detail {
+    width: 100%;
+    margin: auto;
 
-        .bento_list_item {
-            display: flex;
-            margin: 2%;
-        }
+    .bento_list_item {
+        display: flex;
+        margin: 2%;
+    }
 
-        .bento_list_item_clear button {
-            width: 22%;
-            margin: 2%;
-        }
+    .bento_list_item_clear button {
+        width: 10rem;
+        padding: .5rem;
+        margin: 2%;
+    }
 
-        .bento_list_item_option_cart {
-            margin: 2%;
-        }
+    .bento_list_item_option_cart {
+        margin: 2%;
     }
 }
 
-@media screen and (max-width: 1024px) {
-    .bento_list_detail {
-        width: 100%;
-        margin: auto;
-
-
-        .bento_list_item {
-            display: flex;
-            margin: 2%;
-        }
-
-        .bento_list_item_clear button {
-            width: 26%;
-            margin: 2%;
-        }
-
-        .bento_list_item_option_name {
-            width: 100px;
-        }
-
-        .bento_list_item_option_btn {
-            padding: 2px 4px;
-        }
-
-        .bento_list_item_option_cart {
-            margin: 2%;
-        }
-
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .bento_list_detail {
-        width: 100%;
-        margin: auto;
-
-        .bento_list_item {
-            display: flex;
-            margin: 2%;
-        }
-
-        .bento_list_item_con {
-            width: 10%;
-        }
-
-        .bento_list_item_con span {
-            padding: 0;
-        }
-
-        .bento_list_item_clear button {
-            width: 30%;
-            margin: 2%;
-        }
-
-        .bento_list_item_option_cart {
-            display: flex;
-            margin: 2%;
-        }
-
-        .bento_list_item_option_pic {
-            width: 24%;
-            padding: 0 2%;
-            margin: auto;
-        }
-
-        .bento_list_item_option_center {
-            margin: auto 2%;
-            width: 80%;
-        }
-
-        .bento_list_item_option_name {
-            display: flex;
-            width: 76%;
-        }
-
-        .bento_list_item_option_btn {
-            padding: 4%;
-        }
-
-        .bento_list_item_option_qty {
-            width: 80%;
-        }
-
-        .quantity-input {
-            width: 36%;
-            padding: 4%;
-        }
-
-        .bento_list_item_option_qty button {
-            width: 24%;
-        }
-
-        .bento_list_item_option_price {
-            margin-left: 8%;
-        }
-    }
-}
 
 @media screen and (max-width: 768px) {
     .bento_list_detail {
         width: 100%;
         margin: auto;
+        display: flex;
+        flex-direction: column;
 
         .bento_list_item {
             border-bottom: none;
@@ -557,7 +549,6 @@ export default {
         }
 
         .bento_list_item_option_pic {
-            width: 60%;
             padding: 0 2%;
             margin: auto;
         }
@@ -589,6 +580,7 @@ export default {
         .quantity-input {
             width: 30%;
             padding: 2% 0;
+
         }
 
         .bento_list_item_option_qty button {
@@ -620,7 +612,7 @@ export default {
 /* 標題 */
 .bento_list_info_title {
     text-align: center;
-    padding: 4%;
+    padding: 10%;
 }
 
 /* 欄位名稱 */
@@ -645,9 +637,8 @@ export default {
     color: #fff;
     border: none;
     border-radius: 10px;
-    width: 40%;
     padding: 8px 10px;
-    margin-top: 16%;
+    margin: 10% 0;
     cursor: pointer;
 }
 
@@ -670,9 +661,6 @@ export default {
 }
 
 @media screen and (max-width: 992px) {
-    .bento_list_info_title {
-        margin-top: 4%;
-    }
 
     .bento_list_info_item {
         margin-bottom: 100%;
