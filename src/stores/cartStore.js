@@ -27,8 +27,13 @@ export const useCartStore = defineStore('cart', {
     addToCartA(item) {
       const existingItem = this.cartA.find((i) => i.name === item.name)
       if (existingItem) {
-        existingItem.quantity++
-        existingItem.image = item.image // 更新圖片
+         // 更新图像和食物
+         existingItem.image = item.image;
+         existingItem.foods = item.foods;
+
+         // 只更新价格和总价格，不更新数量
+        existingItem.price = item.price;
+        existingItem.totalPrice = item.totalPrice;
       } else {
         this.cartA.push({ ...item, quantity: 1, selected: false })
       }
