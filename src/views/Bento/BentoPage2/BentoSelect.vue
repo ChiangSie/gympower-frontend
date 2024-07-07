@@ -286,10 +286,10 @@ button {
         }
 
         .grid_item img {
-            width: 150%;
-            height: 150%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: -55px 60%;
+            object-position: center;
         }
     }
 
@@ -327,10 +327,10 @@ button {
         }
 
         .grid_item img {
-            width: 175%;
-            height: 180%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: -50px 90%;
+            object-position: center
         }
     }
 
