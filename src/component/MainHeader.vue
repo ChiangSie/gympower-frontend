@@ -63,7 +63,7 @@
           <input type="checkbox" v-model="item.selected">
           <img :src="getItemImage(item)" alt="商品圖片">
           <div class="cart_itemInfo">
-            <h3>{{ currentCartType === 'A' ? '饗食四合一' : '滿腹六合一' }}</h3>
+            <h3>{{ item.name }}</h3>
             <p>{{ item.totalPrice }}</p>
             <div class="cart_itemQty">
               <button class="cart_removeBtn" @click="decreaseQuantity(index)">-</button>
@@ -77,7 +77,7 @@
               }}</button>
             <div v-if="item.showDetails" class="food_details">
               <p v-for="(food, foodIndex) in item.foods" :key="foodIndex">
-                {{ item.price }} x {{ item.quantity }}
+                {{ food.name }} x {{ food.quantity }}
               </p>
             </div>
           </div>

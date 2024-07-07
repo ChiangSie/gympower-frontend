@@ -101,33 +101,38 @@ export default {
                 const canvas = await html2canvas(bentoBoxElement, options);
                 const compositeImage = canvas.toDataURL();
 
-                const products = selectedFoodImages.value.map((image, index) => {
-                    const food = cartStore.items[index];
-                    if (!food || !food.ItemName) {
-                        console.error(`索引 ${index} 的食材未定義或缺少 ItemName`);
-                        return null;
-                    }
-                    return {
-                        name: containerId.value === 4 ? '饗食四合一' : '滿腹六合一',
-                        quantity: food.qty,
-                        image: compositeImage,
-                        // selected: false,
-                        // showDetails: false,
-                        foods: selectedFoodImages.value,
-                        price: food.price,
-                        totalPrice: food.price * food.qty
-                    };
-                }).filter(product => product !== null);
+                const bentoName = containerId.value === 4 ? '饗食四合一' : '滿腹六合一';
+                const totalPrice = cartStore.items.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-                products.forEach(product => {
-                    shopCartStore.addToCartA(product);
+                // 合併相同的食材並累加數量
+                const foodMap = new Map();
+                cartStore.items.forEach(item => {
+                    if (foodMap.has(item.ItemName)) {
+                        foodMap.get(item.ItemName).quantity += item.qty;
+                    } else {
+                        foodMap.set(item.ItemName, { name: item.ItemName, quantity: item.qty });
+                    }
                 });
 
-                console.log('已添加到購物車的產品:', products);
+                const foods = Array.from(foodMap.values());
+
+                const bentoBox = {
+                    name: bentoName,
+                    quantity: 1, // 整個便當盒作為一個單位
+                    image: compositeImage,
+                    foods: foods,
+                    price: totalPrice,
+                    totalPrice: totalPrice
+                };
+
+                shopCartStore.addToCartA(bentoBox);
+
+                console.log('已添加到購物車的便當盒:', bentoBox);
                 router.push('/bento/bentopage4');
             } catch (error) {
                 console.error('生成圖片或添加到購物車時發生錯誤:', error);
             }
+
         };
 
         return {
