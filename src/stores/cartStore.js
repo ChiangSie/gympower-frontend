@@ -11,7 +11,18 @@ export const useCartStore = defineStore('cart', {
     totalAmountA: (state) =>
       state.cartA.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
     totalAmountB: (state) =>
-      state.cartB.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)
+      state.cartB.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
+    selectedItemsA: (state) => state.cartA.filter(item => item.selected),
+    selectedItemsB: (state) => state.cartB.filter(item => item.selected),
+    selectedTotalA() {
+      return this.selectedItemsA.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
+    selectedTotalB() {
+      return this.selectedItemsB.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
+    selectedTotal() {
+      return this.selectedTotalA + this.selectedTotalB;
+    }
   },
   actions: {
     initializeStore() {
@@ -93,6 +104,17 @@ export const useCartStore = defineStore('cart', {
         this.cartB = []
       }
       this.saveToLocalStorage()
+    },
+     toggleItemSelection(cartType, index) {
+      const cart = cartType === 'A' ? this.cartA : this.cartB;
+      cart[index].selected = !cart[index].selected;
+      this.saveToLocalStorage();
+    },
+    
+    initializeSelectedItems() {
+      this.cartA.forEach(item => item.selected = false);
+      this.cartB.forEach(item => item.selected = false);
+      this.saveToLocalStorage();
     }
   }
 })
