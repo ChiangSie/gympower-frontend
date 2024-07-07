@@ -47,7 +47,7 @@
                             <div class="bento_list_content">
                                 <div class="bento_list_item_option_pic">
                                     <input type="checkbox" v-model="item.selected" class="item-select">
-                                    <img :src="parseImg(item.imgSrc)" :alt="item.name">
+                                    <img :src="getItemImage(item)" alt="商品圖片">
                                 </div>
                                 <div class="bento_list_item_option_center">
                                     <div class="bento_list_item_option_name">
@@ -199,8 +199,8 @@ export default {
         clearCart() {
             this.bentoOption = []
         },
-        parseImg(imgURL) {
-            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href
+        getItemImage: (item) => {
+            return item.image || (currentCartType.value === 'A' ? 'path/to/default_food.jpg' : 'path/to/default_course.jpg')
         },
         clearCart(cartType) {
             if (cartType === 'A') {
@@ -441,6 +441,7 @@ export default {
     .bento_list_item_option_pic {
         display: flex;
         margin-right: 4%;
+        width: 23%;
     }
 
     .bento_list_item_option_pic img {
