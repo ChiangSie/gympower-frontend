@@ -259,6 +259,7 @@ header {
 
   .cart_checkoutItem {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     padding-bottom: 15px;
     padding-top: 15px;
@@ -273,6 +274,11 @@ header {
       aspect-ratio: 4 / 3.5;
     }
 
+  }
+
+  .cart_checkout_content {
+display: flex;
+justify-content: space-between;
   }
 
   .cart_itemInfo {
@@ -361,6 +367,11 @@ header {
       background-color: transparent;
     }
 
+  }
+
+  .food_details {
+    width: 100%;
+    margin-top: 20px;
   }
 
 }

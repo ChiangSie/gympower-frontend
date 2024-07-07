@@ -25,7 +25,9 @@
             <img :src="getItemImage(item)" alt="商品圖片">
             <div class="cart_itemInfo">
               <h3>{{ item.name }}</h3>
-              <p v-if="currentCartType === 'A'">{{ item.food1 }}, {{ item.food2 }}, {{ item.food3 }}</p>
+              <p v-if="currentCartType === 'A'">{{ item.food1 }}, {{ item.food2 }}, {{ item.food3 }},{{
+                item.food4 }}
+              </p>
               <p v-else>{{ item.description }}</p>
               <p>{{ item.price }}</p>
               <div class="cart_itemQty">
@@ -64,7 +66,7 @@
       <div class="product-card" v-for="(product, index) in foodProducts" :key="index">
         <img :src="product.image" alt="產品圖片">
         <h3>{{ product.name }}</h3>
-        <p>{{ product.food1 }}, {{ product.food2 }}, {{ product.food3 }}</p>
+        <p>{{ product.food1 }}, {{ product.food2 }}, {{ product.food3 }},{{ product.food4 }}</p>
         <p>{{ product.price }}</p>
         <button @click="addToCartAFromProduct(product)">加入購物車</button>
       </div>

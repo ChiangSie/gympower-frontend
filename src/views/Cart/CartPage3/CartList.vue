@@ -44,30 +44,41 @@
                         </div>
                         <div v-for="(item, index) in cartStore.cartA" :key="item.id"
                             class="bento_list_item_option_cart">
-                            <div class="bento_list_item_option_pic">
-                                <input type="checkbox" v-model="item.selected" class="item-select">
-                                <img :src="parseImg(item.imgSrc)" :alt="item.name">
+                            <div class="bento_list_content">
+                                <div class="bento_list_item_option_pic">
+                                    <input type="checkbox" v-model="item.selected" class="item-select">
+                                    <img :src="parseImg(item.imgSrc)" :alt="item.name">
+                                </div>
+                                <div class="bento_list_item_option_center">
+                                    <div class="bento_list_item_option_name">
+                                        <p>{{ item.name }}</p>
+                                        <button class="bento_list_item_option_btn"
+                                            @click="showDetails(item)">查看餐盒明细</button>
+                                    </div>
+                                    <div class="bento_list_item_option_qty">
+                                        <button class="qty-btn_reduce"
+                                            @click="cartStore.decreaseQuantity('A', index)">-</button>
+                                        <input type="text" v-model.number="item.quantity"
+                                            @change="cartStore.updateQuantity('A', index)" class="quantity-input">
+                                        <button class="qty-btn_plus"
+                                            @click="cartStore.increaseQuantity('A', index)">+</button>
+                                    </div>
+                                    <div class="bento_list_item_option_price">
+                                        <span>{{ calculateItemTotal(item) }}</span>
+                                    </div>
+                                </div>
+                                <div class="bento_list_item_option_icon">
+                                    <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartA(index)"></i>
+                                </div>
                             </div>
-                            <div class="bento_list_item_option_center">
-                                <div class="bento_list_item_option_name">
-                                    <p>{{ item.name }}</p>
-                                    <button class="bento_list_item_option_btn"
-                                        @click="showDetails(item)">查看餐盒明细</button>
-                                </div>
-                                <div class="bento_list_item_option_qty">
-                                    <button class="qty-btn_reduce"
-                                        @click="cartStore.decreaseQuantity('A', index)">-</button>
-                                    <input type="text" v-model.number="item.quantity"
-                                        @change="cartStore.updateQuantity('A', index)" class="quantity-input">
-                                    <button class="qty-btn_plus"
-                                        @click="cartStore.increaseQuantity('A', index)">+</button>
-                                </div>
-                                <div class="bento_list_item_option_price">
-                                    <span>{{ calculateItemTotal(item) }}</span>
-                                </div>
-                            </div>
-                            <div class="bento_list_item_option_icon">
-                                <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartA(index)"></i>
+                            <div v-if="item.showDetails" class="food_details">
+                                <transition name="fade-down">
+                                    <div>
+                                        <p v-for="(food, foodIndex) in item.foods" :key="foodIndex">
+                                            {{ food.name }} x {{ food.quantity }}
+                                        </p>
+                                    </div>
+                                </transition>
                             </div>
                         </div>
                     </div>
@@ -159,14 +170,15 @@ export default {
     methods: {
         showDetails(item) {
             console.log(`顯示 ${item.name} 的詳細訊息`)
-            // 实现显示详细信息的逻辑
+            item.showDetails = !item.showDetails;
+            // 實現顯示詳細訊息的邏輯
         },
         increaseQuantity(item) {
             item.quantity++
         },
-       calculateItemTotal(item) {
-    return item.price * item.quantity;
-  },
+        calculateItemTotal(item) {
+            return item.price * item.quantity;
+        },
 
         decreaseQuantity(item) {
             if (item.quantity > 1) {
@@ -196,7 +208,7 @@ export default {
             } else if (cartType === 'B') {
                 this.cartStore.clearCart('B');
             }
-        },
+        }
     }
 }
 
@@ -397,11 +409,32 @@ export default {
 
     .bento_list_item_option_cart {
         display: flex;
+        flex-direction: column;
         justify-content: space-evenly;
         background-color: #fff;
         border-radius: 10px;
         padding: 12px;
         margin-bottom: 4%;
+
+        .bento_list_content {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .food_details {
+            margin-top: 30px;
+        }
+
+        .fade-down-enter-active,
+        .fade-down-leave-active {
+            transition: transform 0.3s ease;
+        }
+
+        .fade-down-enter,
+        .fade-down-leave-to {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
     }
 
     /* 圖片 */
@@ -442,10 +475,11 @@ export default {
 
     .bento_list_item_option_btn {
         background-color: #fff;
-        border-radius: 16px;
+        border-radius: 10px;
         border: 1px solid #000;
-        padding: 10% 2%;
+        padding: 3% 2%;
         margin-top: 10px;
+        height: 35px;
     }
 
     .bento_list_item_option_btn:hover {

@@ -58,31 +58,32 @@
     </div>
     <div class="cart_content">
       <div v-if="currentCart.length > 0">
-
         <div class="cart_checkoutItem" v-for="(item, index) in currentCart" :key="index">
-          <input type="checkbox" v-model="item.selected">
-          <img :src="getItemImage(item)" alt="商品圖片">
-          <div class="cart_itemInfo">
-            <h3>{{ item.name }}</h3>
-            <p>{{ item.totalPrice }}</p>
-            <div class="cart_itemQty">
-              <button class="cart_removeBtn" @click="decreaseQuantity(index)">-</button>
-              <input type="text" class="cart_qty" v-model.number="item.quantity" @input="updateQuantity(index)">
-              <button class="cart_addBtn" @click="increaseQuantity(index)">+</button>
+          <div class="cart_checkout_content">
+            <input type="checkbox" v-model="item.selected">
+            <img :src="getItemImage(item)" alt="商品圖片">
+            <div class="cart_itemInfo">
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.totalPrice }}</p>
+              <div class="cart_itemQty">
+                <button class="cart_removeBtn" @click="decreaseQuantity(index)">-</button>
+                <input type="text" class="cart_qty" v-model.number="item.quantity" @input="updateQuantity(index)">
+                <button class="cart_addBtn" @click="increaseQuantity(index)">+</button>
+              </div>
+            </div>
+            <div class="cart_itemBtn">
+              <i class="fa-solid fa-trash-can" @click="removeFromCurrentCart(index)"></i>
+              <button class="cart_detailsBtn" v-if="currentCartType === 'A'" @click="toggleDetails(index)">{{
+                details_btn
+              }}</button>
             </div>
           </div>
-          <div class="cart_itemBtn">
-            <i class="fa-solid fa-trash-can" @click="removeFromCurrentCart(index)"></i>
-            <button class="cart_detailsBtn" v-if="currentCartType === 'A'" @click="toggleDetails(index)">{{ details_btn
-              }}</button>
-            <div v-if="item.showDetails" class="food_details">
-              <p v-for="(food, foodIndex) in item.foods" :key="foodIndex">
-                {{ food.name }} x {{ food.quantity }}
-              </p>
-            </div>
+          <div v-if="item.showDetails" class="food_details">
+            <p v-for="(food, foodIndex) in item.foods" :key="foodIndex">
+              {{ food.name }} x {{ food.quantity }}
+            </p>
           </div>
         </div>
-
       </div>
       <div class="cart_details" v-else>
         <div class="shop_cart_check"></div>
