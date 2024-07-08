@@ -4,7 +4,7 @@ export const useCartStore = defineStore('cart', {
   state: () => ({
     cartA: [],
     cartB: [],
-     selectedItemsA: [],
+    selectedItemsA: [],
     selectedItemsB: [],
   }),
   getters: {

@@ -95,54 +95,32 @@
                         <div v-for="(item, index) in cartStore.cartB" :key="item.id"
                             class="bento_list_item_option_cart">
                             <div class="bento_list_content">
-                            <input type="checkbox" v-model="item.selected" class="item-select">
-                            <div class="bento_list_item_option_center">
-                                <div class="bento_list_item_option_name">
-                                    <p>{{ item.name }}</p>
+                                <input type="checkbox" v-model="item.selected" class="item-select">
+                                <div class="bento_list_item_option_center">
+                                    <div class="bento_list_item_option_name">
+                                        <p>{{ item.name }}</p>
+                                    </div>
+                                    <div class="bento_list_item_option_qty">
+                                        <button class="qty-btn_reduce"
+                                            @click="cartStore.decreaseQuantity('B', index)">-</button>
+                                        <input type="text" v-model.number="item.quantity"
+                                            @change="cartStore.updateQuantity('B', index)" class="quantity-input">
+                                        <button class="qty-btn_plus"
+                                            @click="cartStore.increaseQuantity('B', index)">+</button>
+                                    </div>
+                                    <div class="bento_list_item_option_price">
+                                        <span>{{ calculateItemTotal(item) }}</span>
+                                    </div>
                                 </div>
-                                <div class="bento_list_item_option_qty">
-                                    <button class="qty-btn_reduce"
-                                        @click="cartStore.decreaseQuantity('B', index)">-</button>
-                                    <input type="text" v-model.number="item.quantity"
-                                        @change="cartStore.updateQuantity('B', index)" class="quantity-input">
-                                    <button class="qty-btn_plus"
-                                        @click="cartStore.increaseQuantity('B', index)">+</button>
+                                <div class="bento_list_item_option_icon">
+                                    <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartB(index)"></i>
                                 </div>
-                                <div class="bento_list_item_option_price">
-                                    <span>{{ calculateItemTotal(item) }}</span>
-                                </div>
-                            </div>
-                            <div class="bento_list_item_option_icon">
-                                <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartB(index)"></i>
-                            </div>
                             </div>
                         </div>
                     </div>
                     <!-- 右邊訂單資訊 -->
                     <div class="bento_list_info">
-                        <div class="bento_list_info_item">
-                            <!-- 購物車 A 的商品 -->
-    <div v-if="activeCart === 'A'" class="cart-items">
-      <p class="bento_list_info_title">餐盒商品</p>
-      <div v-for="item in cartStore.selectedItemsA" :key="item.id" class="selected-item">
-        <div class="item-name">{{ item.name }}</div>
-        <div class="item-price">${{ (item.price * item.quantity).toFixed(2) }} x {{ item.quantity }}</div>
-      </div>
-    </div>
-
-    <!-- 購物車 B 的商品 -->
-    <div v-if="activeCart === 'B'" class="cart-items">
-      <p class="bento_list_info_title">課程商品</p>
-      <div v-for="item in cartStore.selectedItemsB" :key="item.id" class="selected-item">
-        <div class="item-name">{{ item.name }}</div>
-        <div class="item-price">${{ (item.price * item.quantity).toFixed(2) }} x {{ item.quantity }}</div>
-      </div>
-    </div>
-                        </div>
-                        <div class="bento_list_info_item_total">
-                            <div class="total_name">{{ total_name }}</div>
-                            <div class="total_price">{{ activeCart === 'A' ? formattedSelectedTotalA : formattedSelectedTotalB }}</div>
-                        </div>
+                        <CartSummary :activeCart="activeCart" :totalName="total_name" />
                         <RouterLink to='/cart/cartpage4'>
                             <button class="bento_list_info_btn">{{ next_page }}</button>
                         </RouterLink>
@@ -157,15 +135,23 @@
 <script>
 import { ref } from 'vue'
 import { useCartStore } from '../../../stores/cartStore'
+import CartSummary from '../../../component/selectedItems.vue'; // 確保路徑正確
+
 
 export default {
+     components: {
+    CartSummary
+  },
     setup() {
         const cartStore = useCartStore()
         const activeCart = ref('A') // 默认显示购物车 A
+        const total_name = ref('合計');
+
 
         return {
             cartStore,
             activeCart,
+            total_name
         }
     },
     data() {
@@ -184,12 +170,12 @@ export default {
         cartStore() {
             return useCartStore()
         },
-         formattedSelectedTotalA() {
-      return this.cartStore.selectedTotalA.toFixed(2);
-    },
-    formattedSelectedTotalB() {
-      return this.cartStore.selectedTotalB.toFixed(2);
-    }
+        formattedSelectedTotalA() {
+            return this.cartStore.selectedTotalA.toFixed(0);
+        },
+        formattedSelectedTotalB() {
+            return this.cartStore.selectedTotalB.toFixed(0);
+        }
     },
     mounted() {
         this.cartStore.initializeSelectedItems()
@@ -240,10 +226,10 @@ export default {
                 this.cartStore.clearCart('B');
             }
         },
-         toggleItemSelection(item, cartType) {
-      item.selected = !item.selected;
-      this.cartStore.updateSelectedItems(cartType);
-    },
+        toggleItemSelection(item, cartType) {
+            item.selected = !item.selected;
+            this.cartStore.updateSelectedItems(cartType);
+        },
     }
 }
 
@@ -473,10 +459,11 @@ export default {
         }
     }
 
-    .bento_list_content{
+    .bento_list_content {
         display: flex;
         flex-direction: row;
     }
+
     /* 圖片 */
     .bento_list_item_option_pic {
         display: flex;
@@ -677,8 +664,6 @@ export default {
 }
 
 
-
-
 /* 右邊 */
 .bento_list_info {
     width: 30%;
@@ -686,56 +671,6 @@ export default {
     border-radius: 10px;
     border: 1px dashed #000;
 }
-
-
-.selected-item{
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    background: #eef5ff;
-    padding: .3rem;
-    margin-bottom: .5rem;
-}
-
-/* 標題 */
-.bento_list_info_title {
-    text-align: center;
-    padding: 1rem;
-}
-
-/* 欄位名稱 */
-.bento_list_info_item {
-    display: flex;
-    justify-content: space-between;
-    margin: 4% 10% 60% 10%;
-    flex-direction: column;
-}
-
-
-.item-name {
-    padding: .5rem;
-}
-
-.item-quantity {
-    flex: 1;
-    text-align: center;
-}
-
-.item-price {
-    flex: 1;
-    text-align: right;
-    padding: .3rem 1rem;
-}
-
-/* 合計欄位名稱 */
-.bento_list_info_item_total {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #000;
-    margin: 0 10%;
-    padding-top: 4%;
-}
-
 /* 下一步按鈕 */
 .bento_list_info_btn {
     background-color: #002451;
@@ -746,46 +681,12 @@ export default {
     margin: 10% 0;
     cursor: pointer;
 }
-
-@media screen and (max-width: 1280px) {
-    .bento_list_info_item {
-        margin-bottom: 230px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .bento_list_info_item {
-        margin-bottom: 210px;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .bento_list_info_item {
-        margin-bottom: 190px;
-    }
-}
-
-@media screen and (max-width: 992px) {
-
-    .bento_list_info_item {
-        margin-bottom: 100%;
-    }
-
-    .bento_list_info_item_total {
-        margin-top: 60%;
-    }
-
-    .bento_list_info_btn {
-        padding: 4%;
-        margin-top: 26%;
-    }
-}
-
 @media screen and (max-width: 768px) {
     .bento_list_info {
         width: 100%;
         margin-top: 6%;
     }
+
 
     .bento_list_info_btn {
         padding: 2%;
