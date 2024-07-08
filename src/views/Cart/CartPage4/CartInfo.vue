@@ -48,7 +48,8 @@
                     <!-- 手機 -->
                     <div class="bento_list_form-group">
                         <label for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
-                        <input v-model="phone" type="number" name="phone" class="styled-input" placeholder="請輸入您的手機號碼">
+                        <input v-model="phone" type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" minlength="10"
+                            class="styled-input" placeholder="請輸入您的手機號碼" required>
                     </div>
                     <!-- 電子信箱 -->
                     <div class="bento_list_form-group">
@@ -90,11 +91,11 @@
                             <option value="連江縣lienchiang_country">連江縣lienchiang_country</option>
                         </select>
                     </div>
-                    <!-- 使用優惠券 -->
+                    <!-- 使用優惠券
                     <div class="bento_list_form-group">
                         <label for="coupon">使用優惠卷：</label>
                         <input v-model="coupon" type="text" name="coupon" class="styled-input" placeholder="請選擇折扣代碼">
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -123,10 +124,10 @@
                         <span>{{ order_subtotal_name }}</span>
                         <span>${{ order_subtotal_price }}</span>
                     </div>
-                    <div class="bento_list_info_center_total_coupon">
+                    <!-- <div class="bento_list_info_center_total_coupon">
                         <span>{{ discount_name }}</span>
                         <span class="coupon_price">${{ discount_price }}</span>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- 尾部總計、下一步 -->
                 <div class="bento_list_info_down">
@@ -262,6 +263,8 @@ export default {
                 this.showAlert('請輸入您的姓名');
             } else if (!this.phone) {
                 this.showAlert('請輸入您的手機號碼');
+            } else if (this.phone.length !== 10) {
+                this.showAlert('手機號碼必須為10位數字');
             } else if (!this.email) {
                 this.showAlert('請輸入您的電子信箱');
             } else if (!this.pay) {

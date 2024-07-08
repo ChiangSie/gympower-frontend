@@ -66,11 +66,11 @@
                             <label for="pickup">取&nbsp;貨&nbsp;據&nbsp;點&nbsp;：</label>
                             <span>{{ $route.query.pickup }}</span>
                         </div>
-                        <!-- 使用優惠券 -->
+                        <!-- 使用優惠券
                         <div class="bento_list_form-group">
                             <label for="coupon">使用優惠卷：</label>
                             <span>{{ $route.query.coupon }}</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- 右邊訂單資訊 -->
@@ -98,10 +98,10 @@
                             <span>{{ order_subtotal_name }}</span>
                             <span>${{ order_subtotal_price }}</span>
                         </div>
-                        <div class="bento_list_info_center_total_coupon">
+                        <!-- <div class="bento_list_info_center_total_coupon">
                             <span>{{ discount_name }}</span>
                             <span class="coupon_price">${{ discount_price }}</span>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- 尾部總計、結帳 -->
                     <div class="bento_list_info_down">
