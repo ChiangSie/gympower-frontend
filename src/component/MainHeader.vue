@@ -100,7 +100,6 @@
           <button class="cart_btn">{{ cart_btn }}</button>
         </RouterLink>
       </div>
-
     </div>
   </div>
 </template>
@@ -125,7 +124,7 @@ export default {
       const none = document.querySelector(".none");
       none.style.pointerEvents = "none";
       none.style.opacity = "0";
-    },
+    }
   },
 
   setup() {
