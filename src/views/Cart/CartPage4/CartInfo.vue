@@ -49,7 +49,7 @@
                     <div class="bento_list_form-group">
                         <label for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
                         <input v-model="phone" type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" minlength="10"
-                            class="styled-input" placeholder="請輸入您的手機號碼" required>
+                            class="styled-input" placeholder="請輸入您的手機號碼" @input="filterNonNumeric">
                     </div>
                     <!-- 電子信箱 -->
                     <div class="bento_list_form-group">
@@ -58,9 +58,9 @@
                     </div>
                     <!-- 付款方式 -->
                     <div class="bento_list_form-group">
-                        <label for="payment">付&nbsp;款&nbsp;方&nbsp;式&nbsp;：</label>
-                        <input v-model="pay" type="radio" name="pay" value="現金">現金
-                        <input v-model="pay" type="radio" name="pay" value="信用卡">信用卡
+                        <label for="payment">付&nbsp;款&nbsp;方&nbsp;式&nbsp;：</label>&nbsp;
+                        <input v-model="pay" type="radio" name="pay" value="現金">現金&nbsp;&nbsp;
+                        <input v-model="pay" type="radio" name="pay" value="信用卡">信用卡&nbsp;&nbsp;
                         <input v-model="pay" type="radio" name="pay" value="行動支付">行動支付
                     </div>
                     <!-- 取貨據點 -->
@@ -282,6 +282,15 @@ export default {
                 text: message,
                 confirmButtonText: '確定'
             });
+        },
+        filterNonNumeric(event) {
+            const input = event.target;
+            const sanitizedValue = input.value.replace(/\D/g, ''); // 移除所有非數字字符
+            if (input.value !== sanitizedValue) {
+                input.value = sanitizedValue; // 更新輸入框的值
+                event.preventDefault(); // 阻止非數字字符的輸入
+            }
+            this.phone = sanitizedValue; // 更新 v-model 綁定的值
         }
     }
 }
@@ -463,8 +472,8 @@ export default {
 
 .bento_list_form-group #pickup {
     border-radius: 4px;
-    padding: 16px;
-    width: 410px;
+    padding: 8px;
+    width: 400px;
 }
 
 @media screen and (max-width: 768px) {

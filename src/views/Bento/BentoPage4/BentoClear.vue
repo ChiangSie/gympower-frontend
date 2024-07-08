@@ -44,7 +44,7 @@ export default {
         const foodStore = useFoodStore();
 
         const goToCart = () => {
-            router.push('/asidecart');
+            router.push('/cart');
         };
 
         const continueShopping = () => {
