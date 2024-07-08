@@ -304,7 +304,7 @@ export default {
     background: linear-gradient(to right bottom, #FADFBF 0%, #FFF2E2 24%, #E8F8FF 77%, #D4EAF7 100%);
     border-radius: 0 10px 10px 10px;
     backdrop-filter: blur(10px);
-    margin: 26% auto 20%;
+    margin: 10rem auto 20%;
     padding: 50px 10px;
     text-align: center;
 }
@@ -423,9 +423,10 @@ export default {
 /* 欄位名稱 */
 .bento_list_item {
     display: flex;
-    padding-bottom: 1.8%;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #000;
     width: 100%;
+    justify-content: space-between;
 }
 
 .bento_list_item_buyer {
@@ -437,10 +438,15 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-top: 1rem;
 }
 
 .bento_list_form-group {
-    margin-bottom: 6%;
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 //input前的名稱
@@ -454,7 +460,7 @@ export default {
 .styled-input {
     border-radius: 4px;
     border: 1.2px solid #707070;
-    width: 400px;
+    width: 100%;
     height: 36px;
     padding: 5px;
 }
@@ -465,15 +471,11 @@ export default {
     box-shadow: 0 0 5px #002451;
 }
 
-// 姓名那列往下移不貼線
-#styled-input_name {
-    margin-top: 30px;
-}
 
 .bento_list_form-group #pickup {
     border-radius: 4px;
-    padding: 8px;
-    width: 400px;
+    padding: 16px;
+    width:100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -483,19 +485,15 @@ export default {
     }
 
     .bento_list_detail {
+        width: 100%;
         margin-top: 4%;
     }
 
     .bento_list_item {
         display: flex;
-        width: 140%;
-        margin-bottom: 10%;
         border-bottom: 1px solid #000;
     }
 
-    .bento_list_item_option {
-        width: 140%;
-    }
 
     .bento_list_form-group label {
         display: none;
@@ -504,7 +502,7 @@ export default {
     .styled-input {
         border-radius: 4px;
         border: 1.2px solid #707070;
-        width: 330px;
+        width: 100%;
         height: 36px;
         padding: 5px;
     }
@@ -513,9 +511,6 @@ export default {
         margin: auto;
     }
 
-    .bento_list_form-group #pickup {
-        width: 340px;
-    }
 
 }
 
@@ -637,7 +632,7 @@ export default {
     display: flex;
     justify-content: space-evenly;
     margin: 60px 0 30px 0;
-
+word-break: keep-all;
 }
 
 .bento_list_item_rule_up {
