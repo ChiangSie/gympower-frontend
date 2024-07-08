@@ -349,7 +349,7 @@ export default {
 
 /* 左邊 */
 .bento_list_detail {
-    width: 70%;
+    width: 60%;
     margin-right: 2%;
     padding: 2%;
 }
@@ -416,13 +416,19 @@ export default {
     }
 
     .bento_list_item {
-        margin-top: 10%;
-        width: 140%;
+        margin-top: 1rem;
+        width: 100%;
     }
 
     .bento_list_item_option {
-        margin-top: 10%;
+        margin-top: 1rem;
     }
+
+    .bento_list_detail {
+    width: 100%;
+    margin-right: 2%;
+    padding: 2%;
+}
 }
 
 
@@ -431,7 +437,7 @@ export default {
 
 /* 右邊 */
 .bento_list_info {
-    width: 30%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     background-color: #fff;
