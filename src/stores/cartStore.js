@@ -3,7 +3,9 @@ import { defineStore } from 'pinia'
 export const useCartStore = defineStore('cart', {
   state: () => ({
     cartA: [],
-    cartB: []
+    cartB: [],
+     selectedItemsA: [],
+    selectedItemsB: [],
   }),
   getters: {
     totalItemsA: (state) => state.cartA.reduce((sum, item) => sum + item.quantity, 0),
@@ -20,9 +22,11 @@ export const useCartStore = defineStore('cart', {
     selectedTotalB() {
       return this.selectedItemsB.reduce((total, item) => total + item.price * item.quantity, 0);
     },
-    selectedTotal() {
-      return this.selectedTotalA + this.selectedTotalB;
-    }
+ selectedTotal() {
+      const totalA = this.selectedItemsA.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const totalB = this.selectedItemsB.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      return totalA + totalB;
+    },
   },
   actions: {
     initializeStore() {
@@ -115,6 +119,13 @@ export const useCartStore = defineStore('cart', {
       this.cartA.forEach(item => item.selected = false);
       this.cartB.forEach(item => item.selected = false);
       this.saveToLocalStorage();
-    }
+    },
+      updateSelectedItems(cartType) {
+      if (cartType === 'A') {
+        this.selectedItemsA = this.cartA.filter(item => item.selected);
+      } else if (cartType === 'B') {
+        this.selectedItemsB = this.cartB.filter(item => item.selected);
+      }
+    },
   }
 })
