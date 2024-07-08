@@ -94,9 +94,8 @@
                         </div>
                         <div v-for="(item, index) in cartStore.cartB" :key="item.id"
                             class="bento_list_item_option_cart">
-                            <div class="bento_list_item_option_pic">
-                                <input type="checkbox" v-model="item.selected" class="item-select">
-                            </div>
+                            <div class="bento_list_content">
+                            <input type="checkbox" v-model="item.selected" class="item-select">
                             <div class="bento_list_item_option_center">
                                 <div class="bento_list_item_option_name">
                                     <p>{{ item.name }}</p>
@@ -116,20 +115,33 @@
                             <div class="bento_list_item_option_icon">
                                 <i class="fa-solid fa-trash-can" @click="cartStore.removeFromCartB(index)"></i>
                             </div>
+                            </div>
                         </div>
                     </div>
                     <!-- 右邊訂單資訊 -->
                     <div class="bento_list_info">
-                        <div class="bento_list_info_title">{{ order_title }}</div>
                         <div class="bento_list_info_item">
-                            <div class="order_subtotal_name">{{ order_subtotal_name }}</div>
-                            <div class="order_subtotal_price">
-                                {{ activeCart === 'A' ? cartStore.totalAmountA : cartStore.totalAmountB }}
-                            </div>
+                            <!-- 購物車 A 的商品 -->
+    <div v-if="activeCart === 'A'" class="cart-items">
+      <p class="bento_list_info_title">餐盒商品</p>
+      <div v-for="item in cartStore.selectedItemsA" :key="item.id" class="selected-item">
+        <div class="item-name">{{ item.name }}</div>
+        <div class="item-price">${{ (item.price * item.quantity).toFixed(2) }} x {{ item.quantity }}</div>
+      </div>
+    </div>
+
+    <!-- 購物車 B 的商品 -->
+    <div v-if="activeCart === 'B'" class="cart-items">
+      <p class="bento_list_info_title">課程商品</p>
+      <div v-for="item in cartStore.selectedItemsB" :key="item.id" class="selected-item">
+        <div class="item-name">{{ item.name }}</div>
+        <div class="item-price">${{ (item.price * item.quantity).toFixed(2) }} x {{ item.quantity }}</div>
+      </div>
+    </div>
                         </div>
                         <div class="bento_list_info_item_total">
                             <div class="total_name">{{ total_name }}</div>
-                            <div class="total_price">{{ total_price }}</div>
+                            <div class="total_price">{{ activeCart === 'A' ? formattedSelectedTotalA : formattedSelectedTotalB }}</div>
                         </div>
                         <RouterLink to='/cart/cartpage4'>
                             <button class="bento_list_info_btn">{{ next_page }}</button>
@@ -158,6 +170,7 @@ export default {
     },
     data() {
         return {
+            activeCart: 'A',
             bentoOption: [],
             bento_select: ' 餐盒', bento_classes: '課程', circle_num_1: '1', circle_num1_con: '購物清單確認',
             circle_num_2: '2', circle_num2_con: '訂購資訊', circle_num_3: '3', circle_num3_con: '訂單成立',
@@ -167,7 +180,25 @@ export default {
 
         }
     },
+    computed: {
+        cartStore() {
+            return useCartStore()
+        },
+         formattedSelectedTotalA() {
+      return this.cartStore.selectedTotalA.toFixed(2);
+    },
+    formattedSelectedTotalB() {
+      return this.cartStore.selectedTotalB.toFixed(2);
+    }
+    },
+    mounted() {
+        this.cartStore.initializeSelectedItems()
+    },
     methods: {
+        clearCart(cartType) {
+            this.cartStore.clearCart(cartType)
+            this.cartStore.clearSelectedItems(cartType)
+        },
         showDetails(item) {
             console.log(`顯示 ${item.name} 的詳細訊息`)
             item.showDetails = !item.showDetails;
@@ -208,7 +239,11 @@ export default {
             } else if (cartType === 'B') {
                 this.cartStore.clearCart('B');
             }
-        }
+        },
+         toggleItemSelection(item, cartType) {
+      item.selected = !item.selected;
+      this.cartStore.updateSelectedItems(cartType);
+    },
     }
 }
 
@@ -232,6 +267,7 @@ export default {
     display: flex;
     margin-top: -101.4px;
     margin-left: -10px;
+    cursor: pointer;
 
     .bento_cart_select_bento,
     .bento_cart_select_classes {
@@ -401,7 +437,7 @@ export default {
         flex-direction: column;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 768px) {
         .bento_list_item_option {
             width: 70%;
         }
@@ -437,6 +473,10 @@ export default {
         }
     }
 
+    .bento_list_content{
+        display: flex;
+        flex-direction: row;
+    }
     /* 圖片 */
     .bento_list_item_option_pic {
         display: flex;
@@ -446,11 +486,14 @@ export default {
 
     .bento_list_item_option_pic img {
         width: 100%;
+        height: auto;
+        object-position: center center;
+        object-fit: cover;
     }
 
     input[type="checkbox"].item-select {
-        margin-right: 2%;
-        margin-left: -2%;
+        margin: 2%;
+        cursor: pointer;
     }
 
     /* 中間內容 */
@@ -644,10 +687,20 @@ export default {
     border: 1px dashed #000;
 }
 
+
+.selected-item{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: #eef5ff;
+    padding: .3rem;
+    margin-bottom: .5rem;
+}
+
 /* 標題 */
 .bento_list_info_title {
     text-align: center;
-    padding: 10%;
+    padding: 1rem;
 }
 
 /* 欄位名稱 */
@@ -655,6 +708,23 @@ export default {
     display: flex;
     justify-content: space-between;
     margin: 4% 10% 60% 10%;
+    flex-direction: column;
+}
+
+
+.item-name {
+    padding: .5rem;
+}
+
+.item-quantity {
+    flex: 1;
+    text-align: center;
+}
+
+.item-price {
+    flex: 1;
+    text-align: right;
+    padding: .3rem 1rem;
 }
 
 /* 合計欄位名稱 */

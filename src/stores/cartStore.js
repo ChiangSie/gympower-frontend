@@ -3,7 +3,9 @@ import { defineStore } from 'pinia'
 export const useCartStore = defineStore('cart', {
   state: () => ({
     cartA: [],
-    cartB: []
+    cartB: [],
+     selectedItemsA: [],
+    selectedItemsB: [],
   }),
   getters: {
     totalItemsA: (state) => state.cartA.reduce((sum, item) => sum + item.quantity, 0),
@@ -11,7 +13,20 @@ export const useCartStore = defineStore('cart', {
     totalAmountA: (state) =>
       state.cartA.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
     totalAmountB: (state) =>
-      state.cartB.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2)
+      state.cartB.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0).toFixed(2),
+    selectedItemsA: (state) => state.cartA.filter(item => item.selected),
+    selectedItemsB: (state) => state.cartB.filter(item => item.selected),
+    selectedTotalA() {
+      return this.selectedItemsA.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
+    selectedTotalB() {
+      return this.selectedItemsB.reduce((total, item) => total + item.price * item.quantity, 0);
+    },
+ selectedTotal() {
+      const totalA = this.selectedItemsA.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const totalB = this.selectedItemsB.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      return totalA + totalB;
+    },
   },
   actions: {
     initializeStore() {
@@ -27,8 +42,13 @@ export const useCartStore = defineStore('cart', {
     addToCartA(item) {
       const existingItem = this.cartA.find((i) => i.name === item.name)
       if (existingItem) {
-        existingItem.quantity++
-        existingItem.image = item.image // 更新圖片
+         // 更新图像和食物
+         existingItem.image = item.image;
+         existingItem.foods = item.foods;
+
+         // 只更新价格和总价格，不更新数量
+        existingItem.price = item.price;
+        existingItem.totalPrice = item.totalPrice;
       } else {
         this.cartA.push({ ...item, quantity: 1, selected: false })
       }
@@ -88,6 +108,24 @@ export const useCartStore = defineStore('cart', {
         this.cartB = []
       }
       this.saveToLocalStorage()
-    }
+    },
+     toggleItemSelection(cartType, index) {
+      const cart = cartType === 'A' ? this.cartA : this.cartB;
+      cart[index].selected = !cart[index].selected;
+      this.saveToLocalStorage();
+    },
+    
+    initializeSelectedItems() {
+      this.cartA.forEach(item => item.selected = false);
+      this.cartB.forEach(item => item.selected = false);
+      this.saveToLocalStorage();
+    },
+      updateSelectedItems(cartType) {
+      if (cartType === 'A') {
+        this.selectedItemsA = this.cartA.filter(item => item.selected);
+      } else if (cartType === 'B') {
+        this.selectedItemsB = this.cartB.filter(item => item.selected);
+      }
+    },
   }
 })

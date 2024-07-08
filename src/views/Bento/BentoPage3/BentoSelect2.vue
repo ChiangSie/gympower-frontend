@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useBentoStore } from '@/stores/bentobox';
 import { useCartListStore } from '@/stores/cart';
@@ -107,6 +107,10 @@ export default {
                 // 合併相同的食材並累加數量
                 const foodMap = new Map();
                 cartStore.items.forEach(item => {
+                    if (!item.ItemName) {
+                        console.error('發現無效的項目:', item);
+                        return;
+                    }
                     if (foodMap.has(item.ItemName)) {
                         foodMap.get(item.ItemName).quantity += item.qty;
                     } else {
@@ -132,8 +136,50 @@ export default {
             } catch (error) {
                 console.error('生成圖片或添加到購物車時發生錯誤:', error);
             }
-
         };
+
+        const updateCartA = async () => {
+            const bentoBoxElement = document.querySelector('.bento_pic');
+            const options = { scale: 1 };
+
+            try {
+                const canvas = await html2canvas(bentoBoxElement, options);
+                const compositeImage = canvas.toDataURL();
+
+                const bentoName = containerId.value === 4 ? '饗食四合一' : '滿腹六合一';
+                const totalPrice = cartStore.items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+                // 合併相同的食材並累加數量
+                const foodMap = new Map();
+                cartStore.items.forEach(item => {
+                    if (!item.ItemName) {
+                        console.error('發現無效的項目:', item);
+                        return;
+                    }
+                    if (foodMap.has(item.ItemName)) {
+                        foodMap.get(item.ItemName).quantity += item.qty;
+                    } else {
+                        foodMap.set(item.ItemName, { name: item.ItemName, quantity: item.qty });
+                    }
+                });
+
+                const foods = Array.from(foodMap.values());
+
+                const existingCartItem = shopCartStore.cartA.find(item => item.name === bentoName);
+                if (existingCartItem) {
+                    existingCartItem.image = compositeImage;
+                    existingCartItem.foods = foods;
+                    existingCartItem.price = totalPrice;
+                    existingCartItem.totalPrice = totalPrice;
+                }
+
+                console.log('購物車便當盒已更新:', existingCartItem);
+            } catch (error) {
+                console.error('生成圖片或更新購物車時發生錯誤:', error);
+            }
+        };
+
+        watch(selectedFoodImages, updateCartA);
 
         return {
             containerId,
@@ -152,6 +198,7 @@ export default {
     }
 }
 </script>
+
 
 
 
@@ -300,10 +347,10 @@ button {
         }
 
         .grid_item img {
-            width: 150%;
-            height: 150%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: -60px 62%;
+            object-position: center;
         }
     }
 
@@ -330,10 +377,10 @@ button {
         }
 
         .grid_item img {
-            width: 175%;
-            height: 180%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: -55px 90%;
+            object-position: center;
         }
     }
 

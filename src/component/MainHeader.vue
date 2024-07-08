@@ -60,7 +60,7 @@
       <div v-if="currentCart.length > 0">
         <div class="cart_checkoutItem" v-for="(item, index) in currentCart" :key="index">
           <div class="cart_checkout_content">
-            <input type="checkbox" v-model="item.selected">
+            <input type="checkbox" v-model="item.selected" class="cart_check">
             <img :src="getItemImage(item)" alt="商品圖片">
             <div class="cart_itemInfo">
               <h3>{{ item.name }}</h3>
