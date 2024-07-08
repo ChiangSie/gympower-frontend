@@ -30,17 +30,27 @@
 
 <script>
 import { useRouter } from 'vue-router';
+import { useBentoStore } from '@/stores/bentobox';
+import { useCartListStore } from '@/stores/cart';
+import { useFoodStore } from '@/stores/foodStore';
+
 
 export default {
     name: 'BentoClear',
     setup() {
         const router = useRouter();
+        const bentoStore = useBentoStore();
+        const cartStore = useCartListStore();
+        const foodStore = useFoodStore();
 
         const goToCart = () => {
             router.push('/asidecart');
         };
 
         const continueShopping = () => {
+            bentoStore.$reset();
+            cartStore.$reset();
+            foodStore.$reset();
             router.push('/bento');
         };
 

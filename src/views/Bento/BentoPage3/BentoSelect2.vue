@@ -179,6 +179,12 @@ export default {
             }
         };
 
+        const resetSelection = () => {
+            bentoStore.$reset();
+            foodStore.$reset();
+            cartStore.$reset();
+        };
+
         watch(selectedFoodImages, updateCartA);
 
         return {
@@ -193,7 +199,8 @@ export default {
             addToCartA,
             parseImg4: parseImg,
             parseImg6: parseImg,
-            handleClick
+            handleClick,
+            resetSelection
         };
     }
 }
