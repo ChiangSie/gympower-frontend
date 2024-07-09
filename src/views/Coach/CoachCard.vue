@@ -5,11 +5,11 @@
                 <div class="card">
                     <img :src="parseImg(coach.coach_img)" alt="教練照片" class="card-image" />
                     <h3>{{ coach.coach_name }}</h3>
-                    <p>專業領域：{{ coach.expertise }}</p>
-                    <p class="rating">
+                    <!-- <p>教練簡介：{{ coach.expertise }}</p> -->
+                    <!-- <p class="rating">
                         <span class="stars">⭐⭐⭐⭐⭐</span>
                         <span>({{ coach.rating }}顆星)</span>
-                    </p>
+                    </p> -->
                     <button class="details-button" @click="showCoachInfo(coach)">詳情介紹</button>
                 </div>
             </div>
@@ -37,14 +37,19 @@ export default {
     },
     data() {
         return {
-            selectedCoach: null
+            selectedCoach: null,
+            coachData: []
         };
+    },
+    computed: {
+        coaches() {
+            return this.coachData;
+        }
     },
     methods: {
         showCoachInfo(coach) {
             this.selectedCoach = coach;
             document.body.style.overflow = 'hidden';
-
         },
         closeCoachInfo() {
             this.selectedCoach = null;
@@ -54,7 +59,25 @@ export default {
             return new URL(`/src/assets/img/c_coach/${imgURL}`, import.meta.url).href;
         }
     },
-};
+    created() {
+        let url = "http://localhost/api/get_coach.php";
+        fetch(url)
+            .then(response => response.json())
+            .then(result => {
+                if (result.code === 200) {
+                    this.coachData = result.data.list.map(item => ({
+                        ...item,
+                        coach_rcm: parseInt(item.coach_rcm)
+                    }));
+                } else {
+                    console.error('API返回錯誤:', result.msg);
+                }
+            })
+            .catch(error => {
+                console.error('獲取數據時出錯:', error);
+            });
+    },
+}
 </script>
 
 <style lang="scss" scoped>
