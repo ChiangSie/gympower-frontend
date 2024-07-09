@@ -2,8 +2,8 @@
     {
         "id": "1",
         "coach_name": "張永豪",
-        "coach_info": "游泳專長，活潑",
-        "coach_licc": "潛水證照、核心訓練、有氧運動",
+        "coach_info": "游泳專長、有氧運動",
+        "coach_licc": "潛水證照",
         "coach_rcm": "好像沒有必要? 也許用v-for寫分數高的就好",
         "coach_img": "coachCard_1.png",
         "expertise": "核心訓練、有氧運動",
@@ -19,7 +19,7 @@
         "coach_licc": "潛水證照",
         "coach_rcm": "好像沒有必要? 也許用v-for寫分數高的就好",
         "coach_img": "coachCard_2.png",
-        "expertise": "核心訓練、有氧運動",
+        "expertise": "游泳專長、有氧運動",
         "rating": "4.8",
         "tag": "有氧運動",
         "intro": "洪振凱教練擁有超過12年的健身行業經驗，專注於幫助客戶達成各種健身目標，無論是增肌、減脂還是提升運動表現。他的訓練方法結合了最新的科學研究和實踐經驗，確保客戶在安全和高效的基礎上取得理想的結果。",
@@ -149,7 +149,7 @@
     },
     {
         "id": "11",
-        "coach_name": "徐志摩 ",
+        "coach_name": "徐志摩",
         "coach_info": "活潑，游泳專長",
         "coach_licc": "潛水證照",
         "coach_rcm": "好像沒有必要? 也許用v-for寫分數高的就好",
