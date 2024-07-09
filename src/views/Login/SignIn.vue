@@ -12,33 +12,31 @@
                 <div class="card-3d-wrapper">
                   <div class="card-front">
                     <div class="center-wrap">
-                      <div class="section text-center">
+                      <form class="section text-center" @submit.prevent="memlogin">
                         <h4 class="pb-3">會員登入</h4>
                         <div class="form-group">
-                          <input type="email" class="form-style" placeholder="Email" />
-                          <i class="input-icon uil uil-at"></i>
+                          <input type="text" class="form-style" name="memid" placeholder="Account"  @blur="checkAcc" v-model="acc" />
+                          <i class="input-icon fa-regular fa-user"></i>
                         </div>
                         <div class="form-group mt-2">
                           <input
                             type="password"
                             class="form-style"
+                            name="mempsw"
                             placeholder="Password"
+                            @blur="checkPsw"
+                            v-model="psw"
                           />
-                          <i class="input-icon uil uil-lock-alt"></i>
+                          <i class="input-icon fa-solid fa-lock"></i>
                         </div>
-                        <a href="/member" class="btn mt-4">登入</a>
-                        <div class="form-group mt-2">
-                          <p>Or</p>
-                          <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-facebook-f"></i></a> -->
-                          <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-google"></i></a> -->
-                          <!-- <a href="https://www.web-leb.com/code" class="btn "><i class="fa-brands fa-github"></i></a> -->
-                        </div>
-                        <p class="mb-0 mt-4 text-center">
-                          <a href="https://www.web-leb.com/code" class="link"
+                        <button class="btn mt-4" type="submit">登入</button>
+                        
+                        <!-- <p class="mb-0 mt-4 text-center">
+                          <a href="#" class="link"
                             >忘記密碼?</a
                           >
-                        </p>
-                      </div>
+                        </p> -->
+                      </form>
                     </div>
                   </div>
                   <div class="card-back">
@@ -86,56 +84,90 @@
 </template>
 
 <script>
-import { LoginAccount } from "/src/stores/LoginAccount.js";
+import { useMemStore } from '/src/stores/mem.js'
 
 export default {
   data() {
     return {
-      // 管理ID輸入框的值
-      textData: "",
-      // 密碼輸入框的值
-      pswData: "",
-    };
+      acc: '', // 管理員帳號
+      psw: '', // 管理員密碼
+      errorMsg: {
+        acc: '', // 帳號錯誤訊息
+        psw: '' // 密碼錯誤訊息
+      }
+    }
   },
   methods: {
-    async memlogin() {
-      try {
-        // 獲取 Pinia Store 的實例
-        const store = LoginAccount();
-
-        // fetch 資料
-        const response = await fetch(`${import.meta.env.BASE_URL}json/loginaccount.json`);
-        const users = await response.json();
-
-        // 查找用戶
-        const loggedInUser = users.find(
-          (u) => u.account === this.textData && u.password === this.pswData
-        );
-
-        if (loggedInUser) {
-          // 設置當前用戶到 Pinia
-          store.setCurrentUser(loggedInUser);
-          // 重置輸入框值
-          this.textData = "";
-          this.pswData = "";
-          // 跳轉到主頁
-          this.$router.push("/AccountMangerView");
-        } else {
-          // 顯示錯誤訊息
-          alert("帳號密碼錯誤");
-          // 重置輸入框值
-          this.textData = "";
-          this.pswData = "";
-        }
-      } catch (error) {
-        // 顯示錯誤訊息
-        console.error("登入失敗:", error);
-        alert("登入失敗");
+    // 檢查帳號是否為空
+    checkAcc() {
+      if (this.acc === '') {
+        this.errorMsg.acc = '*請輸入帳號'
+      } else {
+        this.errorMsg.acc = ''
       }
     },
+    // 檢查密碼是否為空
+    checkPsw() {
+      if (this.psw === '') {
+        this.errorMsg.psw = '*請輸入密碼'
+      } else {
+        this.errorMsg.psw = ''
+      }
+    },
+    // 管理員登入方法
+    async memlogin() {
+      try {
+        // 發送登入請求到後端 API
+        const response = await fetch('http://localhost/api/member.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            u_account: this.acc,
+            u_psw: this.psw
+          })
+        })
+
+        // 解析後端返回的 JSON 數據
+        const data = await response.json()
+
+        if (data.code === 1) {
+          // 如果返回的 code 為 1，表示登入成功
+          const adminStore = useMemStore()
+          adminStore.setCurrentUser({
+            id: data.adminInfo.mem_id, // 設置當前用戶的 ID
+            acc: data.adminInfo.mem_acc // 設置當前用戶的帳號
+          })
+          alert('登入成功!')
+          this.acc = ''
+          this.psw = ''
+          this.$router.push('/AccountMangerView') // 導向後台頁面
+        } else {
+          // 如果返回的 code 不為 1，表示登入失敗，顯示錯誤訊息
+          alert(data.msg || '帳號或密碼錯誤!')
+          this.acc = ''
+          this.psw = ''
+        }
+      } catch (error) {
+        // 處理請求錯誤
+        console.error('登入失敗:', error)
+        alert('登入失敗')
+      }
+    }
   },
-};
+  mounted() {
+    // 組件掛載時檢查是否已登入
+    const memStore = useMemStore()
+    memStore.loadCurrentUser()
+    if (memStore.currentUser) {
+      // 如果已登入，直接導向後台頁面
+      this.$router.push('/AccountMangerView')
+    }
+  }
+}
 </script>
+
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900");
