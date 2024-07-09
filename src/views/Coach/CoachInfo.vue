@@ -20,8 +20,8 @@
                     </div>
                 </div>
                 <div class="coach_info">
-                    <p><span class="custom_p">專長：</span><br>{{ coach.coach_info }}</p>
-                    <p><span class="custom_p">教練介紹：</span><br>{{ coach.coach_licc }}</p>
+                    <p><span class="custom_p">專長：</span><br>{{ coach.expertise }}</p>
+                    <p><span class="custom_p">教練介紹：</span><br>{{ coach.intro }}</p>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@ export default {
         flex-direction: column;
         align-items: center;
         width: 45%;
-        height: 90%;
+        height: 100%;
 
         .large_img {
             margin-bottom: 10px;
@@ -155,6 +155,7 @@ export default {
         p {
             font-size: 14px;
             margin-bottom: 30px;
+            text-align: left;
             .custom_p {
                 font-size: 18px;
                 font-weight: 600;
