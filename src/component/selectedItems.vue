@@ -67,82 +67,80 @@ export default {
 </script>
 
 <style scoped>
-
 .selected-item {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    background: #eef5ff;
-    padding: .3rem;
-    margin-bottom: .5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background: linear-gradient(to right bottom, #D4EAF7 0%, #E8F8FF 24%, #FFF2E2 77%, #FADFBF 100%);
+  padding: .3rem;
+  margin-bottom: .5rem;
 }
 
 /* 標題 */
 .bento_list_info_title {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 /* 欄位名稱 */
 .bento_list_info_item {
-    display: flex;
-    justify-content: space-between;
-    margin: 4% 10% 60% 10%;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  margin: 4% 10% 60% 10%;
+  flex-direction: column;
 }
 
 
 .item-name {
-    padding: .5rem;
+  padding: .5rem;
 }
 
 .item-quantity {
-    flex: 1;
-    text-align: center;
+  flex: 1;
+  text-align: center;
 }
 
 .item-price {
-    flex: 1;
-    text-align: right;
-    padding: .3rem 1rem;
+  flex: 1;
+  text-align: right;
+  padding: .3rem 1rem;
 }
 
 /* 合計欄位名稱 */
 .bento_list_info_item_total {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #000;
-    margin: 0 10%;
-    padding-top: 4%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #000;
+  margin: 0 10%;
+  padding-top: 4%;
 }
 
 @media screen and (max-width: 1280px) {
-    .bento_list_info_item {
-        margin-bottom: 230px;
-    }
+  .bento_list_info_item {
+    margin-bottom: 230px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
-    .bento_list_info_item {
-        margin-bottom: 210px;
-    }
+  .bento_list_info_item {
+    margin-bottom: 210px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-    .bento_list_info_item {
-        margin-bottom: 190px;
-    }
+  .bento_list_info_item {
+    margin-bottom: 190px;
+  }
 }
 
 @media screen and (max-width: 992px) {
 
-    .bento_list_info_item {
-        margin-bottom: 100%;
-    }
+  .bento_list_info_item {
+    margin-bottom: 100%;
+  }
 
-    .bento_list_info_item_total {
-        margin-top: 60%;
-    }
+  .bento_list_info_item_total {
+    margin-top: 60%;
+  }
 }
-
 </style>

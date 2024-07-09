@@ -3,8 +3,14 @@
         <div class="bento_list">
             <div class="bento_list_title">
                 <div class="bento_cart_select">
-                    <span class="bento_cart_select_bento">{{ bento_select }}</span>
-                    <span class="bento_cart_select_classes">{{ bento_classes }}</span>
+                    <span class="bento_cart_select_bento" :class="{ active: activeCart === 'A' }"
+                        @click="selectCart('A')">
+                        餐盒
+                    </span>
+                    <span class="bento_cart_select_classes" :class="{ active: activeCart === 'B' }"
+                        @click="selectCart('B')">
+                        課程
+                    </span>
                 </div>
                 <!-- 步驟 -->
                 <ul class="bento_list_step">
@@ -40,79 +46,38 @@
                     <div class="bento_list_item_option">
                         <!-- 姓名 -->
                         <div class="bento_list_form-group">
-                            <label
-                                for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;：
-                            </label>
+                            <label for="name">姓名：</label>
                             <span>{{ $route.query.name }}</span>
                         </div>
                         <!-- 手機 -->
                         <div class="bento_list_form-group">
-                            <label
-                                for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
+                            <label for="phone">手機：</label>
                             <span>{{ $route.query.phone }}</span>
                         </div>
                         <!-- 手機 -->
                         <div class="bento_list_form-group">
-                            <label for="email">電&nbsp;子&nbsp;信&nbsp;箱&nbsp;：</label>
+                            <label for="email">電子信箱：</label>
                             <span>{{ $route.query.email }}</span>
                         </div>
                         <!-- 付款方式 -->
                         <div class="bento_list_form-group">
-                            <label for="payment">付&nbsp;款&nbsp;方&nbsp;式&nbsp;：</label>
+                            <label for="payment">付款方式：</label>
                             <span>{{ $route.query.pay }}</span>
                         </div>
                         <!-- 取貨據點 -->
                         <div class="bento_list_form-group">
-                            <label for="pickup">取&nbsp;貨&nbsp;據&nbsp;點&nbsp;：</label>
+                            <label for="pickup">取貨據點：</label>
                             <span>{{ $route.query.pickup }}</span>
                         </div>
-                        <!-- 使用優惠券
-                        <div class="bento_list_form-group">
-                            <label for="coupon">使用優惠卷：</label>
-                            <span>{{ $route.query.coupon }}</span>
-                        </div> -->
                     </div>
                 </div>
                 <!-- 右邊訂單資訊 -->
                 <div class="bento_list_info">
-                    <!-- 頭部標題 -->
-                    <div class="bento_list_info_up">{{ cart_list }}</div>
-                    <!-- 中間項目 -->
-                    <div class="bento_list_info_center_type">
-                        <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
-                            <div class="bento_list_info_center_type_con_pic">
-                                <img :src="parseImg(item.imgSrc)" alt="">
-                            </div>
-                            <div class="bento_list_info_center_type_con_name">
-                                <span>{{ item.name }}</span>
-                                <span>${{ item.price }}</span>
-                            </div>
-                            <div class="bento_list_info_center_type_con_qty">
-                                <span>x{{ item.qty }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 中間項目小計 -->
-                    <div class="bento_list_info_center_total">
-                        <div class="bento_list_info_center_total_price">
-                            <span>{{ order_subtotal_name }}</span>
-                            <span>${{ order_subtotal_price }}</span>
-                        </div>
-                        <!-- <div class="bento_list_info_center_total_coupon">
-                            <span>{{ discount_name }}</span>
-                            <span class="coupon_price">${{ discount_price }}</span>
-                        </div> -->
-                    </div>
-                    <!-- 尾部總計、結帳 -->
-                    <div class="bento_list_info_down">
-                        <div class="bento_list_info_item_total">
-                            <span>{{ total_name }}</span>
-                            <span>${{ total_price }}</span>
-                        </div>
-                        <button @click="addToCart" class="bento_list_info_btn">結帳</button>
-                    </div>
+                    <CartSummary :activeCart="activeCart" :totalName="total_name" />
+                    <button class="bento_list_info_btn" @click="addToCart">{{ next_page }}</button>
                 </div>
             </div>
+
             <div class="bento_list_item_rule">
                 <!-- 上一步 -->
                 <RouterLink to='/cart/cartpage4' class="bento_list_item_rule_up">
@@ -137,15 +102,20 @@
             </div>
         </div>
     </section>
-
 </template>
-
 
 <script>
 import Swal from 'sweetalert2';
+import CartSummary from '../../../component/selectedItems3.vue'; // 確保路徑正確
+
 export default {
+    components: {
+        CartSummary
+    },
+
     data() {
         return {
+            activeCart: 'A', // 初始化選擇的值
             bento_select: '餐盒',
             bento_classes: '課程',
             circle_num1_con: '購物清單確認',
@@ -161,7 +131,7 @@ export default {
             discount_name: '優惠卷',
             discount_price_value: -40, // 原始折扣值
             total_name: '合計',
-            next_page: '下一步',
+            next_page: '結帳',
             Previous: '上一步',
             rule: '我已閱讀並同意網站的',
             rule_serve: '服務條款',
@@ -169,14 +139,6 @@ export default {
             rule_return: '退換貨規則',
             order_finsh: '訂單完成 !',
             check_oreder: '請至會員專區查看訂單',
-            ShoppingDetails: [{
-                id: 1,
-                name: '饗食四合一',
-                price: 120,
-                imgSrc: 'bento_box_four.png',
-                qty: 1,
-            },
-            ]
         }
     },
     computed: {
@@ -193,6 +155,9 @@ export default {
         },
     },
     methods: {
+        selectCart(cartType) {
+            this.activeCart = cartType;
+        },
         addToCart() {
             if (!this.isChecked) {
                 this.showAlert('請先勾選已閱讀規則');
@@ -226,7 +191,6 @@ export default {
             return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
         }
     },
-
 }
 </script>
 
@@ -243,11 +207,19 @@ export default {
     text-align: center;
 }
 
+.bento_list_title {
+    .bento_cart_select span.active {
+        background-color: #002451;
+        color: #fff;
+    }
+}
+
 /* 換頁 */
 .bento_cart_select {
     display: flex;
     margin-top: -101.4px;
     margin-left: -10px;
+
 }
 
 .bento_cart_select_bento,
@@ -345,6 +317,7 @@ export default {
 .bento_list_con {
     display: flex;
     padding: 0 1.2%;
+    margin-left: 3%;
 }
 
 /* 左邊 */
@@ -425,10 +398,10 @@ export default {
     }
 
     .bento_list_detail {
-    width: 100%;
-    margin-right: 2%;
-    padding: 2%;
-}
+        width: 100%;
+        margin-right: 2%;
+        padding: 2%;
+    }
 }
 
 
@@ -437,12 +410,17 @@ export default {
 
 /* 右邊 */
 .bento_list_info {
-    width: 40%;
+    width: 30%;
+    margin-left: 5%;
     display: flex;
     flex-direction: column;
     background-color: #fff;
     border-radius: 10px;
     border: 1px dashed #000;
+
+    button {
+        align-self: center;
+    }
 }
 
 .bento_list_info_title {
@@ -527,7 +505,7 @@ export default {
     border-top: 1px solid #000;
     margin: 6px 30px 20px 30px;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 .bento_list_info_item_total span {
@@ -539,9 +517,10 @@ export default {
     color: #fff;
     border: none;
     border-radius: 10px;
-    width: 40%;
+    width: 25%;
+    height: 35px;
     padding: 6px 10px;
-    margin: 2% 0 14% 0;
+    margin: 10% 0 14% 0;
     cursor: pointer;
 }
 

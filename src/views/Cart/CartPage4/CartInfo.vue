@@ -95,44 +95,12 @@
                     </div>
                 </div>
             </div>
-
             <!-- 右邊訂單資訊 -->
             <div class="bento_list_info">
-                <!-- 頭部標題 -->
-                <div class="bento_list_info_up">{{ cart_list }}</div>
-                <!-- 中間項目 -->
-                <div class="bento_list_info_center_type">
-                    <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
-                        <div class="bento_list_info_center_type_con_pic">
-                            <img :src="item.imgSrc" alt="">
-                        </div>
-                        <div class="bento_list_info_center_type_con_name">
-                            <span>{{ item.name }}</span>
-                            <span>${{ item.price }}</span>
-                        </div>
-                        <div class="bento_list_info_center_type_con_qty">
-                            <span>x{{ item.qty }}</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- 中間項目小計 -->
-                <div class="bento_list_info_center_total">
-                    <div class="bento_list_info_center_total_price">
-                        <span>{{ order_subtotal_name }}</span>
-                        <span>${{ order_subtotal_price }}</span>
-                    </div>
-                </div>
-                <!-- 尾部總計、下一步 -->
-                <div class="bento_list_info_down">
-                    <div class="bento_list_info_item_total">
-                        <span>{{ total_name }}</span>
-                        <span>${{ total_price }}</span>
-                    </div>
-                    <button @click="validateAndProceed" class="bento_list_info_btn">下一頁</button>
-                    <!-- <RouterLink :to="buildQuery">
-                        <button class="bento_list_info_btn">下一頁</button>
-                    </RouterLink> -->
-                </div>
+                <CartSummary :activeCart="activeCart" :totalName="total_name" />
+                <RouterLink to='/cart/cartpage5'>
+                    <button class="bento_list_info_btn">{{ next_page }}</button>
+                </RouterLink>
             </div>
         </div>
         <!--服務條款 、 上一步 -->
@@ -147,7 +115,14 @@
 
 <script>
 import Swal from 'sweetalert2';
+import CartSummary from '../../../component/selectedItems2.vue'; // 確保路徑正確
+
+
 export default {
+    components: {
+        CartSummary
+    },
+
     data() {
         return {
             activeCart: 'A',
@@ -174,12 +149,7 @@ export default {
             total_name: '總計',
             total_price: 0,
             Previous: '上一步',
-            ShoppingDetails: [
-                // 示例数据
-                { id: 1, imgSrc: '/public/path_to_image_1', name: '商品名稱 1', price: 100, qty: 1 },
-                { id: 2, imgSrc: '/public/path_to_image_2', name: '商品名稱 2', price: 200, qty: 2 },
-                // 根据实际数据填充
-            ],
+            next_page: '下一步',
         }
     },
     methods: {
@@ -438,22 +408,13 @@ export default {
 }
 
 
-
-
-
-
 /* 右邊 */
+
 .bento_list_info {
     width: 30%;
-    display: flex;
-    flex-direction: column;
     background-color: #fff;
     border-radius: 10px;
     border: 1px dashed #000;
-}
-
-.bento_list_info_title {
-    padding: 0 0 6% 0;
 }
 
 
@@ -543,9 +504,9 @@ export default {
     color: #fff;
     border: none;
     border-radius: 10px;
-    width: 40%;
+    width: 25%;
     padding: 6px 10px;
-    margin: 2% 0 14% 0;
+    margin: 10% 0 14% 0;
     cursor: pointer;
 }
 
