@@ -9,7 +9,7 @@
             </div>
             <!-- 步驟 -->
             <ul class="bento_list_step">
-                <li class="step" :class="{ active: activeCart === 'A' }">
+                <li class="step active" id="circle_1">
                     <div class="circle">
                         <i class="fa-solid fa-check"></i>
                     </div>
@@ -50,8 +50,8 @@
                     <!-- 手機 -->
                     <div class="bento_list_form-group">
                         <label for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
-                        <input v-model="phone" type="tel" name="phone" pattern="09[0-9]{8}" maxlength="10" minlength="10"
-                            class="styled-input" placeholder="請輸入您的手機號碼" @input="filterNonNumeric">
+                        <input v-model="phone" type="tel" name="phone" pattern="09[0-9]{8}" maxlength="10"
+                            minlength="10" class="styled-input" placeholder="請輸入您的手機號碼" @input="filterNonNumeric">
                     </div>
                     <!-- 電子信箱 -->
                     <div class="bento_list_form-group">
@@ -98,12 +98,10 @@
             <!-- 右邊訂單資訊 -->
             <div class="bento_list_info">
                 <CartSummary :activeCart="activeCart" :totalName="total_name" />
-                <!-- <RouterLink to='/cart/cartpage5'> -->
-                    <button class="bento_list_info_btn" @click="validateAndProceed">{{ next_page }}</button>
-                <!-- </RouterLink> -->
+                <button class="bento_list_info_btn" @click="validateAndProceed">{{ next_page }}</button>
             </div>
         </div>
-        <!--服務條款 、 上一步 -->
+        <!-- 服務條款 、 上一步 -->
         <div class="bento_list_item_rule">
             <RouterLink to='/cart' class="bento_list_item_rule_up">
                 <i class="fa-solid fa-angle-left"></i>
