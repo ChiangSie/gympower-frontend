@@ -50,7 +50,7 @@
                     <!-- 手機 -->
                     <div class="bento_list_form-group">
                         <label for="phone">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;機&nbsp;：</label>
-                        <input v-model="phone" type="tel" name="phone" pattern="[0-9]{10}" maxlength="10" minlength="10"
+                        <input v-model="phone" type="tel" name="phone" pattern="09[0-9]{8}" maxlength="10" minlength="10"
                             class="styled-input" placeholder="請輸入您的手機號碼" @input="filterNonNumeric">
                     </div>
                     <!-- 電子信箱 -->
@@ -98,9 +98,9 @@
             <!-- 右邊訂單資訊 -->
             <div class="bento_list_info">
                 <CartSummary :activeCart="activeCart" :totalName="total_name" />
-                <RouterLink to='/cart/cartpage5'>
-                    <button class="bento_list_info_btn">{{ next_page }}</button>
-                </RouterLink>
+                <!-- <RouterLink to='/cart/cartpage5'> -->
+                    <button class="bento_list_info_btn" @click="validateAndProceed">{{ next_page }}</button>
+                <!-- </RouterLink> -->
             </div>
         </div>
         <!--服務條款 、 上一步 -->
@@ -136,11 +136,11 @@ export default {
             list_title: '清單確認',
             buyer_info: '購買人資訊',
             same_info: '同訂購人資料',
-            name: '',
-            phone: '',
-            email: '',
-            pay: '',
-            pickup: '',
+            name: sessionStorage.getItem('name') || '',
+            phone: sessionStorage.getItem('phone') || '',
+            email: sessionStorage.getItem('email') || '',
+            pay: sessionStorage.getItem('pay') || '',
+            pickup: sessionStorage.getItem('pickup') || '',
             cart_list: '訂購清單',
             order_subtotal_name: '小計',
             order_subtotal_price: 0,
@@ -150,30 +150,112 @@ export default {
             total_price: 0,
             Previous: '上一步',
             next_page: '下一步',
+            emailError: false // 新增電子郵件格式錯誤的狀態
+        }
+    },
+    computed: {
+        buildQuery() {
+            return {
+                path: '/cart/cartpage5',
+                query: {
+                    name: this.name,
+                    phone: this.phone,
+                    email: this.email,
+                    pay: this.pay,
+                    pickup: this.pickup,
+                    coupon: this.coupon
+                }
+            };
+        }
+    },
+    watch: {
+        name(value) {
+            sessionStorage.setItem('name', value);
+        },
+        phone(value) {
+            sessionStorage.setItem('phone', value);
+        },
+        email(value) {
+            sessionStorage.setItem('email', value);
+        },
+        pay(value) {
+            sessionStorage.setItem('pay', value);
+        },
+        pickup(value) {
+            sessionStorage.setItem('pickup', value);
+        }
+    },
+    mounted() {
+        const [navigationEntry] = performance.getEntriesByType('navigation');
+        if (navigationEntry && navigationEntry.type === 'reload') {
+            // 页面刷新
+            sessionStorage.removeItem('name');
+            sessionStorage.removeItem('phone');
+            sessionStorage.removeItem('email');
+            sessionStorage.removeItem('pay');
+            sessionStorage.removeItem('pickup');
         }
     },
     methods: {
         filterNonNumeric(event) {
-            event.target.value = event.target.value.replace(/\D/g, '');
-        },
-        validateAndProceed() {
-            if (!this.name || !this.phone || !this.email || !this.pay || !this.pickup) {
-                Swal.fire('提示', '請填寫所有必填欄位', 'warning');
-                return;
+            const input = event.target;
+            const sanitizedValue = input.value.replace(/\D/g, ''); // 移除所有非數字字符
+            if (input.value !== sanitizedValue) {
+                input.value = sanitizedValue; // 更新輸入框的值
+                event.preventDefault(); // 阻止非數字字符的輸入
             }
-            // 執行下一步操作
-            // 可以導航到另一個頁面或執行其他操作
+            this.phone = sanitizedValue; // 更新 v-model 綁定的值
         },
-        buildQuery() {
-            const query = {
-                name: this.name,
-                phone: this.phone,
-                email: this.email,
-                pay: this.pay,
-                pickup: this.pickup,
-            };
-            return { name: 'cart', query };
-        }
+        // validateAndProceed() {
+        //     if (!this.name || !this.phone || !this.email || !this.pay || !this.pickup) {
+        //         Swal.fire('提示', '請填寫所有必填欄位', 'warning');
+        //         return;
+        //     }
+        //     // 執行下一步操作
+        //     // 可以導航到另一個頁面或執行其他操作
+        // },
+
+        validateAndProceed() {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 電子郵件正則表達式
+            const phonePattern = /^09[0-9]{8}$/; // 手機號碼正則表達式，以"09"開頭，後接8個數字
+
+            if (!this.name) {
+                this.showAlert('請輸入您的姓名');
+            } else if (!this.phone) {
+                this.showAlert('請輸入您的手機號碼');
+            } else if (!phonePattern.test(this.phone)) {
+                this.showAlert('手機號碼必須以09開頭');
+            } else if (!this.email) {
+                this.showAlert('請輸入您的電子信箱');
+            } else if (!emailPattern.test(this.email)) {
+                this.emailError = true;
+                this.showAlert('請輸入有效的電子信箱');
+            } else if (!this.pay) {
+                this.showAlert('請選擇付款方式');
+            } else if (!this.pickup) {
+                this.showAlert('請選擇取貨據點');
+            } else {
+                this.$router.push(this.buildQuery);
+            }
+        },
+        showAlert(message) {
+            Swal.fire({
+                icon: 'warning',
+                title: '提示',
+                text: message,
+                confirmButtonText: '確定'
+            });
+        },
+        // buildQuery() {
+        //     const query = {
+        //         name: this.name,
+        //         phone: this.phone,
+        //         email: this.email,
+        //         pay: this.pay,
+        //         pickup: this.pickup,
+        //     };
+        //     return { name: 'cart', query };
+        // }
     }
 }
 </script>
@@ -367,7 +449,7 @@ export default {
 
 .bento_list_form-group #pickup {
     border-radius: 4px;
-    padding: 16px;
+    padding: 8px;
     width: 100%;
 }
 
@@ -505,7 +587,7 @@ export default {
     border: none;
     border-radius: 10px;
     width: 25%;
-    padding: 6px 10px;
+    padding: 10px 10px;
     margin: 10% 0 14% 0;
     cursor: pointer;
 }
