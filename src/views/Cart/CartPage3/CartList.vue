@@ -139,9 +139,9 @@ import CartSummary from '../../../component/selectedItems.vue'; // 確保路徑�
 
 
 export default {
-     components: {
-    CartSummary
-  },
+    components: {
+        CartSummary
+    },
     setup() {
         const cartStore = useCartStore()
         const activeCart = ref('A') // 默认显示购物车 A
@@ -236,6 +236,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bento_cart_select span {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.bento_cart_select span.active {
+    background-color: #002451;
+    color: #fff;
+}
+
+
 /* 外框 */
 .bento_list {
     width: 80%;
@@ -671,6 +683,7 @@ export default {
     border-radius: 10px;
     border: 1px dashed #000;
 }
+
 /* 下一步按鈕 */
 .bento_list_info_btn {
     background-color: #002451;
@@ -681,6 +694,7 @@ export default {
     margin: 10% 0;
     cursor: pointer;
 }
+
 @media screen and (max-width: 768px) {
     .bento_list_info {
         width: 100%;
