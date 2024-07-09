@@ -1,5 +1,5 @@
 <template>
-    <section v-if="coach" class="lightbox">
+    <section v-if="coach" class="lightbox" @click.self="closeCoachInfo">
         <div class="coach_list">
             <div class="close_btn" @click="closeCoachInfo">
                 <i class="fa-regular fa-circle-xmark"></i>
@@ -20,15 +20,8 @@
                     </div>
                 </div>
                 <div class="coach_info">
-                    <div class="rating">
-                        <span class="stars">⭐⭐⭐⭐⭐</span>
-                        <span>({{ coach.rating }}顆星)</span>
-                    </div>
-                    <p><span class="custom_p">簡介：</span><br>{{ coach.intro }}</p>
-                    <p><span class="custom_p">專業領域：</span><br>•{{ coach.expertise }}</p>
-                    <p><span class="custom_p">經驗：</span><br>{{ coach.experience }}</p>
-                    <!-- <p><span class="custom_p">專業資格或證照：</span><br>• {{ coach.qualifications }}<br>• {{ coach.licenses }}
-                    </p> -->
+                    <p><span class="custom_p">專長：</span><br>{{ coach.coach_info }}</p>
+                    <p><span class="custom_p">教練介紹：</span><br>{{ coach.coach_licc }}</p>
                 </div>
             </div>
         </div>
@@ -56,7 +49,6 @@ export default {
         };
     },
     methods: {
-
         closeCoachInfo() {
             this.$emit('close');
         },
@@ -66,7 +58,6 @@ export default {
     }
 };
 </script>
-
 
 <style lang="scss" scoped>
 .lightbox {
@@ -83,207 +74,117 @@ export default {
 }
 
 .coach_list {
-    border: 1px solid #000000;
-    height: 85%;
-    width: 80%;
+    position: relative;
+    border: 1px solid #000;
+    height: 90%;
+    width: 60%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
     background-color: #fff;
-
-    .coach_detail {
-        display: flex;
-        justify-content: space-around;
-        height: 80%;
-    }
-
-    h3 {
-        border-bottom: 1px dashed #000;
-        font-weight: 600;
-        font-size: 26px;
-    }
+    padding: 20px;
+    overflow: hidden;
 
     .close_btn {
+        position: absolute;
+        top: 10px; 
+        right: 20px; 
         font-size: 30px;
         cursor: pointer;
         color: #002451;
-        margin-left: 90%;
-        margin-top: 1%;
+        background-color: #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h3 {
+        font-weight: 600;
+        font-size: 22px;
+        margin-bottom: 20px;
+        border-bottom: dotted;
+    }
+
+    .coach_detail {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
     }
 
     .img_preview {
-
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
-
-
+        width: 45%;
+        height: 90%;
 
         .large_img {
-            width: 163%;
-            height: 30%;
-            aspect-ratio: 4 / 3.5;
-            margin-right: -70px;
-            margin-bottom: 100px;
-
-
-
+            margin-bottom: 10px;
             img {
                 width: 100%;
-                height: 42vh;
+                height: auto;
+                max-height: 50vh;
                 object-fit: cover;
-                object-position: 50% 50%;
-                cursor: pointer;
-                border-radius: 10px;
             }
         }
 
         .thumbnail_list {
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            width: 70%;
-            height: 15%;
-            aspect-ratio: 4 / 3.5;
-            margin-right: 55px;
-
-
+            justify-content: center;
+            gap: 13px;
+            width: 100%;
             img {
-                vertical-align: middle;
-                width: 100%;
-                height: 11vh;
+                width: 70px;
+                height: 70px;
                 object-fit: cover;
-                object-position: 50% 50%;
                 cursor: pointer;
-                border-radius: 10px;
-
             }
-
-
         }
-
     }
 
     .coach_info {
-        margin-top: 2%;
-
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
+        width: 50%;
+        height: 100%;
+        overflow-y: auto;
         p {
-            width: 100%;
-            margin: 8px 0;
-            text-align: start;
-
-
+            font-size: 14px;
+            margin-bottom: 30px;
             .custom_p {
                 font-size: 18px;
                 font-weight: 600;
             }
         }
-
-
-        .rating {
-
-            margin-left: auto;
-
-            .stars {
-                margin-right: 5px;
-            }
-        }
     }
-
 }
 
-
 @media screen and (max-width: 768px) {
-
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #FEEFDA;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: #EB9340;
-        border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #002451;
-    }
-
     .coach_list {
-        .close_btn {
-            margin-left: 70%;
-            margin-top: 5%;
-        }
-
-
+        width: 90%;
         .coach_detail {
             flex-direction: column;
             align-items: center;
-            justify-content: space-around;
-            height: auto;
-            overflow: auto;
-
-            .img_preview {
-
-                margin-top: 25px;
-
-
-                .large_img {
-                    margin-right: 0;
-                    width: 105%;
-                    height: 35%;
-                    aspect-ratio: 4 / 3.5;
-
-
-                    img {
-                        width: 85%;
-                        height: 42vh;
-
-
-                    }
-                }
-
-                .thumbnail_list {
-                    margin-right: 0;
-                    margin-top: 5px;
-                    width: 90%;
-                    height: 50%;
-                    aspect-ratio: 4 / 3.5;
-
-
-                    img {
-                        width: 50%;
-
-                    }
-
-                }
+        }
+        .img_preview {
+            width: 100%;
+            .large_img img {
+                width: 100%;
+                max-height: 30vh;
             }
-
-
-            .coach_info {
-                width: 80%;
-                margin-top: -40%;
-
-                .custom_p {
-                    display: block;
-                    margin-top: 5px;
-
-                }
-
+            .thumbnail_list img {
+                width: 60px;
+                height: 60px;
             }
         }
-
+        .coach_info {
+            width: 100%;
+            text-align: center;
+        }
     }
 }
 </style>

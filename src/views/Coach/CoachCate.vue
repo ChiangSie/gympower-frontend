@@ -2,6 +2,7 @@
     <section class="category">
         <h3>{{ title }}</h3>
         <div class="button_list">
+            <!-- <button class="btn_tag" @click="filter_tag('')">全部</button> -->
             <button class="btn_tag" @click="filter_tag('有氧運動')">有氧運動</button>
             <button class="btn_tag" @click="filter_tag('重量訓練')">重量訓練</button>
             <button class="btn_tag" @click="filter_tag('核心訓練')">核心訓練</button>
@@ -9,8 +10,8 @@
             <button class="btn_tag" @click="filter_tag('功能訓練')">功能訓練</button>
             <button class="btn_tag" @click="filter_tag('團體課程')">團體課程</button>
         </div>
-        <div v-if="sourceData.length === 0">Loading...</div>
-        <div v-else>
+        
+        <div >
             <CoachCard :coaches="filterList" @show-coachInfo="showCoachInfo" />
         </div>
     </section>
@@ -31,23 +32,24 @@ export default {
             selectedFood: null
         }
     },
-    mounted() {
-        fetch(`${import.meta.env.BASE_URL}json/c_coach.json`)
-            .then((res) => res.json())
-            .then((json) => {
-                //確認有沒有response
-                console.log(json)
-                //顯示用
-                this.sourceData = json
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-        this.filter_tag('有氧運動');
+    mounted() {//原本是註解掉的
+        // fetch(`${import.meta.env.BASE_URL}json/c_coach.json`)
+        //     .then((res) => res.json())
+        //     .then((json) => {
+        //         //確認有沒有response
+        //         console.log(json)
+        //         //顯示用
+        //         this.sourceData = json
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error fetching data:', error);
+        //     });
+        // this.filter_tag('有氧運動');
+                //原本是註解掉的
     },
     computed: {
         filterList() {
-            if (this.currentTag == '') return this.sourceData
+            if (this.currentTag == '') return this.sourceData;
             return this.sourceData.filter((coach) => {
                 return coach.tag == this.currentTag
             })
