@@ -87,9 +87,9 @@
                 <div class="bento_list_item_rule_agree">
                     <input type="checkbox" class="item-rule" v-model="isChecked">
                     <span>{{ rule }}</span>
-                    <span class="rule_serve"><a href="#">{{ rule_serve }}</a></span>
-                    <span>{{ rule_and }}</span>
-                    <span class="rule_return"><a href="#">{{ rule_return }}</a></span>
+                    <a href="/Homelightbox" class="rule_serve">{{ rule_serve }}</a>。
+                    <!-- <span>{{ rule_and }}</span>
+                    <span class="rule_return"><a href="#">{{ rule_return }}</a></span> -->
                 </div>
             </div>
             <!-- 完成圖案 -->
@@ -136,8 +136,8 @@ export default {
             Previous: '上一步',
             rule: '我已閱讀並同意網站的',
             rule_serve: '服務條款',
-            rule_and: '與',
-            rule_return: '退換貨規則',
+            // rule_and: '與',
+            // rule_return: '退換貨規則',
             order_finsh: '訂單完成 !',
             check_oreder: '請至會員專區查看訂單',
             isChecked: false,
@@ -587,10 +587,11 @@ export default {
     cursor: pointer;
 }
 
-.bento_list_item_rule_agree .rule_serve a,
-.rule_return a {
+.bento_list_item_rule_agree .rule_serve a{
     color: #000;
-    letter-spacing: .6px;
+    border-bottom: 1px solid blue;
+    // letter-spacing: -1px;
+
 }
 
 @media screen and (max-width: 992px) {
