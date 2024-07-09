@@ -186,6 +186,8 @@ export default {
             bentoStore.$reset();
             foodStore.$reset();
             cartStore.$reset();
+            selectedFoodImages.value = [];  // 清空選擇的食物圖片
+      clickedIndex.value = null;  // 重置點擊狀態
         };
 
         watch(selectedFoodImages, updateCartA);
@@ -233,7 +235,7 @@ export default {
 
 @media screen and (max-width: 768px) {
     .bentobox_bg {
-        height: 80vh;
+        height: 60vh;
 
     }
 
