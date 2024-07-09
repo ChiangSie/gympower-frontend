@@ -541,6 +541,16 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+
+    .bento_list {
+        margin-top: 23%;
+
+    }
+
+    .bento_list_info {
+        margin: auto;
+    }
+
     .bento_list_info_center_type_con {
         width: 84%;
     }

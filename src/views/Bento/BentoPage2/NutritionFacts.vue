@@ -53,7 +53,7 @@ export default {
 
 .nutrition_list {
     border: 1px solid #000000;
-    height: 500px;
+    height: 480px;
     width: 320px;
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@ export default {
         cursor: pointer;
         color: #002451;
         margin-bottom: 8%;
-        margin-left: 70%;
+        margin-left: 50%;
     }
 
     .add_btn {
@@ -107,6 +107,12 @@ export default {
         }
     }
 
+}
+
+@media screen and (max-width: 768px) {
+    .nutrition_info h4 {
+        font-size: 20px;
+    }
 }
 
 .sweetalert-container {
