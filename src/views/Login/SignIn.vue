@@ -31,11 +31,11 @@
                         </div>
                         <button class="btn mt-4" type="submit">登入</button>
                         
-                        <!-- <p class="mb-0 mt-4 text-center">
+                        <p class="mb-0 mt-4 text-center">
                           <a href="#" class="link"
                             >忘記密碼?</a
                           >
-                        </p> -->
+                        </p>
                       </form>
                     </div>
                   </div>
