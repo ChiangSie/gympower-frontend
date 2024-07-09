@@ -42,7 +42,7 @@
       </div>
     </nav>
   </header>
-  <div class="cart_card" v-if="isCartVisible">
+ <div class="cart_card" v-if="isCartVisible">
     <div class="cart_navbar">
       <div class="cart_title">
         <h4>{{ cart_title }}</h4>
@@ -73,9 +73,7 @@
             </div>
             <div class="cart_itemBtn">
               <i class="fa-solid fa-trash-can" @click="removeFromCurrentCart(index)"></i>
-              <button class="cart_detailsBtn" v-if="currentCartType === 'A'" @click="toggleDetails(index)">{{
-                details_btn
-              }}</button>
+              <button class="cart_detailsBtn" v-if="currentCartType === 'A'" @click="toggleDetails(index)">{{ details_btn }}</button>
             </div>
           </div>
           <div v-if="item.showDetails" class="food_details">
@@ -94,7 +92,8 @@
         <button class="delete_btn" @click="deleteSelectedItems">{{ delete_btn }}</button>
         <div class="cart_sum">
           <p>{{ sum_title }}</p>
-          <p>$ {{ totalAmount }}</p>
+          <p v-if="currentCartType === 'A'">$ {{totalAmountA }}</p>
+          <p v-else>$ {{totalAmountB }}</p>
         </div>
         <RouterLink to='/cart'>
           <button class="cart_btn">{{ cart_btn }}</button>
@@ -105,9 +104,10 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted,watch } from 'vue'
 import { useCartStore } from '@/stores/cartStore'
 import { storeToRefs } from 'pinia'
+import { useRoute } from 'vue-router'
 export default {
   methods: {
     showNav() {
@@ -130,19 +130,18 @@ export default {
   setup() {
     const cartStore = useCartStore()
 
+    const route = useRoute()
+
     const { cartA, cartB, totalItemsA, totalItemsB, totalAmountA, totalAmountB } = storeToRefs(cartStore)
 
-    const currentCartType = ref('A')
+    const currentCartType = ref('A')  // 預設顯示購物車A
 
     const isCartVisible = ref(false)
 
     const currentCart = computed(() => {
-      return currentCartType.value === 'A' ? cartA.value : cartB.value
+      return currentCartType.value === 'A' ? cartStore.cartA : cartStore.cartB
     })
 
-    const totalAmount = computed(() => {
-      return currentCartType.value === 'A' ? totalAmountA.value : totalAmountB.value
-    })
 
     const showCartA = () => {
       currentCartType.value = 'A'
@@ -155,6 +154,17 @@ export default {
     const toggleCartVisibility = () => {
       isCartVisible.value = !isCartVisible.value
     }
+     watch(() => route.path, () => {
+      isCartVisible.value = false
+    })
+
+ const increaseQuantity = (index) => {
+      if (currentCartType.value === 'A') {
+        cartStore.increaseQuantity('A', index)
+      } else {
+        cartStore.increaseQuantity('B', index)
+      }
+    }
 
     const removeFromCurrentCart = (index) => {
       if (currentCartType.value === 'A') {
@@ -163,24 +173,31 @@ export default {
         cartStore.removeFromCartB(index)
       }
     }
-
-    const increaseQuantity = (index) => {
-      cartStore.increaseQuantity(currentCartType.value, index)
-    }
     const getItemImage = (item) => {
       return item.image || (currentCartType.value === 'A' ? 'path/to/default_food.jpg' : 'path/to/default_course.jpg')
     }
 
     const decreaseQuantity = (index) => {
-      cartStore.decreaseQuantity(currentCartType.value, index)
+      if (currentCartType.value === 'A') {
+        cartStore.decreaseQuantity('A', index)
+      } else {
+        cartStore.decreaseQuantity('B', index)
+      }
     }
 
     const updateQuantity = (index) => {
-      cartStore.updateQuantity(currentCartType.value, index)
+      if (currentCartType.value === 'A') {
+        cartStore.updateQuantity('A', index)
+      } else {
+        cartStore.updateQuantity('B', index)
+      }
     }
-
-    const deleteSelectedItems = () => {
-      cartStore.deleteSelectedItems(currentCartType.value)
+  const deleteSelectedItems = () => {
+      const selectedItems = currentCart.value.filter(item => item.selected)
+      selectedItems.forEach(item => {
+        const index = currentCart.value.indexOf(item)
+        removeFromCurrentCart(index)
+      })
     }
 
     const toggleDetails = (index) => {
@@ -188,6 +205,7 @@ export default {
       item.showDetails = !item.showDetails;
 
     }
+    cartStore.initializeStore()
 
     onMounted(() => {
       // 確保每個項目都有 selected 屬性
@@ -209,7 +227,8 @@ export default {
       cartStore,
       currentCart,
       currentCartType,
-      totalAmount,
+      totalAmountB,
+      totalAmountA,
       totalItemsA,
       totalItemsB,
       showCartA,
@@ -230,7 +249,8 @@ export default {
       delete_btn: '刪除選中',
       cart_btn: '前往結帳',
       sum_title: '小計',
-      details_btn: '查看餐盒明細'
+      details_btn: '查看餐盒明細',
+      deleteSelectedItems
     }
   }
 };

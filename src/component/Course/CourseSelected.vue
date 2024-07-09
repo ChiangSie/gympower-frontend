@@ -19,13 +19,7 @@
     </div>
   </div>
 
-  <div class="Cart">
-    <h2>購物車</h2>
-    <ul>
-      <li v-for="course in cart" :key="course">{{ course }}</li>
-    </ul>
-  </div>
-  <div ref="alertBox" class="alert">{{ alertMessage }}</div>
+  
 </template>
 
 <script>
