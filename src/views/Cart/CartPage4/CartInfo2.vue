@@ -2,14 +2,12 @@
     <section class="bento_list">
         <div class="bento_list_title">
             <div class="bento_cart_select">
-                <span class="bento_cart_select_bento" :class="{ active: activeCart === 'A' }"
-                    @click="activeCart = 'A'">餐盒</span>
-                <span class="bento_cart_select_classes" :class="{ active: activeCart === 'B' }"
-                    @click="activeCart = 'B'">課程</span>
+                <span class="bento_cart_select_bento">{{ bento_select }}</span>
+                <span class="bento_cart_select_classes">{{ bento_classes }}</span>
             </div>
             <!-- 步驟 -->
             <ul class="bento_list_step">
-                <li class="step" :class="{ active: activeCart === 'A' }">
+                <li class="step active">
                     <div class="circle">
                         <i class="fa-solid fa-check"></i>
                     </div>
@@ -104,7 +102,7 @@
                 <div class="bento_list_info_center_type">
                     <div class="bento_list_info_center_type_con" v-for="item in ShoppingDetails" :key="item.id">
                         <div class="bento_list_info_center_type_con_pic">
-                            <img :src="item.imgSrc" alt="">
+                            <img :src="parseImg(item.imgSrc)" alt="">
                         </div>
                         <div class="bento_list_info_center_type_con_name">
                             <span>{{ item.name }}</span>
@@ -121,6 +119,10 @@
                         <span>{{ order_subtotal_name }}</span>
                         <span>${{ order_subtotal_price }}</span>
                     </div>
+                    <!-- <div class="bento_list_info_center_total_coupon">
+                        <span>{{ discount_name }}</span>
+                        <span class="coupon_price">${{ discount_price }}</span>
+                    </div> -->
                 </div>
                 <!-- 尾部總計、下一步 -->
                 <div class="bento_list_info_down">
@@ -145,81 +147,151 @@
     </section>
 </template>
 
+
 <script>
 import Swal from 'sweetalert2';
 export default {
     data() {
         return {
-            activeCart: 'A',
             bento_select: '餐盒',
             bento_classes: '課程',
-            circle_num1_con: '購物清單',
-            circle_num_2: 2,
-            circle_num2_con: '付款資訊',
-            circle_num_3: 3,
-            circle_num3_con: '完成訂單',
-            list_title: '清單確認',
+            circle_num1_con: '購物清單確認',
+            circle_num_2: '2',
+            circle_num2_con: '訂購資訊',
+            circle_num_3: '3',
+            circle_num3_con: '訂單成立',
+            list_title: '購物清單確認',
             buyer_info: '購買人資訊',
-            same_info: '同訂購人資料',
-            name: '',
-            phone: '',
-            email: '',
-            pay: '',
-            pickup: '',
-            cart_list: '訂購清單',
-            order_subtotal_name: '小計',
-            order_subtotal_price: 0,
-            discount_name: '折扣',
-            discount_price: 0,
-            total_name: '總計',
-            total_price: 0,
+            same_info: '同會員資料',
+
+            name: sessionStorage.getItem('name') || '',
+            phone: sessionStorage.getItem('phone') || '',
+            email: sessionStorage.getItem('email') || '',
+            pay: sessionStorage.getItem('pay') || '',
+            pickup: sessionStorage.getItem('pickup') || '',
+            coupon: sessionStorage.getItem('coupon') || '',
+
+            cart_list: '購物車明細',
+            order_subtotal_name: '商品小計',
+            discount_name: '優惠卷',
+            discount_price_value: -40, // 原始折扣值
+            total_name: '合計',
+            next_page: '下一步',
             Previous: '上一步',
-            ShoppingDetails: [
-                // 示例数据
-                { id: 1, imgSrc: '/public/path_to_image_1', name: '商品名稱 1', price: 100, qty: 1 },
-                { id: 2, imgSrc: '/public/path_to_image_2', name: '商品名稱 2', price: 200, qty: 2 },
-                // 根据实际数据填充
-            ],
+            rule: '我已閱讀並同意網站的',
+            rule_serve: '服務條款',
+            rule_and: '與',
+            rule_return: '退換貨規則',
+            ShoppingDetails: [{
+                id: 1,
+                name: '饗食四合一',
+                price: 120,
+                imgSrc: 'bento_box_four.png',
+                qty: 1,
+            }]
+        }
+    },
+    computed: {
+        order_subtotal_price() {
+            return this.ShoppingDetails.reduce((total, item) => {
+                return total + item.price * item.qty;
+            }, 0);
+        },
+        discount_price() {
+            return this.discount_price_value;
+        },
+        total_price() {
+            return this.order_subtotal_price + this.discount_price_value;
+        },
+        buildQuery() {
+            return {
+                path: '/cart/cartpage5',
+                query: {
+                    name: this.name,
+                    phone: this.phone,
+                    email: this.email,
+                    pay: this.pay,
+                    pickup: this.pickup,
+                    coupon: this.coupon
+                }
+            };
+        }
+    },
+    watch: {
+        name(value) {
+            sessionStorage.setItem('name', value);
+        },
+        phone(value) {
+            sessionStorage.setItem('phone', value);
+        },
+        email(value) {
+            sessionStorage.setItem('email', value);
+        },
+        pay(value) {
+            sessionStorage.setItem('pay', value);
+        },
+        pickup(value) {
+            sessionStorage.setItem('pickup', value);
+        },
+        coupon(value) {
+            sessionStorage.setItem('coupon', value);
+        }
+    },
+    mounted() {
+        const [navigationEntry] = performance.getEntriesByType('navigation');
+        if (navigationEntry && navigationEntry.type === 'reload') {
+            // 页面刷新
+            sessionStorage.removeItem('name');
+            sessionStorage.removeItem('phone');
+            sessionStorage.removeItem('email');
+            sessionStorage.removeItem('pay');
+            sessionStorage.removeItem('pickup');
+            sessionStorage.removeItem('coupon');
         }
     },
     methods: {
-        filterNonNumeric(event) {
-            event.target.value = event.target.value.replace(/\D/g, '');
+        parseImg(imgURL) {
+            return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
         },
         validateAndProceed() {
-            if (!this.name || !this.phone || !this.email || !this.pay || !this.pickup) {
-                Swal.fire('提示', '請填寫所有必填欄位', 'warning');
-                return;
+            if (!this.name) {
+                this.showAlert('請輸入您的姓名');
+            } else if (!this.phone) {
+                this.showAlert('請輸入您的手機號碼');
+            } else if (this.phone.length !== 10) {
+                this.showAlert('手機號碼必須為10位數字');
+            } else if (!this.email) {
+                this.showAlert('請輸入您的電子信箱');
+            } else if (!this.pay) {
+                this.showAlert('請選擇付款方式');
+            } else if (!this.pickup) {
+                this.showAlert('請選擇取貨據點');
+            } else {
+                this.$router.push(this.buildQuery);
             }
-            // 執行下一步操作
-            // 可以導航到另一個頁面或執行其他操作
         },
-        buildQuery() {
-            const query = {
-                name: this.name,
-                phone: this.phone,
-                email: this.email,
-                pay: this.pay,
-                pickup: this.pickup,
-            };
-            return { name: 'cart', query };
+        showAlert(message) {
+            Swal.fire({
+                icon: 'warning',
+                title: '提示',
+                text: message,
+                confirmButtonText: '確定'
+            });
+        },
+        filterNonNumeric(event) {
+            const input = event.target;
+            const sanitizedValue = input.value.replace(/\D/g, ''); // 移除所有非數字字符
+            if (input.value !== sanitizedValue) {
+                input.value = sanitizedValue; // 更新輸入框的值
+                event.preventDefault(); // 阻止非數字字符的輸入
+            }
+            this.phone = sanitizedValue; // 更新 v-model 綁定的值
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.bento_cart_select span {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-.bento_cart_select span.active {
-    background-color: #002451;
-    color: #fff;
-}
-
 /* 外框 */
 .bento_list {
     width: 80%;
