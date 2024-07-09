@@ -14,10 +14,10 @@
         <div v-else class="mobile-menu">
             <select @change="navigate">
                 <option value="">選擇功能</option>
-                <option value="/AccountMangerView">帳號管理</option>
-                <option value="/MemberCourse">會員課程</option>
-                <option value="/OrderView">訂單查詢</option>
-                <option value="/DiaryCollect">日記收藏</option>
+                <option value="/AccountMangerView"><router-link to="/AccountMangerView">帳號管理</router-link></option>
+                <option value="/MemberCourse"><router-link to="/MemberCourse">會員課程</router-link></option>
+                <option value="/OrderView"><router-link to="/OrderView">訂單查詢</router-link></option>
+                <option value="/DiaryCollect"><router-link to="/DiaryCollect">日記收藏</router-link></option>
             </select>
         </div>
         <main>

@@ -137,7 +137,7 @@ export default {
           const adminStore = useMemStore()
           adminStore.setCurrentUser({
             id: data.adminInfo.mem_id, // 設置當前用戶的 ID
-            acc: data.adminInfo.mem_acc // 設置當前用戶的帳號
+            // acc: data.adminInfo.mem_acc // 設置當前用戶的帳號
           })
           alert('登入成功!')
           this.acc = ''
