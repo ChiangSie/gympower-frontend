@@ -224,7 +224,7 @@ export default {
             } else if (!this.phone) {
                 this.showAlert('請輸入您的手機號碼');
             } else if (!phonePattern.test(this.phone)) {
-                this.showAlert('手機號碼必須以09開頭');
+                this.showAlert('手機號碼必須以09開頭，共10碼數字');
             } else if (!this.email) {
                 this.showAlert('請輸入您的電子信箱');
             } else if (!emailPattern.test(this.email)) {
