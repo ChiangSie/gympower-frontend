@@ -53,7 +53,7 @@
                                     <div class="bento_list_item_option_name">
                                         <p>{{ item.name }}</p>
                                         <button class="bento_list_item_option_btn"
-                                            @click="showDetails(item)">查看餐盒明细</button>
+                                            @click="showDetails(item)">查看餐盒明細</button>
                                     </div>
                                     <div class="bento_list_item_option_qty">
                                         <button class="qty-btn_reduce"
