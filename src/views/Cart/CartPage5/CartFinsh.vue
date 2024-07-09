@@ -74,7 +74,7 @@
                 <!-- 右邊訂單資訊 -->
                 <div class="bento_list_info">
                     <CartSummary :activeCart="activeCart" :totalName="total_name" />
-                    <button class="bento_list_info_btn" @click="addToCart">{{ next_page }}</button>
+                    <button class="bento_list_info_btn" @click="finishOrder">{{ next_page }}</button>
                 </div>
             </div>
 
@@ -106,7 +106,8 @@
 
 <script>
 import Swal from 'sweetalert2';
-import CartSummary from '../../../component/selectedItems3.vue'; // 確保路徑正確
+import CartSummary from '../../../component/selectedItems3.vue';
+import { useCartStore } from '@/stores/cartStore';
 
 export default {
     components: {
@@ -139,6 +140,7 @@ export default {
             rule_return: '退換貨規則',
             order_finsh: '訂單完成 !',
             check_oreder: '請至會員專區查看訂單',
+            isChecked: false,
         }
     },
     computed: {
@@ -158,11 +160,12 @@ export default {
         selectCart(cartType) {
             this.activeCart = cartType;
         },
-        addToCart() {
+        finishOrder() {
             if (!this.isChecked) {
                 this.showAlert('請先勾選已閱讀規則');
             } else {
                 this.showAlertCart();
+                this.clearCart();
             }
         },
         showAlert(message) {
@@ -186,6 +189,10 @@ export default {
                 showConfirmButton: false,
                 timer: 1200,
             })
+        },
+        clearCart() {
+            const cartStore = useCartStore();
+            cartStore.clearCart(this.activeCart);
         },
         parseImg(imgURL) {
             return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
