@@ -39,20 +39,56 @@ export const useCartStore = defineStore('cart', {
       localStorage.setItem('cartA', JSON.stringify(this.cartA))
       localStorage.setItem('cartB', JSON.stringify(this.cartB))
     },
-    addToCartA(item) {
-      const existingItem = this.cartA.find((i) => i.name === item.name)
-      if (existingItem) {
-        // 更新图像和食物
-        existingItem.image = item.image
-        existingItem.foods = item.foods
-
-        // 只更新价格和总价格，不更新数量
-        existingItem.price = item.price
-        existingItem.totalPrice = item.totalPrice
+   addToCartA(item) {
+      const existingItemIndex = this.cartA.findIndex((i) => this.isSameBento(i, item));
+      if (existingItemIndex !== -1) {
+        // 更新現有項目
+        const existingItem = this.cartA[existingItemIndex];
+        if (this.isSameBento(existingItem, item) && existingItem.totalPrice === item.totalPrice) {
+          // 如果食材和總價格都相同，則增加數量
+          existingItem.quantity += 1;
+        } else {
+          // 如果食材或總價格不同，則更新為新的內容
+          existingItem.image = item.image;
+          existingItem.foods = item.foods;
+          existingItem.price = item.price;
+          existingItem.totalPrice = item.totalPrice;
+          // 不增加數量，保持為1
+        }
       } else {
-        this.cartA.push({ ...item, quantity: 1, selected: false })
+        // 添加新項目
+        this.cartA.push({ ...item, quantity: 1, selected: false });
       }
-      this.saveToLocalStorage()
+      this.saveToLocalStorage();
+    },
+
+    isSameBento(...bentos) {
+      if (bentos.length < 2) return true;
+      
+      const firstBento = bentos[0];
+      const foodsLength = firstBento.foods.length;
+
+      // 檢查所有便當的食材數量是否相同
+      if (!bentos.every(bento => bento.foods.length === foodsLength)) {
+        return false;
+      }
+
+      // 對每個便當的食材進行排序
+      const sortedBentos = bentos.map(bento => 
+        [...bento.foods].sort((a, b) => a.name.localeCompare(b.name))
+      );
+
+      // 比較所有便當的食材
+      for (let i = 0; i < foodsLength; i++) {
+        const firstFood = sortedBentos[0][i];
+        if (!sortedBentos.every(bento => 
+          bento[i].name === firstFood.name && bento[i].quantity === firstFood.quantity
+        )) {
+          return false;
+        }
+      }
+
+      return true;
     },
     addToCartB(item) {
       const existingItem = this.cartB.find(
@@ -114,7 +150,6 @@ export const useCartStore = defineStore('cart', {
       cart[index].selected = !cart[index].selected
       this.saveToLocalStorage()
     },
-
     initializeSelectedItems() {
       this.cartA.forEach((item) => (item.selected = false))
       this.cartB.forEach((item) => (item.selected = false))

@@ -13,7 +13,7 @@
                     <h1>{{ title_txt }}</h1>
                 </div>
                 <RouterLink to='/bento/bentopage4' class="btn_link">
-                    <button class="bentobox_button_right" @click="addToCartA">
+                    <button class="bentobox_button_right" @click="addToCartA(item)">
                         <p>{{ button_txt_right }}</p>
                         <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon_right" />
                     </button>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useBentoStore } from '@/stores/bentobox';
 import { useCartListStore } from '@/stores/cart';
@@ -69,6 +69,7 @@ export default {
         const cartStore = useCartListStore();
         const shopCartStore = useCartStore();
         const foodStore = useFoodStore();
+
 
         const selectedFoodImages = ref(route.query.selectedImages || []);
         const containerId = computed(() => bentoStore.containerId);
@@ -117,18 +118,18 @@ export default {
                         foodMap.set(item.ItemName, { name: item.ItemName, quantity: item.qty });
                     }
                 });
-
                 const foods = Array.from(foodMap.values());
 
                 const bentoBox = {
                     name: bentoName,
-                    quantity: 1, // 整個便當盒作為一個單位
                     image: compositeImage,
                     foods: foods,
                     price: totalPrice,
                     totalPrice: totalPrice
                 };
 
+
+               
                 shopCartStore.addToCartA(bentoBox);
 
                 console.log('已添加到購物車的便當盒:', bentoBox);
@@ -137,7 +138,9 @@ export default {
                 console.error('生成圖片或添加到購物車時發生錯誤:', error);
             }
         };
-
+        onMounted(() => {
+            shopCartStore.initializeStore();
+        });
         const updateCartA = async () => {
             const bentoBoxElement = document.querySelector('.bento_pic');
             const options = { scale: 1 };
