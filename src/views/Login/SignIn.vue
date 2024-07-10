@@ -41,10 +41,14 @@
                   </div>
                   <div class="card-back">
                     <div class="center-wrap">
-                      <div class="section text-center">
+                      <form class="section text-center" @submit.prevent="register">
                         <h4 class="mb-3 pb-3">註冊帳號</h4>
                         <div class="form-group">
-                          <input type="text" class="form-style" placeholder="Name" />
+                          <input type="text" class="form-style" placeholder="Name" v-model="addmember.addname"/>
+                          <i class="input-icon fa-solid fa-signature"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input type="text" class="form-style" placeholder="Account" v-model="addmember.addacc" />
                           <i class="input-icon uil uil-user"></i>
                         </div>
                         <div class="form-group mt-2">
@@ -52,11 +56,12 @@
                             type="tel"
                             class="form-style"
                             placeholder="Phone Number"
+                            v-model="addmember.addphone"
                           />
                           <i class="input-icon uil uil-phone"></i>
                         </div>
                         <div class="form-group mt-2">
-                          <input type="email" class="form-style" placeholder="Email" />
+                          <input type="email" class="form-style" placeholder="Email" v-model="addmember.addemail"/>
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
@@ -64,13 +69,12 @@
                             type="password"
                             class="form-style"
                             placeholder="Password"
+                            v-model="addmember.addpsw"
                           />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <a href="https://www.web-leb.com/code" class="btn mt-4"
-                          >點我註冊</a
-                        >
-                      </div>
+                        <span type="submit">點我註冊</span>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -89,16 +93,22 @@ import { useMemStore } from '/src/stores/mem.js'
 export default {
   data() {
     return {
-      acc: '', // 管理員帳號
-      psw: '', // 管理員密碼
+      acc: '',
+      psw: '',
       errorMsg: {
-        acc: '', // 帳號錯誤訊息
-        psw: '' // 密碼錯誤訊息
+        acc: '',
+        psw: ''
+      },
+      addmember: {
+        addname: '',
+        addacc: '',
+        addemail: '',
+        addphone: '',
+        addpsw: ''
       }
     }
   },
   methods: {
-    // 檢查帳號是否為空
     checkAcc() {
       if (this.acc === '') {
         this.errorMsg.acc = '*請輸入帳號'
@@ -106,7 +116,6 @@ export default {
         this.errorMsg.acc = ''
       }
     },
-    // 檢查密碼是否為空
     checkPsw() {
       if (this.psw === '') {
         this.errorMsg.psw = '*請輸入密碼'
@@ -114,10 +123,8 @@ export default {
         this.errorMsg.psw = ''
       }
     },
-    // 管理員登入方法
     async memlogin() {
       try {
-        // 發送登入請求到後端 API
         const response = await fetch(`${import.meta.env.VITE_PHP_URL}member.php`, {
           method: 'POST',
           headers: {
@@ -129,39 +136,72 @@ export default {
           })
         })
 
-        // 解析後端返回的 JSON 數據
         const data = await response.json()
 
         if (data.code === 1) {
-          // 如果返回的 code 為 1，表示登入成功
-          const adminStore = useMemStore()
-          adminStore.setCurrentUser({
-            id: data.adminInfo.mem_id, // 設置當前用戶的 ID
-            // acc: data.adminInfo.mem_acc // 設置當前用戶的帳號
+          const memStore = useMemStore()
+          memStore.setCurrentUser({
+            id: data.memInfo.mem_id,
           })
           alert('登入成功!')
           this.acc = ''
           this.psw = ''
-          this.$router.push('/AccountMangerView') // 導向後台頁面
+          this.$router.push('/AccountMangerView')
         } else {
-          // 如果返回的 code 不為 1，表示登入失敗，顯示錯誤訊息
           alert(data.msg || '帳號或密碼錯誤!')
           this.acc = ''
           this.psw = ''
         }
       } catch (error) {
-        // 處理請求錯誤
         console.error('登入失敗:', error)
         alert('登入失敗')
       }
+    },
+    async register() {
+  if (!(this.addmember.addname && this.addmember.addacc && this.addmember.addemail && this.addmember.addphone && this.addmember.addpsw)) {
+    alert('請填寫所有輸入值');
+    return;
+  }
+
+  try {
+    console.log('Sending data:', this.addmember);
+    const response = await fetch(`${import.meta.env.VITE_PHP_URL}add_mem.php`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.addmember)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const data = await response.json();
+
+    if (!data.error) {
+      alert('註冊成功！');
+      this.addmember = {
+        addname: '',
+        addacc: '',
+        addemail: '',
+        addphone: '',
+        addpsw: ''
+      };
+      document.getElementById('reg-log').checked = false;
+    } else {
+      alert(data.msg || '註冊失敗，請稍後再試。');
+    }
+  } catch (error) {
+    console.error('註冊錯誤:', error);
+    alert('註冊時發生錯誤，請稍後再試。');
+  }
+}
   },
   mounted() {
-    // 組件掛載時檢查是否已登入
     const memStore = useMemStore()
     memStore.loadCurrentUser()
     if (memStore.currentUser) {
-      // 如果已登入，直接導向後台頁面
       this.$router.push('/AccountMangerView')
     }
   }
