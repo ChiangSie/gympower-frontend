@@ -79,11 +79,6 @@ const router = createRouter({
       component: () => import('../views/Cart/CartPage5/CartPage5View.vue')
     },
     {
-      path: '/asidecart',
-      name: 'AsideCartView',
-      component: () => import('../views/AsideCartView.vue')
-    },
-    {
       path: '/member',
       name: 'MemberView',
       component: () => import('../views/Login/MemberView.vue'),
@@ -129,8 +124,17 @@ const router = createRouter({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 }
-  }
-})
+    // 檢查路由是否有 hash
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    // 返回頂部或保存的位置
+    return savedPosition || { top: 0 };
+  },
+});
+
 
 export default router
