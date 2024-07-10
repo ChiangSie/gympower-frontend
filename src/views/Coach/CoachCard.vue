@@ -18,10 +18,6 @@
 </template>
 
 <script>
-
-
-
-
 import CoachInfo from './CoachInfo.vue';
 
 export default {
@@ -59,7 +55,7 @@ export default {
             
         },
         
-    },
+    }, 
     mounted() {
         let url = "http://localhost/api/get_coach.php";
         fetch(url)
@@ -74,21 +70,21 @@ export default {
                     console.error('API返回錯誤:', result.msg);
                 }
 
-                // if (result.code === 200) {
-                //     // 使用 Set 去重
-                //     const coachData = Array.from(new Set(result.data.list.map(
-                //         item => ({
-                //             ...item,
-                //             coach_rcm: parseInt(item.coach_rcm)
-                //         })
-                //     )))
-                //         .map(id => {
-                //             return result.data.list.find(a => a.id === id);
-                //         });
-                //     this.sourceData = coachData;
-                // } else {
-                //     console.error('API返回錯誤:', result.msg);
-                // }
+                if (result.code === 200) {
+                    // 使用 Set 去重
+                    const coachData = Array.from(new Set(result.data.list.map(
+                        item => ({
+                            ...item,
+                            coach_rcm: parseInt(item.coach_rcm)
+                        })
+                    )))
+                        .map(id => {
+                            return result.data.list.find(a => a.id === id);
+                        });
+                    this.sourceData = coachData;
+                } else {
+                    console.error('API返回錯誤:', result.msg);
+                }
             })
             .catch(error => {
                 console.error('獲取數據時出錯:', error);
@@ -97,7 +93,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+// <style lang="scss" scoped>
 * {
     text-decoration: none;
 }
@@ -165,7 +161,7 @@ export default {
 }
 </style>  -->
 
-
+//====================================================
 <template>
     <div>
         <div class="card-container">
@@ -215,8 +211,43 @@ export default {
         parseImg(imgURL) {
             return new URL(`/src/assets/img/c_coach/${imgURL}`, import.meta.url).href;
         },
-    }
-}
+    },
+    //add======================
+    // mounted() {
+    //     let url = "http://localhost/api/get_coach.php";
+    //     fetch(url)
+    //         .then(response => response.json())
+    //         .then(result => {
+    //             if (result.code === 200) {
+    //                 this.coachData = result.data.list.map(item => ({
+    //                     ...item,
+    //                     coach_rcm: parseInt(item.coach_rcm)
+    //                 }));
+    //             } else {
+    //                 console.error('API返回錯誤:', result.msg);
+    //             }
+
+    //             if (result.code === 200) {
+    //                 // 使用 Set 去重
+    //                 const coachData = Array.from(new Set(result.data.list.map(
+    //                     item => ({
+    //                         ...item,
+    //                         coach_rcm: parseInt(item.coach_rcm)
+    //                     })
+    //                 )))
+    //                     .map(id => {
+    //                         return result.data.list.find(a => a.id === id);
+    //                     });
+    //                 this.sourceData = coachData;
+    //             } else {
+    //                 console.error('API返回錯誤:', result.msg);
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('獲取數據時出錯:', error);
+    //         });
+    // },
+}//add=====================
 </script>
 
 <style lang="scss" scoped>
