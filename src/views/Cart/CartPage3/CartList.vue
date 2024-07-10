@@ -36,8 +36,8 @@
                     <!-- 購物車 A 内容 -->
                     <div v-if="activeCart === 'A'" class="bento_list_item_option">
                         <!-- 垃圾桶按鈕 -->
-                        <div class="bento_list_item_clear" @click="clearCart(activeCart)">
-                            <button class="bento_list_item_clear_trash">
+                        <div class="bento_list_item_clear">
+                            <button class="bento_list_item_clear_trash" @click="clearCart(activeCart)">
                                 <p>{{ clear_trash }}</p>
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
@@ -86,8 +86,8 @@
                     <!-- 購物車 B 内容 -->
                     <div v-if="activeCart === 'B'" class="bento_list_item_option">
                         <!-- 垃圾桶按鈕 -->
-                        <div class="bento_list_item_clear" @click="clearCart(activeCart)">
-                            <button class="bento_list_item_clear_trash">
+                        <div class="bento_list_item_clear" >
+                            <button class="bento_list_item_clear_trash" @click="clearCart(activeCart)">
                                 <p>{{ clear_trash }}</p>
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
