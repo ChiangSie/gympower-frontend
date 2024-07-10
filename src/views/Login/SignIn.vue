@@ -118,7 +118,7 @@ export default {
     async memlogin() {
       try {
         // 發送登入請求到後端 API
-        const response = await fetch('http://localhost/api/member.php', {
+        const response = await fetch(`${import.meta.env.VITE_PHP_URL}member.php`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
