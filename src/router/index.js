@@ -7,8 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
-
+      component: HomeView
     },
     {
       path: '/about',
@@ -79,20 +78,27 @@ const router = createRouter({
       component: () => import('../views/Cart/CartPage5/CartPage5View.vue')
     },
     {
-      path: '/asidecart',
-      name: 'AsideCartView',
-      component: () => import('../views/AsideCartView.vue')
-    },
-    {
       path: '/member',
       name: 'MemberView',
       component: () => import('../views/Login/MemberView.vue'),
       children: [
-        { path: '/AccountMangerView', component: () => import('../views/Login/Member/AccountMangerView.vue') },
-        { path: '/DiaryCollect', component: () => import('../views/Login/Member/DiaryCollect.vue') },
-        { path: '/DiscountView', component: () => import('../views/Login/Member/DiscountView.vue') },
-        { path: '/MemberCourse', component: () => import('../views/Login/Member/MemberCourse.vue') },
-        { path: '/OrderView', component: () => import('../views/Login/Member/OrderView.vue') },
+        {
+          path: '/AccountMangerView',
+          component: () => import('../views/Login/Member/AccountMangerView.vue')
+        },
+        {
+          path: '/DiaryCollect',
+          component: () => import('../views/Login/Member/DiaryCollect.vue')
+        },
+        {
+          path: '/DiscountView',
+          component: () => import('../views/Login/Member/DiscountView.vue')
+        },
+        {
+          path: '/MemberCourse',
+          component: () => import('../views/Login/Member/MemberCourse.vue')
+        },
+        { path: '/OrderView', component: () => import('../views/Login/Member/OrderView.vue') }
       ]
     },
     {
@@ -116,11 +122,9 @@ const router = createRouter({
       component: () => import('../views/About/AboutMap.vue')
     },
     {
-
       path: '/Homelightbox',
       name: 'Homelightbox',
       component: () => import('../views/Home/HomeLightBox.vue')
-
     },
     {
       path: '/111',
