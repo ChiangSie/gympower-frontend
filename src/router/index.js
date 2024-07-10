@@ -133,8 +133,17 @@ const router = createRouter({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 }
-  }
-})
+    // 檢查路由是否有 hash
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    // 返回頂部或保存的位置
+    return savedPosition || { top: 0 };
+  },
+});
+
 
 export default router
