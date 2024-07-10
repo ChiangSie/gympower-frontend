@@ -138,7 +138,6 @@ export default {
             <button class="btn_tag" @click="filter_tag('功能訓練')">功能訓練</button>
             <button class="btn_tag" @click="filter_tag('團體課程')">團體課程</button>
         </div>
-        
         <div>
             <CoachCard :coaches="filterCoachData" @show-coachInfo="showCoachInfo" />
         </div>
@@ -265,4 +264,3 @@ export default {
     }
 }
 </style>
-

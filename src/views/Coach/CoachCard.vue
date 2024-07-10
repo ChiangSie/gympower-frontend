@@ -182,6 +182,7 @@ export default {
 </template>
 
 <script>
+import { tag } from 'fontawesome';
 import CoachInfo from './CoachInfo.vue';
 
 export default {
@@ -196,7 +197,15 @@ export default {
     },
     data() {
         return {
-            selectedCoach: null
+            selectedCoach: null,
+            // coach_id:'',
+            // coach_name:'',
+            // tag:'',
+            // intro:'',
+            // coach_rcm:'',
+            // coach_img:'',
+            // coach_cate:'',
+            coachData: [],
         };
     },
     methods: {
@@ -213,40 +222,7 @@ export default {
         },
     },
     //add======================
-    // mounted() {
-    //     let url = "http://localhost/api/get_coach.php";
-    //     fetch(url)
-    //         .then(response => response.json())
-    //         .then(result => {
-    //             if (result.code === 200) {
-    //                 this.coachData = result.data.list.map(item => ({
-    //                     ...item,
-    //                     coach_rcm: parseInt(item.coach_rcm)
-    //                 }));
-    //             } else {
-    //                 console.error('API返回錯誤:', result.msg);
-    //             }
 
-    //             if (result.code === 200) {
-    //                 // 使用 Set 去重
-    //                 const coachData = Array.from(new Set(result.data.list.map(
-    //                     item => ({
-    //                         ...item,
-    //                         coach_rcm: parseInt(item.coach_rcm)
-    //                     })
-    //                 )))
-    //                     .map(id => {
-    //                         return result.data.list.find(a => a.id === id);
-    //                     });
-    //                 this.sourceData = coachData;
-    //             } else {
-    //                 console.error('API返回錯誤:', result.msg);
-    //             }
-    //         })
-    //         .catch(error => {
-    //             console.error('獲取數據時出錯:', error);
-    //         });
-    // },
 }//add=====================
 </script>
 

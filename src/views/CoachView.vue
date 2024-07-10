@@ -7,7 +7,7 @@
   <CoachCate />
 
 
-  <CoachCard />
+
 
 
   <CoachInfo />
