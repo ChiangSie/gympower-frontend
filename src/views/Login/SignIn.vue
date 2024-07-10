@@ -73,7 +73,7 @@
                           />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <span type="submit">點我註冊</span>
+                        <button class="btn mt-4" type="submit">點我註冊</button>
                       </form>
                     </div>
                   </div>
@@ -158,45 +158,45 @@ export default {
       }
     },
     async register() {
-  if (!(this.addmember.addname && this.addmember.addacc && this.addmember.addemail && this.addmember.addphone && this.addmember.addpsw)) {
-    alert('請填寫所有輸入值');
-    return;
-  }
+      if (!(this.addmember.addname && this.addmember.addacc && this.addmember.addemail && this.addmember.addphone && this.addmember.addpsw)) {
+        alert('請填寫所有輸入值');
+        return;
+      }
 
-  try {
-    console.log('Sending data:', this.addmember);
-    const response = await fetch(`${import.meta.env.VITE_PHP_URL}add_mem.php`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.addmember)
-    });
+      try {
+        console.log('Sending data:', this.addmember);
+        const response = await fetch(`${import.meta.env.VITE_PHP_URL}add_mem.php`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.addmember)
+        });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.error) {
+          alert('註冊成功！');
+          this.addmember = {
+            addname: '',
+            addacc: '',
+            addemail: '',
+            addphone: '',
+            addpsw: ''
+          };
+          document.getElementById('reg-log').checked = false;
+        } else {
+          alert(data.msg || '註冊失敗，請稍後再試。');
+        }
+      } catch (error) {
+        console.error('註冊錯誤:', error);
+        alert('註冊時發生錯誤，請稍後再試。');
+      }
     }
-
-    const data = await response.json();
-
-    if (!data.error) {
-      alert('註冊成功！');
-      this.addmember = {
-        addname: '',
-        addacc: '',
-        addemail: '',
-        addphone: '',
-        addpsw: ''
-      };
-      document.getElementById('reg-log').checked = false;
-    } else {
-      alert(data.msg || '註冊失敗，請稍後再試。');
-    }
-  } catch (error) {
-    console.error('註冊錯誤:', error);
-    alert('註冊時發生錯誤，請稍後再試。');
-  }
-}
   },
   mounted() {
     const memStore = useMemStore()
@@ -207,6 +207,7 @@ export default {
   }
 }
 </script>
+
 
 
 <style scoped>
