@@ -223,7 +223,7 @@ export default {
     background-color: white;
 }
 .span30{
-    font-size: 21px;
+    font-size: 16px;
     line-height: 30px;
     color: rgba(0, 0, 0, 0.75);
     }

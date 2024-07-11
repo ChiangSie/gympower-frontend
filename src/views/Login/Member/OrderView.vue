@@ -19,22 +19,16 @@
                         <td>訂單狀態</td>
                     </tr>
                     <tr>
-                        <td>{{ item.serialnumber}}</td> 
-                        <td>{{ item.date }}</td>
-                        <td>$ {{ item.sumprice }}</td>
-                        <td>{{ item.type ?  '已取餐' : '未取餐' }}</td>
+                        <td>{{ item.bento_id}}</td> 
+                        <td>{{ item.bento_date }}</td>
+                        <td>$ {{ item.bento_total }}</td>
+                        <td>{{ item.bento_status ?  '已取餐' : '未取餐' }}</td>
                     </tr>
                     <tr class="tr_first tr_second" >
-                        <td>品名</td>
-                        <td>數量</td>
-                        <td>價錢</td>
-                        <td>優惠卷使用</td>
+                        <td>內容</td>
                     </tr>
-                    <tr v-for="sec in item.detail" :key="sec.no" class="tr_second">
-                        <td>{{ sec.name}}</td>
-                        <td>{{ sec.amount }}</td>
-                        <td>{{ sec.price }}</td>
-                        <td>{{ sec.used ? '使用優惠卷' : '未使用優惠卷'}}</td>
+                    <tr class="tr_second">
+                        <td>{{ item.bento_con1}}</td>
                     </tr>
                 </table>
             </div>
@@ -49,203 +43,7 @@
 export default{
     data(){
         return{
-            orderDataList:[
-                {
-                    id : 1,
-                    serialnumber : 'aa00001',
-                    date : '2024/05/31',
-                    sumprice : 450,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : '蛋白套餐',
-                            amount : 2,
-                            price : 150,
-                            used : 0
-                        },
-                        {
-                            no : 2,
-                            name : '自由套餐配',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 3,
-                            name : '套餐自由配',
-                            amount : 1,
-                            price : 100,
-                            used : 0
-                        }
-                    ]
-                },
-                {
-                    id : 2,
-                    serialnumber : 'aa00002',
-                    date : '2024/07/31',
-                    sumprice : 600,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : '雞胸肉套餐',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 2,
-                            name : '水煮蛋套餐',
-                            amount : 1,
-                            price : 200,
-                            used : 0
-                        },
-                        {
-                            no : 3,
-                            name : '神秘蛋白套餐',
-                            amount : 1,
-                            price : 100,
-                            used : 0
-                        },
-                        {
-                            no : 4,
-                            name : '蛋白粉套餐',
-                            amount : 1,
-                            price : 100,
-                            used : 0
-                        }
-                    ]
-                },
-                {
-                    id : 3,
-                    serialnumber : 'aa00003',
-                    date : '2024/07/31',
-                    sumprice : 600,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : '雞胸自由配',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 2,
-                            name : '蛋白自由配',
-                            amount : 1,
-                            price : 200,
-                            used : 0
-                        },
-                        {
-                            no : 3,
-                            name : '嘎啦嘎拉自由配',
-                            amount : 1,
-                            price : 100,
-                            used : 0
-                        },
-                        {
-                            no : 4,
-                            name : '神秘蛋白自由配',
-                            amount : 1,
-                            price : 100,
-                            used : 0
-                        }
-                    ]
-                },
-                {
-                    id : 4,
-                    serialnumber : 'aa00004',
-                    date : '2024/07/31',
-                    sumprice : 600,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : 'aaa',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 2,
-                            name : 'bbb',
-                            amount : 1,
-                            price : 200,
-                            used : 0
-                        },
-                    ]
-                },
-                {
-                    id : 5,
-                    serialnumber : 'aa00005',
-                    date : '2024/07/31',
-                    sumprice : 600,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : 'aaa',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 2,
-                            name : 'bbb',
-                            amount : 1,
-                            price : 200,
-                            used : 0
-                        },
-                    ]
-                },
-                {
-                    id : 6,
-                    serialnumber : 'aa00006',
-                    date : '2024/07/31',
-                    sumprice : 600,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : 'aaa',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 2,
-                            name : 'bbb',
-                            amount : 1,
-                            price : 200,
-                            used : 0
-                        },
-                    ]
-                },
-                {
-                    id : 7,
-                    serialnumber : 'aa00007',
-                    date : '2024/07/31',
-                    sumprice : 600,
-                    type : 0 ,
-                    detail : [
-                        {
-                            no : 1,
-                            name : 'aaa',
-                            amount : 1,
-                            price : 200,
-                            used : 1
-                        },
-                        {
-                            no : 2,
-                            name : 'bbb',
-                            amount : 1,
-                            price : 200,
-                            used : 0
-                        },
-                    ]
-                },
+            bentolist:[
             ],
             currentPage: 1,
             pageSize: 3,
@@ -256,8 +54,8 @@ export default{
         paginatedOrderDataList() {
             const start = (this.currentPage - 1) * this.pageSize;
             const end = start + this.pageSize;
-            console.log(`Paginated list:`, this.orderDataList.slice(start, end));
-            return this.orderDataList.slice(start, end);
+            console.log(`Paginated list:`, this.bentolist.slice(start, end));
+            return this.bentolist.slice(start, end);
     }
     },
     methods: {
@@ -277,10 +75,41 @@ export default{
             trSeconds.forEach(tr => {
             tr.style.display = tr.style.display === 'none' ? 'table-row' : 'none';
         });
-        }
+        },
+        fetchData() {
+            fetch(`${import.meta.env.VITE_PHP_URL}get_bento.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`)
+                }
+                return res.json()
+            })
+            .then((json) => {
+                if (json.code === 200) {
+                    this.bentolist = json.data.list.map((item) => ({
+                        ...item,
+                        bento_id: parseInt(item.bento_id),
+                        bento_status: parseInt(item.bento_status)
+                    }))
+                    this.totalPages = Math.ceil(this.diarylist.length / this.pageSize);
+                } else {
+                    console.error('API返回錯誤:', json.msg)
+                }
+            })
+            .catch((error) => {
+                console.error('獲取數據時出錯:', error)
+            })
+        },
     },
     mounted() {
-        this.totalPages = Math.ceil(this.orderDataList.length / this.pageSize);
+        this.totalPages = Math.ceil(this.bentolist.length / this.pageSize);
+        this.fetchData()
     }
 }
 </script>
@@ -319,6 +148,7 @@ hr{
             background-color: #d4eaf7;
             }
             .tr_second{
+                width: 100%;
                 display: none;
             }
         }
