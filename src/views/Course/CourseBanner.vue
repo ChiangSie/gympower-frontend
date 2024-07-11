@@ -1,7 +1,7 @@
 <template>
     <section class="banner">
         <div class="banner_aboutus_img">
-            <img :src="imgSrc" alt="banner" />
+            <img :src="parseImg('banner_5.jpg')" alt="banner" />
         </div>
         <h1>{{ title }}</h1>
     </section>
@@ -11,9 +11,13 @@
 export default {
     data() {
         return {
-            imgSrc: '/src/assets/img/banner/banner_5.jpg',
             title: '課程資訊'
         }
+    },
+    methods: {
+     parseImg(imgURL) {
+      return new URL(`../../assets/img/banner/${imgURL}`, import.meta.url).href;
+    },
     }
 }
 </script>

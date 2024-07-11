@@ -53,7 +53,7 @@ h1 {
 <template>
     <section class="banner">
         <div class="banner_aboutus_img">
-            <img :src="imgSrc" alt="banner" />
+            <img :src="parseImg('banner_17.jpg')" alt="banner" />
         </div>
         <h1>{{ title }}</h1>
     </section>
@@ -63,9 +63,13 @@ h1 {
 export default {
     data() {
         return {
-            imgSrc: '/src/assets/img/banner/banner_17.jpg',
             title: '教練介紹'
         }
+    },
+    methods: {
+     parseImg(imgURL) {
+      return new URL(`../../assets/img/banner/${imgURL}`, import.meta.url).href;
+    },
     }
 }
 </script>

@@ -88,7 +88,7 @@ background-color: #f9f8f7;
 <template>
   <section class="banner">
     <div class="banner_aboutus_img">
-      <img :src="imgSrc" alt="banner" />
+      <img :src=" parseImg('banner_8.jpg')" alt="banner" />
     </div>
     <h1>{{ title }}</h1>
   </section>
@@ -98,10 +98,14 @@ background-color: #f9f8f7;
 export default {
   data() {
     return {
-      imgSrc: '/src/assets/img/banner/banner_8.jpg',
       title: '最新消息'
     }
-  }
+  },
+    methods: {
+     parseImg(imgURL) {
+      return new URL(`../../assets/img/banner/${imgURL}`, import.meta.url).href;
+    },
+    }
 }
 </script>
 
