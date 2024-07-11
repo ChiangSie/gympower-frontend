@@ -3,12 +3,14 @@
         <aside v-if="!isMobile">
             <ul>
                 <router-link to="/AccountMangerView">帳號管理</router-link>
-                <hr>
+                <hr/>
                 <router-link to="/MemberCourse">會員課程</router-link>
-                <hr>
+                <hr/>
                 <router-link to="/OrderView">訂單查詢</router-link>
-                <hr>
+                <hr/>
                 <router-link to="/DiaryCollect">日記收藏</router-link>
+                <hr/>
+                <span class="sign-out" @click="signOut">登出</span>
             </ul>
         </aside>
         <div v-else class="mobile-menu">
@@ -18,6 +20,7 @@
                 <option value="/MemberCourse"><router-link to="/MemberCourse">會員課程</router-link></option>
                 <option value="/OrderView"><router-link to="/OrderView">訂單查詢</router-link></option>
                 <option value="/DiaryCollect"><router-link to="/DiaryCollect">日記收藏</router-link></option>
+                <option value="#"><span class="sign-out" @click="signOut">登出</span></option>
             </select>
         </div>
         <main>
@@ -29,15 +32,29 @@
 <script>
 import { defineComponent } from 'vue'
 import { RouterView, useRouter } from 'vue-router'
+import { useMemStore } from '/src/stores/mem.js'
+import { mapState } from 'pinia'
 
 export default defineComponent({
     components: {
         RouterView
     },
+    setup() {
+        const router = useRouter()
+        const memStore = useMemStore()
+
+        return {
+            router,
+            memStore
+        }
+    },
     data() {
         return {
             isMobile: false
         }
+    },
+    computed: {
+        ...mapState(useMemStore, ['currentUser'])
     },
     mounted() {
         this.checkScreenWidth();
@@ -52,15 +69,32 @@ export default defineComponent({
         },
         navigate(event) {
             const value = event.target.value;
-            if (value) {
-                this.$router.push(value);
+            if (value === 'signout') {
+                this.signOut();
+            } else if (value) {
+                this.router.push(value);
             }
+        },
+        signOut() {
+            this.memStore.clearCurrentUser() // 清除 store 中的用戶數據
+            this.router.push('/') // 導航到首頁
         }
     }
 })
 </script>
 
 <style lang="scss" scoped>
+.sign-out{
+    border: none;
+    background-color: transparent;
+                span{
+                    color: #002451;
+                font-size:22px;
+                &:hover{
+                color: #000;
+                }
+                }
+}
 .member {
     display: flex;
     width: 100%;

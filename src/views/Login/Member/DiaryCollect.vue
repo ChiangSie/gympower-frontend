@@ -2,92 +2,32 @@
     <section class="diarycollectpage">
         <h2>日記收藏</h2>
         <hr>
-        <div class="pagination">
-            <button @click="currentPage = 1"><i class="fa-solid fa-angles-left"></i></button>
-            <button @click="prevPage"><i class="fa-solid fa-arrow-left"></i></button>
-            <button v-for="n in totalPages" @click="currentPage = n" :key="n.n">{{ n }}</button>
-            <button @click="nextPage"><i class="fa-solid fa-arrow-right"></i></button>
-            <button @click="currentPage = totalPages"><i class="fa-solid fa-angles-right"></i></button>
+        <div class="pagination" v-if="totalPages > 1">
+            <button @click="currentPage = 1" :disabled="currentPage === 1"><i class="fa-solid fa-angles-left"></i></button>
+            <button @click="prevPage" :disabled="currentPage === 1"><i class="fa-solid fa-arrow-left"></i></button>
+            <button v-for="n in displayedPageNumbers" :key="n" @click="currentPage = n" :class="{ active: currentPage === n }">{{ n }}</button>
+            <button @click="nextPage" :disabled="currentPage === totalPages"><i class="fa-solid fa-arrow-right"></i></button>
+            <button @click="currentPage = totalPages" :disabled="currentPage === totalPages"><i class="fa-solid fa-angles-right"></i></button>
         </div>
 
-        <div class="fullcard" v-for="item in paginateddiarylist" :key="item.id" :class="{ active: item.isActive }">
-            <div class="diarycollectcard" >
-                <span class="linetitle"> <span>{{ item.date }}</span> <span>{{ item.author }}</span> </span>
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.content }}</p>
-                <h4>{{ item.detail }}</h4>
-                <div class="list_part">
-                    <li v-for="item2 in item.detailcontent" :key="item2.no">{{ item2.content }}</li>
-                </div>
+        <div class="fullcard" v-for="item in paginateddiarylist" :key="item.dm_id">
+            <div class="diarycollectcard">
+                <span class="linetitle"><span>{{ item.mem_name }}</span></span>
+                <h3>{{ item.dm_name }}</h3>
+                <p>{{ item.dm_content }}</p>
             </div>
-            <button @click="extend($event)"> Read More</button>
         </div>
     </section>
 </template>
 
 <script>
-export default{
-    data(){
-        return{
+export default {
+    data() {
+        return {
             currentPage: 1,
             pageSize: 2,
-            totalPages: 0 ,
-            diarylist:[
-                {
-                    id:1,
-                    date:"2024/05/31",
-                    author:"Sam",
-                    title:"健康飲食：健身者的營養指南",
-                    content:"在健身的過程中，飲食扮演著至關重要的角色。以下是一些關於如何通過飲食來支持健身目標的建議。",
-                    detail:"平衡飲食",
-                    detailcontent:[
-                        {
-                            no:1,
-                            content:"蛋白質是肌肉修復和增長的基石。健身者應該攝取足夠的蛋白質來源，如雞肉、魚、蛋、豆類和乳製品......"
-                        },
-                        {
-                            no:2,
-                            content:"蛋白質是肌肉修復和增長的基石。健身者應該攝取足夠的蛋白質來源，如雞肉、魚、蛋、豆類和乳製品......"
-                        },
-                    ]
-                },
-                {
-                    id: 2,
-                    date: "2024/05/31",
-                    author: "Timmy",
-                    title: "健康飲食：健身者的營養指南",
-                    content: "在健身的過程中，飲食扮演著至關重要的角色。以下是一些關於如何通過飲食來支持健身目標的建議。",
-                    detail: "平衡飲食",
-                    detailcontent:[
-                        {
-                            no:1,
-                            content:"蛋白質是肌肉修復和增長的基石。健身者應該攝取足夠的蛋白質來源，如雞肉、魚、蛋、豆類和乳製品......"
-                        },
-                        {
-                            no:2,
-                            content:"蛋白質是肌肉修復和增長的基石。健身者應該攝取足夠的蛋白質來源，如雞肉、魚、蛋、豆類和乳製品......"
-                        },
-                    ]
-                },
-                {
-                    id: 3,
-                    date: "2024/05/31",
-                    author: "Timmy",
-                    title: "健康飲食：健身者的營養指南",
-                    content: "在健身的過程中，飲食扮演著至關重要的角色。以下是一些關於如何通過飲食來支持健身目標的建議。",
-                    detail: "平衡飲食",
-                    detailcontent:[
-                        {
-                            no:1,
-                            content:"蛋白質是肌肉修復和增長的基石。健身者應該攝取足夠的蛋白質來源，如雞肉、魚、蛋、豆類和乳製品......"
-                        },
-                        {
-                            no:2,
-                            content:"蛋白質是肌肉修復和增長的基石。健身者應該攝取足夠的蛋白質來源，如雞肉、魚、蛋、豆類和乳製品......"
-                        },
-                    ]
-                },
-            ]
+            totalPages: 0,
+            diarylist: []
         }
     },
     computed: {
@@ -95,28 +35,66 @@ export default{
             const start = (this.currentPage - 1) * this.pageSize;
             const end = start + this.pageSize;
             return this.diarylist.slice(start, end);
-    }
+        },
+        displayedPageNumbers() {
+            const range = 2; // 顯示當前頁面前後各兩個頁碼
+            let start = Math.max(1, this.currentPage - range);
+            let end = Math.min(this.totalPages, this.currentPage + range);
+
+            if (start > 1) {
+                start = Math.max(1, end - range * 2);
+            }
+            if (end < this.totalPages) {
+                end = Math.min(this.totalPages, start + range * 2);
+            }
+
+            return Array.from({length: end - start + 1}, (_, i) => start + i);
+        }
     },
     methods: {
         nextPage() {
             if (this.currentPage < this.totalPages) {
                 this.currentPage++;
-                }
+            }
         },
         prevPage() {
             if (this.currentPage > 1) {
                 this.currentPage--;
-                }
+            }
         },
-        extend(event) {
-        const button = event.target;
-        const diaryCollectCard = button.parentNode.querySelector('.diarycollectcard'); 
-        diaryCollectCard.style.height = diaryCollectCard.style.height === '300px' ? '100%' : '300px';
-        button.innerText = diaryCollectCard.style.height === '300px' ? 'Read More' : 'Read Less';
+        fetchData() {
+            fetch(`${import.meta.env.VITE_PHP_URL}get_diary.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`)
+                }
+                return res.json()
+            })
+            .then((json) => {
+                if (json.code === 200) {
+                    this.diarylist = json.data.list.map((item) => ({
+                        ...item,
+                        dm_id: parseInt(item.dm_id),
+                        dm_status: parseInt(item.dm_status)
+                    }))
+                    this.totalPages = Math.ceil(this.diarylist.length / this.pageSize);
+                } else {
+                    console.error('API返回錯誤:', json.msg)
+                }
+            })
+            .catch((error) => {
+                console.error('獲取數據時出錯:', error)
+            })
         },
     },
     mounted() {
-        this.totalPages = Math.ceil(this.diarylist.length / this.pageSize);
+        this.fetchData();
     }
 }
 </script>
@@ -152,7 +130,7 @@ hr{
         align-items: end;
         .diarycollectcard{
             width: 100%;
-            height: 300px;
+            height: fit-content;
             overflow: hidden;
             padding: 35px;
             .linetitle{
@@ -166,18 +144,8 @@ hr{
                     margin: 15px 0 ;
                 }
                 p{
-                    width: 60%;
+                    width: 100%;
                     font-size: 14px;
-                }
-                h4{
-                    margin: 10px 0;
-                }
-                .list_part{
-                    width: 95%;
-                    margin: auto;
-                    li{
-                    list-style: none;
-                    margin: 5px 0;
                 }
             }
         }
@@ -187,5 +155,4 @@ hr{
             background-color: transparent;
         }
     }
-}
 </style>
