@@ -172,7 +172,7 @@ export default {
     
     // },
     mounted() {
-        let url = "http://localhost/api/get_coach.php";
+        let url = `${import.meta.env.VITE_PHP_URL}get_coach.php`;
         fetch(url)
             .then(response => response.json())
             .then(result => {
