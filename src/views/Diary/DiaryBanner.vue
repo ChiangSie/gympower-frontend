@@ -1,7 +1,7 @@
 <template>
     <section class="banner">
         <div class="banner_aboutus_img">
-            <img :src="parseImg(banner_6.jpg)" alt="banner" />
+            <img :src="parseImg('banner_6.jpg')" alt="banner" />
         </div>
 
         <h1>{{ title }}</h1>
