@@ -203,10 +203,10 @@
 import axios from 'axios'
 
 export default {
-    name: 'App',
+    // name: 'App',
     data() {
         return {
-            now_area: null,
+            // now_area: null,
             svgContent: '',
             filter: '',
             placeData: [
