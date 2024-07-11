@@ -389,7 +389,7 @@ export default {
         },
         fetchPlaceData() {
             axios
-                .get('/public/json/map.json') 
+                .get(`${import.meta.env.BASE_URL}json/map.json`) 
                 .then((response) => {
                     this.placeData = response.data
                 })
