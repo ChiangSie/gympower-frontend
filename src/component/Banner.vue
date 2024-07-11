@@ -71,7 +71,7 @@ export default {
 <template>
   <section class="banner">
     <div class="banner_aboutus_img">
-      <img :src="parseImg('imgSrc')" alt="banner" />
+      <img :src="parseImg('banner_10.jpg')" alt="banner" />
     </div>
     <h1>{{ title }}</h1>
   </section>
@@ -86,7 +86,7 @@ export default {
   },
   methods:{
     parseImg(imgURL) {
-      return new URL(`../../assets/img/banner/${imgURL}`, import.meta.url).href;
+      return new URL(`../assets/img/banner/${imgURL}`, import.meta.url).href;
     },
   }
 }
