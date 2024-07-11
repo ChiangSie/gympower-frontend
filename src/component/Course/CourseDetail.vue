@@ -90,10 +90,12 @@ export default {
         padding: 3%;
     .large-image {
         margin-bottom: 20px;
+        width: 100%;
     }
     .large-image img {
         width: 100%;
         height: auto;
+        aspect-ratio: 2 / 1.5;
     }
     @media screen and (max-width: 768px) {
         .large-image {
