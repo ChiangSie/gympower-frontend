@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <CourseDetail :productInfo="productInfo" />
+    <CourseDetail :productInfo="productInfo" :imageUrls="imageUrls"/>
     <CourseList :imageUrls="imageUrls" />
     <CourseRating :ratingPosts="ratingPosts" :productInfo="productInfo" />
   </div>
@@ -19,65 +19,72 @@ export default {
   },
   data() {
     return {
-        productInfo: {
-            locations: [],
-            courseTimes: {}
-      },
+        productInfo: [],
         ratingPosts: [],
         imageUrls: [],
     };
   },
     methods: {
-    fetchRating() {
-      fetch(`${import.meta.env.BASE_URL}json/c_member.json`)
-        .then(res => res.json())
-        .then(json => {
-          console.log(json);
-          this.ratingPosts = json;
-        })
-        .catch((error) => {
-          console.log(`error: ${error}`);
-        });
+      fetchRating() {
+            let url = `${import.meta.env.VITE_PHP_URL}get_course_rating.php`;
+
+   fetch(url)
+  .then(res => res.json())
+  .then(result => {
+                if (result.code === 200) {
+                    this.ratingPosts = result.data.list.map(item => ({
+                        ...item,
+                        ev_id: parseInt(item.ev_id)
+                    }));
+                } else {
+                    console.error('API返回錯誤:', result.msg);
+              }
+                
+            })
+            .catch(error => {
+                console.error('獲取數據時出錯:', error);
+            });
     },
-    fetchProduct() {
-      fetch(`${import.meta.env.BASE_URL}json/course.json`)
+        fetchData() {
+      let url = `${import.meta.env.VITE_PHP_URL}get_course_con.php`;
+
+      fetch(url)
         .then(res => res.json())
-        .then(json => {
-          console.log(json);
-          this.imageUrls = json;
-          const sortedData = json.sort((a, b) => b.rating - a.rating);
-          this.imageUrls = sortedData;
-        });
-    },
-    fetchInfo() {
-      fetch(`${import.meta.env.BASE_URL}json/course.json`)
-        .then(res => res.json())
-        .then(json => {
-          // 確認有沒有response
-          this.productInfo = json.find(item => {
-            return item.id == this.$route.params.id;
-          });
+        .then(result => {
+          if (result.code === 200) {
+            const data = result.data.list.map(item => ({
+              ...item,
+              c_id: parseInt(item.c_id)
+            }));
+            
+            this.imageUrls = data.sort((a, b) => b.c_rating - a.c_rating).slice(0, 9);
+
+            // 根據路由參數設置特定產品信息
+            this.productInfo = data.find(item => item.c_id == this.$route.params.id);
+
+            if (!this.productInfo) {
+              console.log(`Product with ID ${this.$route.params.id} not found.`);
+            }
+          } else {
+            console.error('API返回錯誤:', result.msg);
+          }
         })
-        .catch((error) => {
-          console.log(`error: ${error}`);
+        .catch(error => {
+          console.error('獲取數據時出錯:', error);
         });
     }
   },
   watch: {
     '$route.params.id': {
-      handler(newObj) {
-        console.log(newObj);
-        this.fetchInfo();
+      handler() {
+        this.fetchData();
       },
-      deep: true
+      immediate: true
     }
   },
   mounted() {
-    this.fetchInfo();
-    this.fetchProduct();
     this.fetchRating();
+    this.fetchData();
   }
 };
 </script>
-
-<style lang="scss" scoped></style>
