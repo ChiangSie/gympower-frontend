@@ -107,7 +107,7 @@ export default {
             }
         },
         async confirm() {
-            let url = 'http://localhost/api/get_member_once.php'
+            let url = `${import.meta.env.VITE_PHP_URL}get_member_once.php`
             let body = {
                 id: this.reid,
             }
@@ -161,7 +161,7 @@ export default {
                 }
 
                 try {
-                    const response = await fetch('http://localhost/api/update_member_info.php', {
+                    const response = await fetch(`${import.meta.env.VITE_PHP_URL}update_member_info.php`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -192,7 +192,7 @@ export default {
         },
         async validateOriginalPassword() {
             try {
-                const response = await fetch('http://localhost/api/validate_password.php', {
+                const response = await fetch(`${import.meta.env.VITE_PHP_URL}validate_password.php`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
