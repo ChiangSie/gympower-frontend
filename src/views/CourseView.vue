@@ -6,9 +6,13 @@
     <div v-if="isMobile" class="mobile-dropdown-wrapper">
       <select v-model="selectedOption" @change="handleSelectChange" class="mobile-dropdown">
         <option value="all">全部課程</option>
-        <option value="1">有氧課程</option>
-        <option value="2">重訓課程</option>
-        <option value="3">瑜珈課程</option>
+        <option value="有氧">有氧課程</option>
+        <option value="伸展">伸展課程</option>
+        <option value="瑜珈">瑜珈課程</option>
+        <option value="皮拉提斯">皮拉提斯</option>
+        <option value="綜合">綜合課程</option>
+        <option value="肌力">肌力課程</option>
+        <option value="重訓">重訓課程</option>
       </select>
     </div>
     
@@ -19,14 +23,26 @@
           <button @click="clear">
             <h3>全部課程</h3>
           </button>
-          <button @click="filter(1)">
+          <button @click="filter('有氧')">
             <h3>有氧課程</h3>
           </button>
-          <button @click="filter(2)">
-            <h3>重訓課程</h3>
+          <button @click="filter('伸展')">
+            <h3>伸展課程</h3>
           </button>
-          <button @click="filter(3)">
+          <button @click="filter('瑜珈')">
             <h3>瑜珈課程</h3>
+          </button>
+          <button @click="filter('皮拉提斯')">
+            <h3>皮拉提斯</h3>
+          </button>
+          <button @click="filter('綜合')">
+            <h3>綜合課程</h3>
+          </button>
+          <button @click="filter('肌力')">
+            <h3>肌力課程</h3>
+          </button>
+          <button @click="filter('重訓')">
+            <h3>重訓課程</h3>
           </button>
         </div>
       </div>
@@ -73,21 +89,57 @@ export default {
     this.checkScreenSize();
     window.addEventListener('resize', this.checkScreenSize);
     this.clear();
-    this.fetchProduct();
+    // this.fetchProduct();
+     let url = `${import.meta.env.VITE_PHP_URL}get_course_con.php`;
+        fetch(url)
+            .then(response => response.json())
+            .then(result => {
+                if (result.code === 200) {
+                    this.courses = result.data.list.map(item => ({
+                        ...item,
+                        c_id: parseInt(item.c_id)
+                    }));
+                     this.displayList = result.data.list.map(item => ({
+                        ...item,
+                        c_id: parseInt(item.c_id)
+                    }));
+                } else {
+                    console.error('API返回錯誤:', result.msg);
+                }
+
+                if (result.code === 200) {
+                    // 使用 Set 去重
+                    const courses = Array.from(new Set(result.data.list.map(
+                        item => ({
+                            ...item,
+                            c_id: parseInt(item.c_id)
+                        })
+                    )))
+                        .map(id => {
+                            return result.data.list.find(c => c.id === id);
+                        });
+                    this.sourceData = courses;
+                } else {
+                    console.error('API返回錯誤:', result.msg);
+                }
+            })
+            .catch(error => {
+                console.error('獲取數據時出錯:', error);
+            });
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.checkScreenSize);
   },
   methods: {
-    fetchProduct() {
-      fetch(`${import.meta.env.BASE_URL}json/course.json`)
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          this.courses = json;
-          this.displayList = json;
-        });
-    },
+    // fetchProduct() {
+    //   fetch(`${import.meta.env.BASE_URL}json/course.json`)
+    //     .then((res) => res.json())
+    //     .then((json) => {
+    //       console.log(json);
+    //       this.courses = json;
+    //       this.displayList = json;
+    //     });
+    // },
     clear() {
       this.displayList = this.courses;
       this.currentPage = 1;
@@ -96,7 +148,7 @@ export default {
       return new URL(`../../../assets/img/course/${imgURL}`, import.meta.url).href;
     },
     filter(type) {
-      this.displayList = this.courses.filter(course => course.type === type);
+      this.displayList = this.courses.filter(course => course.c_class === type);
       this.currentPage = 1;
     },
     checkScreenSize() {
@@ -106,7 +158,7 @@ export default {
       if (this.selectedOption === 'all') {
         this.clear();
       } else {
-        this.filter(parseInt(this.selectedOption));
+        this.filter(this.selectedOption);
       }
     }
   },
@@ -162,7 +214,7 @@ export default {
     position: -webkit-sticky;
     position: sticky;
     top: 100px;
-    height: 60vh;
+    height: 34rem;
     outline: 1px solid;
     border-radius: 10px;
 
