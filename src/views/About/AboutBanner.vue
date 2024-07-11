@@ -15,7 +15,7 @@ export default {
     }
   },
     methods: {
-     parseImg(imgURL) {
+    parseImg(imgURL) {
       return new URL(`../../assets/img/banner/${imgURL}`, import.meta.url).href;
     },
     }
