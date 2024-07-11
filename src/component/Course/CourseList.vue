@@ -4,8 +4,8 @@
             <h2>其他課程</h2>
             <div class="image-carousel">
                 <button class="prev-button" @click="prevImages" :disabled="isFirstGroup"><</button>
-                <router-link class="image-container" v-for="(image, index) in displayedImages" :key="index" :to="`/course/${image.id}`">
-                    <img :src="getImageUrl(image.imgSrc)" :alt="image.imgSrc"
+                <router-link class="image-container" v-for="(image, index) in displayedImages" :key="index" :to="`/course/${image.c_id}`">
+                    <img :src="getImageUrl(image.c_img)" :alt="image.c_name"
                         class="carousel-image" />
                 </router-link>
                 <button class="next-button" @click="nextImages" :disabled="isLastGroup">></button>
@@ -29,28 +29,42 @@ export default {
         };
     },
     computed: {
+        filteredImageUrls() {
+            return this.filterUniqueImages(this.imageUrls);
+        },
         displayedImages() {
-            const startIndex = this.currentIndex;
-            const endIndex = startIndex + this.imagesPerGroup;
-            return this.imageUrls.slice(startIndex, endIndex);
+            return this.filteredImageUrls.slice(this.currentIndex, this.currentIndex + this.imagesPerGroup);
         },
         isFirstGroup() {
             return this.currentIndex === 0;
         },
         isLastGroup() {
-            const lastIndex = this.imageUrls.length - this.imagesPerGroup;
-            return this.currentIndex >= lastIndex;
-        }   
+            return this.currentIndex + this.imagesPerGroup >= this.filteredImageUrls.length;
+        }
     },
     methods: {
+        filterUniqueImages(images) {
+            const seen = new Set();
+            return images.filter(image => {
+                const key = `${image.c_name}-${image.coach_name}`;
+                if (seen.has(key)) {
+                    return false;
+                }
+                seen.add(key);
+                return true;
+            });
+        },
         prevImages() {
-            if (!this.isFirstGroup) {
-                this.currentIndex -= this.imagesPerGroup;
+            if (this.currentIndex > 0) {
+                this.currentIndex = Math.max(0, this.currentIndex - this.imagesPerGroup);
             }
         },
         nextImages() {
-            if (!this.isLastGroup) {
-                this.currentIndex += this.imagesPerGroup;
+            if (this.currentIndex + this.imagesPerGroup < this.filteredImageUrls.length) {
+                this.currentIndex = Math.min(
+                    this.filteredImageUrls.length - this.imagesPerGroup,
+                    this.currentIndex + this.imagesPerGroup
+                );
             }
         },
         getImageUrl(imgSrc) {
@@ -84,7 +98,7 @@ export default {
         font-size: 2rem;
         height: 100%;
         width: 4rem;
-        background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0));       
+        background: linear-gradient(90deg, #F8F7F6, rgba(255, 255, 255, 0));       
         border: none;
         border-radius: 10px;
     }
@@ -95,7 +109,7 @@ export default {
         z-index: 2;
         height: 100%;
         width: 4rem;
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff);
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), #F8F7F6);
         border: none;
         border-radius: 10px;
     }
@@ -106,7 +120,7 @@ export default {
     justify-content: center;
     align-items: center;
     .carousel-image {
-    aspect-ratio: 1.5/1.2;
+    border-radius: 10px;
     width: 100%;
     height: auto;
     margin: 10px;

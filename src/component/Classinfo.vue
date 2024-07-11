@@ -1,24 +1,24 @@
 <template>
   <div class="card">
     <div class="card-head">
-      <h2>{{ cardData.title }}</h2>
+      <h2>{{ cardData.c_name }}</h2>
     </div>
     <div class="card-body">
       <div class="pic">
-        <img :src="parseImg(cardData.imgSrc)" :alt="cardData.title">
-        <p>{{ cardData.sort }}</p>
+        <img :src="parseImg(cardData.c_img)" :alt="cardData.c_name">
+        <p>{{ cardData.c_class }}</p>
       </div>
       <div class="txt">
         <h3>
-          <div>{{ cardData.teacher }}</div><span>NT.{{ cardData.price }} | {{ cardData.course }}堂</span>
+          <div>{{ cardData.coach_name }}</div><span>NT.{{ cardData.c_price }} | {{ cardData.c_course }}堂</span>
         </h3>
       </div>
     </div>
     <div class="card-footer">
       <div class="content">
-        <p>{{ cardData.description }}</p>
+        <p>{{ cardData.c_content}}</p>
       </div>
-      <router-link :to="`/course/${cardData.id}`">
+      <router-link :to="`/course/${cardData.c_id}`">
         <button class="apply">立即報名</button>
       </router-link>
     </div>

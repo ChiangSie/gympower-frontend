@@ -7,7 +7,7 @@
       <div class="raiting-container">
         <div class="raiting-filie">
           <select class="filie" v-model="raitingFilie">
-            <option disabled value="">以日期先後順序排列</option>
+            <option disabled value="">以評價高低排序</option>
             <option v-for="filie in filies" :key="filie" :value="filie">{{ filie }}</option>
           </select>
         </div>
@@ -15,16 +15,19 @@
           <div class="container-post">
             <div class="raiting-member">
               <div class="raiting-img">
-                <img :src="parseImg(ratingPost.image)" alt="">
+                <p>{{ ratingPost.mem_name }}</p>
               </div>
-              <p>{{ ratingPost.member }}</p>
+
             </div>
             <div class="raiting-text">
               <div class="text-title">
-                <h3>{{ ratingPost.title }}</h3>
-                <p>{{ ratingPost.date }}</p>
+                <h3>{{ ratingPost.c_name }}</h3>
+                <div class="star">
+                <p v-for="star in ratingPost.ev_star" :key="star">⭐</p>
+                </div>
               </div>
-              <p>{{ ratingPost.describe }}</p>
+              <p>{{ ratingPost.ev_content }}</p>
+
             </div>
           </div>
         </div>
@@ -51,7 +54,7 @@ export default {
     }
   },
   methods: {
-        parseImg(imgURL) {
+    parseImg(imgURL) {
       return new URL(`../../assets/img/index/${imgURL}`, import.meta.url).href;
     }
   },
@@ -65,7 +68,27 @@ export default {
       return this.filteredPosts.slice(start, end);
     },
     filteredPosts() {
-      return this.ratingPosts.filter(post => post.title === this.productInfo.title);
+      return this.ratingPosts.filter(post => post.c_name === this.productInfo.c_name);
+    },
+ totalPages() {
+      return Math.ceil(this.filteredPosts.length / this.itemsPerPage);
+    },
+    paginatedPosts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredPosts.slice(start, end);
+    },
+    filteredPosts() {
+      let filtered = this.ratingPosts.filter(post => post.c_name === this.productInfo.c_name);
+      
+      // 根據選擇的排序方式進行排序
+      if (this.raitingFilie === '評價由高到低') {
+        filtered.sort((a, b) => b.ev_star - a.ev_star);
+      } else if (this.raitingFilie === '評價由低到高') {
+        filtered.sort((a, b) => a.ev_star - b.ev_star);
+      }
+      
+      return filtered;
     }
   },
   data() {
@@ -73,8 +96,14 @@ export default {
       currentPage: 1,
       itemsPerPage: 3,
       raitingFilie: '',
-      filies: ['Date Ascending', 'Date Descending']
+      filies: ['評價由高到低', '評價由低到高']
     };
+  },
+  watch: {
+    raitingFilie() {
+      // 當排序方式改變時，重置到第一頁
+      this.currentPage = 1;
+    }
   }
 };
 </script>
@@ -125,20 +154,29 @@ export default {
           flex-direction: column;
           justify-content: center;
           text-align: center;
+          width: 10%;
+          position: relative;
 
           .raiting-img {
             padding: .3rem;
+            background: #162750;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
 
-            img {
-              width: 80px;
-              height: 80px;
-              border-radius: 50%;
+            p {
+              position: absolute;
+              color: #fff;
+              top: 1rem;
+              left: .1rem;
             }
 
             @media screen and (max-width: 768px) {
-              img {
+              .raiting-img {
                 width: 50px;
                 height: 50px;
+
               }
             }
           }
@@ -155,6 +193,7 @@ export default {
             flex-direction: row;
             align-items: center;
             justify-content: start;
+            width: 100%;
           }
         }
 
@@ -168,6 +207,18 @@ export default {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            .star{
+              display: flex;
+              flex-direction: row;
+              gap: 5px;
+              background-color: #162750;
+              height: 1.5rem;
+              border-radius: 10px;
+              padding: 0 .5rem;
+              p{
+                color: #000;
+              }
+            }
           }
         }
       }

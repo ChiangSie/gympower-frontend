@@ -1,85 +1,113 @@
 <template>
-     <div class="section section-coursedetail">
-         <div class="container">
-            <div class="image-preview">
-                <div class="large-image">
-                    <img  :src="previewImageUrl ? previewImageUrl : getImageUrl(productInfo.imgSrc)" alt="Large Image Preview" />
-                </div>
-                <div class="thumbnail-list">
-                    <img
-                        v-for="(imageUrl, index) in productInfo.imageUrls"
-                        :key="index"
-                        :src="getImageUrl(imageUrl)"
-                        alt="Thumbnail"
-                        class="thumbnail"
-                        @click="selectImage(getImageUrl(imageUrl))"
-                    />
-                </div>
-            </div>
-        <div class="course-info">
-            <h1>{{productInfo.title}}</h1>
-            <div class="course-price">
-                <div class="course-teacher">
-                    <img :src="getImageUrl(productInfo.teacherSrc)" class="img-teacher" alt="">
-                <h2>{{ productInfo.teacher }}</h2>
-                </div>
-                <h2>NT.{{productInfo.price}} | {{productInfo.course}}堂</h2>
-            </div>
-            <div class="course-content">
-            <p>{{productInfo.description}}</p>
-            </div>
-            <div class="course-btn">
-                <CourseSelected :productInfo="productInfo"/>
-            </div>
+  <div class="section section-coursedetail">
+    <div class="container">
+      <div class="image-preview">
+        <div class="large-image">
+          <img :src="getImageUrl(currentMainImage)" alt="Large Image Preview" />
         </div>
+        <div class="thumbnail-list">
+          <img
+            v-for="(coverImage, index) in matchingImages"
+            :key="index"
+            :src="getImageUrl(coverImage)"
+            :alt="`Thumbnail ${index + 1}`"
+            class="thumbnail"
+            @click="selectImage(coverImage)"
+          />
         </div>
+      </div>
+      <div class="course-info">
+        <h1>{{productInfo.c_name}}</h1>
+        <div class="course-price">
+          <div class="course-teacher">
+            <img :src="getImageUrl(productInfo.coach_img)" class="img-teacher" alt="Teacher Image">
+            <h2>{{ productInfo.coach_name }}</h2>
+          </div>
+          <h2>NT.{{productInfo.c_price}} | {{productInfo.c_course}}堂</h2>
+        </div>
+        <div class="course-content">
+          <p>{{productInfo.c_content}}</p>
+        </div>
+        <div class="course-btn">
+          <CourseSelected :productInfo="productInfo"/>
+        </div>
+      </div>
     </div>
+  </div> 
 </template>
 
 <script>
 import CourseSelected from '@/component/Course/CourseSelected.vue';
 
 export default {
-    components: {
-        CourseSelected
+  components: {
+    CourseSelected
+  },
+  props: {
+    productInfo: {
+      type: Object,
+      required: true
     },
-    props: {
-        productInfo: {
-            type: Object,
-            required: true
-        }
+    imageUrls: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      matchingImages: [],
+      currentMainImage: ''
+    };
+  },
+  watch: {
+    productInfo: {
+      handler(newVal) {
+        this.findMatchingImages();
+        this.currentMainImage = newVal.c_img;
+      },
+      deep: true
+    }
+  },
+  created() {
+    this.findMatchingImages();
+    this.currentMainImage = this.productInfo.c_img;
+  },
+  methods: {
+    selectImage(imageUrl) {
+      this.currentMainImage = imageUrl;
     },
+    getImageUrl(imageUrl) {
+      if (!imageUrl) return ''; // 處理 imageUrl 可能為 undefined 的情況
+      return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
+    },
+    findMatchingImages() {
+      this.matchingImages = this.imageUrls
+        .filter(course => 
+          course.c_name === this.productInfo.c_name && 
+          course.coach_name === this.productInfo.coach_name
+        )
+        .map(course => course.c_cover)
+        .filter((img, index, self) => self.indexOf(img) === index) // 去重
+        .slice(0, 3); // 只取前三張
 
-    data() {
-        return {
-            previewImageUrl: '', // 初始值為空字串這裡需要修改為動態的
-            teacher: {
-                src: '',
-                name: ''
-            }
-        };
-    },
-    mounted() {
-        
-    },
-    methods: {
-        selectImage(imageUrl) {
-            this.previewImageUrl = imageUrl;
-        },
-        getImageUrl(imageUrl) {
-            return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
+      // 確保主圖片在匹配圖片中
+      if (!this.matchingImages.includes(this.productInfo.c_img)) {
+        this.matchingImages.unshift(this.productInfo.c_img);
+        if (this.matchingImages.length > 3) {
+          this.matchingImages.pop();
         }
-    },
+      }
+    }
+  }
 };
 </script>
-
 <style lang="scss" scoped>
 .section-coursedetail{
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        margin-top: 80px;
-        margin-bottom: 30px;
+        margin-top: 2.5rem;
+        margin-bottom: .5rem;
         display: flex;
         flex-direction: row
     }
@@ -88,6 +116,7 @@ export default {
         flex-direction: column;
         align-items: center;
         padding: 3%;
+        width: 100%;
     .large-image {
         margin-bottom: 20px;
         width: 100%;
@@ -96,6 +125,9 @@ export default {
         width: 100%;
         height: auto;
         aspect-ratio: 2 / 1.5;
+        object-fit: cover;
+                border-radius: 10px;
+
     }
     @media screen and (max-width: 768px) {
         .large-image {
@@ -105,6 +137,11 @@ export default {
         display: flex;
         justify-content: space-between;
         flex-wrap: nowrap;
+        img{
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
         .thumbnail {
         max-width: 130px;
         margin: 5px;
@@ -119,6 +156,7 @@ export default {
     }
     .course-info{
         padding:3% 0;
+        width: 100%;
         .course-price{
             display: flex;
             justify-content: space-between;

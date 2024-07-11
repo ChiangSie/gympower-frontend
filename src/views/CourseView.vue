@@ -11,7 +11,6 @@
         <option value="瑜珈">瑜珈課程</option>
         <option value="皮拉提斯">皮拉提斯</option>
         <option value="綜合">綜合課程</option>
-        <option value="肌力">肌力課程</option>
         <option value="重訓">重訓課程</option>
       </select>
     </div>
@@ -37,9 +36,6 @@
           </button>
           <button @click="filter('綜合')">
             <h3>綜合課程</h3>
-          </button>
-          <button @click="filter('肌力')">
-            <h3>肌力課程</h3>
           </button>
           <button @click="filter('重訓')">
             <h3>重訓課程</h3>
@@ -89,57 +85,42 @@ export default {
     this.checkScreenSize();
     window.addEventListener('resize', this.checkScreenSize);
     this.clear();
-    // this.fetchProduct();
-     let url = `${import.meta.env.VITE_PHP_URL}get_course_con.php`;
-        fetch(url)
-            .then(response => response.json())
-            .then(result => {
-                if (result.code === 200) {
-                    this.courses = result.data.list.map(item => ({
-                        ...item,
-                        c_id: parseInt(item.c_id)
-                    }));
-                     this.displayList = result.data.list.map(item => ({
-                        ...item,
-                        c_id: parseInt(item.c_id)
-                    }));
-                } else {
-                    console.error('API返回錯誤:', result.msg);
-                }
-
-                if (result.code === 200) {
-                    // 使用 Set 去重
-                    const courses = Array.from(new Set(result.data.list.map(
-                        item => ({
-                            ...item,
-                            c_id: parseInt(item.c_id)
-                        })
-                    )))
-                        .map(id => {
-                            return result.data.list.find(c => c.id === id);
-                        });
-                    this.sourceData = courses;
-                } else {
-                    console.error('API返回錯誤:', result.msg);
-                }
-            })
-            .catch(error => {
-                console.error('獲取數據時出錯:', error);
-            });
+    this.fetchProduct();
+     
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.checkScreenSize);
   },
   methods: {
-    // fetchProduct() {
-    //   fetch(`${import.meta.env.BASE_URL}json/course.json`)
-    //     .then((res) => res.json())
-    //     .then((json) => {
-    //       console.log(json);
-    //       this.courses = json;
-    //       this.displayList = json;
-    //     });
-    // },
+    fetchProduct() {
+        let url = `${import.meta.env.VITE_PHP_URL}get_course_con.php`;
+fetch(url)
+    .then(response => response.json())
+    .then(result => {
+        if (result.code === 200) {
+            // 使用 Map 去重， c_star 和 c_name 相同的组合(以時間篩選)
+            const uniqueCoursesMap = new Map();
+            result.data.list.forEach(item => {
+                const processedItem = { ...item, c_id: parseInt(item.c_id) };
+                const key = `${item.c_star}-${item.c_name}-${item.coach_id}`; //  c_star 和 c_name 相同的组合
+                if (!uniqueCoursesMap.has(key)) {
+                    uniqueCoursesMap.set(key, processedItem);
+                }
+            });
+
+            const uniqueCourses = Array.from(uniqueCoursesMap.values());
+
+            // 更新 displayList 和 courses
+            this.displayList = uniqueCourses;
+            this.courses = uniqueCourses;
+        } else {
+            console.error('API返回錯誤:', result.msg);
+        }
+    })
+    .catch(error => {
+        console.error('獲取數據時出錯:', error);
+    });
+    },
     clear() {
       this.displayList = this.courses;
       this.currentPage = 1;
