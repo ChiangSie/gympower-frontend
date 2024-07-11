@@ -1,5 +1,5 @@
 <template>
-  <Banner :title="'健身日記'" />
+  <Banner  />
   <div class="section section-article">
     <div class="container">
       <div class="date">
