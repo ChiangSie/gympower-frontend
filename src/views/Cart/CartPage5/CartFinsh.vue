@@ -75,7 +75,16 @@
                 <div class="bento_list_info">
                     <CartSummary :activeCart="activeCart" :totalName="total_name" />
                     <button class="bento_list_info_btn" @click="finishOrder">{{ next_page }}</button>
+                    <div class="bento_list_item_rule_agree">
+                    <input type="checkbox" class="item-rule" v-model="isChecked">
+                    <span>{{ rule }}</span>
+                    <br>
+                    <a href="/Homelightbox" class="rule_serve">{{ rule_serve }}</a>。
+                    <!-- <span>{{ rule_and }}</span>
+                    <span class="rule_return"><a href="#">{{ rule_return }}</a></span> -->
                 </div>
+                </div>
+                
             </div>
 
             <div class="bento_list_item_rule">
@@ -84,13 +93,7 @@
                     <i class="fa-solid fa-angle-left"></i>
                     <span>{{ Previous }}</span>
                 </RouterLink>
-                <div class="bento_list_item_rule_agree">
-                    <input type="checkbox" class="item-rule" v-model="isChecked">
-                    <span>{{ rule }}</span>
-                    <a href="/Homelightbox" class="rule_serve">{{ rule_serve }}</a>。
-                    <!-- <span>{{ rule_and }}</span>
-                    <span class="rule_return"><a href="#">{{ rule_return }}</a></span> -->
-                </div>
+                
             </div>
             <!-- 完成圖案 -->
             <div class="overlay">
@@ -571,6 +574,7 @@ export default {
     display: flex;
     justify-content: space-evenly;
     margin: 60px 0 30px 0;
+    
 }
 
 .bento_list_item_rule_up {
@@ -586,12 +590,13 @@ export default {
 .bento_list_item_rule_up:hover {
     cursor: pointer;
 }
-
+.bento_list_item_rule_agree {
+    padding-bottom: 2rem;
+}
 .bento_list_item_rule_agree .rule_serve a{
     color: #000;
     border-bottom: 1px solid blue;
     // letter-spacing: -1px;
-
 }
 
 @media screen and (max-width: 992px) {
