@@ -57,11 +57,11 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useBentoStore } from '@/stores/bentobox';
 import { useFoodStore } from '@/stores/foodStore';
 import { useCartListStore } from '@/stores/cart';
-import { RouterLink, useRouter} from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 import one from '/src/assets/img/boxIn.png'
 import four from '/src/assets/img/bento_box_four.png'
 import six from '/src/assets/img/bento_box_six.png'
@@ -92,9 +92,24 @@ export default {
         const clickedIndex = ref(null);
 
         const handleClick = (index) => {
+            // 如果当前格子已经选了食材，允许再次点击进行替换
             clickedIndex.value = index;
             foodStore.updateSelectedIndex(index);
+
+            // 监听食材选择变化
+            watch(() => foodStore.selectedFoodImages[index], (newValue) => {
+                if (newValue) {
+                    // 当当前格子选择完食材后，跳转到下一个格子
+                    const nextIndex = index + 1;
+                    if (nextIndex < selectedFoodImages.value.length) {
+                        clickedIndex.value = nextIndex; // 更新为下一个格子的索引
+                        // 触发下一格的点击事件，确保其能选择食材
+                        handleClick(nextIndex);
+                    }
+                }
+            });
         };
+
         const handleNextStep = (event) => {
             const hasEmptyGrid = selectedFoodImages.value.some(image => !image);
             if (hasEmptyGrid) {
