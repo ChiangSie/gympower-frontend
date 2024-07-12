@@ -13,7 +13,7 @@ import Place from './About/AboutPlace.vue'
 
   <Slogan />
   
-  <Map />
+  <!-- <Map /> -->
 
   <Place />
 </template>
