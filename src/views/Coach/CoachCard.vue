@@ -161,7 +161,6 @@ export default {
 }
 </style>  -->
 
-//====================================================
 <template>
     <div>
         <div class="card-container">
@@ -221,9 +220,8 @@ export default {
             return new URL(`/src/assets/img/c_coach/${imgURL}`, import.meta.url).href;
         },
     },
-    //add======================
 
-}//add=====================
+}
 </script>
 
 <style lang="scss" scoped>

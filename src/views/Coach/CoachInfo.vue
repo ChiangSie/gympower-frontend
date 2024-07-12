@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="coach_info">
-                    <p><span class="custom_p">專長：</span><br>{{ coach.expertise }}</p>
+                    <p><span class="custom_p">專長：</span><br>{{ coach.tag }}</p>
                     <p><span class="custom_p">教練介紹：</span><br>{{ coach.intro }}</p>
                 </div>
             </div>
