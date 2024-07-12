@@ -27,7 +27,6 @@
                 </div>
               </div>
               <p>{{ ratingPost.ev_content }}</p>
-
             </div>
           </div>
         </div>

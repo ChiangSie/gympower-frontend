@@ -20,7 +20,7 @@
         <h1>{{productInfo.c_name}}</h1>
         <div class="course-price">
           <div class="course-teacher">
-            <img :src="getImageUrl(productInfo.coach_img)" class="img-teacher" alt="Teacher Image">
+            <img :src="getCoachImageUrl(productInfo.coach_img)" class="img-teacher" alt="Teacher Image">
             <h2>{{ productInfo.coach_name }}</h2>
           </div>
           <h2>NT.{{productInfo.c_price}} | {{productInfo.c_course}}堂</h2>
@@ -80,6 +80,10 @@ export default {
       if (!imageUrl) return ''; // 處理 imageUrl 可能為 undefined 的情況
       return new URL(`/src/assets/img/course/${imageUrl}`, import.meta.url).href;
     },
+     getCoachImageUrl(imageUrl) {
+            if (!imageUrl) return ''; // 處理 imageUrl 可能為 undefined 的情況
+            return new URL(`/src/assets/img/c_coach/${imageUrl}`, import.meta.url).href;
+        },
     findMatchingImages() {
       this.matchingImages = this.imageUrls
         .filter(course => 
