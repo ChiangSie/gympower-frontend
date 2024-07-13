@@ -3,7 +3,7 @@
         <h2>帳號管理</h2>
         <hr>
         <form @submit.prevent="saveinfo" class="main-part">
-            <div class="content_prof">
+            <!-- <div class="content_prof">
                 <h3>個人頭像</h3>
                 <div class="person-pic">
                     <div class="pic">
@@ -12,7 +12,7 @@
                     <input type="file" name="selfie" id="#" @change="handleFileChange">
                 </div>
             </div>
-            <hr>
+            <hr> -->
             <div class="content_sec">
                 <h3>基本資料</h3>
                 <div class="account_detail">
