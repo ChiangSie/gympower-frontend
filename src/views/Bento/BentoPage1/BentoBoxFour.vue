@@ -1,5 +1,6 @@
 <template>
-    <section class="bentobox4_info">
+     <RouterLink to='/bento/bentopage2' class="btn_link" >
+    <section>
         <div :class="['bentobox4_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]" @click="selectBento(4)">
             <div class="bentobox4_pic">
                 <img :src="four" alt="" />
@@ -9,6 +10,7 @@
             </div>
         </div>
     </section>
+    </RouterLink>
 </template>
 
 <script>
@@ -54,10 +56,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .bentobox4_pic {
-    width: 30%;
+    width: 12rem;
     aspect-ratio: 4 / 3.5;
-    margin-left: 250px;
+    margin-left:250px;
     overflow-clip-margin: content-box;
     overflow: clip;
 
@@ -80,7 +83,7 @@ export default {
 .bentobox4_info {
     display: flex;
     justify-content: flex-start;
-
+padding: 1rem 0;
 
     &:hover .bentobox4_txt h3 {
         transform: scale(1.1);
@@ -95,7 +98,6 @@ export default {
     display: flex;
     justify-content: flex-start;
     width: 80%;
-    height: 100%;
 }
 
 .not-selected {
@@ -114,7 +116,6 @@ export default {
     }
 
     .bentobox4_pic {
-        width: 100%;
         aspect-ratio: 4 / 3.5;
         margin: auto;
     }
@@ -134,5 +135,11 @@ export default {
 .bentobox4_txt h3 {
     font-weight: 600;
     transition: transform 0.3s, color 0.3s;
+  color: #002451;
+
 }
+.btn_link{
+    text-decoration: none;
+}
+
 </style>

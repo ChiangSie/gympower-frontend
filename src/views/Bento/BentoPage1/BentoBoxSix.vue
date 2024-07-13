@@ -1,5 +1,6 @@
 <template>
-    <section class="bentobox6_info">
+     <RouterLink to='/bento/bentopage2' class="btn_link" >
+    <section class="bentobox6_info"  @click="handleButtonClick($event)">
         <div :class="['bentobox6_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]" @click="selectBento(6)">
             <div class="bentobox6_con">
                 <div class="bentobox6_txt">
@@ -10,13 +11,15 @@
                 </div>
             </div>
         </div>
-        <RouterLink to='/bento/bentopage2' class="btn_link" >
+        
+        <!-- <RouterLink to='/bento/bentopage2' class="btn_link" >
             <button class="bentobox_button" @click="handleButtonClick($event)">
                 <p>{{ button_txt }}</p>
                 <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
             </button>
-        </RouterLink>
+        </RouterLink> -->
     </section>
+        </RouterLink>
 </template>
 
 
@@ -76,8 +79,10 @@ export default {
 
 
 <style lang="scss" scoped>
+
+
 .bentobox6_pic {
-    width: 30%;
+    width: 12rem;
     aspect-ratio: 4/3.5;
     margin-right: 250px;
     overflow-clip-margin: content-box;
@@ -115,19 +120,16 @@ export default {
     border-radius: 340px 0 0 340px;
     width: 80%;
     margin-left: auto;
-    height: 100%;
     max-width: 100%;
     /* 防止寬度超出視窗 */
     overflow: hidden;
     /* 隱藏溢出的內容 */
     box-sizing: border-box;
     /* 包括邊框和內距在寬度內 */
-
     &:hover .bentobox6_txt h3 {
         transform: scale(1.1);
         color: #00377A;
         cursor: pointer;
-
     }
 
 }
@@ -152,7 +154,6 @@ export default {
     }
 
     .bentobox6_pic {
-        width: 100%;
         aspect-ratio: 4 / 3.5;
         margin: auto;
     }
@@ -171,9 +172,11 @@ export default {
 
 }
 
-.bentobox6_txt h3 {
+h3 {
     font-weight: 600;
     transition: transform 0.3s, color 0.3s;
+    text-decoration: none;
+  color: #002451;
 }
 
 .bentobox6_con {
@@ -183,32 +186,7 @@ export default {
 
 }
 
-.btn_link {
+.btn_link{
     text-decoration: none;
-
-    .bentobox_button {
-        color: #ffffff;
-        background-color: #002451;
-        border-radius: 10px;
-        padding: 10px;
-        width: 120px;
-        margin-top: 80px;
-        display: flex;
-        justify-content: space-evenly;
-        cursor: pointer;
-
-        p {
-            text-align: center;
-        }
-    }
-
-    .custom_icon {
-        align-self: center;
-    }
-
-    button {
-        border: none;
-    }
-
 }
 </style>
