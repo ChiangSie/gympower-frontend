@@ -1,6 +1,7 @@
 <template>
     <section class="bentobox4_info">
-        <div :class="['bentobox4_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]" @click="selectBento(4)">
+        <div :class="['bentobox4_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]"
+            @click="selectBento(4)">
             <div class="bentobox4_pic">
                 <img :src="four" alt="" />
             </div>
@@ -48,7 +49,7 @@ export default {
             return new URL(`../../../assets/img/${imgURL}`, import.meta.url).href;
         }
     },
-    
+
 };
 
 </script>

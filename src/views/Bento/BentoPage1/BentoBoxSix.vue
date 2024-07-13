@@ -1,6 +1,7 @@
 <template>
     <section class="bentobox6_info">
-        <div :class="['bentobox6_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]" @click="selectBento(6)">
+        <div :class="['bentobox6_bg', { 'selected': isSelected, 'not-selected': !isSelected && isAnyBentoSelected }]"
+            @click="selectBento(6)">
             <div class="bentobox6_con">
                 <div class="bentobox6_txt">
                     <h3>{{ text }}</h3>
@@ -10,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <RouterLink to='/bento/bentopage2' class="btn_link" >
+        <RouterLink to='/bento/bentopage2' class="btn_link">
             <button class="bentobox_button" @click="handleButtonClick($event)">
                 <p>{{ button_txt }}</p>
                 <font-awesome-icon :icon="['fas', 'chevron-right']" class="custom_icon" />
@@ -91,7 +92,8 @@ export default {
         object-position: 50% 50%;
         cursor: pointer;
         transition: .3s;
-        max-width: 100%; /* 圖片最大寬度 */
+        max-width: 100%;
+        /* 圖片最大寬度 */
 
 
         &:hover {
@@ -179,7 +181,8 @@ export default {
 .bentobox6_con {
     display: flex;
     justify-content: flex-end;
-    width: 100%; /* 讓內容寬度適應父容器 */
+    width: 100%;
+    /* 讓內容寬度適應父容器 */
 
 }
 
